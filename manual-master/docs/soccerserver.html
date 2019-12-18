@@ -1,0 +1,1467 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>4. Soccer Server &#8212; The RoboCup Soccer Simulator  documentation</title>
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="5. Soccer Monitor" href="soccermonitor.html" />
+    <link rel="prev" title="3. Getting Started" href="gettingstarted.html" /> 
+  </head>
+  <body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="soccermonitor.html" title="5. Soccer Monitor"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="gettingstarted.html" title="3. Getting Started"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">The RoboCup Soccer Simulator  documentation</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">4. Soccer Server</a><ul>
+<li><a class="reference internal" href="#objects">4.1. Objects</a></li>
+<li><a class="reference internal" href="#protocols">4.2. Protocols</a><ul>
+<li><a class="reference internal" href="#player-command-protocol">4.2.1. Player Command Protocol</a><ul>
+<li><a class="reference internal" href="#connecting-reconnecting-and-disconnecting">Connecting, reconnecting, and disconnecting</a></li>
+<li><a class="reference internal" href="#initial-settings">Initial Settings</a></li>
+<li><a class="reference internal" href="#player-control">Player Control</a></li>
+<li><a class="reference internal" href="#others">Others</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#player-sensor-protocol">4.2.2. Player Sensor Protocol</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#sensor-models">4.3. Sensor Models</a><ul>
+<li><a class="reference internal" href="#aural-sensor-model">4.3.1. Aural Sensor Model</a><ul>
+<li><a class="reference internal" href="#capacity-of-the-aural-sensor">Capacity of the Aural Sensor</a></li>
+<li><a class="reference internal" href="#range-of-communication">Range of Communication</a></li>
+<li><a class="reference internal" href="#aural-sensor-example">Aural Sensor Example</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#vision-sensor-model">4.3.2. Vision Sensor Model</a><ul>
+<li><a class="reference internal" href="#range-of-view">Range of View</a></li>
+<li><a class="reference internal" href="#visual-sensor-noise-model">Visual Sensor Noise Model</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#body-sensor-model">4.3.3. Body Sensor Model</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#movement-models">4.4. Movement Models</a><ul>
+<li><a class="reference internal" href="#movement-noise-model">4.4.1. Movement Noise Model</a></li>
+<li><a class="reference internal" href="#collision-model">4.4.2. Collision Model</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#action-models">4.5. Action Models</a><ul>
+<li><a class="reference internal" href="#catch-model">4.5.1. Catch Model</a></li>
+<li><a class="reference internal" href="#dash-model">4.5.2. Dash Model</a><ul>
+<li><a class="reference internal" href="#stamina-model">Stamina Model</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#kick-model">4.5.3. Kick Model</a></li>
+<li><a class="reference internal" href="#move-model">4.5.4. Move Model</a></li>
+<li><a class="reference internal" href="#say-model">4.5.5. Say Model</a></li>
+<li><a class="reference internal" href="#tackle-model">4.5.6. Tackle Model</a></li>
+<li><a class="reference internal" href="#turn-model">4.5.7. Turn Model</a></li>
+<li><a class="reference internal" href="#turnneck-model">4.5.8. TurnNeck Model</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#heterogeneous-players">4.6. Heterogeneous Players</a></li>
+<li><a class="reference internal" href="#referee-model">4.7. Referee Model</a><ul>
+<li><a class="reference internal" href="#play-modes-and-referee-messages">4.7.1. Play Modes and referee messages</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#the-soccer-simulation">4.8. The Soccer Simulation</a><ul>
+<li><a class="reference internal" href="#description-of-the-simulation-algorithm">4.8.1. Description of the simulation algorithm</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#using-soccerserver">4.9. Using Soccerserver</a><ul>
+<li><a class="reference internal" href="#the-soccerserver-parameters">4.9.1. The Soccerserver Parameters</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="gettingstarted.html"
+                        title="previous chapter">3. Getting Started</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="soccermonitor.html"
+                        title="next chapter">5. Soccer Monitor</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/soccerserver.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <p>Last update: Dec 05, 2019</p>
+<div class="section" id="soccer-server">
+<span id="cha-soccerserver"></span><h1>4. Soccer Server<a class="headerlink" href="#soccer-server" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="objects">
+<h2>4.1. Objects<a class="headerlink" href="#objects" title="Permalink to this headline">¶</a></h2>
+<div class="figure align-center" id="id1">
+<a class="reference internal image-reference" href="_images/objects.png"><img alt="_images/objects.png" src="_images/objects.png" style="width: 508.0px; height: 444.8px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 4.1 </span><span class="caption-text">UML diagram of the objects in the simulation</span></p>
+</div>
+</div>
+<div class="section" id="protocols">
+<h2>4.2. Protocols<a class="headerlink" href="#protocols" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="player-command-protocol">
+<span id="sec-playercommmandprotocol"></span><h3>4.2.1. Player Command Protocol<a class="headerlink" href="#player-command-protocol" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="connecting-reconnecting-and-disconnecting">
+<h4>Connecting, reconnecting, and disconnecting<a class="headerlink" href="#connecting-reconnecting-and-disconnecting" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="docutils">
+<colgroup>
+<col width="53%" />
+<col width="47%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">From player to server</th>
+<th class="head">From server to client</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><div class="first last line-block">
+<div class="line">(init <em>TeamName</em> [(version <em>VerNum</em> )] [(goalie)])</div>
+<div class="line-block">
+<div class="line"><em>TeamName</em> ::= [-_a-zA-Z0-9]+</div>
+<div class="line-block">
+<div class="line"><em>VerNum</em> ::= the protocol version (e.g. 15)</div>
+</div>
+</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">(init <em>Side</em> <em>Unum</em> <em>PlayMode</em>)</div>
+<div class="line-block">
+<div class="line-block">
+<div class="line"><em>Side</em> ::= <code class="docutils literal"><span class="pre">l</span></code> | <code class="docutils literal"><span class="pre">r</span></code></div>
+<div class="line"><em>Unum</em> ::= 1~11</div>
+</div>
+<div class="line"><em>PlayMode</em> ::= one of play modes</div>
+</div>
+<div class="line">(error no_more_team_or_player)</div>
+<div class="line">(error reconnect)</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><div class="first last line-block">
+<div class="line">(reconnect …)</div>
+<div class="line-block">
+<div class="line">TeamName :=</div>
+</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>(bye)</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<p>If your client connects or reconnects sucessfully with a protocol version &gt;= 7.0, the
+server will additionally send following messages: <code class="docutils literal"><span class="pre">server_param</span></code> (a message
+containing the server parameters), <code class="docutils literal"><span class="pre">player_param</span></code> (a message containing the
+player parameters) and <code class="docutils literal"><span class="pre">player_type</span></code> (a message containing the player types).
+Finally, the player will receive a message on changed
+players (see Sec. <a class="reference internal" href="#sec-heterogeneousplayers"><span class="std std-ref">Heterogeneous Players</span></a>).</p>
+</div>
+<div class="section" id="initial-settings">
+<h4>Initial Settings<a class="headerlink" href="#initial-settings" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="docutils">
+<colgroup>
+<col width="49%" />
+<col width="51%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">From player to server</th>
+<th class="head">From server to player</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><div class="first last line-block">
+<div class="line">(compression <em>Level</em>)</div>
+<div class="line-block">
+<div class="line"><em>Level</em> ::= zlib compression level [0,9]</div>
+<div class="line-block">
+<div class="line">or negative number</div>
+</div>
+</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">(ok compression <em>Level</em>)</div>
+<div class="line">(warning compression_unsupported)</div>
+<div class="line"><br /></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><div class="first last line-block">
+<div class="line">(clang (ver <em>MinVer</em> <em>MaxVer</em>))</div>
+<div class="line-block">
+<div class="line"><em>MinVer</em> ::= integer</div>
+<div class="line"><em>MaxVer</em> ::= integer</div>
+</div>
+</div>
+</td>
+<td>(ok clang (ver <em>MinVer</em> <em>MaxVer</em>))</td>
+</tr>
+<tr class="row-even"><td><div class="first last line-block">
+<div class="line">(ear (<em>OnOff</em> [<em>Team</em>] [<em>Type</em>]))</div>
+<div class="line-block">
+<div class="line"><em>OnOff</em> ::= <code class="docutils literal"><span class="pre">on</span></code> | <code class="docutils literal"><span class="pre">off</span></code></div>
+<div class="line"><em>Team</em> ::= <code class="docutils literal"><span class="pre">our</span></code> | <code class="docutils literal"><span class="pre">opp</span></code> |</div>
+<div class="line-block">
+<div class="line"><code class="docutils literal"><span class="pre">left</span></code> | <code class="docutils literal"><span class="pre">right</span></code> |</div>
+<div class="line"><code class="docutils literal"><span class="pre">l</span></code> | <code class="docutils literal"><span class="pre">r</span></code> |</div>
+<div class="line"><em>TeamName</em></div>
+</div>
+</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">no response if succeeded</div>
+<div class="line">(error no team with name <em>TeamName</em>)</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>(synch_see)</td>
+<td>(ok synch_see)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="player-control">
+<h4>Player Control<a class="headerlink" href="#player-control" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="docutils">
+<colgroup>
+<col width="75%" />
+<col width="25%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">From player to server</th>
+<th class="head">Only once per cycle</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><div class="first last line-block">
+<div class="line">(turn <em>Moment</em>)</div>
+<div class="line-block">
+<div class="line"><em>Moment</em> ::= <strong>minmoment</strong> ~ <strong>maxmoment</strong> degrees</div>
+</div>
+</div>
+</td>
+<td>Yes</td>
+</tr>
+<tr class="row-odd"><td><div class="first last line-block">
+<div class="line">(dash <em>Power</em> [<em>Direction</em>])</div>
+<div class="line-block">
+<div class="line"><em>Power</em> ::= <strong>min_dash_power</strong> ~ <strong>max_dash_power</strong></div>
+<div class="line"><em>Direction</em> ::= <strong>min_dash_angle</strong> ~ <strong>max_dash_angle</strong> degrees</div>
+</div>
+<div class="line">Note: backward dash (negative power) consumes double stamina.</div>
+</div>
+</td>
+<td>Yes</td>
+</tr>
+<tr class="row-even"><td><div class="first last line-block">
+<div class="line">(kick <em>Power</em> <em>Direction</em>)</div>
+<div class="line-block">
+<div class="line"><em>Power</em> ::= <strong>minpower</strong> ~ <strong>maxpower</strong></div>
+<div class="line"><em>Direction</em> ::= <strong>minmoment</strong> ~ <strong>maxmoment</strong> degrees</div>
+</div>
+</div>
+</td>
+<td>Yes</td>
+</tr>
+<tr class="row-odd"><td><div class="first last line-block">
+<div class="line">(tackle <em>PowerOrAngle</em> [<em>Foul</em>])</div>
+<div class="line-block">
+<div class="line"><em>PowerOrAngle</em> ::= <strong>minmoment</strong> ~ <strong>maxmoment</strong> degrees
+: if client version &gt;= 12</div>
+<div class="line"><em>PowerOrAngle</em> ::= <strong>-max_back_tackle_power</strong> ~ <strong>max_tackle_power</strong>
+: if client version &lt;  12</div>
+<div class="line"><em>Foul</em> ::= <code class="docutils literal"><span class="pre">true</span></code> | <code class="docutils literal"><span class="pre">false</span></code> | <code class="docutils literal"><span class="pre">on</span></code> | <code class="docutils literal"><span class="pre">off</span></code></div>
+</div>
+</div>
+</td>
+<td>Yes</td>
+</tr>
+<tr class="row-even"><td><div class="first last line-block">
+<div class="line">(catch <em>Direction</em>)</div>
+<div class="line-block">
+<div class="line"><em>Direction</em> ::= <strong>minmoment</strong> ~ <strong>maxmoment</strong> degrees</div>
+</div>
+</div>
+</td>
+<td>Yes</td>
+</tr>
+<tr class="row-odd"><td><div class="first last line-block">
+<div class="line">(move <em>X</em> <em>Y</em>)</div>
+<div class="line-block">
+<div class="line"><em>X</em> ::= real number</div>
+<div class="line"><em>Y</em> ::= real number</div>
+</div>
+</div>
+</td>
+<td>Yes</td>
+</tr>
+<tr class="row-even"><td><div class="first last line-block">
+<div class="line">(change_view <em>Width</em> <em>Quality</em>)</div>
+<div class="line-block">
+<div class="line"><em>Width</em> ::= <code class="docutils literal"><span class="pre">narrow</span></code> | <code class="docutils literal"><span class="pre">normal</span></code> | <code class="docutils literal"><span class="pre">wide</span></code></div>
+<div class="line"><em>Quality</em> ::= <code class="docutils literal"><span class="pre">high</span></code> | <code class="docutils literal"><span class="pre">low</span></code></div>
+</div>
+</div>
+</td>
+<td>No</td>
+</tr>
+<tr class="row-odd"><td><div class="first last line-block">
+<div class="line">(say “<em>Message</em>”)</div>
+<div class="line-block">
+<div class="line"><em>Message</em> ::= [-0-9a-zA-Z ().+*/?&lt;&gt;_]*</div>
+</div>
+</div>
+</td>
+<td>No</td>
+</tr>
+<tr class="row-even"><td><div class="first last line-block">
+<div class="line">(pointto <em>Distance</em> <em>Direction</em>)</div>
+<div class="line">(pointto <em>Off</em>)</div>
+<div class="line-block">
+<div class="line"><em>Distance</em> ::= real number</div>
+<div class="line"><em>Direction</em> ::= real number degree</div>
+<div class="line"><em>Off</em> ::= <code class="docutils literal"><span class="pre">false</span></code> | <code class="docutils literal"><span class="pre">off</span></code></div>
+</div>
+</div>
+</td>
+<td>No</td>
+</tr>
+<tr class="row-odd"><td><div class="first last line-block">
+<div class="line">(attentionto <em>Team</em> <em>Unum</em>)</div>
+<div class="line">(attentionto <em>Off</em>)</div>
+<div class="line-block">
+<div class="line"><em>Team</em> ::= <code class="docutils literal"><span class="pre">our</span></code> | <code class="docutils literal"><span class="pre">opp</span></code> |</div>
+<div class="line-block">
+<div class="line-block">
+<div class="line"><code class="docutils literal"><span class="pre">left</span></code> | <code class="docutils literal"><span class="pre">right</span></code> |</div>
+<div class="line"><code class="docutils literal"><span class="pre">l</span></code> | <code class="docutils literal"><span class="pre">r</span></code> |</div>
+<div class="line"><em>TeamName</em></div>
+</div>
+<div class="line"><em>Unum</em> ::= integer</div>
+<div class="line"><em>Off</em> ::= <code class="docutils literal"><span class="pre">false</span></code> | <code class="docutils literal"><span class="pre">off</span></code></div>
+</div>
+</div>
+</div>
+</td>
+<td>No</td>
+</tr>
+<tr class="row-even"><td>(done)</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="others">
+<h4>Others<a class="headerlink" href="#others" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="docutils">
+<colgroup>
+<col width="44%" />
+<col width="56%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">From player to server</th>
+<th class="head">From server to player</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>(sense_body)</td>
+<td>sense_body message</td>
+</tr>
+<tr class="row-odd"><td>(score)</td>
+<td><div class="first last line-block">
+<div class="line">(score <em>Time</em> <em>Our</em> <em>Opp</em>)</div>
+<div class="line-block">
+<div class="line"><em>Time</em> ::= simulation cycle of rcssserver</div>
+<div class="line"><em>Our</em> ::= sender’s team score</div>
+<div class="line"><em>Opp</em> ::= opponent team score</div>
+</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<p>The server may respond to the above commands with the errors:
+(error unknown command) or
+(error illegal command form)</p>
+</div>
+</div>
+<div class="section" id="player-sensor-protocol">
+<h3>4.2.2. Player Sensor Protocol<a class="headerlink" href="#player-sensor-protocol" title="Permalink to this headline">¶</a></h3>
+<p>The following table shows the protocol for client version 14 or later.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">From server to player</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><div class="first last line-block">
+<div class="line">(hear <em>Time</em> <em>Sender</em> “<em>Message</em>”)</div>
+<div class="line">(hear <em>Time</em> <em>OnlineCoach</em> <em>CoachLanguageMessage</em>)</div>
+<div class="line-block">
+<div class="line"><em>Time</em> ::= simulation cycle of rcssserver</div>
+<div class="line"><em>Sender</em> ::= <code class="docutils literal"><span class="pre">online_coach_left</span></code> | <code class="docutils literal"><span class="pre">online_coach_right</span></code> | <code class="docutils literal"><span class="pre">coach</span></code> | <code class="docutils literal"><span class="pre">referee</span></code> | <code class="docutils literal"><span class="pre">self</span></code> | <em>Direction</em></div>
+<div class="line"><em>Direction</em> ::= -180 ~ 180 degrees</div>
+<div class="line"><em>Message</em> ::= string</div>
+<div class="line"><em>OnlineCoach</em> ::= <code class="docutils literal"><span class="pre">online_coach_left</span></code> | <code class="docutils literal"><span class="pre">online_coach_right</span></code></div>
+<div class="line"><em>CoachLanguageMessage</em> ::= see the standard coach language section</div>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><div class="first last line-block">
+<div class="line">(see <em>Time</em> <em>ObjInfo</em>+)</div>
+<div class="line-block">
+<div class="line"><em>Time</em> ::= simulation cycle of rcssserver</div>
+<div class="line"><em>ObjInfo</em> ::=</div>
+<div class="line-block">
+<div class="line">(<em>ObjName</em> <em>Distance</em> <em>Diretion</em> <em>DistChange</em> <em>DirChange</em> <em>BodyFacingDir</em> <em>HeadFacingDir</em>
+[<em>PointDir</em>] [t] [k]])</div>
+<div class="line">| (<em>ObjName</em> <em>Distance</em> <em>Diretion</em> <em>DistChange</em> <em>DirChange</em> [<em>PointDir</em>] [t] [k]])</div>
+<div class="line">| (<em>ObjName</em> <em>Distance</em> <em>Diretion</em>)</div>
+<div class="line">| (<em>ObjName</em> <em>Diretion</em>)</div>
+</div>
+<div class="line"><em>ObjName</em> ::= (p [“<em>TeamName</em>” [<em>UniformNumber</em> [goalie]]])</div>
+<div class="line-block">
+<div class="line-block">
+<div class="line">| (b)</div>
+<div class="line">| (g {l|r})</div>
+<div class="line">| (f c)</div>
+<div class="line">| (f {l|c|r} {t|b})</div>
+<div class="line">| (f p {l|r} {t|c|b})</div>
+<div class="line">| (f g {l|r} {t|b})</div>
+<div class="line">| (f {l|r|t|b} 0)</div>
+<div class="line">| (f {t|b} {l|r} {10|20|30|40|50})</div>
+<div class="line">| (f {l|r} {t|b} {10|20|30})</div>
+<div class="line">| (l {l|r|t|b} 0)</div>
+<div class="line">| (P)</div>
+<div class="line">| (B)</div>
+<div class="line">| (G)</div>
+<div class="line">| (F)</div>
+</div>
+<div class="line"><em>Distance</em> ::= positive real number</div>
+<div class="line"><em>Direction</em> ::= -180 ~ 180 degrees</div>
+<div class="line"><em>DistChange</em> ::= real number</div>
+<div class="line"><em>DirChange</em> ::= real number</div>
+<div class="line"><em>BodyFacingDir</em> ::= -180 ~ 180 degrees</div>
+<div class="line"><em>HeadFacingDir</em> ::= -180 ~ 180 degrees</div>
+<div class="line"><em>PointDir</em> ::= -180 ~ 180 degrees</div>
+<div class="line"><em>TeamName</em> ::= string</div>
+<div class="line"><em>UniformNumber</em> ::= 1 ~ 11</div>
+</div>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><div class="first last line-block">
+<div class="line">(sense_body <em>Time</em></div>
+<div class="line-block">
+<div class="line">(view_mode {high|low} {narrow|normal|wide})</div>
+<div class="line">(stamina <em>Stamina</em> <em>Effort</em> <em>Capacity</em>)</div>
+<div class="line">(speed <em>AmountOfSpeed</em> <em>DirectionOfSpeed</em>)</div>
+<div class="line">(head_angle <em>HeadAngle</em>)</div>
+<div class="line">(kick <em>KickCount</em>)</div>
+<div class="line">(dash <em>DashCount</em>)</div>
+<div class="line">(turn <em>TurnCount</em>)</div>
+<div class="line">(say <em>SayCount</em>)</div>
+<div class="line">(turn_neck <em>TurnNeckCount</em>)</div>
+<div class="line">(catch <em>CatchCount</em>)</div>
+<div class="line">(move <em>MoveCount</em>)</div>
+<div class="line">(change_view <em>ChangeViewCount</em>)</div>
+<div class="line">(arm (movable <em>MovableCycles</em>) (expires <em>ExpireCycles</em>) (count <em>PointtoCount</em>))</div>
+<div class="line">(focus (target {none|{l|r} <em>Unum</em>}) (count <em>AttentiontoCount</em>))</div>
+<div class="line">(tackle (expires <em>ExpireCycles</em>) (count <em>TackleCount</em>))</div>
+<div class="line">(collision {none|[(ball)] [(player)] [(post)]})</div>
+<div class="line">(foul (charged <em>FoulCycles</em>) (card {red|yellow|none})))</div>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><div class="first last line-block">
+<div class="line">(fullstate <em>Time</em></div>
+<div class="line-block">
+<div class="line">(pmode {goalie_catch_ball_{l|r}|*PlayMode*})</div>
+<div class="line">(vmode {high|low} {narrow|normal|wide})</div>
+<div class="line">(count <em>KickCount</em> <em>DashCount</em> <em>TurnCount</em> <em>CatchCount</em> <em>MoveCount</em> <em>TurnNeckCount</em> <em>ChangeViewCount</em> <em>SayCount</em>)</div>
+<div class="line">(arm (movable <em>MovableCycles</em>) (expires <em>ExpireCycles</em>))
+(target <em>Distance</em> <em>Direction</em>) (count <em>PointtoCount</em>)</div>
+<div class="line">(score <em>Time</em> <em>Our</em> <em>Opp</em>)</div>
+<div class="line">((b) <em>X</em> <em>Y</em> <em>VelX</em> <em>VelY</em>)</div>
+<div class="line"><em>Players</em>+)</div>
+<div class="line-block">
+<div class="line"><em>Players</em> ::= ((p {l|r} <em>UniformNumber</em> [g] <em>PlayerType</em>)
+<em>X</em> <em>Y</em> <em>VelX</em> <em>VelY</em> <em>BodyDir</em> <em>NeckDir</em> [<em>PointtoDist</em> <em>PointtoDir</em>]
+(stamina <em>Stamina</em> <em>Effort</em> <em>Recovery</em> <em>Capacity</em>)
+[k|t|f] [r|y]))</div>
+</div>
+</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="sensor-models">
+<h2>4.3. Sensor Models<a class="headerlink" href="#sensor-models" title="Permalink to this headline">¶</a></h2>
+<p>A RoboCup agent has three different sensors (and one special sensor).
+The aural sensor detects messages sent by the referee, the coaches and the
+other players.
+The visual sensor detects visual information about the field, like the
+distance and direction to objects in the player’s current field of
+view. The visual sensor also works as a proximity sensor by “seeing”
+objects that are close, but behind the player.
+The body sensor detects the current “physical” status of the player, like
+its stamina, speed and neck angle.
+Together the sensors give the agent quite a good picture of the environment.</p>
+<div class="section" id="aural-sensor-model">
+<h3>4.3.1. Aural Sensor Model<a class="headerlink" href="#aural-sensor-model" title="Permalink to this headline">¶</a></h3>
+<p>Aural sensor messages are sent when a client or a coach sends a say command.
+The calls from the referee is also received as aural messages.
+All messages are received immediately.</p>
+<p>The format of the aural sensor message from the soccer server is:</p>
+<blockquote>
+<div>(hear <em>Time</em> <em>Sender</em> ‘’<em>Message</em>’‘)</div></blockquote>
+<ul>
+<li><p class="first"><em>Time</em> indicates the current time.</p>
+</li>
+<li><p class="first"><em>Sender</em> is the relative direction to the sender if it is another player,
+otherwise it is one of the following:</p>
+<blockquote>
+<div><ul class="simple">
+<li><code class="docutils literal"><span class="pre">self</span></code>: when the sender is yourself.</li>
+<li><code class="docutils literal"><span class="pre">referee</span></code>: when the sender is the referee.</li>
+<li><code class="docutils literal"><span class="pre">online_coach_left</span></code> or <code class="docutils literal"><span class="pre">online_coach_right</span></code>: when the sender is one of the online coaches.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first"><em>Message</em> is the message. The maximum length is <strong>server::say_msg_size</strong> bytes.
+The possible messages from the referee are described in Section <span class="xref std std-ref">sec-playmodes</span>.</p>
+</li>
+</ul>
+<p>The server parameters that affects the aural sensor are described in the
+following table:</p>
+<blockquote>
+<div>Parameters for the aural sensor.</div></blockquote>
+<table border="1" class="docutils">
+<colgroup>
+<col width="80%" />
+<col width="20%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter in server.conf</th>
+<th class="head">Value</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>autio_cut_dist</td>
+<td>50.0</td>
+</tr>
+<tr class="row-odd"><td>hear_max</td>
+<td>1</td>
+</tr>
+<tr class="row-even"><td>hear_inc</td>
+<td>1</td>
+</tr>
+<tr class="row-odd"><td>hear_decay</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="capacity-of-the-aural-sensor">
+<h4>Capacity of the Aural Sensor<a class="headerlink" href="#capacity-of-the-aural-sensor" title="Permalink to this headline">¶</a></h4>
+<p>A player can only hear a message if the player’s hear capacity is at least
+<strong>server::hear_decay</strong>, since the hear capacity of the player is decreased by
+that number when a message is heard.
+Every cycle the hear capacity is increased with <strong>server::hear_inc</strong>.
+The maximum hear capacity is <strong>server::hear_max</strong>.
+To avoid a team from making the other team’s communication useless by
+overloading the channel the players have separate hear capacities for each team.
+With the current server.conf file this means that a player can hear at most
+one message from each team every second simulation cycle.</p>
+<p>If more messages arrive at the same time than the player can hear the messages
+actually heard are chosen randomly.
+.. (The current implementation choose the messages according to the order of arrival.)
+This rule does not include messages from the referee, or messages from oneself.
+.. In other words, a player can say a message and hear a message from another
+.. player in the same timestep.</p>
+</div>
+<div class="section" id="range-of-communication">
+<h4>Range of Communication<a class="headerlink" href="#range-of-communication" title="Permalink to this headline">¶</a></h4>
+<p>A message said by a player is transmitted only to players within
+<strong>server::audio_cut_dist</strong> meters from that player.
+For example, a defender, who may be near his own goal, can hear a message
+from his goal-keeper but a striker who is near the opponent goal can not hear
+the message.
+Messages from the referee can be heard by all players.</p>
+</div>
+<div class="section" id="aural-sensor-example">
+<h4>Aural Sensor Example<a class="headerlink" href="#aural-sensor-example" title="Permalink to this headline">¶</a></h4>
+<p>This example should show which messages get through and how to calculated
+the hear capacity.</p>
+<p>Example:
+Each coach sends a message every cycle.
+The referee send a message every cycle.
+The four players in the example all send a message every cycle.
+Show which messages gets through during 10 cycles (6 might be enough).</p>
+</div>
+</div>
+<div class="section" id="vision-sensor-model">
+<span id="sec-visionsensor"></span><h3>4.3.2. Vision Sensor Model<a class="headerlink" href="#vision-sensor-model" title="Permalink to this headline">¶</a></h3>
+<p>The visual sensor reports the objects currently seen by the player.
+The information is automatically sent to the player every
+<strong>server::sense_step</strong>, currently 150, milli-seconds, in the default setting.</p>
+<p>Visual information arrives from the server in the following basic format:</p>
+<blockquote>
+<div>(see <em>ObjName</em> <em>Distance</em> <em>Direction</em> <em>DistChng</em> <em>DirChng</em> <em>BodyDir</em> <em>HeadDir</em>)</div></blockquote>
+<p><em>Distance</em>, <em>Direction</em>, <em>DistChng</em> and <em>DirChng</em> are calculated in the
+following way:</p>
+<div class="math">
+\[\begin{split}p_{rx} &amp;= p_{xt} - p_{xo} \\
+p_{ry} &amp;= p_{yt} - p_{yo} \\
+v_{rx} &amp;= v_{xt} - v_{xo} \\
+v_{ry} &amp;= v_{yt} - v_{yo} \\
+Distance &amp;= \sqrt{p_{rx}^2 + p_{ry}^2} \\
+Direction &amp;= \arctan{(p_{ry}/p_{rx})} - a_o \\
+e_{rx} &amp;= p_{rx} / Distance \\
+e_{ry} &amp; = p_{ry} / Distance \\
+DistChng &amp;= (v_{rx} * e_{rx}) + (v_{ry} * e_{ry}) \\
+DirChng &amp;= [(-(v_{rx} * e_{ry}) + (v_{ry} * e_{rx})) / Distance] * (180 / \pi)  \\
+BodyDir &amp;= PlayerBodyDir - AgentBodyDir - AgentHeadDir \\
+HeadDir &amp;= PlayerHeadDir - AgentBodyDir - AgentHeadDir\end{split}\]</div>
+<p>where <span class="math">\((p_{xt},p_{yt}) is the absolute position of the target object,
+:math:`(p_{xo},p_{yo})\)</span> is the absolute position of the sensing player,
+<span class="math">\((v_{xt},v_{yt})\)</span> is the absolute velocity of the target object,
+<span class="math">\((v_{xo},v_{yo})\)</span> is the absolute velocity of the sensing player,
+and <span class="math">\(a_o\)</span> is the absolute direction the sensing player is facing.
+The absolute facing direction of a player is the sum of the <em>BodyDir</em> and
+the <em>HeadDir</em> of that player.
+In addition to it, <span class="math">\((p_{rx},p_{ry})\)</span> and <span class="math">\((v_{rx},v_{ry})\)</span> are
+respectively the relative position and the relative velocity of the target,
+and <span class="math">\((e_{rx},e_{ry})\)</span> is the unit vector that is parallel to the vector
+of the relative position.
+<em>BodyDir</em> and <em>HeadDir</em> are only included if the observed object is a player,
+and is the body and head directions of the observed player relative to the body
+and head directions of the observing player.
+Thus, if both players have their bodies turned in the same direction, then
+<em>BodyDir</em> would be 0.  The same goes for <em>HeadDir</em>.</p>
+<p>The <strong>(goal r)</strong> object is interpreted as the center of the right hand side
+goalline.
+<strong>(f c)</strong> is a virtual flag at the center of the field.
+<strong>(f l b)</strong> is the flag at the lower left of the field.
+<strong>(f p l b)</strong> is a virtual flag at the lower right corner of the penalty box
+on the left side of the field.
+<strong>(f g l b)</strong> is a virtual flag marking the right goalpost on the left goal.
+The remaining types of flags are all located 5 meters outside the playing
+field. For example, <strong>(f t l 20)</strong> is 5 meters from the top sideline and 20
+meters left from the center line.
+In the same way, <strong>(f r b 10)</strong> is 5 meters right of the right sideline and
+10 meters below the center of the right goal.
+Also, <strong>(f b 0)</strong> is 5 meters below the midpoint of the bottom sideline.</p>
+<p>In the case of <strong>(l …)</strong>, <em>Distance</em> is the distance to the point where
+the center line of the player’s view crosses the line, and <em>Direction</em> is
+the direction of the line.</p>
+<p>Currently there are 55 flags (the goals counts as flags) and 4 lines to be
+seen. All of the flags and lines are shown in Fig. <a class="reference internal" href="#field-detailed"><span class="std std-ref">The flags and lines in the simulation.</span></a>.</p>
+<div class="figure align-center" id="field-detailed">
+<img alt="_images/field-detailed.png" src="_images/field-detailed.png" />
+<p class="caption"><span class="caption-number">Fig. 4.2 </span><span class="caption-text">The flags and lines in the simulation.</span></p>
+</div>
+<div class="section" id="range-of-view">
+<h4>Range of View<a class="headerlink" href="#range-of-view" title="Permalink to this headline">¶</a></h4>
+<p>The visible sector of a player is dependant on several factors.
+First of all we have the server parameters <strong>server::sense_step</strong> and
+<strong>server::visible_angle</strong> which determines the basic time step between
+visual information and how many degrees the player’s normal view cone is.
+The current default values are 150 milli-seconds and 90 degrees.</p>
+<p>The player can also influence the frequency and quality of the information
+by changing <em>ViewWidth</em> and <em>ViewQuality</em>.</p>
+<p>To calculate the current view frequency and view angle of the agent
+use equations <span class="xref std std-ref">eq:view-freq</span> and <span class="xref std std-ref">eq:view-angle</span>.</p>
+<div class="math" id="equation-eq-view-freq">
+<span class="eqno">(1)<a class="headerlink" href="#equation-eq-view-freq" title="Permalink to this equation">¶</a></span>\[view\_frequency = sense\_step * view\_quality\_factor * view\_width\_factor\]</div>
+<p>where view_quality_factor is 1 if <em>ViewQuality</em> is <code class="docutils literal"><span class="pre">high</span></code>
+and 0.5 if <em>ViewQuality</em> is <code class="docutils literal"><span class="pre">low</span></code>;
+view_width_factor is 2 if <em>ViewWidth</em> is <code class="docutils literal"><span class="pre">narrow</span></code>,
+1 if <em>ViewWidth</em> is <code class="docutils literal"><span class="pre">normal</span></code>, and 0.5 if <em>ViewWidth</em> is <code class="docutils literal"><span class="pre">wide</span></code>.</p>
+<div class="math" id="equation-eq-view-angle">
+<span class="eqno">(2)<a class="headerlink" href="#equation-eq-view-angle" title="Permalink to this equation">¶</a></span>\[view\_angle = visible\_angle * view\_width\_factor\]</div>
+<p>where view_width_factor is 0.5 if <em>ViewWidth</em> is <code class="docutils literal"><span class="pre">narrow</span></code>,
+1 if <em>ViewWidth</em> is <code class="docutils literal"><span class="pre">normal</span></code>, and 2 if <em>ViewWidth</em> is <code class="docutils literal"><span class="pre">wide</span></code>.</p>
+<p>The player can also “see” an object if it’s within <strong>server::visible_distance</strong>
+meters of the player.
+If the objects is within this distance but not in the view cone then the
+player can know only the type of the object (ball, player, goal or flag),
+but not the exact name of the object.
+Moreover, in this case, the capitalized name, that is “B”, “P”, “G” and “F”,
+is used as the name of the object rather than “b”, “p”, “g” and “f”.</p>
+<div class="figure align-center" id="view-example">
+<img alt="_images/view-example.png" src="_images/view-example.png" />
+<p class="caption"><span class="caption-number">Fig. 4.3 </span><span class="caption-text">The visible range of an individual agent in the soccer server.
+The viewing agent is the one shown as two semi-circles. The light
+semi-circle is its front. The black circles represent objects in the world.
+Only objects within <strong>server::view_angle</strong>/2, and those within
+<strong>server::visible_distance</strong> of the viewing agent can be seen.
+<strong>unum_far_length</strong>, <strong>unum_too_far_length</strong>, <strong>team_far_length</strong>, and
+<strong>team_too_far_length</strong> affect the amount of precision
+with which a players’ identity is given. Taken from <a class="reference internal" href="references.html#stone98" id="id2">[Stone98]</a>.</span></p>
+</div>
+<p>The following example and Fig.:ref:<cite>view-example</cite> are taken from <a class="reference internal" href="references.html#stone98" id="id3">[Stone98]</a>.</p>
+<p>The meaning of the view_angle parameter is illustrated in Fig.:ref:<cite>view-example</cite>.
+In this figure, the viewing agent is the one shown as two semi-circles.
+The light semi-circle is its front.
+The black circles represent objects in the world.
+Only objects within <span class="math">\(view\_angle^\circ/2\)</span>, and those within
+visible_distance of the viewing agent can be seen.
+Thus, objects <em>b</em> and <em>g</em> are not visible; all of the rest are.</p>
+<p>As object <em>f</em> is directly in front of the viewing agent, its angle would be
+reported as 0 degrees.
+Object <em>e</em> would be reported as being roughly <span class="math">\(-40^\circ\)</span>, while object
+<em>d</em> is at roughly :math:<a href="#id4"><span class="problematic" id="id5">`</span></a>20^circ.</p>
+<p>Also illustrated in Fig.:ref:<cite>view-example</cite>, the amount of information
+describing a player varies with how far away the player is.
+For nearby players, both the team and the uniform number of the player are
+reported.
+However, as distance increases, first the likelihood that the uniform number
+is visible decreases, and then even the team name may not be visible.
+It is assumed in the server that <strong>unum_far_length</strong> <span class="math">\(\leq\)</span>
+<strong>unum_too_far_length</strong> <span class="math">\(\leq\)</span> <strong>team_far_length</strong> <span class="math">\(\leq\)</span>
+<strong>team_too_far_length</strong>.
+Let the player’s distance be <em>dist</em>. Then</p>
+<ul class="simple">
+<li>If <em>dist</em> <span class="math">\(\leq\)</span> <strong>unum_far_length</strong>, then both uniform number and
+team name are visible.</li>
+<li>If <strong>unum_far_length</strong> <span class="math">\(&lt;\)</span> <em>dist</em> <span class="math">\(&lt;\)</span> <strong>unum_too_far_length</strong>,
+then the team name is always visible, but the probability that the uniform
+number is visible decreases linearly from 1 to 0 as <em>dist</em> increases.</li>
+<li>If <em>dist</em> <span class="math">\(\geq\)</span> <strong>unum_too_far_length</strong>, then the uniform number is
+not visible.</li>
+<li>If <em>dist</em> :math`leq` <strong>team_far_length</strong>, then the team name is visible.</li>
+<li>If <strong>team_far_length</strong> <span class="math">\(&lt;\)</span> <em>dist</em> <span class="math">\(&lt;\)</span> <strong>team_too_far_length</strong>,
+then the probability that the team name is visible decreases linearly from 1
+to 0 as <em>dist</em> increases.</li>
+<li>If <em>dist</em> <span class="math">\(\geq\)</span> <strong>team_too_far_length</strong>, then the team name is not
+visible.</li>
+</ul>
+<p>For example, in Fig.:ref:<cite>view-example</cite>, assume that all of the labeled circles
+are players.
+Then player <em>c</em> would be identified by both team name and uniform number;
+player <em>d</em> by team name, and with about a 50% chance, uniform number;
+player <em>e</em> with about a 25% chance, just by team name, otherwise with neither;
+and player <em>f</em> would be identified simply as an anonymous player.</p>
+<blockquote>
+<div>Parameters for the visual sensors.</div></blockquote>
+<table border="1" class="docutils">
+<colgroup>
+<col width="78%" />
+<col width="22%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter in <code class="docutils literal"><span class="pre">server.conf</span></code></th>
+<th class="head">Value</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>server::sense_step</td>
+<td>150</td>
+</tr>
+<tr class="row-odd"><td>server::visible_angle</td>
+<td>90.0</td>
+</tr>
+<tr class="row-even"><td>server::visible_distance</td>
+<td>3.0</td>
+</tr>
+<tr class="row-odd"><td>unum_far_length <span class="math">\(^\dagger\)</span></td>
+<td>20.0</td>
+</tr>
+<tr class="row-even"><td>unum_too_far_length <span class="math">\(^\dagger\)</span></td>
+<td>40.0</td>
+</tr>
+<tr class="row-odd"><td>team_far_length <span class="math">\(^\dagger\)</span></td>
+<td>40.0</td>
+</tr>
+<tr class="row-even"><td>team_too_far_length <span class="math">\(^\dagger\)</span></td>
+<td>60.0</td>
+</tr>
+<tr class="row-odd"><td>server::quantize_step</td>
+<td>0.1</td>
+</tr>
+<tr class="row-even"><td>server::quantize_step_l</td>
+<td>0.01</td>
+</tr>
+</tbody>
+</table>
+<p><span class="math">\(^\dagger\)</span> : Not in <code class="docutils literal"><span class="pre">server.conf</span></code>, but compiled into the server.</p>
+</div>
+<div class="section" id="visual-sensor-noise-model">
+<h4>Visual Sensor Noise Model<a class="headerlink" href="#visual-sensor-noise-model" title="Permalink to this headline">¶</a></h4>
+<p>In order to introduce noise in the visual sensor data the values sent from
+the server is quantized.
+For example, the distance value of the object, in the case where the object
+in sight is a ball or a player, is quantized in the following manner:</p>
+<div class="math">
+\[d' = {\rm Quantize}(\exp({\rm Quantize}(\log(d),quantize\_step)),0.1)\]</div>
+<p>where <span class="math">\(d\)</span> and <span class="math">\(d'\)</span> are the exact distance and quantized distance
+respectively, and</p>
+<div class="math">
+\[{\rm Quantize}(V,Q) = {\rm ceiling}(V/Q) \cdot Q\]</div>
+<p>This means that players can not know the exact positions of very far objects.
+For example, when distance is about 100.0 the maximum noise is about 10.0,
+while when distance is less than 10.0 the noise is less than 1.0.</p>
+<p>In the case of flags and lines, the distance value is quantized in the
+following manner.</p>
+<div class="math">
+\[d' = {\rm Quantize}(\exp({\rm Quantize}(\log(d),quantize\_step\_l)),0.1)\]</div>
+</div>
+</div>
+<div class="section" id="body-sensor-model">
+<h3>4.3.3. Body Sensor Model<a class="headerlink" href="#body-sensor-model" title="Permalink to this headline">¶</a></h3>
+<p>The body sensor reports the current “physical” status of the
+player.
+he information is automatically sent to the player every
+<strong>server::sense_body_step</strong>, currently 100,  milli-seconds.</p>
+<p>The format of the body sensor message is:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="87%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>(sense_body</td>
+<td><div class="first last line-block">
+<div class="line"><em>Time</em></div>
+<div class="line">(view_mode <em>ViewQuality</em> <em>ViewWidth</em>)</div>
+<div class="line">(stamina <em>Stamina</em> <em>Effort</em> <em>Capacity</em>)</div>
+<div class="line">(speed <em>AmountOfSpeed</em> <em>DirectionOfSpeed</em>)</div>
+<div class="line">(head_angle <em>HeadAngle</em>)</div>
+<div class="line">(kick <em>KickCount</em>)</div>
+<div class="line">(dash <em>DashCount</em>)</div>
+<div class="line">(turn <em>TurnCount</em>)</div>
+<div class="line">(say <em>SayCount</em>)</div>
+<div class="line">(turn_neck <em>TurnNeckCount</em>)</div>
+<div class="line">(catch <em>CatchCount</em>)</div>
+<div class="line">(move <em>MoveCount</em>)</div>
+<div class="line">(change_view <em>ChangeViewCount</em>)</div>
+<div class="line">(arm (movable <em>MovableCycles</em>) (expires <em>ExpireCycles</em>) (count <em>PointtoCount</em>))</div>
+<div class="line">(focus (target {none|{l|r} <em>Unum</em>}) (count <em>AttentiontoCount</em>))</div>
+<div class="line">(tackle (expires <em>ExpireCycles</em>) (count <em>TackleCount</em>))</div>
+<div class="line">(collision {none|[(ball)] [(player)] [(post)]})</div>
+<div class="line">(foul (charged <em>FoulCycles</em>) (card {red|yellow|none})))</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><em>ViewQuality</em> is one of <code class="docutils literal"><span class="pre">high</span></code> and <code class="docutils literal"><span class="pre">low</span></code>.</li>
+<li><em>ViewWidth</em> is one of <code class="docutils literal"><span class="pre">narrow</span></code>, <code class="docutils literal"><span class="pre">normal</span></code>, and <code class="docutils literal"><span class="pre">wide</span></code>.</li>
+<li><em>AmountOfSpeed</em> is an approximation of the amount of the player’s speed.</li>
+<li><em>DirectionOfSpeed</em> is an approximation of the direction of the player’s speed.</li>
+<li><em>HeadDirection</em> is the relative direction of the player’s head.</li>
+<li><em>*Count</em> variables are the total number of commands of that type
+executed by the server.  For example <em>DashCount</em> = 134 means
+that the player has executed 134 <strong>dash</strong> commands so far.</li>
+<li><em>MovableCycles</em></li>
+<li><em>ExpireCycles</em></li>
+<li><em>FoulCycles</em></li>
+</ul>
+<p>The semantics of the parameters are described where they are actually
+used.
+he <em>ViewQuality</em> and <em>ViewWidth</em> parameters are for example described
+in the Section <a class="reference internal" href="#sec-visionsensor"><span class="std std-ref">Vision Sensor Model</span></a>.</p>
+<p>The server parameters that affects the body sensor are described in
+the following table:</p>
+<blockquote>
+<div>Parameters for the body sensors.</div></blockquote>
+<table border="1" class="docutils">
+<colgroup>
+<col width="78%" />
+<col width="22%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter in <code class="docutils literal"><span class="pre">server.conf</span></code></th>
+<th class="head">Value</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>server::sense_body_step</td>
+<td>100</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="movement-models">
+<h2>4.4. Movement Models<a class="headerlink" href="#movement-models" title="Permalink to this headline">¶</a></h2>
+<p>In each simulation step, movement of each object is calculated as following manner:</p>
+<div class="math" id="equation-eq-u-t">
+<span class="eqno">(3)<a class="headerlink" href="#equation-eq-u-t" title="Permalink to this equation">¶</a></span>\[\begin{split} (u_x^{t+1},u_y^{t+1}) &amp;= (v_x^t,v_y^t)+(a_x^t,a_y^t) : accelerate \\
+ (p_x^{t+1},p_y^{t+1}) &amp;= (p_x^t,p_y^t)+(u_x^{t+1},u_y^{t+1}) : move \\
+ (v_x^{t+1},v_y^{t+1}) &amp;= decay \times (u_x^{t+1},u_y^{t+1}) : decay\ speed \\
+ (a_x^{t+1},a_y^{t+1}) &amp;= (0,0) : reset\ acceleration\end{split}\]</div>
+<p>where, <span class="math">\((p_x^t,p_y^t)\)</span>, and <span class="math">\((v_x^t,v_y^t)\)</span> are respectively position
+and velocity of the object in timestep <span class="math">\(t\)</span>. decay is a decay parameter
+specified by <code class="docutils literal"><span class="pre">ball_decay</span></code> or <code class="docutils literal"><span class="pre">player_decay</span></code>. <span class="math">\((a_x^t,a_y^t)\)</span> is
+acceleration of object, which is derived from Power parameter in <code class="docutils literal"><span class="pre">dash</span></code>
+(in the case the object is a player) or <code class="docutils literal"><span class="pre">kick</span></code> (in the case of a ball)
+commands in the following manner:</p>
+<div class="math">
+\[(a_x^{t},a_y^{t}) = Power \times power\_rate \times (\cos(\theta^t),\sin(\theta^t))\]</div>
+<p>where <span class="math">\(\theta^t\)</span> is the direction of the object in timestep <span class="math">\(t\)</span> and
+power_rate is <code class="docutils literal"><span class="pre">dash_power_rate</span></code> or is calculated from <code class="docutils literal"><span class="pre">kick_power_rate</span></code>
+as described in Sec. <a class="reference internal" href="#sec-kickmodel"><span class="std std-ref">Kick Model</span></a>.
+In the case of a player, this is just the direction the player is facing.
+In the case of a ball, its direction is given as the following manner:</p>
+<div class="math">
+\[\theta^t_{ball} = \theta^t_{kicker} + Direction\]</div>
+<p>where <span class="math">\(\theta^t_{ball}\)</span> and <span class="math">\(\theta^t_{kicker}\)</span> are directions of
+ball and kicking player respectively, and <em>Direction</em> is the second parameter
+of a <strong>kick</strong> command.</p>
+<div class="section" id="movement-noise-model">
+<h3>4.4.1. Movement Noise Model<a class="headerlink" href="#movement-noise-model" title="Permalink to this headline">¶</a></h3>
+<p>In order to reflect unexpected movements of objects in real world,
+rcssserver adds noise to the movement of objects and parameters of commands.</p>
+<p>Concerned with movements,
+noise is added into Eqn.:ref:<cite>eq:u-t</cite> as follows:</p>
+<div class="math">
+\[(u_x^{t+1},u_y^{t+1}) = (v_x^{t}, v_y^{t}) + (a_x^{t}, a_y^{t}) + (\tilde{r}_{\rm rmax},\tilde{r}_{\rm rmax})\]</div>
+<p>where <span class="math">\(\tilde{r}_{\rm rmax}\)</span> is a random number whose distribution
+is uniform over the range <span class="math">\([-{\rm rmax},{\rm rmax}]\)</span>.
+<span class="math">\({\rm rmax}\)</span> is a parameter that depends on amount of velocity
+of the object as follows:</p>
+<div class="math">
+\[{\rm rmax} = {\rm rand} \cdot |(v_x^{t}, v_y^{t})|\]</div>
+<p>where <span class="math">\({\rm rand}\)</span> is a parameter specified by <strong>server::player_rand</strong>
+or <strong>server::ball_rand</strong>.</p>
+<p>Noise is added also into the <em>Power</em> and <em>Moment</em> arguments of a
+command as follows:</p>
+<div class="math">
+\[argument = (1 + \tilde{r}_{\rm rand}) \cdot argument\]</div>
+</div>
+<div class="section" id="collision-model">
+<h3>4.4.2. Collision Model<a class="headerlink" href="#collision-model" title="Permalink to this headline">¶</a></h3>
+<p>If at the end of the simulation cycle, two objects overlap, then the
+objects are moved back until they do not overlap.
+Then the velocities are multiplied by -0.1.
+Note that it is possible for the ball to go through a player as long
+as the ball and the player never overlap at the end of the cycle.</p>
+</div>
+</div>
+<div class="section" id="action-models">
+<h2>4.5. Action Models<a class="headerlink" href="#action-models" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="catch-model">
+<h3>4.5.1. Catch Model<a class="headerlink" href="#catch-model" title="Permalink to this headline">¶</a></h3>
+<div class="figure align-center" id="catcharea">
+<img alt="_images/catcharea.png" src="_images/catcharea.png" />
+<p class="caption"><span class="caption-number">Fig. 4.4 </span><span class="caption-text">Catchable area of the goalie when doing a (catch 45)</span></p>
+</div>
+<p>The goalie is the only player with the ability to catch a ball. The
+goalie can catch the ball in play mode <code class="docutils literal"><span class="pre">play_on</span></code> in any direction,
+if the ball is within the catchable area and the goalie is inside the
+penalty area.  If the goalie catches into direction <span class="math">\(\varphi\)</span>,
+the catchable area is a rectangular area of length
+<strong>server::catchable_area_l</strong> and width <strong>server::catchable_area_w</strong> in
+direction <span class="math">\(\varphi\)</span> (see Fig.:ref:<cite>catcharea</cite>).
+The ball will be caught with probability
+<strong>server::catch_probability</strong>, if it is inside this area (and it will
+not be caught if it is outside this area).
+For the current values of catch command parameters see
+the following table:</p>
+<blockquote>
+<div>Parameters for the goalie catch command</div></blockquote>
+<table border="1" class="docutils">
+<colgroup>
+<col width="82%" />
+<col width="18%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter in <code class="docutils literal"><span class="pre">server.conf</span></code> and <code class="docutils literal"><span class="pre">player.conf</span></code></th>
+<th class="head">Value</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>server::catchable_area_l</td>
+<td>2.0</td>
+</tr>
+<tr class="row-odd"><td>server::catchable_area_w</td>
+<td>1.0</td>
+</tr>
+<tr class="row-even"><td>server::catch_probability</td>
+<td>1.0</td>
+</tr>
+<tr class="row-odd"><td>server::catch_ban_cycle</td>
+<td>5</td>
+</tr>
+<tr class="row-even"><td>server::goalie-max_moves</td>
+<td>2</td>
+</tr>
+<tr class="row-odd"><td>player::catchable_area_l_stretch_max</td>
+<td>1.3</td>
+</tr>
+<tr class="row-even"><td>player::catchable_area_l_stretch_min</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p><strong>TODO</strong> about heterogenous parameters.</p>
+<p>If a catch command was unsuccessful, it takes
+<strong>server::catch_ban_cycle</strong> cycles until another catch command can be
+used (catch commands during this time have simply no effect).
+If the goalie succeeded in catching the ball, the play mode will
+change to <code class="docutils literal"><span class="pre">goalie_catch_ball_[l|r]</span></code> first and <code class="docutils literal"><span class="pre">free_kick_[l|r]</span></code>,
+after that during the same cycle.
+nce the goalie caught the ball, it can use the <strong>move</strong> command to
+move with the ball inside the penalty area.
+he goalie can use the <strong>move</strong> command <strong>server::goalie_max_moves</strong>
+times before it kicks the ball.
+dditional <strong>move</strong> commands do not have any effect and the server will
+respond with <code class="docutils literal"><span class="pre">(error</span> <span class="pre">too_many_moves)</span></code>.
+Please note that catching the ball, moving around, kicking the ball a
+short distance and immediately catching it again to move more than
+<strong>server::goalie_max_moves</strong> times is considered as ungentlemanly
+play.</p>
+</div>
+<div class="section" id="dash-model">
+<h3>4.5.2. Dash Model<a class="headerlink" href="#dash-model" title="Permalink to this headline">¶</a></h3>
+<p>The <strong>dash</strong> command is used to accelerate the player in direction of
+its body.
+<strong>dash</strong> takes the acceleration <em>power</em> as a parameter.
+The valid range for the acceleration <em>power</em> can be configured in
+<code class="docutils literal"><span class="pre">server.conf</span></code>, the respective parameters are <strong>server::min_dash_power</strong>
+and <strong>server::max_dash_power</strong>.
+For the current values of parameters for the dash model, see
+the following list:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="28%" />
+<col width="24%" />
+<col width="37%" />
+<col width="10%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><div class="first last line-block">
+<div class="line">Default Parameters</div>
+<div class="line-block">
+<div class="line"><code class="docutils literal"><span class="pre">server.conf</span></code></div>
+</div>
+</div>
+</th>
+<th class="head"><div class="first last line-block">
+<div class="line">Default Value (Range)</div>
+<div class="line"><br /></div>
+</div>
+</th>
+<th class="head"><div class="first last line-block">
+<div class="line">Heterogeneous Player Parameters</div>
+<div class="line-block">
+<div class="line"><code class="docutils literal"><span class="pre">player.conf</span></code></div>
+</div>
+</div>
+</th>
+<th class="head"><div class="first last line-block">
+<div class="line">Value</div>
+<div class="line"><br /></div>
+</div>
+</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>server::min_dash_power</td>
+<td>-100.0</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>server::max_dash_power</td>
+<td>100.0</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>server::player_decay
+server::inertia_moment</td>
+<td><div class="first last line-block">
+<div class="line">0.4 ([0.3, 0.5])</div>
+<div class="line">5.0 ([2.5, 7.5])</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">player::player_decay_delta_min</div>
+<div class="line">player::player_decay_delta_min</div>
+<div class="line">player::inertia_moment_delta_factor</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">-0.1</div>
+<div class="line">0.1</div>
+<div class="line">25.0</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>server::player_accel_max</td>
+<td>1.0</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>server::player_rand</td>
+<td>0.1</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>server::player_speed_max</td>
+<td>1.05</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>server::player_speed_max_min</td>
+<td>0.75</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>server::stamina_max</td>
+<td>8000.0</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td><div class="first last line-block">
+<div class="line">server::stamina_inc_max</div>
+<div class="line">server::dash_power_rate</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">45.0  ([40.2, 52.2])</div>
+<div class="line">0.006 ([0.0048, 0.0068])</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">player::new_dash_power_rate_delta_min</div>
+<div class="line">player::new_dash_power_rate_delta_max</div>
+<div class="line">player::new_stamina_inc_max_delta_factor</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">-0.0012</div>
+<div class="line">0.0008</div>
+<div class="line">-6000</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><div class="first last line-block">
+<div class="line">server::extra_stamina</div>
+<div class="line">server::effort_init</div>
+<div class="line">server::effort_min</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">50.0  ([50.0, 100.0])</div>
+<div class="line">1.0   ([0.8, 1.0])</div>
+<div class="line">0.6   ([0.4, 0.6])</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">player::extra_stamina_delta_min</div>
+<div class="line">player::extra_stamina_delta_max</div>
+<div class="line">player::effort_max_delta_factor</div>
+<div class="line">player::effort_min_delta_factor</div>
+</div>
+</td>
+<td><div class="first last line-block">
+<div class="line">0.0</div>
+<div class="line">50.0</div>
+<div class="line">-0.004</div>
+<div class="line">-0.004</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>server::effort_dec</td>
+<td>0.3</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>server::effort_dec_thr</td>
+<td>0.005</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>server::effort_inc</td>
+<td>0.01</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>server::effort_inc_thr</td>
+<td>0.6</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>server::recover_dec_thr</td>
+<td>0.3</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>server::recover_dec</td>
+<td>0.002</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>server::recover_init</td>
+<td>1.0</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>server::recover_min</td>
+<td>0.5</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>server::wind_ang</td>
+<td>0.0</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>server::wind_dir</td>
+<td>0.0</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>server::wind_force</td>
+<td>0.0</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>server::wind_rand</td>
+<td>0.0</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<p>Each player has a certain amount of stamina that will be consumed by
+<strong>dash</strong> commands.
+At the beginning of each half, the stamina of a player is set to
+<strong>server::stamina_max</strong>.
+If a player accelerates forward (<em>power</em> <span class="math">\(&gt; 0\)</span>), stamina is
+reduced by <em>power</em>.
+Accelerating backwards (<em>power</em> <span class="math">\(&lt; 0\)</span>) is more expensive for the
+player: stamina is reduced by :math:<a href="#id6"><span class="problematic" id="id7">`</span></a>-2~cdot~`*power*.
+If the player’s stamina is lower than the power needed for the
+<strong>dash</strong>, <em>power</em> is reduced so that the <strong>dash</strong> command does not
+need more stamina than available.
+Some extra stamina can be used every time the available power is lower
+than the needed stamina.
+The amount of extra stamina depends on the player type and the
+parameters <strong>player::extra_stamina_delta_min</strong> and
+player::extra_stamina_delta_max**.</p>
+<p>After reducing the stamina, the server calculates the <em>effective  dash
+power</em> for the <strong>dash</strong> command.
+The effective dash power <em>edp</em> depends on the <strong>dash_power_rate</strong> and the
+current effort of the player.
+The effort of a player is a value between <strong>effort_min</strong> and <strong>effort_max</strong>;
+it is dependent on the stamina management of the player (see below).</p>
+<div class="math" id="equation-eq-effectivedash">
+<span class="eqno">(4)<a class="headerlink" href="#equation-eq-effectivedash" title="Permalink to this equation">¶</a></span>\[{\rm edp} = {\rm effort} \cdot {\rm dash_power_rate} \cdot {\rm power}\]</div>
+<p><em>edp</em> and the players current body direction are tranformed into vector and
+added to the players current acceleration vector <span class="math">\(\vec{a}_n\)</span>
+(usually, that should be 0 before, since a player cannot dash more than once
+a cycle and a player does not get accelerated by other means than dashing).</p>
+<p>At the transition from simulation step $n$ to simulation step
+<span class="math">\(n + 1$, acceleration :math:\)</span>vec{a}_n` is applied:</p>
+<ol class="arabic simple">
+<li><span class="math">\(\vec{a}_n\)</span> is normalized to a maximum length of <strong>server::player_accel_max</strong>.</li>
+<li><span class="math">\(\vec{a}_n\)</span> is added to current players speed
+<span class="math">\(\vec{v}_n\)</span>. <span class="math">\(\vec{v}_n\)</span> will be normalized to a
+maximum length of <strong>player_speed_max</strong>.
+players, the  maximum speed is a value between
+<strong>server::player_speed_max</strong> +
+<strong>player::player_speed_max_delta_min</strong> and
+<strong>server::player_speed_max</strong> +
+<strong>player::player_speed_max_delta_max</strong> in <code class="docutils literal"><span class="pre">player.conf</span></code>.</li>
+<li>Noise <span class="math">\(\vec{n}\)</span> and wind <span class="math">\(\vec{w}\)</span> will be added to
+<span class="math">\(\vec{v}_{n}\)</span>. Both noise and wind are configurable in
+<cite>server.conf</cite>. Parameters responsible for the wind are
+<strong>server::wind_force</strong>, <strong>server::wind_dir</strong> and
+<strong>server::wind_rand</strong>. With the current settings, there is no wind
+on the simulated soccer field. The responsible parameter for the
+noise is <strong>server::player_rand</strong>. Both direction and length
+of the noise vector are within the interval
+<span class="math">\([ -|\vec{v}_{n}| \cdot {\rm player\_rand} \ldots |\vec{v}_{n}| \cdot {\rm player\_rand}]\)</span>.</li>
+<li>The new position of the player <span class="math">\(\vec{p}_{n+1}\)</span> is the old position
+<span class="math">\(\vec{p}_{n}\)</span> plus the velocity vector <span class="math">\(\vec{v}_{n}\)</span>
+(i.e.the maximum distance difference for the player between two
+simulation steps is <a href="#id8"><span class="problematic" id="id9">**</span></a>player_speed_max).</li>
+<li><strong>player_decay</strong> is applied for the velocity of the player:
+<span class="math">\(\vec{v}_{n+1} = \vec{v}_{n} \cdot {\rm player\_decay}\)</span>.
+Acceleration <span class="math">\(\vec{a}_{n+1}\)</span> is set to zero.</li>
+</ol>
+<div class="section" id="stamina-model">
+<h4>Stamina Model<a class="headerlink" href="#stamina-model" title="Permalink to this headline">¶</a></h4>
+<p>For the stamina of a player, there are three important variables: the
+<em>stamina</em> value, <em>recovery</em> and <em>effort</em>.
+<em>stamina</em> is decreased when dashing and gets replenished slightly each
+cycle. <em>recovery</em> is responsible for how much the <em>stamina</em> recovers
+each cycle, and the <em>effort</em> says how effective dashing is (see
+section above).
+Important parameters for the stamina model are changeable in the files
+<code class="docutils literal"><span class="pre">server.conf</span></code> and <code class="docutils literal"><span class="pre">player.conf</span></code>.
+Basically, the algorithm shown in the following code block says that
+every simulation step the stamina is below some threshold, effort or
+recovery are reduced until a minimum is reached.
+Every step the stamina of the player is above some threshold, <em>effort</em>
+is increased up to a maximum.
+The <em>recovery</em> value is only reset to 1.0 each half, but it will not
+be increased during a game.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># if stamina is below recovery decrement threshold, recovery is reduced</span>
+<span class="k">if</span> <span class="n">stamina</span> <span class="o">&lt;=</span> <span class="n">recover_dec_thr</span> <span class="o">*</span> <span class="n">stamina_max</span>
+  <span class="k">if</span> <span class="n">recovery</span> <span class="o">&gt;</span> <span class="n">recover_min</span>
+     <span class="n">recovery</span> <span class="o">=</span> <span class="n">recovery</span> <span class="o">-</span> <span class="n">recover_dec</span>
+
+<span class="c1"># if stamina is below effort decrement threshold, effort is reduced</span>
+<span class="k">if</span> <span class="n">stamina</span> <span class="o">&lt;=</span> <span class="n">effort_dec_thr</span> <span class="o">*</span> <span class="n">stamina_max</span>
+  <span class="k">if</span> <span class="n">effort</span> <span class="o">&gt;</span> <span class="n">effort_min</span>
+    <span class="n">effort</span> <span class="o">=</span> <span class="n">effort</span> <span class="o">-</span> <span class="n">effort_dec</span>
+      <span class="n">effort</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">effort</span><span class="p">,</span> <span class="n">effort_min</span><span class="p">)</span>
+
+<span class="c1"># if stamina is above effort increment threshold, effort is increased</span>
+<span class="k">if</span> <span class="n">stamina</span> <span class="o">&gt;=</span> <span class="n">effort_inc_thr</span> <span class="o">*</span> <span class="n">stamina</span>\<span class="n">_max</span>
+  <span class="k">if</span> <span class="n">effort</span> <span class="o">&lt;</span> <span class="n">effort_max</span>
+    <span class="n">effort</span> <span class="o">=</span> <span class="n">effort</span> <span class="o">+</span> <span class="n">effort_inc</span>
+    <span class="n">effort</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">effort</span><span class="p">,</span> <span class="n">effort_max</span><span class="p">)</span>
+
+<span class="c1"># recover the stamina a bit</span>
+<span class="n">stamina</span> <span class="o">=</span> <span class="n">stamina</span> <span class="o">+</span> <span class="n">recovery</span> <span class="o">*</span> <span class="n">stamina_inc_max</span>
+<span class="n">stamina</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">stamina</span><span class="p">,</span> <span class="n">stamina_max</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="kick-model">
+<span id="sec-kickmodel"></span><h3>4.5.3. Kick Model<a class="headerlink" href="#kick-model" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="move-model">
+<h3>4.5.4. Move Model<a class="headerlink" href="#move-model" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="say-model">
+<h3>4.5.5. Say Model<a class="headerlink" href="#say-model" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="tackle-model">
+<h3>4.5.6. Tackle Model<a class="headerlink" href="#tackle-model" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="turn-model">
+<h3>4.5.7. Turn Model<a class="headerlink" href="#turn-model" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="turnneck-model">
+<h3>4.5.8. TurnNeck Model<a class="headerlink" href="#turnneck-model" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="heterogeneous-players">
+<span id="sec-heterogeneousplayers"></span><h2>4.6. Heterogeneous Players<a class="headerlink" href="#heterogeneous-players" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="referee-model">
+<h2>4.7. Referee Model<a class="headerlink" href="#referee-model" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="play-modes-and-referee-messages">
+<h3>4.7.1. Play Modes and referee messages<a class="headerlink" href="#play-modes-and-referee-messages" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="the-soccer-simulation">
+<h2>4.8. The Soccer Simulation<a class="headerlink" href="#the-soccer-simulation" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="description-of-the-simulation-algorithm">
+<h3>4.8.1. Description of the simulation algorithm<a class="headerlink" href="#description-of-the-simulation-algorithm" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="using-soccerserver">
+<h2>4.9. Using Soccerserver<a class="headerlink" href="#using-soccerserver" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="the-soccerserver-parameters">
+<h3>4.9.1. The Soccerserver Parameters<a class="headerlink" href="#the-soccerserver-parameters" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="soccermonitor.html" title="5. Soccer Monitor"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="gettingstarted.html" title="3. Getting Started"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">The RoboCup Soccer Simulator  documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright The RoboCup Soccer Simulator Maintenance Committee.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.
+    </div>
+  </body>
+</html>

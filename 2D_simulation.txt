@@ -1,0 +1,11 @@
+https://github.com/herodrigues/robocup2d-tutorial/blob/master/sections/installing-the-soccer-simulator.md
+librsrc
+agent2d
+
+
+https://github.com/herodrigues/robocup2d-tutorial/blob/master/sections/running-a-match-with-agent2d.md
+
+
+chain_action/tackle_generator.cpp:72:19:
+static double not_shoot_ball_eval = 10000;
+static constexpr double not_shoot_ball_eval = 10000;
