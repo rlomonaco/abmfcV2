@@ -1170,7 +1170,8 @@ public:
       { }
 
     virtual
-    void printShow( const int time ) const
+    void printShow( std::ostream &,
+                        const int time ) const
       { }
 };
 

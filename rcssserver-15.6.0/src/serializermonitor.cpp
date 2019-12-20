@@ -154,7 +154,8 @@ SerializerMonitorStdv3::serializePlayMode( std::ostream & os,
 }
 
 void
-SerializerMonitorStdv3::printShow( const int time ) const
+SerializerMonitorStdv3::printShow( std::ostream & os,
+                                    const int time ) const
 {
     // os << "(show " << time;
     std::cout<<"show: "<<time<<std::endl;

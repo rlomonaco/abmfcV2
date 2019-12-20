@@ -467,7 +467,7 @@ DispSenderMonitorV3::sendShow()
     //
 
     std::ostringstream ostr;
-    serializer().printShow( stadium().time() );
+    serializer().printShow( ostr, stadium().time() );
     serializer().serializeShowBegin( ostr,
                                      stadium().time() );
     

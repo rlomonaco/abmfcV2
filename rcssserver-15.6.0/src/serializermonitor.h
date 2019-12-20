@@ -97,10 +97,6 @@ public:
                             const PlayMode pmode ) const;
 
     virtual
-    void printShow( std::ostream & os,
-                             const int time ) const;
-
-    virtual
     void serializeShowBegin( std::ostream & os,
                              const int time ) const;
     virtual
@@ -152,7 +148,7 @@ public:
     void ballPositionOutput(  std::ostream & os,
                                 const Ball & ball ) const;
     virtual
-    void printShow( const int time ) const;
+    void printShow( std::ostream & os, const int time ) const;
 
 };
 

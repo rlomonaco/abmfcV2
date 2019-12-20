@@ -1468,11 +1468,11 @@ configure:6688: checking lex output file root
 configure:6702: result: lex.yy
 configure:6707: checking lex library
 configure:6721: gcc -o conftest -g -O2   conftest.c  -lm  >&5
-/tmp/cco4pDXr.o: In function `input':
+/tmp/ccgBePDn.o: In function `input':
 /home/godfrey/abm-fc/rcssserver-15.6.0/lex.yy.c:1180: undefined reference to `yywrap'
-/tmp/cco4pDXr.o: In function `yylex':
+/tmp/ccgBePDn.o: In function `yylex':
 /home/godfrey/abm-fc/rcssserver-15.6.0/lex.yy.c:871: undefined reference to `yywrap'
-/tmp/cco4pDXr.o: In function `main':
+/tmp/ccgBePDn.o: In function `main':
 /home/godfrey/abm-fc/rcssserver-15.6.0/conftest.l:17: undefined reference to `yywrap'
 collect2: error: ld returned 1 exit status
 configure:6721: $? = 1
