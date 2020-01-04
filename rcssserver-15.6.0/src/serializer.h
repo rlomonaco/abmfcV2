@@ -1161,17 +1161,25 @@ public:
       // new functions
       // ======================================================================
     virtual
-    void playerPositionOutput( std::ostream &,
-                                const Player & ) const
+    void playerPositionOutput( const Player & ) const
       { }
     virtual
-    void ballPositionOutput( std::ostream &,
-                                const Ball & ) const
+    void ballPositionOutput( const Ball & ) const
       { }
 
     virtual
-    void printShow( std::ostream &,
-                        const int time ) const
+    void printShow( const int time ) const
+      { }
+
+    virtual
+     void SocketStadiumOutput( const int time,
+                        const Team &,
+                        const Team &,
+                        const Ball &) const
+      { }
+
+     virtual
+     void SocketPlayerOutput( const Player &) const
       { }
 };
 

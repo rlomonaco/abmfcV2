@@ -19,6 +19,7 @@
  *                                                                         *
  ***************************************************************************/
 
+
 #ifdef HAVE_CONFIG_H
 #include <config.h>
 #endif
@@ -131,7 +132,7 @@ SerializerMonitor::factory()
 SerializerMonitor::SerializerMonitor( const SerializerCommon::Ptr common )
     : Serializer( common )
 {
-    //std::cerr << "create SerializerMonitor" << std::endl;
+//    std::cerr << "create SerializerMonitor" << std::endl;
 }
 
 SerializerMonitor::~SerializerMonitor()
@@ -140,3 +141,5 @@ SerializerMonitor::~SerializerMonitor()
 }
 
 }
+
+

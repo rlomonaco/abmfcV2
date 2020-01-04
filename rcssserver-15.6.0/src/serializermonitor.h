@@ -30,6 +30,19 @@ class Player;
 class Team;
 class XPMHolder;
 
+
+// class ConnectSocket;
+
+// class ConnectSocket
+// {
+// private:
+//   static int sock;
+// public:
+//   ConnectSocket();
+
+// };
+
+
 namespace rcss {
 
 /*!
@@ -84,6 +97,8 @@ public:
     static
     const
     Ptr create();
+
+    // static const int sock = SerializerMonitorStdv3::ConnectSocket();
 
     virtual
     void serializeTeam( std::ostream & os,
@@ -140,15 +155,22 @@ public:
     // ========================================================================================
     // new modification
     // ========================================================================================
-    virtual
-    void playerPositionOutput(  std::ostream & os,
-                                const Player & player ) const;
+     virtual
+     void SocketStadiumOutput( const int time,
+                        const Team & team_l,
+                        const Team & team_r,
+                        const Ball & ball) const;
 
     virtual
-    void ballPositionOutput(  std::ostream & os,
-                                const Ball & ball ) const;
+    void SocketPlayerOutput( const Player & player) const;
+
     virtual
-    void printShow( std::ostream & os, const int time ) const;
+    void playerPositionOutput( const Player & player ) const;
+
+    virtual
+    void ballPositionOutput(  const Ball & ball) const;
+    virtual
+    void printShow( const int time ) const;
 
 };
 

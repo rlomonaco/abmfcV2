@@ -19,9 +19,10 @@
 int main(int argc , char *argv[])   
 {   
     int opt = TRUE;   
-    int master_socket , addrlen , new_socket , client_socket[30] ,  
-          max_clients = 30 , activity, i , valread , sd;   
-    int max_sd;   
+    int master_socket , addrlen , new_socket , client_socket[100000] ,
+          max_clients = 100000 , activity, i , valread , sd;
+    int max_sd;
+    int td;
     struct sockaddr_in address;   
 
     char buffer[1025];  //data buffer of 1K  
@@ -100,7 +101,7 @@ int main(int argc , char *argv[])
             //highest file descriptor number, need it for the select function  
             if(sd > max_sd)   
                 max_sd = sd;   
-        }   
+        }    
      
         //wait for an activity on one of the sockets , timeout is NULL ,  
         //so wait indefinitely  
@@ -147,12 +148,21 @@ int main(int argc , char *argv[])
                     break;   
                 }   
             }   
-        }   
+        }
              
         //else its some IO operation on some other socket 
-        for (i = 0; i < max_clients; i++)   
+        for (i = 0; i < max_clients; i++)
         {   
-            sd = client_socket[i];   
+            sd = client_socket[i];
+            //target socket
+            if (i != 0)
+            {
+            td = client_socket[0];
+            }
+            else
+            {
+            td = client_socket[1];
+            }
                  
             if (FD_ISSET( sd , &readfds))   
             {   
@@ -172,15 +182,23 @@ int main(int argc , char *argv[])
                      
                 //Echo back the message that came in  
                 else 
-                {   
-                    //set the string terminating NULL byte on the end  
-                    //of the data read  
-                    buffer[valread] = '\0';   
-                    send(sd , buffer , strlen(buffer) , 0 );
+                {
+//                  //set the string terminating NULL byte on the end
+//                  //of the data read
+                    buffer[valread] = '\0';
+                    send(td , buffer , strlen(buffer) , 0 );
                     std::cout<<"echoed: "<<buffer<<std::endl;
+
+//                    buffer[valread] = '\0';
+//                    send(sd , buffer , strlen(buffer) , 0 );
+//                    std::cout<<"sent: "<<buffer<<std::endl;
+//                    send(client_socket[1] , buffer , strlen(buffer) , 0 );
+
                 }   
             }   
-        }   
+        }
+
+
     }   
          
     return 0;   
