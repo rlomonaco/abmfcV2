@@ -19,8 +19,8 @@
 int main(int argc , char *argv[])   
 {   
     int opt = TRUE;   
-    int master_socket , addrlen , new_socket , client_socket[100000] ,
-          max_clients = 100000 , activity, i , valread , sd;
+    int master_socket , addrlen , new_socket , client_socket[30] ,
+          max_clients = 30 , activity, i , valread , sd;
     int max_sd;
     int td;
     struct sockaddr_in address;   
@@ -154,11 +154,16 @@ int main(int argc , char *argv[])
         for (i = 0; i < max_clients; i++)
         {   
             sd = client_socket[i];
+
             //target socket
             if (i != 0)
             {
             td = client_socket[0];
             }
+//            else if (client_socket[2] != 0)
+//            {
+//            td = client_socket[2];
+//            }
             else
             {
             td = client_socket[1];
@@ -197,7 +202,7 @@ int main(int argc , char *argv[])
                 }   
             }   
         }
-
+//        std::cout<<"number of clients: "<<sizeof(client_socket)<<std::endl;
 
     }   
          

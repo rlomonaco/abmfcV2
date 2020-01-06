@@ -604,8 +604,12 @@ sample_player-bhv_chain_action.o: chain_action/bhv_chain_action.cpp \
  /usr/include/x86_64-linux-gnu/asm/sockios.h \
  /usr/include/asm-generic/sockios.h \
  /usr/include/x86_64-linux-gnu/bits/types/struct_osockaddr.h \
- /usr/include/x86_64-linux-gnu/bits/socket2.h /usr/include/c++/7/stdlib.h \
- /usr/include/netinet/in.h /usr/include/x86_64-linux-gnu/bits/in.h
+ /usr/include/x86_64-linux-gnu/bits/socket2.h /usr/include/netdb.h \
+ /usr/include/netinet/in.h /usr/include/x86_64-linux-gnu/bits/in.h \
+ /usr/include/rpc/netdb.h \
+ /usr/include/x86_64-linux-gnu/bits/types/sigevent_t.h \
+ /usr/include/x86_64-linux-gnu/bits/types/__sigval_t.h \
+ /usr/include/x86_64-linux-gnu/bits/netdb.h /usr/include/arpa/inet.h
 
 /usr/include/stdc-predef.h:
 
@@ -2009,8 +2013,18 @@ chain_action/neck_turn_to_receiver.h:
 
 /usr/include/x86_64-linux-gnu/bits/socket2.h:
 
-/usr/include/c++/7/stdlib.h:
+/usr/include/netdb.h:
 
 /usr/include/netinet/in.h:
 
 /usr/include/x86_64-linux-gnu/bits/in.h:
+
+/usr/include/rpc/netdb.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/sigevent_t.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/__sigval_t.h:
+
+/usr/include/x86_64-linux-gnu/bits/netdb.h:
+
+/usr/include/arpa/inet.h:

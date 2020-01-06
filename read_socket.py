@@ -25,7 +25,8 @@ class mysocket:
 if __name__ == "__main__":
 
     s = mysocket()
-    while True:
+    message = " "
+    while len(message) > 0:
         message = s.receive_msg()
         s.send_msg(message)
 
