@@ -1,3 +1,5 @@
+#!/bin/sh
+
 ./socket_server &
 ./socket2_server &
 python read_socket.py &
