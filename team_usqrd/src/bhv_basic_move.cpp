@@ -49,7 +49,24 @@
 
 #include "neck_offensive_intercept_neck.h"
 
+/*
+//===================================================================
+//  Socket
+//===================================================================
+*/
+// #include "zhelpers.hpp"
+#include <zmq.hpp>
+#include <iostream>
+#include <sys/types.h>
+#include <unistd.h>
+#include <sys/socket.h>
+#include <netdb.h>
+#include <arpa/inet.h>
+#include <string.h>
+
+
 using namespace rcsc;
+
 
 /*-------------------------------------------------------------------*/
 /*!
@@ -58,7 +75,8 @@ using namespace rcsc;
 bool
 Bhv_BasicMove::execute( PlayerAgent * agent )
 {
-    dlog.addText( Logger::TEAM,
+
+     dlog.addText( Logger::TEAM,
                   __FILE__": Bhv_BasicMove" );
 
     //-----------------------------------------------
@@ -90,7 +108,46 @@ Bhv_BasicMove::execute( PlayerAgent * agent )
         return true;
     }
 
+
+/*-------------------------------------------------------------------*/
+// zmq listener
+/*-------------------------------------------------------------------*/
     const Vector2D target_point = Strategy::i().getPosition( wm.self().unum() );
+
+    Vector2D move_pos;
+    if (agent->world().self().unum()==5)
+    {
+      std::stringstream ss;
+      ss<<"tcp://localhost:555";
+      ss<<agent->world().self().unum();
+      std::string server_address = ss.str();
+      // Create a subscriber socket
+      zmq::context_t context(1);
+      // zmq::socket_t type = zmq::socket_type::subscribe;
+      zmq::socket_t subscriber (context, ZMQ_SUB);
+      subscriber.connect(server_address);
+
+      subscriber.setsockopt(ZMQ_SUBSCRIBE, "", 0);
+
+      //  Read envelope with address
+      zmq::message_t update;
+      subscriber.recv(&update);
+
+
+      // Read as a string
+      std::string update_string;
+      update_string.assign(static_cast<char *>(update.data()), update.size());
+      std::cout << "Received: " << update_string << std::endl;
+      move_pos = Vector2D(std::stod(update_string),0);
+    }     
+/*-------------------------------------------------------------------*/
+    else
+    {
+      move_pos = target_point;
+    }
+
+    
+
     const double dash_power = Strategy::get_normal_dash_power( wm );
 
     double dist_thr = wm.ball().distFromSelf() * 0.1;
@@ -98,14 +155,20 @@ Bhv_BasicMove::execute( PlayerAgent * agent )
 
     dlog.addText( Logger::TEAM,
                   __FILE__": Bhv_BasicMove target=(%.1f %.1f) dist_thr=%.2f",
-                  target_point.x, target_point.y,
+                  // target_point.x, target_point.y,
+                  move_pos.x, move_pos.y,
                   dist_thr );
 
     agent->debugClient().addMessage( "BasicMove%.0f", dash_power );
-    agent->debugClient().setTarget( target_point );
-    agent->debugClient().addCircle( target_point, dist_thr );
+    // agent->debugClient().setTarget( target_point );
+    agent->debugClient().setTarget( move_pos );
 
-    if ( ! Body_GoToPoint( target_point, dist_thr, dash_power
+    // agent->debugClient().addCircle( target_point, dist_thr );
+    agent->debugClient().addCircle( move_pos, dist_thr );
+
+    // if ( ! Body_GoToPoint( target_point, dist_thr, dash_power
+    if ( ! Body_GoToPoint( move_pos, dist_thr, dash_power
+
                            ).execute( agent ) )
     {
         Body_TurnToBall().execute( agent );

@@ -229,38 +229,7 @@ Bhv_ChainAction::execute( PlayerAgent * agent )
     dlog.addText( Logger::TEAM,
                   __FILE__": Bhv_ChainAction" );
 
-    // std::cout<<agent->world().self().unum()<<std::endl;
-
-
-
-// ============================================================================
-    // socket
-// ============================================================================
-   //  Create a socket
-   // int sock = socket(AF_INET, SOCK_STREAM, 0);
-
-   // //  Create a hint structure for the server we're connecting with
-   // int port = 8888;
-   // std::string ipAddress = "127.0.0.1";
-
-   // sockaddr_in hint;
-   // hint.sin_family = AF_INET;
-   // hint.sin_port = htons(port);
-   // inet_pton(AF_INET, "127.0.0.1", &hint.sin_addr);
-
-   // //  Connect to the server on the socket
-   // int connectRes = connect(sock, (sockaddr*)&hint, sizeof(hint));
-
-   // //  While loop:
-   // char buf[4096];
-   
-   //  int bytesReceived = recv(sock, buf, 4096, 0);
-   //  std::cout << "SERVER> " << std::string(buf, bytesReceived) << std::endl;
-   // close(sock);
-
-// ============================================================================
-
-
+    // std::cout<<"agent_num: "<<agent->world().self().unum()<<std::endl;
 
 
     if ( doTurnToForward( agent ) )
@@ -290,7 +259,45 @@ Bhv_ChainAction::execute( PlayerAgent * agent )
 
         NoAction,
     */
-    int option = 2;
+
+// ============================================================================
+// socket
+// ============================================================================
+  //  // Create a socket
+  //  int sock = socket(AF_INET, SOCK_STREAM, 0);
+
+  //  //  Create a hint structure for the server we're connecting with
+  //  int port = 7778;
+  //  std::string ipAddress = "127.0.0.1";
+
+  //  sockaddr_in hint;
+  //  hint.sin_family = AF_INET;
+  //  hint.sin_port = htons(port);
+  //  inet_pton(AF_INET, "127.0.0.1", &hint.sin_addr);
+
+  //  //  Connect to the server on the socket
+  //  // if(agent->world().self().unum()==2){
+  //   // std::cout<<"in agent 2"<<std::endl;
+  //  int connectRes = connect(sock, (sockaddr*)&hint, sizeof(hint));
+  //  // }
+  //  if(connect(sock, (sockaddr*)&hint, sizeof(hint) )<0){
+  //   std::cout<<"connection failed"<<std::endl;
+  //   return -1;
+  //  }
+ 
+  //  //  While loop:
+  //  char buf[4096];
+  //  int bytesReceived = recv(sock, buf, 4096, 0);
+  //  std::cout << "SERVER> " << std::string(buf, bytesReceived) << std::endl;
+  // close(sock);    
+
+  //  std::cout<<"bytesReceived"<<std::endl;
+// ============================================================================
+
+
+
+    // int option = 2;
+    // int option = std::stoi(std::string(buf, bytesReceived).at(0));
     // switch ( option ) { 
     switch (first_action.category()) {
     case CooperativeAction::Shoot:
@@ -320,7 +327,7 @@ Bhv_ChainAction::execute( PlayerAgent * agent )
             }
 
             const Vector2D & dribble_target = first_action.targetPoint();
-
+            
             dlog.addText( Logger::TEAM,
                           __FILE__" (Bhv_ChainAction) dribble target=(%.1f %.1f)",
                           dribble_target.x, dribble_target.y );

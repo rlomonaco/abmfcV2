@@ -57,6 +57,21 @@
 #include <rcsc/soccer_math.h>
 #include <rcsc/math_util.h>
 
+
+/*
+//===================================================================
+//  Socket
+//===================================================================
+*/
+#include <iostream>
+#include <sys/types.h>
+#include <unistd.h>
+#include <sys/socket.h>
+#include <netdb.h>
+#include <arpa/inet.h>
+#include <string.h>
+
+
 //#define DEBUG_PRINT
 
 using namespace rcsc;
@@ -579,6 +594,35 @@ Bhv_NormalDribble::Bhv_NormalDribble( const CooperativeAction & action,
         M_target_point = Vector2D::INVALIDATED;
         M_total_step = 0;
     }
+    
+// ============================================================================
+// socket
+// ============================================================================
+   // // Create a socket
+   // int sock = socket(AF_INET, SOCK_STREAM, 0);
+
+   // //  Create a hint structure for the server we're connecting with
+   // int port = 7777;
+   // std::string ipAddress = "127.0.0.1";
+
+   // sockaddr_in hint;
+   // hint.sin_family = AF_INET;
+   // hint.sin_port = htons(port);
+   // inet_pton(AF_INET, "127.0.0.1", &hint.sin_addr);
+
+   // //  Connect to the server on the socket
+   // int connectRes = connect(sock, (sockaddr*)&hint, sizeof(hint));
+
+   // // // //  While loop:
+   // // char buf[4096];
+
+   // // int bytesReceived = recv(sock, buf, 4096, 0);
+   // // std::cout << "SERVER> " << std::string(buf, bytesReceived) << std::endl;
+   // close(sock);
+   // std::cout<<"bytesReceived"<<std::endl;
+// ============================================================================
+
+
 }
 
 /*-------------------------------------------------------------------*/

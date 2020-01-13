@@ -903,7 +903,6 @@ Stadium::step()
 
         (*p)->updateStamina();
         (*p)->updateCapacity();
-        // std::cout<<"here!"<<std::endl;
     }
 
     if ( stoppageTime() == 0
@@ -1437,7 +1436,6 @@ void
 Stadium::moveBall( const PVector & pos,
                    const PVector & vel )
 {
-    
     M_ball->moveTo( pos,
                     vel,
                     PVector( 0.0, 0.0 ) );
@@ -2361,7 +2359,6 @@ Stadium::doSendSenseBody()
                       && ServerParam::instance().fullstateRight() ) )
             {
                 (*it)->sendFullstate();
-                // std::cout<<"here!"<<std::endl;
             }
         }
 

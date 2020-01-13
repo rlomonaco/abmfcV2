@@ -14,7 +14,7 @@
      
 #define TRUE   1  
 #define FALSE  0  
-#define PORT 8888  
+#define PORT 8889
      
 int main(int argc , char *argv[])   
 {   
@@ -25,7 +25,7 @@ int main(int argc , char *argv[])
     int td;
     struct sockaddr_in address;   
 
-    char buffer[1025];  //data buffer of 1K  
+    char buffer[1025];  //data buffer of 1K
          
     //set of socket descriptors  
     fd_set readfds;   
@@ -160,10 +160,6 @@ int main(int argc , char *argv[])
             {
             td = client_socket[0];
             }
-//            else if (client_socket[2] != 0)
-//            {
-//            td = client_socket[2];
-//            }
             else
             {
             td = client_socket[1];
@@ -192,7 +188,7 @@ int main(int argc , char *argv[])
 //                  //of the data read
                     buffer[valread] = '\0';
                     send(td , buffer , strlen(buffer) , 0 );
-                    std::cout<<"echoed: "<<buffer<<std::endl;
+//                    std::cout<<"echoed: "<<buffer<<std::endl;
 
 //                    buffer[valread] = '\0';
 //                    send(sd , buffer , strlen(buffer) , 0 );

@@ -5,14 +5,14 @@ class mysocket:
     def __init__(self):
         # Create a TCP/IP socket
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        server_address = ('localhost', 8888)
+        server_address = ('localhost', 8889)
         self.sock.connect(server_address)
 
     def receive_msg(self):
 
         # while True:
         message = self.sock.recv(1024).decode("utf-8")
-        print(message)
+        # print(message)
         # self.sock.send(bytes(message, "utf8"))
         return message
 
@@ -29,6 +29,5 @@ if __name__ == "__main__":
     while len(message) > 0:
         message = s.receive_msg()
         s.send_msg(message)
-
 
     print('done')

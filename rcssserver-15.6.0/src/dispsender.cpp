@@ -467,7 +467,7 @@ DispSenderMonitorV3::sendShow()
     //
 
     std::ostringstream ostr;
-    // serializer().printShow( stadium().time() );
+    // serializer().printShow( ostr, stadium().time() );
     serializer().serializeShowBegin( ostr,
                                      stadium().time() );
     
@@ -479,10 +479,10 @@ DispSenderMonitorV3::sendShow()
 
     serializer().serializeBall( ostr,
                                 stadium().ball() );
-    // serializer().ballPositionOutput(
+    // serializer().ballPositionOutput(ostr,
                                 // stadium().ball() );
 
-    serializer().SocketStadiumOutput( stadium().time(),
+    serializer().SocketStadiumOutput( ostr, stadium().time(),
                              stadium().teamLeft(),
                              stadium().teamRight(),
                              stadium().ball() );
@@ -492,7 +492,7 @@ DispSenderMonitorV3::sendShow()
           p != end;
           ++p )
     {   
-        // serializer().playerPositionOutput( **p );
+        // serializer().playerPositionOutput( ostr, **p );
         serializer().serializePlayerBegin( ostr, **p );
         serializer().serializePlayerPos( ostr, **p );
         serializer().serializePlayerArm( ostr, **p );
@@ -501,7 +501,7 @@ DispSenderMonitorV3::sendShow()
         serializer().serializePlayerFocus( ostr, **p );
         serializer().serializePlayerCounts( ostr, **p );
         serializer().serializePlayerEnd( ostr );
-        serializer().SocketPlayerOutput(**p);
+        serializer().SocketPlayerOutput(ostr, **p);
     }
 
     serializer().serializeShowEnd( ostr );

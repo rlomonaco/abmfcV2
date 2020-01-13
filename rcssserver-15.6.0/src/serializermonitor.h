@@ -156,21 +156,21 @@ public:
     // new modification
     // ========================================================================================
      virtual
-     void SocketStadiumOutput( const int time,
+     void SocketStadiumOutput( std::ostream &, const int time,
                         const Team & team_l,
                         const Team & team_r,
                         const Ball & ball) const;
 
     virtual
-    void SocketPlayerOutput( const Player & player) const;
+    void SocketPlayerOutput( std::ostream &, const Player & player) const;
 
     virtual
-    void playerPositionOutput( const Player & player ) const;
+    void playerPositionOutput(std::ostream &,  const Player & player ) const;
 
     virtual
-    void ballPositionOutput(  const Ball & ball) const;
+    void ballPositionOutput(  std::ostream &, const Ball & ball) const;
     virtual
-    void printShow( const int time ) const;
+    void printShow( std::ostream &, const int time ) const;
 
 };
 

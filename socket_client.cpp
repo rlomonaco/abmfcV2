@@ -19,7 +19,7 @@ int main()
     }
 
     //  Create a hint structure for the server we're connecting with
-    int port = 8888;
+    int port = 7779;
     string ipAddress = "127.0.0.1";
 
     sockaddr_in hint;

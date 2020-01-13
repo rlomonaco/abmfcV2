@@ -36,8 +36,6 @@
 #include <string>
 //===================================================================
 
-
-
 #ifdef HAVE_CONFIG_H
 #include <config.h>
 #endif
@@ -50,28 +48,6 @@
 #include "player.h"
 #include "team.h"
 #include "xpmholder.h"
-
-// // SerializerMonitor::Ptr
-// const ConnectSocket()
-// {
-// //  Create a socket
-//     int sock = socket(AF_INET, SOCK_STREAM, 0);
-
-//     //  Create a hint structure for the server we're connecting with
-//     int port = 8888;
-//     std::string ipAddress = "127.0.0.1";
-
-//     sockaddr_in hint;
-//     hint.sin_family = AF_INET;
-//     hint.sin_port = htons(port);
-//     inet_pton(AF_INET, "127.0.0.1", &hint.sin_addr);
-
-//     //  Connect to the server on the socket
-//     int connectRes = connect(sock, (sockaddr*)&hint, sizeof(hint));
-
-//     return sock;
-// }
-
 
 namespace rcss {
 
@@ -158,31 +134,6 @@ SerializerMonitorStdv3::create()
     return ptr;
 }
 
-// ===============================================================================
-// Connect to socket
-// ===============================================================================
-// void
-// // SerializerMonitor::Ptr
-// SerializerMonitorStdv3::ConnectSocket() const
-// {
-// //  Create a socket
-//     int SerializerMonitorStdv3::sock = socket(AF_INET, SOCK_STREAM, 0);
-
-//     //  Create a hint structure for the server we're connecting with
-//     int port = 8888;
-//     std::string ipAddress = "127.0.0.1";
-
-//     sockaddr_in hint;
-//     hint.sin_family = AF_INET;
-//     hint.sin_port = htons(port);
-//     inet_pton(AF_INET, "127.0.0.1", &hint.sin_addr);
-
-//     //  Connect to the server on the socket
-//     int connectRes = connect(SerializerMonitorStdv3::sock, (sockaddr*)&hint, sizeof(hint));
-
-//     return SerializerMonitorStdv3::sock;
-// }
-
 
 void
 SerializerMonitorStdv3::serializeTeam( std::ostream & os,
@@ -219,20 +170,12 @@ SerializerMonitorStdv3::serializePlayMode( std::ostream & os,
        << ')';
 }
 
-void
-SerializerMonitorStdv3::printShow( const int time ) const
-{
-    // os << "(show " << time;
-    std::cout<<"show: "<<time<<std::endl;
-}
-
 
 void
 SerializerMonitorStdv3::serializeShowBegin( std::ostream & os,
                                             const int time ) const
 {
     os << "(show " << time;
-    // std::cout<<"show: "<<time<<std::endl;
 }
 
 void
@@ -266,79 +209,8 @@ SerializerMonitorStdv3::serializeScore( std::ostream & os,
            << ' ' << team_r.penaltyPoint()
            << ' ' << team_r.penaltyTaken() - team_r.penaltyPoint();
     }
-    // os << ')';const SerializerMonitorStdv3::ConnectSocket & sock
-    std::cout<<"team_l: "<<team_l.point()<<std::endl;
-    std::cout<<"team_r: "<<team_r.point()<<std::endl;
+    os << ')';
 }
-
-void
-SerializerMonitorStdv3::ballPositionOutput( const Ball & ball
-                                                ) const
-{
-  std::cout<<"ball_x: "<<ball.pos().x<<", ball_y: "<<ball.pos().y<<", ball_vx: "<<ball.vel().x<<", ball_vy: "<<ball.vel().y<<std::endl;
-}
-
-void
-SerializerMonitorStdv3::SocketStadiumOutput(
-                                        const int time,
-                                        const Team & team_l,
-                                        const Team & team_r,
-                                        const Ball & ball ) const
-  {
-   //  Create a socket
-   int sock = socket(AF_INET, SOCK_STREAM, 0);
-
-   //  Create a hint structure for the server we're connecting with
-   int port = 8888;
-   std::string ipAddress = "127.0.0.1";
-
-   sockaddr_in hint;
-   hint.sin_family = AF_INET;
-   hint.sin_port = htons(port);
-   inet_pton(AF_INET, "127.0.0.1", &hint.sin_addr);
-
-   //  Connect to the server on the socket
-   int connectRes = connect(sock, (sockaddr*)&hint, sizeof(hint));
-
-   //  While loop:
-   // char buf[4096];
-   std::string message = "show: " + std::to_string(time)
-             +"\nteam_l: " + std::to_string(team_l.point())
-             + "\nteam_r: " + std::to_string(team_r.point())
-             + "\nball_x: " + std::to_string(ball.pos().x)+ ", ball_y: " + std::to_string(ball.pos().y)+ ", ball_vx: " + std::to_string(ball.vel().y)+ ", ball_vy: " + std::to_string(ball.vel().y);
-
-    send(sock, message.c_str(), message.size() + 1, 0);
-   close(sock);
-}
-
-void
-SerializerMonitorStdv3::SocketPlayerOutput( const Player & player ) const
-  {
-   //  Create a socket
-   int sock = socket(AF_INET, SOCK_STREAM, 0);
-
-   //  Create a hint structure for the server we're connecting with
-   int port = 8888;
-   std::string ipAddress = "127.0.0.1";
-
-   sockaddr_in hint;
-   hint.sin_family = AF_INET;
-   hint.sin_port = htons(port);
-   inet_pton(AF_INET, "127.0.0.1", &hint.sin_addr);
-
-   //  Connect to the server on the socket
-   int connectRes = connect(sock, (sockaddr*)&hint, sizeof(hint));
-
-   //  While loop:
-   // char buf[4096];
-   std::string message = "\nside: " + std::to_string(player.side()) + ", num:" + std::to_string(player.unum()) + ", x:" + std::to_string(player.pos().x) + ", y:" + std::to_string(player.pos().y) + ", vel_x:" + std::to_string(player.vel().x) + ", vel_y:" + std::to_string(player.vel().y);
-
-    send(sock, message.c_str(), message.size() + 1, 0);
-   close(sock);
-}
-
-
-
 
 void
 SerializerMonitorStdv3::serializeBall( std::ostream & os,
@@ -369,13 +241,6 @@ SerializerMonitorStdv3::serializePlayerEnd( std::ostream & os ) const
 {
     os << ')';
 }
-
-void
-SerializerMonitorStdv3::playerPositionOutput( const Player & player ) const
-{
-  std::cout<<"side: "<<player.side()<<", num:"<<player.unum()<<", x:"<<player.pos().x<<", y:"<<player.pos().y<<", vel_x:"<<player.vel().x<<", vel_y:"<<player.vel().y<<std::endl;
-}
-
 
 void
 SerializerMonitorStdv3::serializePlayerPos( std::ostream & os,
@@ -458,6 +323,94 @@ SerializerMonitorStdv3::serializePlayerCounts( std::ostream & os,
         << player.arm().getCounter() << ' '
         << player.attentiontoCount() << ')';
 }
+
+
+
+// =====================================================================================
+// New Addition
+// =====================================================================================
+
+
+void
+SerializerMonitorStdv3::printShow( std::ostream &, const int time ) const
+{
+    std::cout<<"show: "<<time<<std::endl;
+}
+
+
+void
+SerializerMonitorStdv3::ballPositionOutput( std::ostream &, const Ball & ball
+                                                ) const
+{
+  std::cout<<"ball_x: "<<ball.pos().x<<", ball_y: "<<ball.pos().y<<", ball_vx: "<<ball.vel().x<<", ball_vy: "<<ball.vel().y<<std::endl;
+}
+
+void
+SerializerMonitorStdv3::playerPositionOutput( std::ostream &, const Player & player ) const
+{
+  std::cout<<"side: "<<player.side()<<", num:"<<player.unum()<<", x:"<<player.pos().x<<", y:"<<player.pos().y<<", vel_x:"<<player.vel().x<<", vel_y:"<<player.vel().y<<std::endl;
+}
+
+void
+SerializerMonitorStdv3::SocketStadiumOutput( std::ostream &,
+                                        const int time,
+                                        const Team & team_l,
+                                        const Team & team_r,
+                                        const Ball & ball ) const
+  {
+   //  Create a socket
+   int sock = socket(AF_INET, SOCK_STREAM, 0);
+
+   //  Create a hint structure for the server we're connecting with
+   int port = 8889;
+   std::string ipAddress = "127.0.0.1";
+
+   sockaddr_in hint;
+   hint.sin_family = AF_INET;
+   hint.sin_port = htons(port);
+   inet_pton(AF_INET, "127.0.0.1", &hint.sin_addr);
+
+   //  Connect to the server on the socket
+   int connectRes = connect(sock, (sockaddr*)&hint, sizeof(hint));
+
+   //  While loop:
+   // char buf[4096];
+   std::string message = "show: " + std::to_string(time)
+             +"\nteam_l: " + std::to_string(team_l.point())
+             + "\nteam_r: " + std::to_string(team_r.point())
+             + "\nball_x: " + std::to_string(ball.pos().x)+ ", ball_y: " + std::to_string(ball.pos().y)+ ", ball_vx: " + std::to_string(ball.vel().y)+ ", ball_vy: " + std::to_string(ball.vel().y);
+
+    send(sock, message.c_str(), message.size() + 1, 0);
+   close(sock);
+}
+
+void
+SerializerMonitorStdv3::SocketPlayerOutput( std::ostream &, const Player & player ) const
+  {
+   //  Create a socket
+   int sock = socket(AF_INET, SOCK_STREAM, 0);
+
+   //  Create a hint structure for the server we're connecting with
+   int port = 8889;
+   std::string ipAddress = "127.0.0.1";
+
+   sockaddr_in hint;
+   hint.sin_family = AF_INET;
+   hint.sin_port = htons(port);
+   inet_pton(AF_INET, "127.0.0.1", &hint.sin_addr);
+
+   //  Connect to the server on the socket
+   int connectRes = connect(sock, (sockaddr*)&hint, sizeof(hint));
+
+   //  While loop:
+   // char buf[4096];
+   std::string message = "\nside: " + std::to_string(player.side()) + ", num:" + std::to_string(player.unum()) + ", x:" + std::to_string(player.pos().x) + ", y:" + std::to_string(player.pos().y) + ", vel_x:" + std::to_string(player.vel().x) + ", vel_y:" + std::to_string(player.vel().y);
+
+    send(sock, message.c_str(), message.size() + 1, 0);
+   close(sock);
+}
+
+
 
 
 /*

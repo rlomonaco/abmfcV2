@@ -1056,7 +1056,6 @@ public:
 };
 
 
-
 /*!
   \class SerializerMonitor
   \brief base class of the serialization for monitors.
@@ -1161,25 +1160,25 @@ public:
       // new functions
       // ======================================================================
     virtual
-    void playerPositionOutput( const Player & ) const
+    void playerPositionOutput( std::ostream &, const Player & ) const
       { }
     virtual
-    void ballPositionOutput( const Ball & ) const
-      { }
-
-    virtual
-    void printShow( const int time ) const
+    void ballPositionOutput( std::ostream &, const Ball & ) const
       { }
 
     virtual
-     void SocketStadiumOutput( const int time,
+    void printShow( std::ostream &, const int time ) const
+      { }
+
+    virtual
+     void SocketStadiumOutput( std::ostream &, const int time,
                         const Team &,
                         const Team &,
                         const Ball &) const
       { }
 
      virtual
-     void SocketPlayerOutput( const Player &) const
+     void SocketPlayerOutput( std::ostream &, const Player &) const
       { }
 };
 
