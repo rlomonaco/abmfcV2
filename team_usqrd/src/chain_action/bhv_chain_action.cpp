@@ -282,7 +282,7 @@ Bhv_ChainAction::execute( PlayerAgent * agent )
       // Read as a string
       std::string update_string;
       update_string.assign(static_cast<char *>(update.data()), update.size());
-      std::cout << "Received: " << update_string << std::endl;
+      // std::cout << "Received: " << update_string << std::endl;
 
 
 // ============================================================================ 
@@ -297,9 +297,9 @@ Bhv_ChainAction::execute( PlayerAgent * agent )
       for (int i; ss >> i;) 
       {
           vect.push_back(i);
-          std::cout<<i<<std::endl;   
+          // std::cout<<i<<std::endl;   
           if (ss.peek() == ',' || ss.peek() == ' '){
-            std::cout<<"ignored"<<std::endl;
+            // std::cout<<"ignored"<<std::endl;
             ss.ignore();
           }
               
@@ -308,7 +308,7 @@ Bhv_ChainAction::execute( PlayerAgent * agent )
       int player_num, option;
       double pass_x, pass_y;
       player_num = vect[0];
-      bool received_from_py = false;
+      // bool received_from_py = false;
 
 
       if (player_num ==  index)

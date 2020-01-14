@@ -29,11 +29,9 @@ if __name__ == "__main__":
     sc = chain_commands()
 
     message = " "
-    # player_num, action(pass), x, y
-    msg = "6,2,-50,0"
-    # msg = "-50"
+
+    msg = "6,2,-50,0" # player_num, action(pass), x, y
+
     while len(message) > 0:
-        # message = self.sock.recv(1024).decode("utf-8")
-        # print(message)
+
         sc.send_message(msg)
-        # print("sent "+ msg)

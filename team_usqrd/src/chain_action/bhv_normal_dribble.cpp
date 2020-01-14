@@ -63,13 +63,14 @@
 //  Socket
 //===================================================================
 */
+#include <zmq.hpp>
 #include <iostream>
-#include <sys/types.h>
+// #include <sys/types.h>
 #include <unistd.h>
-#include <sys/socket.h>
-#include <netdb.h>
-#include <arpa/inet.h>
-#include <string.h>
+// #include <sys/socket.h>
+// #include <netdb.h>
+// #include <arpa/inet.h>
+// #include <string.h>
 
 
 //#define DEBUG_PRINT
@@ -596,31 +597,47 @@ Bhv_NormalDribble::Bhv_NormalDribble( const CooperativeAction & action,
     }
     
 // ============================================================================
-// socket
+// ZMQ Subscriber
 // ============================================================================
-   // // Create a socket
-   // int sock = socket(AF_INET, SOCK_STREAM, 0);
+      std::string server_address = "tcp://localhost:7777";
+      // Create a subscriber socket
+      zmq::context_t context(1);
 
-   // //  Create a hint structure for the server we're connecting with
-   // int port = 7777;
-   // std::string ipAddress = "127.0.0.1";
+      zmq::socket_t subscriber (context, ZMQ_SUB);
+      subscriber.connect(server_address);
 
-   // sockaddr_in hint;
-   // hint.sin_family = AF_INET;
-   // hint.sin_port = htons(port);
-   // inet_pton(AF_INET, "127.0.0.1", &hint.sin_addr);
+      subscriber.setsockopt(ZMQ_SUBSCRIBE, "", 0);
+      // subscriber.setsockopt(ZMQ_CONFLATE, 1);
 
-   // //  Connect to the server on the socket
-   // int connectRes = connect(sock, (sockaddr*)&hint, sizeof(hint));
+      //  Read envelope with address
+      zmq::message_t update;
+      subscriber.recv(&update);
 
-   // // // //  While loop:
-   // // char buf[4096];
+      // Read as a string
+      std::string update_string;
+      update_string.assign(static_cast<char *>(update.data()), update.size());
+      // std::cout << "Received: " << update_string << std::endl;
 
-   // // int bytesReceived = recv(sock, buf, 4096, 0);
-   // // std::cout << "SERVER> " << std::string(buf, bytesReceived) << std::endl;
-   // close(sock);
-   // std::cout<<"bytesReceived"<<std::endl;
+
+// ============================================================================ 
+      // Split Text
 // ============================================================================
+
+      // define empty vec & string stream
+      std::vector<double> vect;
+      std::stringstream ss(update_string);
+
+      // loop through string stream
+      for (int i; ss >> i;) 
+      {
+          vect.push_back(i);
+          // std::cout<<i<<std::endl;   
+          if (ss.peek() == ',' || ss.peek() == ' '){
+            // std::cout<<"ignored"<<std::endl;
+            ss.ignore();
+          }
+              
+      }
 
 
 }

@@ -1,3 +1,7 @@
+fuser -k 5555/tcp 
+fuser -k 6666/tcp 
+fuser -k 8889/tcp 
+
 ./socket_server > log1.txt &
 python read_socket.py &
 python move_commands.py &

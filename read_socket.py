@@ -27,7 +27,7 @@ class mysocket:
 
         # Read envelope with address
         # message = self.subscriber.recv_string()
-        print(message)
+        # print(message)
         return message
 
     def send_msg(self, msg):
