@@ -34,6 +34,12 @@
 #include <arpa/inet.h>
 #include <string.h>
 #include <string>
+
+
+// #include "zhelpers.hpp"
+#include <zmq.hpp>
+#include <chrono>  // for high_resolution_clock
+
 //===================================================================
 
 #ifdef HAVE_CONFIG_H
@@ -358,7 +364,39 @@ SerializerMonitorStdv3::SocketStadiumOutput( std::ostream &,
                                         const Team & team_r,
                                         const Ball & ball ) const
   {
-   //  Create a socket
+
+// // Record start time
+// auto start = std::chrono::high_resolution_clock::now();
+
+    // //  Message to be sent
+    // std::string message = "show: " + std::to_string(time)
+    //          +"\nteam_l: " + std::to_string(team_l.point())
+    //          + "\nteam_r: " + std::to_string(team_r.point())
+    //          + "\nball_x: " + std::to_string(ball.pos().x)+ ", ball_y: " + std::to_string(ball.pos().y)+ ", ball_vx: " + std::to_string(ball.vel().y)+ ", ball_vy: " + std::to_string(ball.vel().y);
+
+  
+    //   // Connect to publisher to zmq local host
+    //   zmq::context_t context(1);
+    //   zmq::socket_t publisher(context, ZMQ_PUB);
+    //   std::string server_address = "tcp://localhost:8889";
+    //   publisher.connect(server_address);
+
+    //   // Change string to byte message
+    //   zmq::message_t reply (message.size());
+    //   memcpy (reply.data (),message.c_str(), message.size());
+    //   // sleep is essential
+    //   sleep(1);
+    //   publisher.send(reply);
+    //   // std::cout<<message<<std::endl;
+
+// // Record end time
+// auto finish = std::chrono::high_resolution_clock::now();
+
+// std::chrono::duration<double> elapsed = finish - start;
+// std::cout << "Elapsed time player: " << elapsed.count() << " s\n";
+
+
+         //  Create a socket
    int sock = socket(AF_INET, SOCK_STREAM, 0);
 
    //  Create a hint structure for the server we're connecting with
@@ -382,12 +420,42 @@ SerializerMonitorStdv3::SocketStadiumOutput( std::ostream &,
 
     send(sock, message.c_str(), message.size() + 1, 0);
    close(sock);
+ 
 }
+
 
 void
 SerializerMonitorStdv3::SocketPlayerOutput( std::ostream &, const Player & player ) const
   {
-   //  Create a socket
+  // //  Message
+  // std::string message = "\nside: " + std::to_string(player.side()) + ", num:" + std::to_string(player.unum()) + ", x:" + std::to_string(player.pos().x) + ", y:" + std::to_string(player.pos().y) + ", vel_x:" + std::to_string(player.vel().x) + ", vel_y:" + std::to_string(player.vel().y);
+
+// // Record start time
+// auto start = std::chrono::high_resolution_clock::now();
+
+
+    // // Connect to publisher to zmq local host
+    // zmq::context_t context(1);
+    // zmq::socket_t publisher(context, ZMQ_PUB);
+    // std::string server_address = "tcp://localhost:8889";
+    // publisher.connect(server_address);
+
+    // // Change string to byte message
+    // zmq::message_t reply (message.size());
+    // memcpy (reply.data (),message.c_str(), message.size());
+    // // sleep is essential
+    // sleep(1);
+    // publisher.send(reply);
+    // std::cout<<message<<std::endl;
+
+// // Record end time
+// auto finish = std::chrono::high_resolution_clock::now();
+
+// std::chrono::duration<double> elapsed = finish - start;
+// std::cout << "Elapsed time player: " << elapsed.count() << " s\n";
+
+
+    //  Create a socket
    int sock = socket(AF_INET, SOCK_STREAM, 0);
 
    //  Create a hint structure for the server we're connecting with
@@ -408,6 +476,8 @@ SerializerMonitorStdv3::SocketPlayerOutput( std::ostream &, const Player & playe
 
     send(sock, message.c_str(), message.size() + 1, 0);
    close(sock);
+
+
 }
 
 

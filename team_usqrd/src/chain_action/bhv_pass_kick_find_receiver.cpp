@@ -396,7 +396,12 @@ bool
 Bhv_PassKickFindReceiver::doPassKick( PlayerAgent * agent,
                                       const CooperativeAction & pass)
 {
-    // Vector2D pass_pos = M_pass_pos;
+    Vector2D pass_pos = M_pass_pos;
+
+    if (pass_pos == Vector2D(NULL, NULL))
+    {
+        pass_pos = pass.targetPoint();
+    }
 
 
     agent->debugClient().setTarget( pass.targetPlayerUnum() );
@@ -411,15 +416,15 @@ Bhv_PassKickFindReceiver::doPassKick( PlayerAgent * agent,
     if ( pass.kickCount() == 1
          || agent->world().gameMode().type() != GameMode::PlayOn )
     {
-        Body_KickOneStep( pass.targetPoint(),
-                          // pass_pos,
+        Body_KickOneStep(// pass.targetPoint(),
+                          pass_pos,
                           pass.firstBallSpeed() ).execute( agent );
         // std::cout<<"kickonestep"<<std::endl;
     }
     else
     {
-        Body_SmartKick( pass.targetPoint(),
-                        // pass_pos,
+        Body_SmartKick(// pass.targetPoint(),
+                        pass_pos,
                         pass.firstBallSpeed(),
                         pass.firstBallSpeed() * 0.96,
                         3 ).execute( agent );

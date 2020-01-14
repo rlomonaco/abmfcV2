@@ -71,14 +71,16 @@ NoAction
 //  Socket
 //===================================================================
 */
+#include <zmq.hpp>
+
 #include <iostream>
-#include <sys/types.h>
+// #include <sys/types.h>
 #include <unistd.h>
-#include <sys/socket.h>
-#include <netdb.h>
-#include <arpa/inet.h>
-#include <string.h>
-// #include <string>
+// #include <sys/socket.h>
+// #include <netdb.h>
+// #include <arpa/inet.h>
+// #include <string.h>
+// // #include <string>
 
 using namespace rcsc;
 
@@ -261,45 +263,73 @@ Bhv_ChainAction::execute( PlayerAgent * agent )
     */
 
 // ============================================================================
-// socket
+// ZMQ Subscriber
 // ============================================================================
-  //  // Create a socket
-  //  int sock = socket(AF_INET, SOCK_STREAM, 0);
+      std::string server_address = "tcp://localhost:6666";
+      // Create a subscriber socket
+      zmq::context_t context(1);
 
-  //  //  Create a hint structure for the server we're connecting with
-  //  int port = 7778;
-  //  std::string ipAddress = "127.0.0.1";
+      zmq::socket_t subscriber (context, ZMQ_SUB);
+      subscriber.connect(server_address);
 
-  //  sockaddr_in hint;
-  //  hint.sin_family = AF_INET;
-  //  hint.sin_port = htons(port);
-  //  inet_pton(AF_INET, "127.0.0.1", &hint.sin_addr);
+      subscriber.setsockopt(ZMQ_SUBSCRIBE, "", 0);
+      // subscriber.setsockopt(ZMQ_CONFLATE, 1);
 
-  //  //  Connect to the server on the socket
-  //  // if(agent->world().self().unum()==2){
-  //   // std::cout<<"in agent 2"<<std::endl;
-  //  int connectRes = connect(sock, (sockaddr*)&hint, sizeof(hint));
-  //  // }
-  //  if(connect(sock, (sockaddr*)&hint, sizeof(hint) )<0){
-  //   std::cout<<"connection failed"<<std::endl;
-  //   return -1;
-  //  }
- 
-  //  //  While loop:
-  //  char buf[4096];
-  //  int bytesReceived = recv(sock, buf, 4096, 0);
-  //  std::cout << "SERVER> " << std::string(buf, bytesReceived) << std::endl;
-  // close(sock);    
+      //  Read envelope with address
+      zmq::message_t update;
+      subscriber.recv(&update);
 
-  //  std::cout<<"bytesReceived"<<std::endl;
+      // Read as a string
+      std::string update_string;
+      update_string.assign(static_cast<char *>(update.data()), update.size());
+      std::cout << "Received: " << update_string << std::endl;
+
+
+// ============================================================================ 
+      // Split Text
 // ============================================================================
 
+      // define empty vec & string stream
+      std::vector<double> vect;
+      std::stringstream ss(update_string);
 
+      // loop through string stream
+      for (int i; ss >> i;) 
+      {
+          vect.push_back(i);
+          std::cout<<i<<std::endl;   
+          if (ss.peek() == ',' || ss.peek() == ' '){
+            std::cout<<"ignored"<<std::endl;
+            ss.ignore();
+          }
+              
+      }
+      int index = agent -> world().self().unum();
+      int player_num, option;
+      double pass_x, pass_y;
+      player_num = vect[0];
+      bool received_from_py = false;
+
+
+      if (player_num ==  index)
+      {
+      option = vect[1];
+      pass_x = vect[2];
+      pass_y = vect[3];
+      }
+      else
+      {
+        option = first_action.category();
+        pass_x = NULL;
+        pass_y = NULL;
+      }
 
     // int option = 2;
+
+      
     // int option = std::stoi(std::string(buf, bytesReceived).at(0));
-    // switch ( option ) { 
-    switch (first_action.category()) {
+    switch ( option ) { 
+    // switch (first_action.category()) {
     case CooperativeAction::Shoot:
         {
             dlog.addText( Logger::TEAM,
@@ -393,10 +423,9 @@ Bhv_ChainAction::execute( PlayerAgent * agent )
 
     case CooperativeAction::Pass:
         {   
-            pass_x = -50.0;
-            pass_y = 0.0;
 
-            Vector2D pass_pos = Vector2D(-50,0);
+            Vector2D pass_pos = Vector2D(pass_x,pass_y);
+
             // const Vector2D & dribble_target = first_action.targetPoint();
 
 

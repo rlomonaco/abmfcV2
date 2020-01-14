@@ -159,10 +159,48 @@ serializermonitor.o: serializermonitor.cpp /usr/include/stdc-predef.h \
  /usr/include/x86_64-linux-gnu/bits/netdb.h /usr/include/arpa/inet.h \
  /usr/include/string.h /usr/include/strings.h \
  /usr/include/x86_64-linux-gnu/bits/strings_fortified.h \
- /usr/include/x86_64-linux-gnu/bits/string_fortified.h ../config.h \
- serializermonitor.h serializer.h types.h param.h \
- /usr/include/boost/cstdint.hpp /usr/include/boost/config.hpp \
- /usr/include/boost/config/user.hpp \
+ /usr/include/x86_64-linux-gnu/bits/string_fortified.h \
+ /usr/local/include/zmq.hpp /usr/local/include/zmq.h \
+ /usr/include/c++/7/cassert /usr/include/assert.h \
+ /usr/include/c++/7/cstring /usr/include/c++/7/algorithm \
+ /usr/include/c++/7/utility /usr/include/c++/7/bits/stl_relops.h \
+ /usr/include/c++/7/bits/stl_algo.h \
+ /usr/include/c++/7/bits/algorithmfwd.h \
+ /usr/include/c++/7/bits/stl_heap.h /usr/include/c++/7/bits/stl_tempbuf.h \
+ /usr/include/c++/7/bits/stl_construct.h \
+ /usr/include/c++/7/bits/uniform_int_dist.h /usr/include/c++/7/limits \
+ /usr/include/c++/7/iomanip /usr/include/c++/7/locale \
+ /usr/include/c++/7/bits/locale_facets_nonio.h /usr/include/c++/7/ctime \
+ /usr/include/x86_64-linux-gnu/c++/7/bits/time_members.h \
+ /usr/include/x86_64-linux-gnu/c++/7/bits/messages_members.h \
+ /usr/include/libintl.h /usr/include/c++/7/bits/codecvt.h \
+ /usr/include/c++/7/bits/locale_facets_nonio.tcc \
+ /usr/include/c++/7/bits/locale_conv.h \
+ /usr/include/c++/7/bits/stringfwd.h /usr/include/c++/7/bits/allocator.h \
+ /usr/include/c++/7/bits/codecvt.h /usr/include/c++/7/bits/unique_ptr.h \
+ /usr/include/c++/7/tuple /usr/include/c++/7/array \
+ /usr/include/c++/7/bits/uses_allocator.h \
+ /usr/include/c++/7/bits/invoke.h /usr/include/c++/7/bits/quoted_string.h \
+ /usr/include/c++/7/sstream /usr/include/c++/7/bits/sstream.tcc \
+ /usr/include/c++/7/vector /usr/include/c++/7/bits/stl_uninitialized.h \
+ /usr/include/c++/7/bits/stl_vector.h \
+ /usr/include/c++/7/bits/stl_bvector.h /usr/include/c++/7/bits/vector.tcc \
+ /usr/include/c++/7/chrono /usr/include/c++/7/ratio \
+ /usr/include/c++/7/bits/parse_numbers.h /usr/include/c++/7/memory \
+ /usr/include/c++/7/bits/stl_raw_storage_iter.h \
+ /usr/include/c++/7/ext/concurrence.h \
+ /usr/include/c++/7/bits/unique_ptr.h \
+ /usr/include/c++/7/bits/shared_ptr.h \
+ /usr/include/c++/7/bits/shared_ptr_base.h \
+ /usr/include/c++/7/bits/allocated_ptr.h \
+ /usr/include/c++/7/bits/refwrap.h \
+ /usr/include/c++/7/ext/aligned_buffer.h \
+ /usr/include/c++/7/bits/shared_ptr_atomic.h \
+ /usr/include/c++/7/bits/atomic_base.h \
+ /usr/include/c++/7/bits/atomic_lockfree_defines.h \
+ /usr/include/c++/7/backward/auto_ptr.h ../config.h serializermonitor.h \
+ serializer.h types.h param.h /usr/include/boost/cstdint.hpp \
+ /usr/include/boost/config.hpp /usr/include/boost/config/user.hpp \
  /usr/include/boost/config/detail/select_compiler_config.hpp \
  /usr/include/boost/config/compiler/gcc.hpp /usr/include/c++/7/cstddef \
  /usr/include/boost/config/detail/select_stdlib_config.hpp \
@@ -172,29 +210,11 @@ serializermonitor.o: serializermonitor.cpp /usr/include/stdc-predef.h \
  /usr/include/boost/config/detail/posix_features.hpp \
  /usr/include/boost/config/detail/suffix.hpp ../rcssbase/factory.hpp \
  /usr/include/c++/7/map /usr/include/c++/7/bits/stl_tree.h \
- /usr/include/c++/7/ext/aligned_buffer.h \
- /usr/include/c++/7/bits/stl_map.h /usr/include/c++/7/tuple \
- /usr/include/c++/7/utility /usr/include/c++/7/bits/stl_relops.h \
- /usr/include/c++/7/array /usr/include/c++/7/bits/uses_allocator.h \
- /usr/include/c++/7/bits/invoke.h /usr/include/c++/7/bits/stl_multimap.h \
+ /usr/include/c++/7/bits/stl_map.h /usr/include/c++/7/bits/stl_multimap.h \
  /usr/include/c++/7/list /usr/include/c++/7/bits/stl_list.h \
- /usr/include/c++/7/bits/allocated_ptr.h /usr/include/c++/7/bits/list.tcc \
- /usr/include/c++/7/stack /usr/include/c++/7/deque \
- /usr/include/c++/7/bits/stl_construct.h \
- /usr/include/c++/7/bits/stl_uninitialized.h \
- /usr/include/c++/7/bits/stl_deque.h /usr/include/c++/7/bits/deque.tcc \
- /usr/include/c++/7/bits/stl_stack.h /usr/include/c++/7/memory \
- /usr/include/c++/7/bits/stl_tempbuf.h \
- /usr/include/c++/7/bits/stl_raw_storage_iter.h \
- /usr/include/c++/7/ext/concurrence.h \
- /usr/include/c++/7/bits/unique_ptr.h \
- /usr/include/c++/7/bits/shared_ptr.h \
- /usr/include/c++/7/bits/shared_ptr_base.h \
- /usr/include/c++/7/bits/refwrap.h \
- /usr/include/c++/7/bits/shared_ptr_atomic.h \
- /usr/include/c++/7/bits/atomic_base.h \
- /usr/include/c++/7/bits/atomic_lockfree_defines.h \
- /usr/include/c++/7/backward/auto_ptr.h /usr/include/c++/7/cstring \
+ /usr/include/c++/7/bits/list.tcc /usr/include/c++/7/stack \
+ /usr/include/c++/7/deque /usr/include/c++/7/bits/stl_deque.h \
+ /usr/include/c++/7/bits/deque.tcc /usr/include/c++/7/bits/stl_stack.h \
  utility.h /usr/include/c++/7/cmath /usr/include/math.h \
  /usr/include/x86_64-linux-gnu/bits/math-vector.h \
  /usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h \
@@ -204,16 +224,9 @@ serializermonitor.o: serializermonitor.cpp /usr/include/stdc-predef.h \
  /usr/include/x86_64-linux-gnu/bits/mathcalls-helper-functions.h \
  /usr/include/x86_64-linux-gnu/bits/mathcalls.h \
  /usr/include/x86_64-linux-gnu/bits/iscanonical.h \
- /usr/include/x86_64-linux-gnu/bits/mathinline.h \
- /usr/include/c++/7/algorithm /usr/include/c++/7/bits/stl_algo.h \
- /usr/include/c++/7/bits/algorithmfwd.h \
- /usr/include/c++/7/bits/stl_heap.h \
- /usr/include/c++/7/bits/uniform_int_dist.h /usr/include/c++/7/limits \
- object.h /usr/include/c++/7/vector /usr/include/c++/7/bits/stl_vector.h \
- /usr/include/c++/7/bits/stl_bvector.h /usr/include/c++/7/bits/vector.tcc \
- player.h arm.h vector.h audio.h sender.h observer.h rcssexceptions.h \
- pcombuilder.h pcomparser.h ../rcssbase/parser.h \
- /usr/include/boost/filesystem/path.hpp \
+ /usr/include/x86_64-linux-gnu/bits/mathinline.h object.h player.h arm.h \
+ vector.h audio.h sender.h observer.h rcssexceptions.h pcombuilder.h \
+ pcomparser.h ../rcssbase/parser.h /usr/include/boost/filesystem/path.hpp \
  /usr/include/boost/filesystem/config.hpp \
  /usr/include/boost/system/api_config.hpp \
  /usr/include/boost/detail/workaround.hpp \
@@ -250,21 +263,13 @@ serializermonitor.o: serializermonitor.cpp /usr/include/stdc-predef.h \
  /usr/include/boost/predef/platform/windows_runtime.h \
  /usr/include/boost/predef/platform/ios.h \
  /usr/include/boost/predef/os/ios.h /usr/include/boost/assert.hpp \
- /usr/include/assert.h /usr/include/boost/noncopyable.hpp \
+ /usr/include/boost/noncopyable.hpp \
  /usr/include/boost/core/noncopyable.hpp /usr/include/c++/7/functional \
  /usr/include/c++/7/bits/std_function.h /usr/include/boost/cerrno.hpp \
  /usr/include/boost/config/abi_prefix.hpp \
  /usr/include/boost/config/abi_suffix.hpp /usr/include/c++/7/iterator \
- /usr/include/c++/7/bits/stream_iterator.h /usr/include/c++/7/locale \
- /usr/include/c++/7/bits/locale_facets_nonio.h /usr/include/c++/7/ctime \
- /usr/include/x86_64-linux-gnu/c++/7/bits/time_members.h \
- /usr/include/x86_64-linux-gnu/c++/7/bits/messages_members.h \
- /usr/include/libintl.h /usr/include/c++/7/bits/codecvt.h \
- /usr/include/c++/7/bits/locale_facets_nonio.tcc \
- /usr/include/c++/7/bits/locale_conv.h \
- /usr/include/c++/7/bits/stringfwd.h /usr/include/c++/7/bits/allocator.h \
- /usr/include/c++/7/bits/codecvt.h /usr/include/c++/7/bits/unique_ptr.h \
- /usr/include/boost/system/system_error.hpp /usr/include/c++/7/cassert \
+ /usr/include/c++/7/bits/stream_iterator.h \
+ /usr/include/boost/system/system_error.hpp \
  /usr/include/boost/iterator/iterator_facade.hpp \
  /usr/include/boost/iterator.hpp \
  /usr/include/boost/iterator/interoperable.hpp \
@@ -999,6 +1004,120 @@ serializermonitor.o: serializermonitor.cpp /usr/include/stdc-predef.h \
 
 /usr/include/x86_64-linux-gnu/bits/string_fortified.h:
 
+/usr/local/include/zmq.hpp:
+
+/usr/local/include/zmq.h:
+
+/usr/include/c++/7/cassert:
+
+/usr/include/assert.h:
+
+/usr/include/c++/7/cstring:
+
+/usr/include/c++/7/algorithm:
+
+/usr/include/c++/7/utility:
+
+/usr/include/c++/7/bits/stl_relops.h:
+
+/usr/include/c++/7/bits/stl_algo.h:
+
+/usr/include/c++/7/bits/algorithmfwd.h:
+
+/usr/include/c++/7/bits/stl_heap.h:
+
+/usr/include/c++/7/bits/stl_tempbuf.h:
+
+/usr/include/c++/7/bits/stl_construct.h:
+
+/usr/include/c++/7/bits/uniform_int_dist.h:
+
+/usr/include/c++/7/limits:
+
+/usr/include/c++/7/iomanip:
+
+/usr/include/c++/7/locale:
+
+/usr/include/c++/7/bits/locale_facets_nonio.h:
+
+/usr/include/c++/7/ctime:
+
+/usr/include/x86_64-linux-gnu/c++/7/bits/time_members.h:
+
+/usr/include/x86_64-linux-gnu/c++/7/bits/messages_members.h:
+
+/usr/include/libintl.h:
+
+/usr/include/c++/7/bits/codecvt.h:
+
+/usr/include/c++/7/bits/locale_facets_nonio.tcc:
+
+/usr/include/c++/7/bits/locale_conv.h:
+
+/usr/include/c++/7/bits/stringfwd.h:
+
+/usr/include/c++/7/bits/allocator.h:
+
+/usr/include/c++/7/bits/codecvt.h:
+
+/usr/include/c++/7/bits/unique_ptr.h:
+
+/usr/include/c++/7/tuple:
+
+/usr/include/c++/7/array:
+
+/usr/include/c++/7/bits/uses_allocator.h:
+
+/usr/include/c++/7/bits/invoke.h:
+
+/usr/include/c++/7/bits/quoted_string.h:
+
+/usr/include/c++/7/sstream:
+
+/usr/include/c++/7/bits/sstream.tcc:
+
+/usr/include/c++/7/vector:
+
+/usr/include/c++/7/bits/stl_uninitialized.h:
+
+/usr/include/c++/7/bits/stl_vector.h:
+
+/usr/include/c++/7/bits/stl_bvector.h:
+
+/usr/include/c++/7/bits/vector.tcc:
+
+/usr/include/c++/7/chrono:
+
+/usr/include/c++/7/ratio:
+
+/usr/include/c++/7/bits/parse_numbers.h:
+
+/usr/include/c++/7/memory:
+
+/usr/include/c++/7/bits/stl_raw_storage_iter.h:
+
+/usr/include/c++/7/ext/concurrence.h:
+
+/usr/include/c++/7/bits/unique_ptr.h:
+
+/usr/include/c++/7/bits/shared_ptr.h:
+
+/usr/include/c++/7/bits/shared_ptr_base.h:
+
+/usr/include/c++/7/bits/allocated_ptr.h:
+
+/usr/include/c++/7/bits/refwrap.h:
+
+/usr/include/c++/7/ext/aligned_buffer.h:
+
+/usr/include/c++/7/bits/shared_ptr_atomic.h:
+
+/usr/include/c++/7/bits/atomic_base.h:
+
+/usr/include/c++/7/bits/atomic_lockfree_defines.h:
+
+/usr/include/c++/7/backward/auto_ptr.h:
+
 ../config.h:
 
 serializermonitor.h:
@@ -1039,21 +1158,7 @@ param.h:
 
 /usr/include/c++/7/bits/stl_tree.h:
 
-/usr/include/c++/7/ext/aligned_buffer.h:
-
 /usr/include/c++/7/bits/stl_map.h:
-
-/usr/include/c++/7/tuple:
-
-/usr/include/c++/7/utility:
-
-/usr/include/c++/7/bits/stl_relops.h:
-
-/usr/include/c++/7/array:
-
-/usr/include/c++/7/bits/uses_allocator.h:
-
-/usr/include/c++/7/bits/invoke.h:
 
 /usr/include/c++/7/bits/stl_multimap.h:
 
@@ -1061,49 +1166,17 @@ param.h:
 
 /usr/include/c++/7/bits/stl_list.h:
 
-/usr/include/c++/7/bits/allocated_ptr.h:
-
 /usr/include/c++/7/bits/list.tcc:
 
 /usr/include/c++/7/stack:
 
 /usr/include/c++/7/deque:
 
-/usr/include/c++/7/bits/stl_construct.h:
-
-/usr/include/c++/7/bits/stl_uninitialized.h:
-
 /usr/include/c++/7/bits/stl_deque.h:
 
 /usr/include/c++/7/bits/deque.tcc:
 
 /usr/include/c++/7/bits/stl_stack.h:
-
-/usr/include/c++/7/memory:
-
-/usr/include/c++/7/bits/stl_tempbuf.h:
-
-/usr/include/c++/7/bits/stl_raw_storage_iter.h:
-
-/usr/include/c++/7/ext/concurrence.h:
-
-/usr/include/c++/7/bits/unique_ptr.h:
-
-/usr/include/c++/7/bits/shared_ptr.h:
-
-/usr/include/c++/7/bits/shared_ptr_base.h:
-
-/usr/include/c++/7/bits/refwrap.h:
-
-/usr/include/c++/7/bits/shared_ptr_atomic.h:
-
-/usr/include/c++/7/bits/atomic_base.h:
-
-/usr/include/c++/7/bits/atomic_lockfree_defines.h:
-
-/usr/include/c++/7/backward/auto_ptr.h:
-
-/usr/include/c++/7/cstring:
 
 utility.h:
 
@@ -1129,27 +1202,7 @@ utility.h:
 
 /usr/include/x86_64-linux-gnu/bits/mathinline.h:
 
-/usr/include/c++/7/algorithm:
-
-/usr/include/c++/7/bits/stl_algo.h:
-
-/usr/include/c++/7/bits/algorithmfwd.h:
-
-/usr/include/c++/7/bits/stl_heap.h:
-
-/usr/include/c++/7/bits/uniform_int_dist.h:
-
-/usr/include/c++/7/limits:
-
 object.h:
-
-/usr/include/c++/7/vector:
-
-/usr/include/c++/7/bits/stl_vector.h:
-
-/usr/include/c++/7/bits/stl_bvector.h:
-
-/usr/include/c++/7/bits/vector.tcc:
 
 player.h:
 
@@ -1249,8 +1302,6 @@ pcomparser.h:
 
 /usr/include/boost/assert.hpp:
 
-/usr/include/assert.h:
-
 /usr/include/boost/noncopyable.hpp:
 
 /usr/include/boost/core/noncopyable.hpp:
@@ -1269,35 +1320,7 @@ pcomparser.h:
 
 /usr/include/c++/7/bits/stream_iterator.h:
 
-/usr/include/c++/7/locale:
-
-/usr/include/c++/7/bits/locale_facets_nonio.h:
-
-/usr/include/c++/7/ctime:
-
-/usr/include/x86_64-linux-gnu/c++/7/bits/time_members.h:
-
-/usr/include/x86_64-linux-gnu/c++/7/bits/messages_members.h:
-
-/usr/include/libintl.h:
-
-/usr/include/c++/7/bits/codecvt.h:
-
-/usr/include/c++/7/bits/locale_facets_nonio.tcc:
-
-/usr/include/c++/7/bits/locale_conv.h:
-
-/usr/include/c++/7/bits/stringfwd.h:
-
-/usr/include/c++/7/bits/allocator.h:
-
-/usr/include/c++/7/bits/codecvt.h:
-
-/usr/include/c++/7/bits/unique_ptr.h:
-
 /usr/include/boost/system/system_error.hpp:
-
-/usr/include/c++/7/cassert:
 
 /usr/include/boost/iterator/iterator_facade.hpp:
 

@@ -115,15 +115,15 @@ Bhv_BasicMove::execute( PlayerAgent * agent )
     const Vector2D target_point = Strategy::i().getPosition( wm.self().unum() );
 
     Vector2D move_pos;
-    if (agent->world().self().unum()==5)
-    {
-      std::stringstream ss;
-      ss<<"tcp://localhost:555";
-      ss<<agent->world().self().unum();
-      std::string server_address = ss.str();
+    // if (agent->world().self().unum()==5)
+    // {
+      // std::stringstream ss;
+      // ss<<"tcp://localhost:5555";
+      // ss<<agent->world().self().unum();
+      std::string server_address = "tcp://localhost:5555";
       // Create a subscriber socket
       zmq::context_t context(1);
-      // zmq::socket_t type = zmq::socket_type::subscribe;
+
       zmq::socket_t subscriber (context, ZMQ_SUB);
       subscriber.connect(server_address);
 
@@ -133,18 +133,43 @@ Bhv_BasicMove::execute( PlayerAgent * agent )
       zmq::message_t update;
       subscriber.recv(&update);
 
-
       // Read as a string
       std::string update_string;
       update_string.assign(static_cast<char *>(update.data()), update.size());
-      std::cout << "Received: " << update_string << std::endl;
-      move_pos = Vector2D(std::stod(update_string),0);
-    }     
+      // std::cout << "Received: " << update_string << std::endl;
+
+// =================================================================
+// Split Text
+// =================================================================
+
+      // define empty vec & string stream
+      std::vector<double> vect;
+      std::stringstream ss(update_string);
+
+      // loop through string stream
+      for (int i; ss >> i;) 
+      {
+          vect.push_back(i);
+          std::cout<<i<<std::endl;   
+          if (ss.peek() == ',' || ss.peek() == ' '){
+            std::cout<<"ignored"<<std::endl;
+            ss.ignore();
+          }
+              
+      }
+      std::size_t index = agent -> world().self().unum();
+      double this_player_command;
+      this_player_command = vect[index];
+
+      std::cout<<"player num: "<<index<<"\nthis player comm "<<this_player_command<<std::endl;
+
+      double x = this_player_command;
+      move_pos = Vector2D(x,0);
+    
 /*-------------------------------------------------------------------*/
-    else
-    {
-      move_pos = target_point;
-    }
+    //  else{
+    //   move_pos = target_point;
+    // }    
 
     
 

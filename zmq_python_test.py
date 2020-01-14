@@ -17,10 +17,9 @@
 import zmq
 context = zmq.Context()
 socket = context.socket(zmq.PUB)
-socket.bind("tcp://*:6666")
+socket.bind("tcp://*:8889")
 
 while True:
-    msg = "hello"
-    socket.send_string(msg)
-    # print("sent "+ msg)
+    message = socket.send_string("yo")
+    # print("received: "+ message)
     # sleep(5)
