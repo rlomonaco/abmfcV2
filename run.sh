@@ -1,10 +1,14 @@
 fuser -k 5555/tcp 
-fuser -k 6666/tcp 
-fuser -k 8889/tcp 
+fuser -k 6666/tcp
+fuser -k 7777/tcp  
+fuser -k 8889/tcp
+fuser -k 9999/tcp 
+
 
 ./socket_server > log1.txt &
 python read_socket.py &
-python move_commands.py &
+./cppcommands &
+# python move_commands.py &
 python chain_commands.py &
 rcsoccersim > log2.txt &
 sleep 0.5

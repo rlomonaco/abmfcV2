@@ -590,23 +590,19 @@ sample_player-bhv_normal_dribble.o: chain_action/bhv_normal_dribble.cpp \
  /usr/include/c++/7/queue /usr/include/c++/7/bits/stl_queue.h \
  /usr/local/include/rcsc/common/logger.h \
  /usr/local/include/rcsc/geom/sector_2d.h \
- /usr/local/include/rcsc/common/audio_memory.h \
- /usr/include/x86_64-linux-gnu/sys/socket.h \
- /usr/include/x86_64-linux-gnu/bits/types/struct_iovec.h \
- /usr/include/x86_64-linux-gnu/bits/socket.h \
- /usr/include/x86_64-linux-gnu/bits/socket_type.h \
- /usr/include/x86_64-linux-gnu/bits/sockaddr.h \
- /usr/include/x86_64-linux-gnu/asm/socket.h \
- /usr/include/asm-generic/socket.h \
- /usr/include/x86_64-linux-gnu/asm/sockios.h \
- /usr/include/asm-generic/sockios.h \
- /usr/include/x86_64-linux-gnu/bits/types/struct_osockaddr.h \
- /usr/include/x86_64-linux-gnu/bits/socket2.h /usr/include/netdb.h \
- /usr/include/netinet/in.h /usr/include/x86_64-linux-gnu/bits/in.h \
- /usr/include/rpc/netdb.h \
- /usr/include/x86_64-linux-gnu/bits/types/sigevent_t.h \
- /usr/include/x86_64-linux-gnu/bits/types/__sigval_t.h \
- /usr/include/x86_64-linux-gnu/bits/netdb.h /usr/include/arpa/inet.h
+ /usr/local/include/rcsc/common/audio_memory.h /usr/local/include/zmq.hpp \
+ /usr/local/include/zmq.h /usr/include/c++/7/iomanip \
+ /usr/include/c++/7/locale /usr/include/c++/7/bits/locale_facets_nonio.h \
+ /usr/include/c++/7/ctime \
+ /usr/include/x86_64-linux-gnu/c++/7/bits/time_members.h \
+ /usr/include/x86_64-linux-gnu/c++/7/bits/messages_members.h \
+ /usr/include/libintl.h /usr/include/c++/7/bits/locale_facets_nonio.tcc \
+ /usr/include/c++/7/bits/locale_conv.h \
+ /usr/include/c++/7/bits/stringfwd.h /usr/include/c++/7/bits/allocator.h \
+ /usr/include/c++/7/bits/codecvt.h /usr/include/c++/7/bits/unique_ptr.h \
+ /usr/include/c++/7/bits/quoted_string.h /usr/include/c++/7/sstream \
+ /usr/include/c++/7/bits/sstream.tcc /usr/include/c++/7/chrono \
+ /usr/include/c++/7/ratio /usr/include/c++/7/bits/parse_numbers.h
 
 /usr/include/stdc-predef.h:
 
@@ -1974,40 +1970,44 @@ chain_action/short_dribble_generator.h:
 
 /usr/local/include/rcsc/common/audio_memory.h:
 
-/usr/include/x86_64-linux-gnu/sys/socket.h:
+/usr/local/include/zmq.hpp:
 
-/usr/include/x86_64-linux-gnu/bits/types/struct_iovec.h:
+/usr/local/include/zmq.h:
 
-/usr/include/x86_64-linux-gnu/bits/socket.h:
+/usr/include/c++/7/iomanip:
 
-/usr/include/x86_64-linux-gnu/bits/socket_type.h:
+/usr/include/c++/7/locale:
 
-/usr/include/x86_64-linux-gnu/bits/sockaddr.h:
+/usr/include/c++/7/bits/locale_facets_nonio.h:
 
-/usr/include/x86_64-linux-gnu/asm/socket.h:
+/usr/include/c++/7/ctime:
 
-/usr/include/asm-generic/socket.h:
+/usr/include/x86_64-linux-gnu/c++/7/bits/time_members.h:
 
-/usr/include/x86_64-linux-gnu/asm/sockios.h:
+/usr/include/x86_64-linux-gnu/c++/7/bits/messages_members.h:
 
-/usr/include/asm-generic/sockios.h:
+/usr/include/libintl.h:
 
-/usr/include/x86_64-linux-gnu/bits/types/struct_osockaddr.h:
+/usr/include/c++/7/bits/locale_facets_nonio.tcc:
 
-/usr/include/x86_64-linux-gnu/bits/socket2.h:
+/usr/include/c++/7/bits/locale_conv.h:
 
-/usr/include/netdb.h:
+/usr/include/c++/7/bits/stringfwd.h:
 
-/usr/include/netinet/in.h:
+/usr/include/c++/7/bits/allocator.h:
 
-/usr/include/x86_64-linux-gnu/bits/in.h:
+/usr/include/c++/7/bits/codecvt.h:
 
-/usr/include/rpc/netdb.h:
+/usr/include/c++/7/bits/unique_ptr.h:
 
-/usr/include/x86_64-linux-gnu/bits/types/sigevent_t.h:
+/usr/include/c++/7/bits/quoted_string.h:
 
-/usr/include/x86_64-linux-gnu/bits/types/__sigval_t.h:
+/usr/include/c++/7/sstream:
 
-/usr/include/x86_64-linux-gnu/bits/netdb.h:
+/usr/include/c++/7/bits/sstream.tcc:
 
-/usr/include/arpa/inet.h:
+/usr/include/c++/7/chrono:
+
+/usr/include/c++/7/ratio:
+
+/usr/include/c++/7/bits/parse_numbers.h:

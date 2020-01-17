@@ -45,7 +45,7 @@ class Bhv_NormalDribble
     : public rcsc::SoccerBehavior {
 private:
     rcsc::Vector2D M_target_point;
-
+    rcsc::Vector2D M_dribble_pos;
     double M_first_ball_speed;
     double M_first_turn_moment;
     double M_first_dash_power;
@@ -61,10 +61,10 @@ private:
 
 public:
 
-    Bhv_NormalDribble( const CooperativeAction & action,
+    Bhv_NormalDribble( const rcsc::Vector2D & M_dribble_pos,
+                       const CooperativeAction & action,
                        rcsc::NeckAction::Ptr neck = rcsc::NeckAction::Ptr(),
-                       rcsc::ViewAction::Ptr view = rcsc::ViewAction::Ptr() );
-
+                       rcsc::ViewAction::Ptr view = rcsc::ViewAction::Ptr());
     /*!
       \brief do dribble
       \param agent agent pointer to the agent itself

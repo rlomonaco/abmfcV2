@@ -1,5 +1,6 @@
 import socket
 import zmq
+import datetime
 
 class move_commands:
 
@@ -7,38 +8,68 @@ class move_commands:
         '''
         established connection from receiving end
         '''
-        # # Create a TCP/IP socket
-        # self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        # server_address = ('localhost', 8889)
-        # self.sock.connect(server_address)
-
-        # connect zmq socket
+        # connect zmq to publish to bhv_basic_move
         context = zmq.Context()
-        self.socket = context.socket(zmq.PUB)
-        socket_address = "tcp://*:5555"
-        self.socket.bind(socket_address)
+        self.publisher = context.socket(zmq.PUB)
+        address = "tcp://*:5555"
+        self.publisher.bind(address)
 
+        # connect zmq to subscribe to read_socket.py
+        context = zmq.Context()
+        self.subscriber = context.socket(zmq.SUB)
+        # self.subscriber.setsockopt(zmq.SNDHWM, 10)
+        self.subscriber.connect("tcp://localhost:7777")
+        self.subscriber.setsockopt_string(zmq.SUBSCRIBE, "")
+
+        self.message = ""
+
+    def receive_py(self):
+        '''
+        receive message from read_socket.py
+        '''
+        message = self.subscriber.recv_string()
+        return message
 
     def send_message(self, msg):
         '''
         send commands to bhv files in team_usqrd
         '''
-        self.socket.send_string(msg)
+        self.publisher.send_string(msg)
+
+    def main(self):
+
+        self.message = "0 0,0 0,-30 -25,-20 -25,-10 -25,-50 -25,-40 -25,-30 -25,-20 -25,-10 -25,0 -25"
+
+        while True:
+            # while (datetime.datetime.now().microsecond - start) < 100:
+            # start = datetime.datetime.now().microsecond
+            self.message = sc.receive_py()
+            # print(datetime.datetime.now().microsecond - start)
+                # self.message = message
+                # print("received: "+self.message)
+            self.send_message(self.message)
+            # print("sent: " + self.message)
+            start = datetime.datetime.now()
+            # if len(self.message)<1:
+            #     break
 
 if __name__ == "__main__":
 
     sc = move_commands()
+    sc.main()
+    # import time
+    # message = " "
+    # msg = 1
+    # while len(message) > 0:
+    #     # start = datetime.datetime.now()
+    #     # message = sc.receive_py()
+    #     # print(datetime.datetime.now()-start)
+    #     print(msg)
+    #     sc.send_message(str(msg))
+    #     msg+=1
+    #     time.sleep(1)
 
-    message = " "
-    msg = "-50,-40,-30,-20,-10,-50,-40,-30,-20,-10,0"
-    # msg = "-50"
-    while len(message) > 0:
-        # message = self.sock.recv(1024).decode("utf-8")
-        # print(message)
-        sc.send_message(msg)
-        # print("sent "+ msg)
 
 
 
-
-print('done')
+    print('done')

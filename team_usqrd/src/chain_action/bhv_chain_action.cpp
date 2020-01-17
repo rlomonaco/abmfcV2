@@ -306,7 +306,7 @@ Bhv_ChainAction::execute( PlayerAgent * agent )
       }
       int index = agent -> world().self().unum();
       int player_num, option;
-      double pass_x, pass_y;
+      double pos_x, pos_y;
       player_num = vect[0];
       // bool received_from_py = false;
 
@@ -314,14 +314,14 @@ Bhv_ChainAction::execute( PlayerAgent * agent )
       if (player_num ==  index)
       {
       option = vect[1];
-      pass_x = vect[2];
-      pass_y = vect[3];
+      pos_x = vect[2];
+      pos_y = vect[3];
       }
       else
       {
         option = first_action.category();
-        pass_x = NULL;
-        pass_y = NULL;
+        pos_x = NULL;
+        pos_y = NULL;
       }
 
     // int option = 2;
@@ -356,14 +356,15 @@ Bhv_ChainAction::execute( PlayerAgent * agent )
                 return false;
             }
 
-            const Vector2D & dribble_target = first_action.targetPoint();
-            
+            // const Vector2D & dribble_target = first_action.targetPoint();
+            Vector2D dribble_pos = Vector2D(pos_x, pos_y);
+
             dlog.addText( Logger::TEAM,
                           __FILE__" (Bhv_ChainAction) dribble target=(%.1f %.1f)",
-                          dribble_target.x, dribble_target.y );
+                          dribble_pos.x, dribble_pos.y );
 
             NeckAction::Ptr neck;
-            double goal_dist = goal_pos.dist( dribble_target );
+            double goal_dist = goal_pos.dist( dribble_pos );
             if ( goal_dist < 18.0 )
             {
                 int count_thr = 0;
@@ -375,7 +376,7 @@ Bhv_ChainAction::execute( PlayerAgent * agent )
                 neck = NeckAction::Ptr( new Neck_TurnToGoalieOrScan( count_thr ) );
             }
 
-            if ( Bhv_NormalDribble( first_action, neck ).execute( agent ) )
+            if ( Bhv_NormalDribble(dribble_pos, first_action, neck ).execute( agent ) )
             {
                 // std::cout<<"dribble"<<std::endl;
 
@@ -424,10 +425,7 @@ Bhv_ChainAction::execute( PlayerAgent * agent )
     case CooperativeAction::Pass:
         {   
 
-            Vector2D pass_pos = Vector2D(pass_x,pass_y);
-
-            // const Vector2D & dribble_target = first_action.targetPoint();
-
+            Vector2D pass_pos = Vector2D(pos_x,pos_y);
 
             dlog.addText( Logger::TEAM,
                           __FILE__" (Bhv_ChainAction) pass" );

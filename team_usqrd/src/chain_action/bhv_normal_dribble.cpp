@@ -575,7 +575,8 @@ IntentionNormalDribble::doDash( PlayerAgent * agent )
 /*!
 
 */
-Bhv_NormalDribble::Bhv_NormalDribble( const CooperativeAction & action,
+Bhv_NormalDribble::Bhv_NormalDribble( const Vector2D & dribble_pos,
+                                      const CooperativeAction & action,
                                       NeckAction::Ptr neck,
                                       ViewAction::Ptr view )
     : M_target_point( action.targetPoint() ),
@@ -588,56 +589,18 @@ Bhv_NormalDribble::Bhv_NormalDribble( const CooperativeAction & action,
       M_turn_step( action.turnCount() ),
       M_dash_step( action.dashCount() ),
       M_neck_action( neck ),
-      M_view_action( view )
+      M_view_action( view ),
+      M_dribble_pos( dribble_pos )
 {
     if ( action.category() != CooperativeAction::Dribble )
     {
         M_target_point = Vector2D::INVALIDATED;
         M_total_step = 0;
     }
-    
-// ============================================================================
-// ZMQ Subscriber
-// ============================================================================
-      std::string server_address = "tcp://localhost:7777";
-      // Create a subscriber socket
-      zmq::context_t context(1);
-
-      zmq::socket_t subscriber (context, ZMQ_SUB);
-      subscriber.connect(server_address);
-
-      subscriber.setsockopt(ZMQ_SUBSCRIBE, "", 0);
-      // subscriber.setsockopt(ZMQ_CONFLATE, 1);
-
-      //  Read envelope with address
-      zmq::message_t update;
-      subscriber.recv(&update);
-
-      // Read as a string
-      std::string update_string;
-      update_string.assign(static_cast<char *>(update.data()), update.size());
-      // std::cout << "Received: " << update_string << std::endl;
-
-
-// ============================================================================ 
-      // Split Text
-// ============================================================================
-
-      // define empty vec & string stream
-      std::vector<double> vect;
-      std::stringstream ss(update_string);
-
-      // loop through string stream
-      for (int i; ss >> i;) 
-      {
-          vect.push_back(i);
-          // std::cout<<i<<std::endl;   
-          if (ss.peek() == ',' || ss.peek() == ' '){
-            // std::cout<<"ignored"<<std::endl;
-            ss.ignore();
-          }
-              
-      }
+    if (M_dribble_pos != Vector2D(NULL, NULL))
+    {
+        M_target_point = M_dribble_pos;
+    }
 
 
 }

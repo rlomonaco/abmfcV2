@@ -115,58 +115,90 @@ Bhv_BasicMove::execute( PlayerAgent * agent )
     const Vector2D target_point = Strategy::i().getPosition( wm.self().unum() );
 
     Vector2D move_pos;
+    int confl = 1;
 
     std::string server_address = "tcp://localhost:5555";
     // Create a subscriber socket
     zmq::context_t context(1);
 
     zmq::socket_t subscriber (context, ZMQ_SUB);
-    subscriber.connect(server_address);
+
+    // int high_water_mark = 5;
+    // subscriber.setsockopt(ZMQ_RCVHWM, &high_water_mark, sizeof(high_water_mark) );
+
+    // subscriber.setsockopt(ZMQ_CONFLATE, &confl, sizeof(confl)); // Keep only last message
 
     subscriber.setsockopt(ZMQ_SUBSCRIBE, "", 0);
 
+    subscriber.connect(server_address);
+
     //  Read envelope with address
     zmq::message_t update;
+
+    // bool rc;
     subscriber.recv(&update);
+    // // zmq::message_t update;
+    // if (rc == true) {
+    //  process task
+
+    // if ((rc = subscriber.recv(&update))==true)
+    // {
 
     // Read as a string
     std::string update_string;
+
     update_string.assign(static_cast<char *>(update.data()), update.size());
+
     // std::cout << "Received: " << update_string << std::endl;
 
 // =================================================================
 // Split Text
 // =================================================================
+    // split into vector of strings
+    std::istringstream ss(update_string);
+    std::string token, PlayerCoord;
 
+    std::vector<std::string> AllCoords;
+    while(std::getline(ss, token, ',')) {
+        AllCoords.push_back(token);
+    }
+
+    std::size_t index = agent -> world().self().unum()-1;
+    PlayerCoord = AllCoords[index];
+
+
+    // split into coordinates x and y
     // define empty vec & string stream
-    std::vector<double> vect;
-    std::stringstream ss(update_string);
+    std::vector<double> coord;
+    std::stringstream cc(PlayerCoord);
 
     // loop through string stream
-    for (int i; ss >> i;) 
+    for (int i; cc >> i;) 
     {
-        vect.push_back(i);
+        coord.push_back(i);
         // std::cout<<i<<std::endl;   
-        if (ss.peek() == ',' || ss.peek() == ' '){
+        if (cc.peek() == ' '){
           // std::cout<<"ignored"<<std::endl;
-          ss.ignore();
+          cc.ignore();
         }
             
     }
-    std::size_t index = agent -> world().self().unum();
-    double this_player_command;
-    this_player_command = vect[index];
 
-    // std::cout<<"player num: "<<index<<"\nthis player comm "<<this_player_command<<std::endl;
+    double x, y;
+    x = coord[0];
+    y = coord[1];
+    move_pos = Vector2D(x,y);
+    // std::cout<<update_string<<std::endl;
+    // }
 
-    double x = this_player_command;
-    move_pos = Vector2D(x,0);
-    
+    // std::cout<<move_pos<<std::endl;
+
+        
 /*-------------------------------------------------------------------*/
     //  else{
     //   move_pos = target_point;
     // }    
-
+    // std::cout<<update<<std::endl;
     
 
     const double dash_power = Strategy::get_normal_dash_power( wm );
