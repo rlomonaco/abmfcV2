@@ -128,7 +128,7 @@ Bhv_BasicMove::execute( PlayerAgent * agent )
 
     // subscriber.setsockopt(ZMQ_CONFLATE, &confl, sizeof(confl)); // Keep only last message
 
-    subscriber.setsockopt(ZMQ_SUBSCRIBE, "", 0);
+    subscriber.setsockopt(ZMQ_SUBSCRIBE, "move: ", 0);
 
     subscriber.connect(server_address);
 
@@ -148,7 +148,7 @@ Bhv_BasicMove::execute( PlayerAgent * agent )
     std::string update_string;
 
     update_string.assign(static_cast<char *>(update.data()), update.size());
-
+    update_string.erase(0, 6);
     // std::cout << "Received: " << update_string << std::endl;
 
 // =================================================================

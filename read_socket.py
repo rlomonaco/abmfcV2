@@ -17,14 +17,11 @@ class mysocket:
 
         # connect zmq to publish to move_commands.py
         context = zmq.Context()
-        self.publisher_move = context.socket(zmq.PUB)
-        self.publisher_move.bind("tcp://*:7777") # 5555
-        self.publisher_move.setsockopt(zmq.SNDHWM, 10)
+        self.publisher = context.socket(zmq.PUB)
+        self.publisher.bind("tcp://*:7777") # 5555
+        # self.publisher_move.setsockopt(zmq.SNDHWM, 10)
 
-        # connect zmq to publish to chain_commands.py
-        context = zmq.Context()
-        self.publisher_chain = context.socket(zmq.PUB)
-        self.publisher_chain.bind("tcp://*:9999") #6666
+
 
         self.shows = []
         self.show = ""
@@ -47,26 +44,17 @@ class mysocket:
 
         return message
 
-    def pub_move_msg(self, msg):
+    def pub_msg(self, msg):
         '''
         send strings to socket with msg input
         '''
 
         self.publisher_move.send_string(msg)
 
-    def pub_chain_msg(self, msg):
-        '''
-        send strings to socket with msg input
-        '''
-        self.publisher_chain.send_string(msg)
-
     def decode_msg(self):
         '''
         decode message for reinforcement learning
         '''
-
-
-
 
     def format_move_message(self, array):
         '''
@@ -81,7 +69,7 @@ class mysocket:
         for x, m in enumerate(oned_array):
             message += str(m)+deliminater[x%2]
 
-        return message[:-1]
+        return "move: " + message[:-1]
 
     def format_chain_message(self, array):
         '''
@@ -93,14 +81,14 @@ class mysocket:
         for a in array:
             message += str(a)+","
 
-        return message[:-1]
+        return "chain: " + message[:-1]
 
 
 if __name__ == "__main__":
     s = mysocket()
     message = " "
-    msg0 = "-50 -25,-40 -25,-30 -25,-20 -25,-10 -25,-50 -25,-40 -25,-30 -25,-20 -25,-10 -25,0 -25"
-    msg1 = "6,1,-50,0" # player_num, action(pass), x, y
+    msg0 = "move: -50 -25,-40 -25,-30 -25,-20 -25,-10 -25,-50 -25,-40 -25,-30 -25,-20 -25,-10 -25,0 -25"
+    msg1 = "chain: 6,1,-50,0" # player_num, action(pass), x, y
 
     while len(message) > 0:
         start = datetime.datetime.now()
@@ -108,7 +96,7 @@ if __name__ == "__main__":
         print(datetime.datetime.now() - start)
         # print(message)
         # print("shit")
-        s.pub_move_msg(msg0)
-        s.pub_chain_msg(msg1)
+        s.pub_msg(msg0)
+        s.pub_msg(msg1)
     print('done')
 

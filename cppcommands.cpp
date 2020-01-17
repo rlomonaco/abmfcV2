@@ -13,22 +13,17 @@
 int main (int argc, char *argv[])
 {
     zmq::context_t context(1);
-//    int conf = 1;
-//    int hwm = 10;
+
     //  Socket to receive messages on
     zmq::socket_t subscriber (context, ZMQ_SUB);
     subscriber.setsockopt(ZMQ_SUBSCRIBE, "", 0);
-//    subscriber.setsockopt(ZMQ_CONFLATE, &conf, sizeof(conf));
-//    subscriber.setsockopt(ZMQ_RCVHWM, &hwm, sizeof(hwm));
     subscriber.connect("tcp://localhost:7777");
 
-
     //  Socket to send messages to
-    zmq::context_t context2(1);
-    zmq::socket_t publisher(context2, ZMQ_PUB);
+    zmq::socket_t publisher(context, ZMQ_PUB);
     publisher.bind("tcp://*:5555");
 
-//    std::string saved_message;
+    // initialise vector of strings
     std::vector<std::string> values;
     zmq::message_t first_message;
     subscriber.recv(&first_message);
@@ -40,27 +35,32 @@ int main (int argc, char *argv[])
 
         zmq::message_t message;
         bool rc;
-        if((rc = subscriber.recv(&message, ZMQ_DONTWAIT))==true){
+
+        // if received send new string
+        if((rc = subscriber.recv(&message, ZMQ_DONTWAIT))==true)
+        {
                 publisher.send(message);
-//                saved_message = message;
                 std::string update_string;
                 update_string.assign(static_cast<char*>(message.data()), message.size());
-                if (sizeof(update_string)>33){
+
+                // save new string into vector
+                // when not received update_string becomes size32 empty characters so only save when not that
+                if (sizeof(update_string)!=32)
+                {
                     values.push_back(update_string);
-                    }
-//                std::cout<<sizeof(update_string)<<std::endl;
-                                std::cout<<"yes"<<std::endl;
+                }
+                std::cout<<"yes"<<std::endl;
 
         }
         else
         {
+
                 std::string saved_message;
                 saved_message = values.back();
                 zmq::message_t reply (saved_message.size());
                 memcpy (reply.data (), saved_message.c_str(), saved_message.size());
-                publisher.send(reply, ZMQ_NOBLOCK);
-//                std::cout<<sizeof(saved_message)<<std::endl;
-//                std::cout<<"no"<<std::endl;
+                publisher.send(reply);
+
         }
 
 
