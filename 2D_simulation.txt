@@ -11,8 +11,10 @@ static double not_shoot_ball_eval = 10000;
 static constexpr double not_shoot_ball_eval = 10000;
 
 
+
+
 LIBS="-lzmq  $LIBS" #add in line 4898 of configure file in team_usqrd and line 19235 of configure in rcssserver
 
 g++ -Wall -o move_commands move_commands.cpp -lzmq
-g++ -Wall -o move_commands move_commands.cpp -lzmq
+g++ -Wall -o chain_commands chain_commands.cpp -lzmq
 
