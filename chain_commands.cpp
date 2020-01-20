@@ -54,9 +54,11 @@ int main (int argc, char *argv[])
         }
         else
         {
-
+                // get last value from vector of strings
                 std::string saved_message;
                 saved_message = values.back();
+
+                // turn string into bytes to be sent to bhv_chain_action.cpp file
                 zmq::message_t reply (saved_message.size());
                 memcpy (reply.data (), saved_message.c_str(), saved_message.size());
                 publisher.send(reply);

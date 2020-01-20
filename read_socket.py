@@ -51,7 +51,7 @@ class mysocket:
         '''
         decode message for reinforcement learning
         '''
-
+        print(message.split('\n'))
 
 
     def pub_move_msg(self, msg):

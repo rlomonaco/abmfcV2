@@ -30,7 +30,6 @@ int main(int argc , char *argv[])
     //set of socket descriptors  
     fd_set readfds;   
          
-    //a message  
     char const *message = "";
      
     //initialise all client_socket[] to 0 so not checked  
@@ -42,7 +41,7 @@ int main(int argc , char *argv[])
     //create a master socket  
     if( (master_socket = socket(AF_INET , SOCK_STREAM , 0)) == 0)   
     {   
-        perror("socket failed");   
+//        perror("socket failed");
         exit(EXIT_FAILURE);   
     }   
      
@@ -51,7 +50,7 @@ int main(int argc , char *argv[])
     if( setsockopt(master_socket, SOL_SOCKET, SO_REUSEADDR, (char *)&opt,  
           sizeof(opt)) < 0 )   
     {   
-        perror("setsockopt");   
+//        perror("setsockopt");
         exit(EXIT_FAILURE);   
     }   
      
@@ -63,21 +62,21 @@ int main(int argc , char *argv[])
     //bind the socket to localhost port 8888  
     if (bind(master_socket, (struct sockaddr *)&address, sizeof(address))<0)   
     {   
-        perror("bind failed");   
+//        perror("bind failed");
         exit(EXIT_FAILURE);   
     }   
-    printf("Listener on port %d \n", PORT);   
+//    printf("Listener on port %d \n", PORT);
          
     //try to specify maximum of 3 pending connections for the master socket  
     if (listen(master_socket, 3) < 0)   
     {   
-        perror("listen");   
+//        perror("listen");
         exit(EXIT_FAILURE);   
     }   
          
     //accept the incoming connection  
     addrlen = sizeof(address);   
-    puts("Waiting for connections ...");   
+//    puts("Waiting for connections ...");
          
     while(TRUE)   
     {   
@@ -109,7 +108,7 @@ int main(int argc , char *argv[])
        
         if ((activity < 0) && (errno!=EINTR))   
         {   
-            printf("select error");   
+//            printf("select error");
         }   
              
         //If something happened on the master socket ,  
@@ -119,22 +118,22 @@ int main(int argc , char *argv[])
             if ((new_socket = accept(master_socket,  
                     (struct sockaddr *)&address, (socklen_t*)&addrlen))<0)   
             {   
-                perror("accept");   
+//                perror("accept");
                 exit(EXIT_FAILURE);   
             }   
              
             //inform user of socket number - used in send and receive commands  
-            printf("New connection , socket fd is %d , ip is : %s , port : %d  \n" ,
-                    new_socket , inet_ntoa(address.sin_addr) , ntohs
-                  (address.sin_port));   
+//            printf("New connection , socket fd is %d , ip is : %s , port : %d  \n" ,
+//                    new_socket , inet_ntoa(address.sin_addr) , ntohs
+//                  (address.sin_port));
            
             //send new connection greeting message  
             if( send(new_socket, message, strlen(message), 0) != strlen(message) )   
             {   
-                perror("send");   
+//                perror("send");
             }   
                  
-            puts("Welcome message sent successfully");   
+//            puts("Welcome message sent successfully");
                  
             //add new socket to array of sockets  
             for (i = 0; i < max_clients; i++)   
@@ -143,7 +142,7 @@ int main(int argc , char *argv[])
                 if( client_socket[i] == 0 )   
                 {   
                     client_socket[i] = new_socket;   
-                    printf("Adding to list of sockets as %d\n" , i);   
+//                    printf("Adding to list of sockets as %d\n" , i);
                          
                     break;   
                 }   
@@ -173,9 +172,9 @@ int main(int argc , char *argv[])
                 {   
                     //Somebody disconnected , get his details and print  
                     getpeername(sd , (struct sockaddr*)&address , (socklen_t*)&addrlen);
-                    printf("Host disconnected , ip %s , port %d \n" ,  
-                          inet_ntoa(address.sin_addr) , ntohs(address.sin_port));   
-                         
+//                    printf("Host disconnected , ip %s , port %d \n" ,
+//                          inet_ntoa(address.sin_addr) , ntohs(address.sin_port));
+//
                     //Close the socket and mark as 0 in list for reuse  
                     close( sd );   
                     client_socket[i] = 0;   
