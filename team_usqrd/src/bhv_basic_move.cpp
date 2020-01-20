@@ -109,47 +109,33 @@ Bhv_BasicMove::execute( PlayerAgent * agent )
     }
 
 
-/*-------------------------------------------------------------------*/
+// =================================================================
 // zmq listener
-/*-------------------------------------------------------------------*/
-    const Vector2D target_point = Strategy::i().getPosition( wm.self().unum() );
+// =================================================================
+
+    // const Vector2D target_point = Strategy::i().getPosition( wm.self().unum() );
 
     Vector2D move_pos;
     int confl = 1;
 
     std::string server_address = "tcp://localhost:5555";
+
     // Create a subscriber socket
     zmq::context_t context(1);
 
     zmq::socket_t subscriber (context, ZMQ_SUB);
-
-    // int high_water_mark = 5;
-    // subscriber.setsockopt(ZMQ_RCVHWM, &high_water_mark, sizeof(high_water_mark) );
-
-    // subscriber.setsockopt(ZMQ_CONFLATE, &confl, sizeof(confl)); // Keep only last message
-
-    subscriber.setsockopt(ZMQ_SUBSCRIBE, "move: ", 0);
-
+    subscriber.setsockopt(ZMQ_SUBSCRIBE, "", 0);
     subscriber.connect(server_address);
 
-    //  Read envelope with address
+    //  Read received messages
     zmq::message_t update;
-
-    // bool rc;
     subscriber.recv(&update);
-    // // zmq::message_t update;
-    // if (rc == true) {
-    //  process task
-
-    // if ((rc = subscriber.recv(&update))==true)
-    // {
 
     // Read as a string
     std::string update_string;
-
     update_string.assign(static_cast<char *>(update.data()), update.size());
-    update_string.erase(0, 6);
-    // std::cout << "Received: " << update_string << std::endl;
+    // update_string.erase(0, 6); //remove "move: " in order to process
+
 
 // =================================================================
 // Split Text
@@ -188,17 +174,6 @@ Bhv_BasicMove::execute( PlayerAgent * agent )
     x = coord[0];
     y = coord[1];
     move_pos = Vector2D(x,y);
-    // std::cout<<update_string<<std::endl;
-    // }
-
-    // std::cout<<move_pos<<std::endl;
-
-        
-/*-------------------------------------------------------------------*/
-    //  else{
-    //   move_pos = target_point;
-    // }    
-    // std::cout<<update<<std::endl;
     
 
     const double dash_power = Strategy::get_normal_dash_power( wm );

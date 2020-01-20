@@ -1,7 +1,6 @@
 import socket
 import zmq
 import numpy as np
-import datetime
 
 
 class mysocket:
@@ -17,14 +16,18 @@ class mysocket:
 
         # connect zmq to publish to move_commands.py
         context = zmq.Context()
-        self.publisher = context.socket(zmq.PUB)
-        self.publisher.bind("tcp://*:7777") # 5555
-        # self.publisher_move.setsockopt(zmq.SNDHWM, 10)
+        self.publisher_move = context.socket(zmq.PUB)
+        self.publisher_move.bind("tcp://*:7777")
 
+        # connect zmq to publish to move_commands.py
+        context = zmq.Context()
+        self.publisher_chain = context.socket(zmq.PUB)
+        self.publisher_chain.bind("tcp://*:6666")
 
+        # self.messages = []
+        # self.message = ""
 
-        self.shows = []
-        self.show = ""
+        self.show = 0
 
     def receive_msg(self):
         '''
@@ -36,25 +39,34 @@ class mysocket:
             msg = self.sock.recv(1024).decode("utf-8")
             message += msg
             # print(message)
-            if "show" in msg:
+            if "side: -1, num:11" in msg:
                 break
 
-        # self.shows.append(message)
-        # self.show = message
+        # self.messages.append(message)
+        # self.message = message
 
         return message
 
-    def pub_msg(self, msg):
+    def decode_msg(self, message):
+        '''
+        decode message for reinforcement learning
+        '''
+
+
+
+    def pub_move_msg(self, msg):
         '''
         send strings to socket with msg input
         '''
 
         self.publisher_move.send_string(msg)
 
-    def decode_msg(self):
+    def pub_chain_msg(self, msg):
         '''
-        decode message for reinforcement learning
+        send strings to socket with msg input
         '''
+
+        self.publisher_chain.send_string(msg)
 
     def format_move_message(self, array):
         '''
@@ -69,7 +81,7 @@ class mysocket:
         for x, m in enumerate(oned_array):
             message += str(m)+deliminater[x%2]
 
-        return "move: " + message[:-1]
+        return message[:-1]
 
     def format_chain_message(self, array):
         '''
@@ -81,22 +93,21 @@ class mysocket:
         for a in array:
             message += str(a)+","
 
-        return "chain: " + message[:-1]
+        return message[:-1]
 
 
 if __name__ == "__main__":
     s = mysocket()
     message = " "
-    msg0 = "move: -50 -25,-40 -25,-30 -25,-20 -25,-10 -25,-50 -25,-40 -25,-30 -25,-20 -25,-10 -25,0 -25"
-    msg1 = "chain: 6,1,-50,0" # player_num, action(pass), x, y
+    msg0 = "-50 -25,-40 -25,-30 -25,-20 -25,-10 -25,-50 -25,-40 -25,-30 -25,-20 -25,-10 -25,0 -25"
+    msg1 = "10,1,-50,0" # player_num, action(pass), x, y
 
     while len(message) > 0:
-        start = datetime.datetime.now()
         message = s.receive_msg()
-        print(datetime.datetime.now() - start)
-        # print(message)
-        # print("shit")
-        s.pub_msg(msg0)
-        s.pub_msg(msg1)
+        s.decode_msg(message)
+        # print(message+"\n\n\n\n\n\n\n")
+
+        s.pub_chain_msg(msg1)
+        s.pub_move_msg(msg0)
     print('done')
 

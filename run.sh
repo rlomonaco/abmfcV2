@@ -7,9 +7,10 @@ fuser -k 9999/tcp
 
 ./socket_server > log1.txt &
 python read_socket.py &
-./cppcommands &
+./move_commands &
+./chain_commands &
 # python move_commands.py &
-python chain_commands.py &
+# python chain_commands.py &
 rcsoccersim > log2.txt &
 sleep 0.5
 ./team_usqrd/src/start.sh  &

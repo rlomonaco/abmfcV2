@@ -265,15 +265,13 @@ Bhv_ChainAction::execute( PlayerAgent * agent )
 // ============================================================================
 // ZMQ Subscriber
 // ============================================================================
-      std::string server_address = "tcp://localhost:5555";
+      std::string server_address = "tcp://localhost:9999";
       // Create a subscriber socket
       zmq::context_t context(1);
 
       zmq::socket_t subscriber (context, ZMQ_SUB);
+      subscriber.setsockopt(ZMQ_SUBSCRIBE, "", 0);
       subscriber.connect(server_address);
-
-      subscriber.setsockopt(ZMQ_SUBSCRIBE, "chain: ", 0);
-      // subscriber.setsockopt(ZMQ_CONFLATE, 1);
 
       //  Read envelope with address
       zmq::message_t update;
@@ -282,8 +280,8 @@ Bhv_ChainAction::execute( PlayerAgent * agent )
       // Read as a string
       std::string update_string;
       update_string.assign(static_cast<char *>(update.data()), update.size());
-      // std::cout << "Received: " << update_string << std::endl;
-      update_string.erase(0,7);
+      // update_string.erase(0,7);
+      std::cout<<update_string<<std::endl;
 
 // ============================================================================ 
       // Split Text
