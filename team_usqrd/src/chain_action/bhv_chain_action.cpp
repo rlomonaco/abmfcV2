@@ -242,7 +242,7 @@ Bhv_ChainAction::execute( PlayerAgent * agent )
     const ServerParam & SP = ServerParam::i();
     const WorldModel & wm = agent->world();
     
-    // std::cout<< wm. << std::endl;
+    // std::cout<< wm.self().unum() << std::endl;
 
     const CooperativeAction & first_action = M_chain_graph.getFirstAction();
 
@@ -281,7 +281,7 @@ Bhv_ChainAction::execute( PlayerAgent * agent )
       std::string update_string;
       update_string.assign(static_cast<char *>(update.data()), update.size());
       // update_string.erase(0,7);
-      std::cout<<update_string<<std::endl;
+      // std::cout<<update_string<<std::endl;
 
 // ============================================================================ 
       // Split Text
@@ -309,18 +309,18 @@ Bhv_ChainAction::execute( PlayerAgent * agent )
       // bool received_from_py = false;
 
 
-      if (player_num ==  index)
-      {
+      // if (player_num ==  index)
+      // {
       option = vect[1];
       pos_x = vect[2];
       pos_y = vect[3];
-      }
-      else
-      {
-        option = first_action.category();
-        pos_x = NULL;
-        pos_y = NULL;
-      }
+      // }
+      // else
+      // {
+      //   option = first_action.category();
+      //   pos_x = NULL;
+      //   pos_y = NULL;
+      // }
 
     // int option = 2;
 

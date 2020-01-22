@@ -93,6 +93,16 @@ Bhv_BasicMove::execute( PlayerAgent * agent )
     const int mate_min = wm.interceptTable()->teammateReachCycle();
     const int opp_min = wm.interceptTable()->opponentReachCycle();
 
+    // if(self_min == 0 || mate_min ==0)
+    // {
+    //     std::cout<<"ourball"<<std::endl;
+    // }
+    // else if(opp_min == 0)
+    // {
+    //     std::cout<<"their ball"<<std::endl;
+    // }
+    
+
     if ( ! wm.existKickableTeammate()
          && ( self_min <= 3
               || ( self_min <= mate_min
@@ -124,6 +134,7 @@ Bhv_BasicMove::execute( PlayerAgent * agent )
     zmq::context_t context(1);
 
     zmq::socket_t subscriber (context, ZMQ_SUB);
+    subscriber.setsockopt(ZMQ_CONFLATE, &confl, sizeof(confl));
     subscriber.setsockopt(ZMQ_SUBSCRIBE, "", 0);
     subscriber.connect(server_address);
 
@@ -174,6 +185,10 @@ Bhv_BasicMove::execute( PlayerAgent * agent )
     x = coord[0];
     y = coord[1];
     move_pos = Vector2D(x,y);
+
+    std::cout<<"bhv: "<<update_string<<std::endl;
+
+    // std::cout<<move_pos<<std::endl;
     
 
     const double dash_power = Strategy::get_normal_dash_power( wm );

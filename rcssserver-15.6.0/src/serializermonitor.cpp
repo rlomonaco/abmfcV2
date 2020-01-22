@@ -182,7 +182,7 @@ SerializerMonitorStdv3::serializeShowBegin( std::ostream & os,
                                             const int time ) const
 {
     os << "(show " << time;
-}
+}   
 
 void
 SerializerMonitorStdv3::serializeShowEnd( std::ostream & os ) const
@@ -364,37 +364,7 @@ SerializerMonitorStdv3::SocketStadiumOutput( std::ostream &,
                                         const Team & team_r,
                                         const Ball & ball ) const
   {
-
-// // Record start time
-// auto start = std::chrono::high_resolution_clock::now();
-
-    // //  Message to be sent
-    // std::string message = "show: " + std::to_string(time)
-    //          +"\nteam_l: " + std::to_string(team_l.point())
-    //          + "\nteam_r: " + std::to_string(team_r.point())
-    //          + "\nball_x: " + std::to_string(ball.pos().x)+ ", ball_y: " + std::to_string(ball.pos().y)+ ", ball_vx: " + std::to_string(ball.vel().y)+ ", ball_vy: " + std::to_string(ball.vel().y);
-
-  
-    //   // Connect to publisher to zmq local host
-    //   zmq::context_t context(1);
-    //   zmq::socket_t publisher(context, ZMQ_PUB);
-    //   std::string server_address = "tcp://localhost:8889";
-    //   publisher.connect(server_address);
-
-    //   // Change string to byte message
-    //   zmq::message_t reply (message.size());
-    //   memcpy (reply.data (),message.c_str(), message.size());
-    //   // sleep is essential
-    //   sleep(1);
-    //   publisher.send(reply);
-    //   // std::cout<<message<<std::endl;
-
-// // Record end time
-// auto finish = std::chrono::high_resolution_clock::now();
-
-// std::chrono::duration<double> elapsed = finish - start;
-// std::cout << "Elapsed time player: " << elapsed.count() << " s\n";
-
+    // std::cout<<time<<std::endl;
 
          //  Create a socket
    int sock = socket(AF_INET, SOCK_STREAM, 0);
@@ -413,10 +383,10 @@ SerializerMonitorStdv3::SocketStadiumOutput( std::ostream &,
 
    //  While loop:
    // char buf[4096];
-   std::string message = "show: " + std::to_string(time)
-             +"\nteam_l: " + std::to_string(team_l.point())
-             + "\nteam_r: " + std::to_string(team_r.point())
-             + "\nball_x: " + std::to_string(ball.pos().x)+ ", ball_y: " + std::to_string(ball.pos().y)+ ", ball_vx: " + std::to_string(ball.vel().y)+ ", ball_vy: " + std::to_string(ball.vel().y);
+   std::string message = "show:" + std::to_string(time)
+             +"\nteam_l:" + std::to_string(team_l.point())
+             + "\nteam_r:" + std::to_string(team_r.point())
+             + "\nball_x:" + std::to_string(ball.pos().x)+ ", ball_y:" + std::to_string(ball.pos().y)+ ", ball_vx:" + std::to_string(ball.vel().y)+ ", ball_vy:" + std::to_string(ball.vel().y);
 
     send(sock, message.c_str(), message.size() + 1, 0);
    close(sock);
@@ -427,33 +397,6 @@ SerializerMonitorStdv3::SocketStadiumOutput( std::ostream &,
 void
 SerializerMonitorStdv3::SocketPlayerOutput( std::ostream &, const Player & player ) const
   {
-  // //  Message
-  // std::string message = "\nside: " + std::to_string(player.side()) + ", num:" + std::to_string(player.unum()) + ", x:" + std::to_string(player.pos().x) + ", y:" + std::to_string(player.pos().y) + ", vel_x:" + std::to_string(player.vel().x) + ", vel_y:" + std::to_string(player.vel().y);
-
-// // Record start time
-// auto start = std::chrono::high_resolution_clock::now();
-
-
-    // // Connect to publisher to zmq local host
-    // zmq::context_t context(1);
-    // zmq::socket_t publisher(context, ZMQ_PUB);
-    // std::string server_address = "tcp://localhost:8889";
-    // publisher.connect(server_address);
-
-    // // Change string to byte message
-    // zmq::message_t reply (message.size());
-    // memcpy (reply.data (),message.c_str(), message.size());
-    // // sleep is essential
-    // sleep(1);
-    // publisher.send(reply);
-    // std::cout<<message<<std::endl;
-
-// // Record end time
-// auto finish = std::chrono::high_resolution_clock::now();
-
-// std::chrono::duration<double> elapsed = finish - start;
-// std::cout << "Elapsed time player: " << elapsed.count() << " s\n";
-
 
     //  Create a socket
    int sock = socket(AF_INET, SOCK_STREAM, 0);
@@ -472,7 +415,7 @@ SerializerMonitorStdv3::SocketPlayerOutput( std::ostream &, const Player & playe
 
    //  While loop:
    // char buf[4096];
-   std::string message = "\nside: " + std::to_string(player.side()) + ", num:" + std::to_string(player.unum()) + ", x:" + std::to_string(player.pos().x) + ", y:" + std::to_string(player.pos().y) + ", vel_x:" + std::to_string(player.vel().x) + ", vel_y:" + std::to_string(player.vel().y);
+   std::string message = "\nside: " + std::to_string(player.side()) + ", num:" + std::to_string(player.unum()) + ", x:" + std::to_string(player.pos().x) + ", y:" + std::to_string(player.pos().y) + ", vel_x:" + std::to_string(player.vel().x) + ", vel_y:" + std::to_string(player.vel().y) + ", kick_count:" + std::to_string(player.kickCount());
 
     send(sock, message.c_str(), message.size() + 1, 0);
    close(sock);

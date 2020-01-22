@@ -300,35 +300,36 @@ Bhv_PassKickFindReceiver::execute( PlayerAgent * agent)
         return false;
     }
 
-    const AbstractPlayerObject * receiver = wm.ourPlayer( pass.targetPlayerUnum() );
-    // std::cout<<receiver->unum()<<std::endl;
+    // const AbstractPlayerObject * receiver = wm.ourPlayer( pass.targetPlayerUnum() );
 
-    if ( ! receiver )
-    {
-        dlog.addText( Logger::TEAM,
-                      __FILE__": NULL receiver." );
+    // if ( ! receiver )
+    // {
+    //     dlog.addText( Logger::TEAM,
+    //                   __FILE__": NULL receiver." );
 
-        return false;
-    }
+    //     return false;
+    // }
 
-    dlog.addText( Logger::TEAM,
-                  __FILE__": pass receiver unum=%d (%.1f %.1f)",
-                  receiver->unum(),
-                  receiver->pos().x, receiver->pos().y );
+    // dlog.addText( Logger::TEAM,
+    //               __FILE__": pass receiver unum=%d (%.1f %.1f)",
+    //               receiver->unum(),
+    //               receiver->pos().x, receiver->pos().y );
 
-    if ( wm.self().unum() == receiver->unum() )
-    {
-        dlog.addText( Logger::TEAM,
-                      __FILE__": receiver is my self." );
-        return false;
-    }
+    // if ( wm.self().unum() == receiver->unum() )
+    // {
+    //     dlog.addText( Logger::TEAM,
+    //                   __FILE__": receiver is my self." );
+    //     return false;
+    // }
 
+/*
     // if ( receiver->isGhost() )
     // {
     //     dlog.addText( Logger::TEAM,
     //                   __FILE__": receiver is a ghost." );
     //     return false;
     // }
+*/
 
     if ( wm.gameMode().type() != GameMode::PlayOn )
     {
@@ -336,48 +337,48 @@ Bhv_PassKickFindReceiver::execute( PlayerAgent * agent)
         return true;
     }
 
-    //
-    // estimate kick step
-    //
-    int kick_step = pass.kickCount(); //kickStep( wm, pass );
+    // //
+    // // estimate kick step
+    // //
+    // int kick_step = pass.kickCount(); //kickStep( wm, pass );
 
-    if ( kick_step == 1
-         //&& pass.targetPoint().x > -20.0
-         && receiver->seenPosCount() <= 3 )
-    {
-        dlog.addText( Logger::TEAM,
-                      __FILE__": 1 step kick." );
-        doPassKick( agent, pass);
-        return true;
-    }
+    // if ( kick_step == 1
+    //      //&& pass.targetPoint().x > -20.0
+    //      && receiver->seenPosCount() <= 3 )
+    // {
+    //     dlog.addText( Logger::TEAM,
+    //                   __FILE__": 1 step kick." );
+    //     doPassKick( agent, pass);
+    //     return true;
+    // }
 
-    //
-    // trying to turn body and/or neck to the pass receiver
-    //
+    // //
+    // // trying to turn body and/or neck to the pass receiver
+    // //
 
-    if ( doCheckReceiver( agent, pass ) )
-    {
-        agent->debugClient().addCircle( wm.self().pos(), 3.0 );
-        agent->debugClient().addCircle( wm.self().pos(), 5.0 );
-        agent->debugClient().addCircle( wm.self().pos(), 10.0 );
-        return true;
-    }
+    // if ( doCheckReceiver( agent, pass ) )
+    // {
+    //     agent->debugClient().addCircle( wm.self().pos(), 3.0 );
+    //     agent->debugClient().addCircle( wm.self().pos(), 5.0 );
+    //     agent->debugClient().addCircle( wm.self().pos(), 10.0 );
+    //     return true;
+    // }
 
-    if ( ( kick_step == 1
-           && receiver->seenPosCount() > 3 )
-         || receiver->isGhost() )
-    {
-        agent->debugClient().addMessage( "Pass:FindHold2" );
-        dlog.addText( Logger::TEAM,
-                      __FILE__": (execute) hold ball." );
+    // if ( ( kick_step == 1
+    //        && receiver->seenPosCount() > 3 )
+    //      || receiver->isGhost() )
+    // {
+    //     agent->debugClient().addMessage( "Pass:FindHold2" );
+    //     dlog.addText( Logger::TEAM,
+    //                   __FILE__": (execute) hold ball." );
 
-        Body_HoldBall( true,
-                       pass.targetPoint(),
-                       pass.targetPoint() ).execute( agent );
-        doSayPass( agent, pass );
-        agent->setNeckAction( new Neck_TurnToReceiver( M_chain_graph ) );
-        return true;
-    }
+    //     Body_HoldBall( true,
+    //                    pass.targetPoint(),
+    //                    pass.targetPoint() ).execute( agent );
+    //     doSayPass( agent, pass );
+    //     agent->setNeckAction( new Neck_TurnToReceiver( M_chain_graph ) );
+    //     return true;
+    // }
 
     //
     // pass kick
