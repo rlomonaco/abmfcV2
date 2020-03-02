@@ -226,7 +226,7 @@ Bhv_ChainAction::Bhv_ChainAction()
 
  */
 bool
-Bhv_ChainAction::execute( PlayerAgent * agent )
+Bhv_ChainAction::execute( PlayerAgent * agent)
 {
     dlog.addText( Logger::TEAM,
                   __FILE__": Bhv_ChainAction" );
@@ -303,7 +303,7 @@ Bhv_ChainAction::execute( PlayerAgent * agent )
               
       }
       int index = agent -> world().self().unum();
-      int player_num, option;
+      int player_num, option, pass_target;
       double pos_x, pos_y;
       player_num = vect[0];
       // bool received_from_py = false;
@@ -314,6 +314,7 @@ Bhv_ChainAction::execute( PlayerAgent * agent )
       option = vect[1];
       pos_x = vect[2];
       pos_y = vect[3];
+      pass_target = vect[4];
       // }
       // else
       // {
@@ -425,9 +426,17 @@ Bhv_ChainAction::execute( PlayerAgent * agent )
 
             Vector2D pass_pos = Vector2D(pos_x,pos_y);
 
+            // dlog.addText( Logger::ACTION_CHAIN,
+            //     "__ %d: pass (%s[%d]) t=%d from[%d](%.2f %.2f)-to[%d](%.2f %.2f)",
+            //     0, "strictLead", first_action.index(), 10,
+            //     wm.self().unum(),
+            //     wm.ball().pos().x, wm.ball().pos().y,
+            //     pass_target,
+            //     pass_pos.x, pass_pos.y );
+
             dlog.addText( Logger::TEAM,
                           __FILE__" (Bhv_ChainAction) pass" );
-            Bhv_PassKickFindReceiver( M_chain_graph, pass_pos).execute( agent );
+            Bhv_PassKickFindReceiver( M_chain_graph, pass_pos, pass_target).execute( agent );
             
             // std::cout<<"pass"<<std::endl;
             

@@ -53,13 +53,13 @@ class Bhv_PassKickFindReceiver
 private:
     const ActionChainGraph & M_chain_graph;
     const rcsc::Vector2D & M_pass_pos;
+    const int M_pass_unum;
 
 public:
 
     double pass_x, pass_y;
 
-    Bhv_PassKickFindReceiver( const ActionChainGraph & chain_graph, const rcsc::Vector2D & M_pass_pos);
-
+    Bhv_PassKickFindReceiver( const ActionChainGraph & chain_graph, const rcsc::Vector2D & M_pass_pos, const int pass_target);
     bool execute( rcsc::PlayerAgent * agent );
 
 private:

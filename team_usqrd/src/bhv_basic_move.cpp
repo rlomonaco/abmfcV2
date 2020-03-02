@@ -123,7 +123,6 @@ Bhv_BasicMove::execute( PlayerAgent * agent )
 // zmq listener
 // =================================================================
 
-    // const Vector2D target_point = Strategy::i().getPosition( wm.self().unum() );
 
     Vector2D move_pos;
     int confl = 1;
@@ -160,7 +159,9 @@ Bhv_BasicMove::execute( PlayerAgent * agent )
         AllCoords.push_back(token);
     }
 
-    std::size_t index = agent -> world().self().unum()-1;
+    if (AllCoords[0] == "1"){
+
+    std::size_t index = agent -> world().self().unum();
     PlayerCoord = AllCoords[index];
 
 
@@ -187,7 +188,12 @@ Bhv_BasicMove::execute( PlayerAgent * agent )
     move_pos = Vector2D(x,y);
 
     std::cout<<"bhv: "<<update_string<<std::endl;
-
+    }
+    else
+    {
+        const Vector2D target_point = Strategy::i().getPosition( wm.self().unum() );
+        move_pos = target_point;
+    }
     // std::cout<<move_pos<<std::endl;
     
 

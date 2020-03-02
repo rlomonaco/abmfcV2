@@ -201,8 +201,9 @@ IntentionPassKickFindReceiver::finished( const PlayerAgent * agent )
 
  */
 Bhv_PassKickFindReceiver::Bhv_PassKickFindReceiver( const ActionChainGraph & chain_graph,
-                                                    const Vector2D & pass_pos )
-    : M_chain_graph( chain_graph ), M_pass_pos(pass_pos)
+                                                    const Vector2D & pass_pos,
+                                                    const int pass_target )
+    : M_chain_graph( chain_graph ), M_pass_pos(pass_pos), M_pass_unum(pass_target)
 {
 }
 
@@ -398,21 +399,33 @@ Bhv_PassKickFindReceiver::doPassKick( PlayerAgent * agent,
                                       const CooperativeAction & pass)
 {
     Vector2D pass_pos = M_pass_pos;
+    const ServerParam & SP = ServerParam::i();
+    const WorldModel & wm = agent->world();
 
     if (pass_pos == Vector2D(NULL, NULL))
     {
         pass_pos = pass.targetPoint();
-    }
-
-
-    agent->debugClient().setTarget( pass.targetPlayerUnum() );
-    agent->debugClient().setTarget( pass.targetPoint() );
-    dlog.addText( Logger::TEAM,
+        agent->debugClient().setTarget( pass.targetPlayerUnum() );
+        agent->debugClient().setTarget( pass.targetPoint() );
+        dlog.addText( Logger::TEAM,
                   __FILE__" (Bhv_PassKickFindReceiver) pass to "
                   "%d receive_pos=(%.1f %.1f) speed=%.3f",
                   pass.targetPlayerUnum(),
                   pass.targetPoint().x, pass.targetPoint().y,
                   pass.firstBallSpeed() );
+    }
+    // pass_pos =  pass.targetPoint();
+    else
+    {
+        double first_speed = SP.firstBallSpeed( wm.ball().pos().dist( pass_pos ), 3);
+        dlog.addText( Logger::TEAM,
+          __FILE__" (Bhv_PassKickFindReceiver) pass to "
+          "%d receive_pos=(%.1f %.1f) speed=%.3f",
+            M_pass_unum,
+            pass_pos.x, pass_pos.y,
+            first_speed );
+    }
+
 
     if ( pass.kickCount() == 1
          || agent->world().gameMode().type() != GameMode::PlayOn )
@@ -980,8 +993,11 @@ void
 Bhv_PassKickFindReceiver::doSayPass( PlayerAgent * agent,
                                      const CooperativeAction & pass )
 {
-    const int receiver_unum = pass.targetPlayerUnum();
-    const Vector2D & receive_pos = pass.targetPoint();
+    // const int receiver_unum = pass.targetPlayerUnum();
+    // const Vector2D & receive_pos = pass.targetPoint();
+
+    int receiver_unum = M_pass_unum;
+    Vector2D receive_pos = M_pass_pos;
 
     if ( agent->config().useCommunication()
          && receiver_unum != Unum_Unknown
