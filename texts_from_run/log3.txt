@@ -1,0 +1,196 @@
+******************************************************************
+ HELIOS base
+ Created by Hidehisa Akiyama and Hiroki Shimora
+ Copyright 2000-2007.  Hidehisa Akiyama
+ Copyright 2007-2012.  Hidehisa Akiyama and Hiroki Shimora
+ All rights reserved.
+******************************************************************
+PING localhost (127.0.0.1) 56(84) bytes of data.
+64 bytes from localhost (127.0.0.1): icmp_seq=1 ttl=64 time=0.043 ms
+
+--- localhost ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.043/0.043/0.043/0.000 ms
+******************************************************************
+ librcsc 4.1.0
+ Copyright 2000 - 2007. Hidehisa Akiyama.
+ Copyright 2007 - 2011. Hidehisa Akiyama and Hiroki Shimora
+ All rights reserved.
+******************************************************************
+*****************************************************************
+ This program is based on agent2d created by Hidehisa Akiyama.
+ Copyright 2006 - 2011. Hidehisa Akiyama and Hiroki Shimora.
+ All rights reserved.
+*****************************************************************
+******************************************************************
+ librcsc 4.1.0
+ Copyright 2000 - 2007. Hidehisa Akiyama.
+ Copyright 2007 - 2011. Hidehisa Akiyama and Hiroki Shimora
+ All rights reserved.
+******************************************************************
+*****************************************************************
+ This program is based on agent2d created by Hidehisa Akiyama.
+ Copyright 2006 - 2011. Hidehisa Akiyama and Hiroki Shimora.
+ All rights reserved.
+*****************************************************************
+******************************************************************
+ librcsc 4.1.0
+ Copyright 2000 - 2007. Hidehisa Akiyama.
+ Copyright 2007 - 2011. Hidehisa Akiyama and Hiroki Shimora
+ All rights reserved.
+******************************************************************
+******************************************************************
+ librcsc 4.1.0
+ Copyright 2000 - 2007. Hidehisa Akiyama.
+ Copyright 2007 - 2011. Hidehisa Akiyama and Hiroki Shimora
+ All rights reserved.
+******************************************************************
+******************************************************************
+ librcsc 4.1.0
+ Copyright 2000 - 2007. Hidehisa Akiyama.
+ Copyright 2007 - 2011. Hidehisa Akiyama and Hiroki Shimora
+ All rights reserved.
+******************************************************************
+*****************************************************************
+ This program is based on agent2d created by Hidehisa Akiyama.
+ Copyright 2006 - 2011. Hidehisa Akiyama and Hiroki Shimora.
+ All rights reserved.
+*****************************************************************
+*****************************************************************
+ This program is based on agent2d created by Hidehisa Akiyama.
+ Copyright 2006 - 2011. Hidehisa Akiyama and Hiroki Shimora.
+ All rights reserved.
+*****************************************************************
+*****************************************************************
+ This program is based on agent2d created by Hidehisa Akiyama.
+ Copyright 2006 - 2011. Hidehisa Akiyama and Hiroki Shimora.
+ All rights reserved.
+*****************************************************************
+******************************************************************
+ librcsc 4.1.0
+ Copyright 2000 - 2007. Hidehisa Akiyama.
+ Copyright 2007 - 2011. Hidehisa Akiyama and Hiroki Shimora
+ All rights reserved.
+******************************************************************
+******************************************************************
+ librcsc 4.1.0
+ Copyright 2000 - 2007. Hidehisa Akiyama.
+ Copyright 2007 - 2011. Hidehisa Akiyama and Hiroki Shimora
+ All rights reserved.
+******************************************************************
+*****************************************************************
+ This program is based on agent2d created by Hidehisa Akiyama.
+ Copyright 2006 - 2011. Hidehisa Akiyama and Hiroki Shimora.
+ All rights reserved.
+*****************************************************************
+******************************************************************
+ librcsc 4.1.0
+ Copyright 2000 - 2007. Hidehisa Akiyama.
+ Copyright 2007 - 2011. Hidehisa Akiyama and Hiroki Shimora
+ All rights reserved.
+******************************************************************
+*****************************************************************
+ This program is based on agent2d created by Hidehisa Akiyama.
+ Copyright 2006 - 2011. Hidehisa Akiyama and Hiroki Shimora.
+ All rights reserved.
+*****************************************************************
+******************************************************************
+ librcsc 4.1.0
+ Copyright 2000 - 2007. Hidehisa Akiyama.
+ Copyright 2007 - 2011. Hidehisa Akiyama and Hiroki Shimora
+ All rights reserved.
+******************************************************************
+*****************************************************************
+ This program is based on agent2d created by Hidehisa Akiyama.
+ Copyright 2006 - 2011. Hidehisa Akiyama and Hiroki Shimora.
+ All rights reserved.
+*****************************************************************
+*****************************************************************
+ This program is based on agent2d created by Hidehisa Akiyama.
+ Copyright 2006 - 2011. Hidehisa Akiyama and Hiroki Shimora.
+ All rights reserved.
+*****************************************************************
+******************************************************************
+ librcsc 4.1.0
+ Copyright 2000 - 2007. Hidehisa Akiyama.
+ Copyright 2007 - 2011. Hidehisa Akiyama and Hiroki Shimora
+ All rights reserved.
+******************************************************************
+*****************************************************************
+ This program is based on agent2d created by Hidehisa Akiyama.
+ Copyright 2006 - 2011. Hidehisa Akiyama and Hiroki Shimora.
+ All rights reserved.
+*****************************************************************
+******************************************************************
+ librcsc 4.1.0
+ Copyright 2000 - 2007. Hidehisa Akiyama.
+ Copyright 2007 - 2011. Hidehisa Akiyama and Hiroki Shimora
+ All rights reserved.
+******************************************************************
+******************************************************************
+ librcsc 4.1.0
+ Copyright 2000 - 2007. Hidehisa Akiyama.
+ Copyright 2007 - 2011. Hidehisa Akiyama and Hiroki Shimora
+ All rights reserved.
+******************************************************************
+*****************************************************************
+ This program is based on agent2d created by Hidehisa Akiyama.
+ Copyright 2006 - 2011. Hidehisa Akiyama and Hiroki Shimora.
+ All rights reserved.
+*****************************************************************
+*****************************************************************
+ This program is based on agent2d created by Hidehisa Akiyama.
+ Copyright 2006 - 2011. Hidehisa Akiyama and Hiroki Shimora.
+ All rights reserved.
+*****************************************************************
+HELIOS_base coach: [-1, 0] recv (ok eye on)
+HELIOS_base coach: change player 1 to type 0
+HELIOS_base coach: change player 11 to type 3
+HELIOS_base coach: change player 2 to type 5
+HELIOS_base coach: change player 3 to type 16
+HELIOS_base coach: change player 10 to type 12
+HELIOS_base coach: change player 9 to type 2
+HELIOS_base coach: change player 6 to type 1
+HELIOS_base coach: change player 4 to type 11
+HELIOS_base coach: change player 5 to type 15
+HELIOS_base coach: change player 7 to type 6
+HELIOS_base coach: change player 8 to type 14
+[31, 0] HELIOS_base Coach: determined opponent 2 type = 5
+[48, 0] HELIOS_base Coach: determined opponent 4 type = 11
+[52, 0] HELIOS_base Coach: determined opponent 9 type = 2
+[53, 0] HELIOS_base Coach: determined opponent 3 type = 16
+[53, 0] HELIOS_base Coach: determined opponent 5 type = 15
+[53, 0] HELIOS_base Coach: determined opponent 6 type = 1
+[53, 0] HELIOS_base Coach: determined opponent 8 type = 14
+[60, 0] HELIOS_base Coach: determined opponent 11 type = 3
+HELIOS_base coach: [89, 0] sent freeform (player_types (1 -1)(2 5)(3 16)(4 11)(5 15)(6 1)(7 -1)(8 14)(9 2)(10 -1)(11 3))
+HELIOS_base 9: [89, 0] lost kick? at [89, 0] sense=11 internal=12
+HELIOS_base 8: [143, 0] lost kick? at [143, 0] sense=0 internal=1
+HELIOS_base 4: [169, 0] lost dash? at [169, 0] sense=83 internal=84
+HELIOS_base 4: [169, 0] lost turn_neck? at [169, 0] sense=283 internal=284
+[182, 0] HELIOS_base Coach: determined opponent 10 type = 12
+[183, 0] HELIOS_base Coach: determined opponent 7 type = 6
+HELIOS_base 5: waited 5 seconds. server down??
+HELIOS_base 5: finished.
+HELIOS_base 8: waited 5 seconds. server down??
+HELIOS_base 8: finished.
+HELIOS_base 2: waited 5 seconds. server down??
+HELIOS_base 2: finished.
+HELIOS_base 4: waited 5 seconds. server down??
+HELIOS_base 4: finished.
+HELIOS_base 6: waited 5 seconds. server down??
+HELIOS_base 6: finished.
+HELIOS_base 11: waited 5 seconds. server down??
+HELIOS_base 11: finished.
+HELIOS_base 1: waited 5 seconds. server down??
+HELIOS_base 1: finished.
+HELIOS_base 3: waited 5 seconds. server down??
+HELIOS_base 3: finished.
+HELIOS_base 7: waited 5 seconds. server down??
+HELIOS_base 7: finished.
+HELIOS_base 10: waited 5 seconds. server down??
+HELIOS_base 10: finished.
+HELIOS_base 9: waited 5 seconds. server down??
+HELIOS_base 9: finished.
+HELIOS_base coach: waited 5 seconds. server down??
+HELIOS_base coach: finished.

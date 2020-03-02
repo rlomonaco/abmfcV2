@@ -1,0 +1,60 @@
+rcssserver-15.6.0
+
+Copyright (C) 1995, 1996, 1997, 1998, 1999 Electrotechnical Laboratory.
+2000 - RoboCup Soccer Simulator Maintenance Group.
+
+Simulator Random Seed: 1583159309
+CSVSaver: Ready
+STDOutSaver: Ready
+Using simulator's random seed as Hetero Player Seed: 1583159309
+wind factor: rand: 0.000000, vector: (0.000000, 0.000000)
+
+Hit CTRL-C to exit
+A new (v14) player (USqrd 1) connected.
+A new (v14) player (HELIOS_base 1) connected.
+rcssmonitor-15.2.1
+
+Copyright (C) 2009 - 2014 RoboCup Soccer Simulator Maintenance Group.
+
+A new (v4) monitor connected.
+A new (v14) player (USqrd 2) connected.
+A new (v14) player (USqrd 3) connected.
+A new (v14) player (USqrd 4) connected.
+A new (v14) player (USqrd 5) connected.
+A new (v14) player (USqrd 6) connected.
+A new (v14) player (USqrd 7) connected.
+A new (v14) player (USqrd 8) connected.
+A new (v14) player (USqrd 9) connected.
+A new (v14) player (USqrd 10) connected.
+A new (v14) player (USqrd 11) connected.
+A new (v14) online coach (USqrd) connected.
+A new (v14) player (HELIOS_base 2) connected.
+A new (v14) player (HELIOS_base 3) connected.
+A new (v14) player (HELIOS_base 4) connected.
+A new (v14) player (HELIOS_base 5) connected.
+A new (v14) player (HELIOS_base 6) connected.
+A new (v14) player (HELIOS_base 7) connected.
+A new (v14) player (HELIOS_base 8) connected.
+A new (v14) player (HELIOS_base 9) connected.
+A new (v14) player (HELIOS_base 10) connected.
+A new (v14) player (HELIOS_base 11) connected.
+A new (v14) online coach (HELIOS_base) connected.
+Kick_off_left
+
+A monitor disconnected
+
+Server Killed. Exiting...
+
+Saving Results:
+	CSVSaver: saving...
+	CSVSaver: ...saved
+	STDOutSaver: saving...
+
+Game Results:
+	2020-03-02 14:28:29
+	'USqrd' vs 'HELIOS_base'
+	Score: 0 - 1
+ 
+	STDOutSaver: ...saved
+
+Saving Results Complete
