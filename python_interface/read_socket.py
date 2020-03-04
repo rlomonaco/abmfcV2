@@ -33,6 +33,7 @@ class mysocket:
         self.show = -1
         self.kickcount = np.zeros(22)
         self.last_kick = -1
+        self.actioned = False
         self.agents = []
         self.move_message = "-25 0,-25 -5,-25 5,-25 -10,-25 10,-15 0,-15 -5,-15 5,-15 -10,-15 10,15 -0"
         self.chain_message = "10,1,-50,0"
@@ -111,6 +112,7 @@ class mysocket:
         onball = np.argwhere(self.players[:,-1]-self.kickcount > 0)
 
         if len(onball) > 0:
+            self.actioned = False
             for i in range(11):
                 self.agents[i].onball = int(onball[0])
             self.onball = int(onball[0])
@@ -175,10 +177,11 @@ class mysocket:
 
             self.move_message = self.format_move_message(np.vstack(move_array))
 
-            if self.onball < 11 and self.show > 1:
+            if self.onball < 11 and self.show > 1 and self.actioned==False:
 
                 self.chain_message = self.format_chain_message(self.agents[self.onball].actions(self.ball))
-
+                self.actioned = True
+                self.last_kick = self.onball
         return self.move_message, self.chain_message
 
     def main(self):

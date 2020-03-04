@@ -433,6 +433,7 @@ Bhv_ChainAction::execute( PlayerAgent * agent)
             //     wm.ball().pos().x, wm.ball().pos().y,
             //     pass_target,
             //     pass_pos.x, pass_pos.y );
+            agent->setNeckAction( new Neck_ScanField() );
 
             dlog.addText( Logger::TEAM,
                           __FILE__" (Bhv_ChainAction) pass" );

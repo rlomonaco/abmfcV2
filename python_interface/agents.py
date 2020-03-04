@@ -60,7 +60,7 @@ class Agents:
     def actions(self, ball):
         self.ball = ball
         ball_dist = np.array([caldist(self.players[i, 2:4], self.ball) for i in range(22)])
-        region, max_points = dom_reg_grid(self.team_players[:,2:4], self.opp_players[:,2:4],self.team_players[:,4:6], self.opp_players[:,4:6], ball_dist)
+        region, team_region, opp_region, max_points = dom_reg_grid(self.team_players[:,2:4], self.opp_players[:,2:4],self.team_players[:,4:6], self.opp_players[:,4:6], ball_dist)
 
         # print(region)
 
@@ -76,25 +76,36 @@ class Agents:
             print('goal')
 
     # ================================= save region matrix for analysis =================================
-    #     save_num = 0
-    #
-    #     try:
-    #         regions = np.load(f'regions_{save_num}.npy')
-    #         player_pos = np.load(f'player_pos_{save_num}.npy')
-    #         regions = np.append(regions, region.reshape(71,101,1), axis=2)
-    #         player_pos = np.append(player_pos, self.players.reshape(self.players.shape+(1,)), axis=2)
-    #         np.save(f'regions_{save_num}.npy', regions)
-    #         np.save(f'player_pos_{save_num}.npy', player_pos)
-    #     except:
-    #         np.save(f'regions_{save_num}.npy', region.reshape(71,101,1))
-    #         np.save(f'player_pos_{save_num}.npy', self.players.reshape(22,7,1))
+        save_num = 2
+
+        try:
+            regions = np.load(f'regions_{save_num}.npy')
+            team_regions = np.load(f'team_regions_{save_num}.npy')
+            opp_regions = np.load(f'opp_regions_{save_num}.npy')
+
+            player_pos = np.load(f'player_pos_{save_num}.npy')
+            regions = np.append(regions, region.reshape(71,101,1), axis=2)
+            team_regions = np.append(team_regions, team_region.reshape(71,101,1), axis=2)
+            opp_regions = np.append(opp_regions, opp_region.reshape(71,101,1), axis=2)
+
+            player_pos = np.append(player_pos, self.players.reshape(self.players.shape+(1,)), axis=2)
+            np.save(f'regions_{save_num}.npy', regions)
+            np.save(f'team_regions_{save_num}.npy', team_regions)
+            np.save(f'opp_regions_{save_num}.npy', opp_regions)
+            np.save(f'player_pos_{save_num}.npy', player_pos)
+
+        except:
+            np.save(f'regions_{save_num}.npy', region.reshape(71,101,1))
+            np.save(f'team_regions_{save_num}.npy', team_region.reshape(71,101,1))
+            np.save(f'opp_regions_{save_num}.npy', opp_region.reshape(71,101,1))
+            np.save(f'player_pos_{save_num}.npy', self.players.reshape(22,7,1))
     # ===================================================================================================
         # x = np.where(region==region.max())[0][0]-50
         # y = np.where(region==region.max())[1][0]-35
         # target = np.argmin([caldist(self.team_players[j, 2:4], [x,y]) for j in range(11)])
     # ===================================================================================================
         opp_distance = [caldist(self.opp_players[j, 2:4], self.players[self.num, 2:4]) for j in range(11)]
-        target = np.argmax(pass_scores) + 1
+        target = np.argmax(pass_scores) + 1 # pass score doesn't include keeper, prevent back pass
         x = max_points[target][0]-50
         y = max_points[target][1]-35
 

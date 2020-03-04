@@ -28,34 +28,12 @@ rtt min/avg/max/mdev = 0.043/0.043/0.043/0.000 ms
  Copyright 2007 - 2011. Hidehisa Akiyama and Hiroki Shimora
  All rights reserved.
 ******************************************************************
-*****************************************************************
- This program is based on agent2d created by Hidehisa Akiyama.
- Copyright 2006 - 2011. Hidehisa Akiyama and Hiroki Shimora.
- All rights reserved.
-*****************************************************************
 ******************************************************************
  librcsc 4.1.0
  Copyright 2000 - 2007. Hidehisa Akiyama.
  Copyright 2007 - 2011. Hidehisa Akiyama and Hiroki Shimora
  All rights reserved.
 ******************************************************************
-******************************************************************
- librcsc 4.1.0
- Copyright 2000 - 2007. Hidehisa Akiyama.
- Copyright 2007 - 2011. Hidehisa Akiyama and Hiroki Shimora
- All rights reserved.
-******************************************************************
-******************************************************************
- librcsc 4.1.0
- Copyright 2000 - 2007. Hidehisa Akiyama.
- Copyright 2007 - 2011. Hidehisa Akiyama and Hiroki Shimora
- All rights reserved.
-******************************************************************
-*****************************************************************
- This program is based on agent2d created by Hidehisa Akiyama.
- Copyright 2006 - 2011. Hidehisa Akiyama and Hiroki Shimora.
- All rights reserved.
-*****************************************************************
 *****************************************************************
  This program is based on agent2d created by Hidehisa Akiyama.
  Copyright 2006 - 2011. Hidehisa Akiyama and Hiroki Shimora.
@@ -83,17 +61,17 @@ rtt min/avg/max/mdev = 0.043/0.043/0.043/0.000 ms
  Copyright 2006 - 2011. Hidehisa Akiyama and Hiroki Shimora.
  All rights reserved.
 *****************************************************************
+*****************************************************************
+ This program is based on agent2d created by Hidehisa Akiyama.
+ Copyright 2006 - 2011. Hidehisa Akiyama and Hiroki Shimora.
+ All rights reserved.
+*****************************************************************
 ******************************************************************
  librcsc 4.1.0
  Copyright 2000 - 2007. Hidehisa Akiyama.
  Copyright 2007 - 2011. Hidehisa Akiyama and Hiroki Shimora
  All rights reserved.
 ******************************************************************
-*****************************************************************
- This program is based on agent2d created by Hidehisa Akiyama.
- Copyright 2006 - 2011. Hidehisa Akiyama and Hiroki Shimora.
- All rights reserved.
-*****************************************************************
 ******************************************************************
  librcsc 4.1.0
  Copyright 2000 - 2007. Hidehisa Akiyama.
@@ -127,6 +105,18 @@ rtt min/avg/max/mdev = 0.043/0.043/0.043/0.000 ms
  Copyright 2007 - 2011. Hidehisa Akiyama and Hiroki Shimora
  All rights reserved.
 ******************************************************************
+HELIOS_base 4: [0, 2] missed last action?(1) last decision=[-1, 0]
+*****************************************************************
+ This program is based on agent2d created by Hidehisa Akiyama.
+ Copyright 2006 - 2011. Hidehisa Akiyama and Hiroki Shimora.
+ All rights reserved.
+*****************************************************************
+******************************************************************
+ librcsc 4.1.0
+ Copyright 2000 - 2007. Hidehisa Akiyama.
+ Copyright 2007 - 2011. Hidehisa Akiyama and Hiroki Shimora
+ All rights reserved.
+******************************************************************
 ******************************************************************
  librcsc 4.1.0
  Copyright 2000 - 2007. Hidehisa Akiyama.
@@ -138,6 +128,17 @@ rtt min/avg/max/mdev = 0.043/0.043/0.043/0.000 ms
  Copyright 2006 - 2011. Hidehisa Akiyama and Hiroki Shimora.
  All rights reserved.
 *****************************************************************
+*****************************************************************
+ This program is based on agent2d created by Hidehisa Akiyama.
+ Copyright 2006 - 2011. Hidehisa Akiyama and Hiroki Shimora.
+ All rights reserved.
+*****************************************************************
+******************************************************************
+ librcsc 4.1.0
+ Copyright 2000 - 2007. Hidehisa Akiyama.
+ Copyright 2007 - 2011. Hidehisa Akiyama and Hiroki Shimora
+ All rights reserved.
+******************************************************************
 *****************************************************************
  This program is based on agent2d created by Hidehisa Akiyama.
  Copyright 2006 - 2011. Hidehisa Akiyama and Hiroki Shimora.
@@ -145,52 +146,77 @@ rtt min/avg/max/mdev = 0.043/0.043/0.043/0.000 ms
 *****************************************************************
 HELIOS_base coach: [-1, 0] recv (ok eye on)
 HELIOS_base coach: change player 1 to type 0
-HELIOS_base coach: change player 11 to type 3
-HELIOS_base coach: change player 2 to type 5
-HELIOS_base coach: change player 3 to type 16
-HELIOS_base coach: change player 10 to type 12
-HELIOS_base coach: change player 9 to type 2
-HELIOS_base coach: change player 6 to type 1
-HELIOS_base coach: change player 4 to type 11
-HELIOS_base coach: change player 5 to type 15
-HELIOS_base coach: change player 7 to type 6
-HELIOS_base coach: change player 8 to type 14
-[31, 0] HELIOS_base Coach: determined opponent 2 type = 5
-[48, 0] HELIOS_base Coach: determined opponent 4 type = 11
-[52, 0] HELIOS_base Coach: determined opponent 9 type = 2
-[53, 0] HELIOS_base Coach: determined opponent 3 type = 16
-[53, 0] HELIOS_base Coach: determined opponent 5 type = 15
-[53, 0] HELIOS_base Coach: determined opponent 6 type = 1
-[53, 0] HELIOS_base Coach: determined opponent 8 type = 14
-[60, 0] HELIOS_base Coach: determined opponent 11 type = 3
-HELIOS_base coach: [89, 0] sent freeform (player_types (1 -1)(2 5)(3 16)(4 11)(5 15)(6 1)(7 -1)(8 14)(9 2)(10 -1)(11 3))
-HELIOS_base 9: [89, 0] lost kick? at [89, 0] sense=11 internal=12
-HELIOS_base 8: [143, 0] lost kick? at [143, 0] sense=0 internal=1
-HELIOS_base 4: [169, 0] lost dash? at [169, 0] sense=83 internal=84
-HELIOS_base 4: [169, 0] lost turn_neck? at [169, 0] sense=283 internal=284
-[182, 0] HELIOS_base Coach: determined opponent 10 type = 12
-[183, 0] HELIOS_base Coach: determined opponent 7 type = 6
-HELIOS_base 5: waited 5 seconds. server down??
-HELIOS_base 5: finished.
-HELIOS_base 8: waited 5 seconds. server down??
-HELIOS_base 8: finished.
-HELIOS_base 2: waited 5 seconds. server down??
-HELIOS_base 2: finished.
-HELIOS_base 4: waited 5 seconds. server down??
-HELIOS_base 4: finished.
-HELIOS_base 6: waited 5 seconds. server down??
-HELIOS_base 6: finished.
-HELIOS_base 11: waited 5 seconds. server down??
-HELIOS_base 11: finished.
-HELIOS_base 1: waited 5 seconds. server down??
-HELIOS_base 1: finished.
-HELIOS_base 3: waited 5 seconds. server down??
-HELIOS_base 3: finished.
-HELIOS_base 7: waited 5 seconds. server down??
-HELIOS_base 7: finished.
+HELIOS_base coach: change player 11 to type 6
+HELIOS_base coach: change player 2 to type 7
+HELIOS_base coach: change player 3 to type 10
+HELIOS_base coach: change player 10 to type 14
+HELIOS_base coach: change player 9 to type 5
+HELIOS_base coach: change player 6 to type 2
+HELIOS_base coach: change player 4 to type 17
+HELIOS_base coach: change player 5 to type 13
+HELIOS_base coach: change player 7 to type 16
+HELIOS_base coach: change player 8 to type 4
+HELIOS_base 10: [0, 625] lost turn? at [0, 625] sense=623 internal=624
+HELIOS_base 10: [0, 625] lost turn_neck? at [0, 625] sense=624 internal=625
+HELIOS_base 1: [0, 638] lost turn? at [0, 638] sense=636 internal=637
+HELIOS_base 1: [0, 638] lost turn_neck? at [0, 638] sense=637 internal=638
+HELIOS_base 3: [0, 627] lost turn? at [0, 627] sense=625 internal=626
+HELIOS_base 3: [0, 627] lost turn_neck? at [0, 627] sense=626 internal=627
+HELIOS_base 5: [0, 627] lost turn? at [0, 627] sense=625 internal=626
+HELIOS_base 5: [0, 627] lost turn_neck? at [0, 627] sense=626 internal=627
+HELIOS_base 11: [0, 625] lost turn? at [0, 625] sense=623 internal=624
+HELIOS_base 11: [0, 625] lost turn_neck? at [0, 625] sense=624 internal=625
+HELIOS_base 2: [0, 627] lost turn? at [0, 627] sense=625 internal=626
+HELIOS_base 2: [0, 627] lost turn_neck? at [0, 627] sense=626 internal=627
+HELIOS_base 8: [0, 626] lost turn? at [0, 626] sense=624 internal=625
+HELIOS_base 8: [0, 626] lost turn_neck? at [0, 626] sense=625 internal=626
+HELIOS_base 4: [0, 628] lost turn? at [0, 628] sense=625 internal=626
+HELIOS_base 4: [0, 628] lost turn_neck? at [0, 628] sense=626 internal=627
+HELIOS_base 9: [0, 626] lost turn? at [0, 626] sense=624 internal=625
+HELIOS_base 9: [0, 626] lost turn_neck? at [0, 626] sense=625 internal=626
+HELIOS_base 6: [0, 627] lost turn? at [0, 627] sense=625 internal=626
+HELIOS_base 6: [0, 627] lost turn_neck? at [0, 627] sense=626 internal=627
+HELIOS_base 7: [0, 627] lost turn? at [0, 627] sense=625 internal=626
+HELIOS_base 7: [0, 627] lost turn_neck? at [0, 627] sense=626 internal=627
+HELIOS_base 4: [0, 649] lost turn? at [0, 649] sense=645 internal=646
+HELIOS_base 4: [0, 649] lost turn_neck? at [0, 649] sense=646 internal=647
+HELIOS_base 3: [0, 649] lost turn? at [0, 649] sense=646 internal=647
+HELIOS_base 3: [0, 649] lost turn_neck? at [0, 649] sense=647 internal=648
+HELIOS_base 6: [0, 648] lost turn? at [0, 648] sense=645 internal=646
+HELIOS_base 6: [0, 648] lost turn_neck? at [0, 648] sense=646 internal=647
+HELIOS_base 4: [0, 1631] lost turn? at [0, 1631] sense=1626 internal=1627
+HELIOS_base 4: [0, 1631] lost turn_neck? at [0, 1631] sense=1627 internal=1628
+HELIOS_base 7: [0, 1630] lost turn? at [0, 1630] sense=1627 internal=1628
+HELIOS_base 7: [0, 1630] lost turn_neck? at [0, 1630] sense=1628 internal=1629
+HELIOS_base 5: [0, 1631] lost turn? at [0, 1631] sense=1628 internal=1629
+HELIOS_base 5: [0, 1631] lost turn_neck? at [0, 1631] sense=1629 internal=1630
+HELIOS_base 6: [0, 1630] lost turn? at [0, 1630] sense=1626 internal=1627
+HELIOS_base 6: [0, 1630] lost turn_neck? at [0, 1630] sense=1627 internal=1628
+HELIOS_base 11: [0, 1629] lost turn? at [0, 1629] sense=1626 internal=1627
+HELIOS_base 11: [0, 1629] lost turn_neck? at [0, 1629] sense=1627 internal=1628
+HELIOS_base 6: [0, 3508] lost turn? at [0, 3508] sense=3503 internal=3504
+HELIOS_base 6: [0, 3508] lost turn_neck? at [0, 3508] sense=3504 internal=3505
 HELIOS_base 10: waited 5 seconds. server down??
 HELIOS_base 10: finished.
-HELIOS_base 9: waited 5 seconds. server down??
-HELIOS_base 9: finished.
+HELIOS_base 2: waited 5 seconds. server down??
+HELIOS_base 2: finished.
+HELIOS_base 3: waited 5 seconds. server down??
+HELIOS_base 3: finished.
+HELIOS_base 5: waited 5 seconds. server down??
+HELIOS_base 5: finished.
 HELIOS_base coach: waited 5 seconds. server down??
 HELIOS_base coach: finished.
+HELIOS_base 7: waited 5 seconds. server down??
+HELIOS_base 7: finished.
+HELIOS_base 11: waited 5 seconds. server down??
+HELIOS_base 8: waited 5 seconds. server down??
+HELIOS_base 11: finished.
+HELIOS_base 8: finished.
+HELIOS_base 6: waited 5 seconds. server down??
+HELIOS_base 6: finished.
+HELIOS_base 4: waited 5 seconds. server down??
+HELIOS_base 4: finished.
+HELIOS_base 1: waited 5 seconds. server down??
+HELIOS_base 1: finished.
+HELIOS_base 9: waited 5 seconds. server down??
+HELIOS_base 9: finished.

@@ -6,97 +6,17 @@
  All rights reserved.
 ******************************************************************
 PING localhost (127.0.0.1) 56(84) bytes of data.
-64 bytes from localhost (127.0.0.1): icmp_seq=1 ttl=64 time=0.047 ms
+64 bytes from localhost (127.0.0.1): icmp_seq=1 ttl=64 time=0.043 ms
 
 --- localhost ping statistics ---
 1 packets transmitted, 1 received, 0% packet loss, time 0ms
-rtt min/avg/max/mdev = 0.047/0.047/0.047/0.000 ms
+rtt min/avg/max/mdev = 0.043/0.043/0.043/0.000 ms
 ******************************************************************
  librcsc 4.1.0
  Copyright 2000 - 2007. Hidehisa Akiyama.
  Copyright 2007 - 2011. Hidehisa Akiyama and Hiroki Shimora
  All rights reserved.
 ******************************************************************
-*****************************************************************
- This program is based on agent2d created by Hidehisa Akiyama.
- Copyright 2006 - 2011. Hidehisa Akiyama and Hiroki Shimora.
- All rights reserved.
-*****************************************************************
-******************************************************************
- librcsc 4.1.0
- Copyright 2000 - 2007. Hidehisa Akiyama.
- Copyright 2007 - 2011. Hidehisa Akiyama and Hiroki Shimora
- All rights reserved.
-******************************************************************
-*****************************************************************
- This program is based on agent2d created by Hidehisa Akiyama.
- Copyright 2006 - 2011. Hidehisa Akiyama and Hiroki Shimora.
- All rights reserved.
-*****************************************************************
-******************************************************************
- librcsc 4.1.0
- Copyright 2000 - 2007. Hidehisa Akiyama.
- Copyright 2007 - 2011. Hidehisa Akiyama and Hiroki Shimora
- All rights reserved.
-******************************************************************
-******************************************************************
- librcsc 4.1.0
- Copyright 2000 - 2007. Hidehisa Akiyama.
- Copyright 2007 - 2011. Hidehisa Akiyama and Hiroki Shimora
- All rights reserved.
-******************************************************************
-*****************************************************************
- This program is based on agent2d created by Hidehisa Akiyama.
- Copyright 2006 - 2011. Hidehisa Akiyama and Hiroki Shimora.
- All rights reserved.
-*****************************************************************
-******************************************************************
- librcsc 4.1.0
- Copyright 2000 - 2007. Hidehisa Akiyama.
- Copyright 2007 - 2011. Hidehisa Akiyama and Hiroki Shimora
- All rights reserved.
-******************************************************************
-*****************************************************************
- This program is based on agent2d created by Hidehisa Akiyama.
- Copyright 2006 - 2011. Hidehisa Akiyama and Hiroki Shimora.
- All rights reserved.
-*****************************************************************
-******************************************************************
- librcsc 4.1.0
- Copyright 2000 - 2007. Hidehisa Akiyama.
- Copyright 2007 - 2011. Hidehisa Akiyama and Hiroki Shimora
- All rights reserved.
-******************************************************************
-*****************************************************************
- This program is based on agent2d created by Hidehisa Akiyama.
- Copyright 2006 - 2011. Hidehisa Akiyama and Hiroki Shimora.
- All rights reserved.
-*****************************************************************
-USqrd 2: [0, 1] lost turn? at [0, 1] sense=0 internal=1
-USqrd 2: [0, 1] lost turn_neck? at [0, 1] sense=0 internal=1
-USqrd 2: [0, 1] lost change_view? at [0, 1] sense=0 internal=1
-******************************************************************
- librcsc 4.1.0
- Copyright 2000 - 2007. Hidehisa Akiyama.
- Copyright 2007 - 2011. Hidehisa Akiyama and Hiroki Shimora
- All rights reserved.
-******************************************************************
-******************************************************************
- librcsc 4.1.0
- Copyright 2000 - 2007. Hidehisa Akiyama.
- Copyright 2007 - 2011. Hidehisa Akiyama and Hiroki Shimora
- All rights reserved.
-******************************************************************
-*****************************************************************
- This program is based on agent2d created by Hidehisa Akiyama.
- Copyright 2006 - 2011. Hidehisa Akiyama and Hiroki Shimora.
- All rights reserved.
-*****************************************************************
-*****************************************************************
- This program is based on agent2d created by Hidehisa Akiyama.
- Copyright 2006 - 2011. Hidehisa Akiyama and Hiroki Shimora.
- All rights reserved.
-*****************************************************************
 *****************************************************************
  This program is based on agent2d created by Hidehisa Akiyama.
  Copyright 2006 - 2011. Hidehisa Akiyama and Hiroki Shimora.
@@ -130,6 +50,28 @@ USqrd 2: [0, 1] lost change_view? at [0, 1] sense=0 internal=1
  Copyright 2007 - 2011. Hidehisa Akiyama and Hiroki Shimora
  All rights reserved.
 ******************************************************************
+******************************************************************
+ librcsc 4.1.0
+ Copyright 2000 - 2007. Hidehisa Akiyama.
+ Copyright 2007 - 2011. Hidehisa Akiyama and Hiroki Shimora
+ All rights reserved.
+******************************************************************
+******************************************************************
+ librcsc 4.1.0
+ Copyright 2000 - 2007. Hidehisa Akiyama.
+ Copyright 2007 - 2011. Hidehisa Akiyama and Hiroki Shimora
+ All rights reserved.
+******************************************************************
+*****************************************************************
+ This program is based on agent2d created by Hidehisa Akiyama.
+ Copyright 2006 - 2011. Hidehisa Akiyama and Hiroki Shimora.
+ All rights reserved.
+*****************************************************************
+*****************************************************************
+ This program is based on agent2d created by Hidehisa Akiyama.
+ Copyright 2006 - 2011. Hidehisa Akiyama and Hiroki Shimora.
+ All rights reserved.
+*****************************************************************
 *****************************************************************
  This program is based on agent2d created by Hidehisa Akiyama.
  Copyright 2006 - 2011. Hidehisa Akiyama and Hiroki Shimora.
@@ -146,95 +88,147 @@ USqrd 2: [0, 1] lost change_view? at [0, 1] sense=0 internal=1
  Copyright 2006 - 2011. Hidehisa Akiyama and Hiroki Shimora.
  All rights reserved.
 *****************************************************************
-USqrd 2: [0, 2] lost change_view? at [0, 2] sense=1 internal=0
-USqrd 4: [0, 1] lost turn? at [0, 1] sense=0 internal=1
-USqrd 4: [0, 1] lost turn_neck? at [0, 1] sense=0 internal=1
-USqrd 4: [0, 1] lost change_view? at [0, 1] sense=0 internal=1
-USqrd 4: [0, 2] lost change_view? at [0, 2] sense=1 internal=0
-USqrd coach: [0, 0] recv (ok eye on)
+******************************************************************
+ librcsc 4.1.0
+ Copyright 2000 - 2007. Hidehisa Akiyama.
+ Copyright 2007 - 2011. Hidehisa Akiyama and Hiroki Shimora
+ All rights reserved.
+******************************************************************
+******************************************************************
+ librcsc 4.1.0
+ Copyright 2000 - 2007. Hidehisa Akiyama.
+ Copyright 2007 - 2011. Hidehisa Akiyama and Hiroki Shimora
+ All rights reserved.
+******************************************************************
+*****************************************************************
+ This program is based on agent2d created by Hidehisa Akiyama.
+ Copyright 2006 - 2011. Hidehisa Akiyama and Hiroki Shimora.
+ All rights reserved.
+*****************************************************************
+******************************************************************
+ librcsc 4.1.0
+ Copyright 2000 - 2007. Hidehisa Akiyama.
+ Copyright 2007 - 2011. Hidehisa Akiyama and Hiroki Shimora
+ All rights reserved.
+******************************************************************
+*****************************************************************
+ This program is based on agent2d created by Hidehisa Akiyama.
+ Copyright 2006 - 2011. Hidehisa Akiyama and Hiroki Shimora.
+ All rights reserved.
+*****************************************************************
+*****************************************************************
+ This program is based on agent2d created by Hidehisa Akiyama.
+ Copyright 2006 - 2011. Hidehisa Akiyama and Hiroki Shimora.
+ All rights reserved.
+*****************************************************************
+******************************************************************
+ librcsc 4.1.0
+ Copyright 2000 - 2007. Hidehisa Akiyama.
+ Copyright 2007 - 2011. Hidehisa Akiyama and Hiroki Shimora
+ All rights reserved.
+******************************************************************
+******************************************************************
+ librcsc 4.1.0
+ Copyright 2000 - 2007. Hidehisa Akiyama.
+ Copyright 2007 - 2011. Hidehisa Akiyama and Hiroki Shimora
+ All rights reserved.
+******************************************************************
+*****************************************************************
+ This program is based on agent2d created by Hidehisa Akiyama.
+ Copyright 2006 - 2011. Hidehisa Akiyama and Hiroki Shimora.
+ All rights reserved.
+*****************************************************************
+USqrd 6: [0, 1] lost turn? at [0, 1] sense=0 internal=1
+USqrd 6: [0, 1] lost turn_neck? at [0, 1] sense=0 internal=1
+USqrd coach: [-1, 0] recv (ok eye on)
+USqrd 7: [0, 2] missed last action?(1) last decision=[-1, 0]
+*****************************************************************
+ This program is based on agent2d created by Hidehisa Akiyama.
+ Copyright 2006 - 2011. Hidehisa Akiyama and Hiroki Shimora.
+ All rights reserved.
+*****************************************************************
 USqrd coach: change player 1 to type 0
-USqrd coach: change player 11 to type 3
-USqrd coach: change player 2 to type 5
-USqrd coach: change player 3 to type 16
-USqrd coach: change player 10 to type 12
-USqrd coach: change player 9 to type 2
-USqrd coach: change player 6 to type 1
-USqrd coach: change player 4 to type 11
-USqrd coach: change player 5 to type 15
-USqrd coach: change player 7 to type 6
-USqrd coach: change player 8 to type 14
-[31, 0] USqrd Coach: determined opponent 2 type = 5
-[31, 0] USqrd Coach: determined opponent 4 type = 11
-[39, 0] USqrd Coach: determined opponent 5 type = 15
-[53, 0] USqrd Coach: determined opponent 9 type = 2
-[54, 0] USqrd Coach: determined opponent 6 type = 1
-USqrd 2: [70, 0] lost turn? at [70, 0] sense=71 internal=72
-USqrd 2: [70, 0] lost turn_neck? at [70, 0] sense=108 internal=109
-USqrd 9: [70, 0] lost turn? at [70, 0] sense=76 internal=77
-USqrd 9: [70, 0] lost turn_neck? at [70, 0] sense=107 internal=108
-USqrd 8: [70, 0] lost dash? at [70, 0] sense=45 internal=46
-USqrd 8: [70, 0] lost turn_neck? at [70, 0] sense=107 internal=108
-USqrd 8: [70, 0] lost say? at [70, 0] sense=15 internal=16
-USqrd 10: [70, 0] lost turn? at [70, 0] sense=62 internal=63
-USqrd 10: [70, 0] lost turn_neck? at [70, 0] sense=106 internal=107
-USqrd 8: [71, 0] lost turn? at [71, 0] sense=59 internal=60
-USqrd 8: [71, 0] lost dash? at [71, 0] sense=46 internal=45
-USqrd 8: [71, 0] lost say? at [71, 0] sense=17 internal=16
-USqrd 2: [71, 0] lost turn? at [71, 0] sense=72 internal=71
-USqrd 2: [71, 0] lost dash? at [71, 0] sense=36 internal=37
-USqrd 10: [71, 0] lost turn? at [71, 0] sense=63 internal=62
-USqrd 10: [71, 0] lost dash? at [71, 0] sense=43 internal=44
-USqrd coach: [89, 0] sent freeform (player_types (1 -1)(2 5)(3 -1)(4 11)(5 15)(6 1)(7 -1)(8 -1)(9 2)(10 -1)(11 -1))
-[111, 0] USqrd Coach: determined opponent 11 type = 3
-USqrd 8: [119, 0] lost dash? at [119, 0] sense=102 internal=103
-USqrd 8: [119, 0] lost turn_neck? at [119, 0] sense=185 internal=186
-USqrd 8: [119, 0] lost attentionto? at [119, 0] sense=50 internal=51
-USqrd 4: [119, 0] lost dash? at [119, 0] sense=73 internal=74
-USqrd 4: [119, 0] lost turn_neck? at [119, 0] sense=186 internal=187
-USqrd 4: [119, 0] lost attentionto? at [119, 0] sense=42 internal=43
-USqrd 6: [119, 0] lost dash? at [119, 0] sense=94 internal=95
-USqrd 6: [119, 0] lost turn_neck? at [119, 0] sense=186 internal=187
-USqrd 6: [119, 0] lost attentionto? at [119, 0] sense=49 internal=50
-USqrd 9: [119, 0] lost dash? at [119, 0] sense=55 internal=56
-USqrd 9: [119, 0] lost turn_neck? at [119, 0] sense=185 internal=186
-USqrd 9: [119, 0] lost attentionto? at [119, 0] sense=77 internal=78
-USqrd 2: [119, 0] lost dash? at [119, 0] sense=66 internal=67
-USqrd 2: [119, 0] lost turn_neck? at [119, 0] sense=186 internal=187
-USqrd 2: [119, 0] lost attentionto? at [119, 0] sense=55 internal=56
-USqrd 6: [120, 0] lost attentionto? at [120, 0] sense=51 internal=50
-USqrd 9: [120, 0] lost attentionto? at [120, 0] sense=79 internal=78
-USqrd 8: [120, 0] lost attentionto? at [120, 0] sense=52 internal=51
-USqrd 2: [120, 0] lost attentionto? at [120, 0] sense=57 internal=56
-USqrd 4: [120, 0] lost attentionto? at [120, 0] sense=44 internal=43
-[142, 0] USqrd Coach: determined opponent 3 type = 16
-USqrd coach: [151, 1] sent freeform (player_types (1 -1)(2 5)(3 16)(4 11)(5 15)(6 1)(7 -1)(8 -1)(9 2)(10 -1)(11 3))
-USqrd 10: [169, 0] lost dash? at [169, 0] sense=95 internal=96
-USqrd 10: [169, 0] lost turn_neck? at [169, 0] sense=284 internal=285
-USqrd 1: [169, 0] lost turn? at [169, 0] sense=272 internal=273
-USqrd 1: [169, 0] lost turn_neck? at [169, 0] sense=298 internal=299
-USqrd 1: [169, 0] lost attentionto? at [169, 0] sense=91 internal=92
-USqrd 1: [170, 0] lost attentionto? at [170, 0] sense=93 internal=92
-USqrd 2: waited 5 seconds. server down??
-USqrd 2: finished.
-USqrd 1: waited 5 seconds. server down??
-USqrd 1: finished.
-USqrd 11: waited 5 seconds. server down??
-USqrd 11: finished.
+USqrd coach: change player 11 to type 6
+USqrd coach: change player 2 to type 7
+USqrd coach: change player 3 to type 10
+USqrd coach: change player 10 to type 14
+USqrd coach: change player 9 to type 5
+USqrd coach: change player 6 to type 2
+USqrd coach: change player 4 to type 17
+USqrd coach: change player 5 to type 13
+USqrd coach: change player 7 to type 16
+USqrd coach: change player 8 to type 4
+USqrd 4: [0, 631] lost turn? at [0, 631] sense=629 internal=630
+USqrd 4: [0, 631] lost turn_neck? at [0, 631] sense=630 internal=631
+USqrd 7: [0, 631] lost turn? at [0, 631] sense=628 internal=629
+USqrd 7: [0, 631] lost turn_neck? at [0, 631] sense=629 internal=630
+USqrd 6: [0, 631] lost turn? at [0, 631] sense=628 internal=629
+USqrd 6: [0, 631] lost turn_neck? at [0, 631] sense=629 internal=630
+USqrd 10: [0, 630] lost turn? at [0, 630] sense=628 internal=629
+USqrd 10: [0, 630] lost turn_neck? at [0, 630] sense=629 internal=630
+USqrd 1: [0, 643] lost turn? at [0, 643] sense=641 internal=642
+USqrd 1: [0, 643] lost turn_neck? at [0, 643] sense=642 internal=643
+USqrd 9: [0, 630] lost turn? at [0, 630] sense=628 internal=629
+USqrd 9: [0, 630] lost turn_neck? at [0, 630] sense=629 internal=630
+USqrd 8: [0, 630] lost turn? at [0, 630] sense=628 internal=629
+USqrd 8: [0, 630] lost turn_neck? at [0, 630] sense=629 internal=630
+USqrd 3: [0, 633] lost turn? at [0, 633] sense=631 internal=632
+USqrd 3: [0, 633] lost turn_neck? at [0, 633] sense=632 internal=633
+USqrd 11: [0, 630] lost turn? at [0, 630] sense=628 internal=629
+USqrd 11: [0, 630] lost turn_neck? at [0, 630] sense=629 internal=630
+USqrd 2: [0, 633] lost turn? at [0, 633] sense=631 internal=632
+USqrd 2: [0, 633] lost turn_neck? at [0, 633] sense=632 internal=633
+USqrd 5: [0, 632] lost turn? at [0, 632] sense=630 internal=631
+USqrd 5: [0, 632] lost turn_neck? at [0, 632] sense=631 internal=632
+USqrd 1: [0, 665] lost turn? at [0, 665] sense=662 internal=663
+USqrd 1: [0, 665] lost turn_neck? at [0, 665] sense=663 internal=664
+USqrd 8: [0, 652] lost turn? at [0, 652] sense=649 internal=650
+USqrd 8: [0, 652] lost turn_neck? at [0, 652] sense=650 internal=651
+USqrd 5: [0, 653] lost turn? at [0, 653] sense=650 internal=651
+USqrd 5: [0, 653] lost turn_neck? at [0, 653] sense=651 internal=652
+USqrd 2: [0, 654] lost turn? at [0, 654] sense=651 internal=652
+USqrd 2: [0, 654] lost turn_neck? at [0, 654] sense=652 internal=653
+USqrd 7: [0, 653] lost turn? at [0, 653] sense=649 internal=650
+USqrd 7: [0, 653] lost turn_neck? at [0, 653] sense=650 internal=651
+USqrd 3: [0, 654] lost turn? at [0, 654] sense=651 internal=652
+USqrd 3: [0, 654] lost turn_neck? at [0, 654] sense=652 internal=653
+USqrd 9: [0, 652] lost turn? at [0, 652] sense=649 internal=650
+USqrd 9: [0, 652] lost turn_neck? at [0, 652] sense=650 internal=651
+USqrd 11: [0, 651] lost turn? at [0, 651] sense=648 internal=649
+USqrd 11: [0, 651] lost turn_neck? at [0, 651] sense=649 internal=650
+USqrd 10: [0, 1634] lost turn? at [0, 1634] sense=1631 internal=1632
+USqrd 10: [0, 1634] lost turn_neck? at [0, 1634] sense=1632 internal=1633
+USqrd 4: [0, 1635] lost turn? at [0, 1635] sense=1632 internal=1633
+USqrd 4: [0, 1635] lost turn_neck? at [0, 1635] sense=1633 internal=1634
+USqrd 2: [0, 1636] lost turn? at [0, 1636] sense=1632 internal=1633
+USqrd 2: [0, 1636] lost turn_neck? at [0, 1636] sense=1633 internal=1634
+USqrd 3: [0, 1636] lost turn? at [0, 1636] sense=1632 internal=1633
+USqrd 3: [0, 1636] lost turn_neck? at [0, 1636] sense=1633 internal=1634
+USqrd 11: [0, 1633] lost turn? at [0, 1633] sense=1629 internal=1630
+USqrd 11: [0, 1633] lost turn_neck? at [0, 1633] sense=1630 internal=1631
+USqrd 5: [0, 1635] lost turn? at [0, 1635] sense=1631 internal=1632
+USqrd 5: [0, 1635] lost turn_neck? at [0, 1635] sense=1632 internal=1633
 USqrd 10: waited 5 seconds. server down??
 USqrd 10: finished.
-USqrd 6: waited 5 seconds. server down??
-USqrd 6: finished.
-USqrd 9: waited 5 seconds. server down??
-USqrd 9: finished.
-USqrd 8: waited 5 seconds. server down??
-USqrd 8: finished.
-USqrd 5: waited 5 seconds. server down??
-USqrd 5: finished.
-USqrd 7: waited 5 seconds. server down??
-USqrd 7: finished.
-USqrd coach: waited 5 seconds. server down??
-USqrd coach: finished.
 USqrd 4: waited 5 seconds. server down??
 USqrd 4: finished.
+USqrd 2: waited 5 seconds. server down??
+USqrd 2: finished.
+USqrd 5: waited 5 seconds. server down??
+USqrd 5: finished.
+USqrd 8: waited 5 seconds. server down??
+USqrd coach: waited 5 seconds. server down??
+USqrd 8: finished.
+USqrd coach: finished.
+USqrd 7: waited 5 seconds. server down??
+USqrd 7: finished.
 USqrd 3: waited 5 seconds. server down??
 USqrd 3: finished.
+USqrd 1: waited 5 seconds. server down??
+USqrd 1: finished.
+USqrd 9: waited 5 seconds. server down??
+USqrd 9: finished.
+USqrd 11: waited 5 seconds. server down??
+USqrd 11: finished.
+USqrd 6: waited 5 seconds. server down??
+USqrd 6: finished.

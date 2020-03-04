@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 import numpy as np
-from scipy.ndimage import gaussian_filter
+
 def caldist(p1, p2):
     '''
     calculate distance between two points
@@ -58,7 +58,7 @@ def dom_reg_grid(team1p, team2p, team1v, team2v, ball_dist):
     region = np.zeros([71,101])
     region[team_region>opp_region] = team_region[team_region>opp_region]
     region[opp_region>=team_region] = -opp_region[opp_region>=team_region]
-    return region, np.array(max_point)
+    return region, team_region, opp_region, np.array(max_point)
 
 def paste_slices(tup):
     pos, w, max_w = tup
@@ -115,17 +115,6 @@ def gen_rand_val_for_testing():
                          np.random.uniform(-vmax, vmax)] for i in range(11)])
     team2v = np.vstack([[np.random.uniform(-vmax, vmax),
                          np.random.uniform(-vmax, vmax)] for i in range(11)])
-
-
-
-#
-#
-# plt.figure()
-# plt.scatter(team1p[:,0], team1p[:,1], c='b')
-# plt.plot([team1p[:,0], team1p[:,0]+team1v[:,0]], [team1p[:,1], team1p[:,1]+team1v[:,1]], c='b')
-# plt.scatter(team2p[:,0], team2p[:,1], c='r')
-# plt.plot([team2p[:,0], team2p[:,0]+team2v[:,0]], [team2p[:,1], team2p[:,1]+team2v[:,1]], c='r')
-# plt.show()
 
 
 print('done')
