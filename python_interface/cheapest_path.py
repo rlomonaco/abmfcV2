@@ -38,7 +38,7 @@ def gen_input(opp_regions, player_poss):
     return input_data
 
 file_dir = os.getcwd()+'/saved_heatmaps/'
-file_num = 0
+file_num = 1
 
 regions = np.load(file_dir + f'regions_{file_num}.npy')
 team_regions = np.load(file_dir + f'team_regions_{file_num}.npy')
@@ -48,15 +48,117 @@ player_poss = np.load(file_dir + f'player_pos_{file_num}.npy')
 input_data = gen_input(opp_regions, player_poss)
 
 # global variables
-data_num = 0
-SCORE = 0
-START = np.argwhere(input_data[data_num]==0)[0]
 BOARD_ROWS = 7
 BOARD_COLS = 10
-WEIGHTS = input_data[data_num]
-WIN_STATE = (3,-1)
-DETERMINISTIC = True
+data_num = -111
+WIN_STATE = (3,9)
 
+
+class board:
+
+    def __init__(self, data_num):
+
+        self.data_num = data_num
+        self.actions = ['right', 'up', 'down', 'upright', 'downright']
+        self.weights = input_data[data_num]
+        self.start = tuple(np.argwhere(input_data[data_num] == 0)[0])
+        self.end = WIN_STATE
+        self.board = np.zeros([BOARD_ROWS, BOARD_COLS])
+        self.state = np.array(self.start)
+        self.last_action = ['']
+        self.isEnd = False
+
+    def moves(self, action):
+        return_position = False
+        next_state = self.state.copy()
+        if action == 'right':
+            next_state[1] += 1
+        elif action == 'up':
+            next_state[0] -= 1
+            if self.last_action[-1] == 'down':
+                return_position = True
+        elif action == 'down':
+            next_state[0] += 1
+            if self.last_action[-1] == 'up':
+                return_position = True
+        elif action == 'upright':
+            next_state[0] -= 1
+            next_state[1] += 1
+        elif action == 'downright':
+            next_state[0] += 1
+            next_state[1] += 1
+
+        if 0 <= next_state[0] <= BOARD_ROWS-1 and 0 <= next_state[1] <= BOARD_COLS-1 and not return_position:
+            next_weight = self.weights[tuple(next_state)]
+            return next_weight, next_state
+        return -1000, self.state
+
+    def isEndFunc(self):
+        if (self.state == np.array(WIN_STATE)).all():
+            self.isEnd = True
+
+
+    def play(self, round):
+
+        all_scores = []
+        all_moves = []
+        i = 0
+        while i < round:
+            if self.isEnd:
+                scores = np.sum(self.weights*self.board)
+                all_moves.append(self.board.copy())
+                all_scores.append(scores)
+                # print(scores)
+                i += 1
+                self.__init__(self.data_num)
+
+            else:
+
+                next_move = []
+                next_weight = []
+                for action in self.actions:
+                    weight, state = self.moves(action)
+                    next_weight.append(weight)
+                    next_move.append(state)
+                next_weight = np.array(next_weight)
+
+                if (next_weight > 0).any():
+                    ind = int(np.argwhere(next_weight==next_weight.max())[0])
+                else:
+                    p = np.divide(np.ones(len(next_weight)), 0-next_weight, out=np.zeros_like(np.ones(len(next_weight))), where=(0-next_weight)!=0)
+                    p = p/sum(p)
+                    ind = int(np.random.choice(len(self.actions), 1, replace=False, p=p))
+                self.state = next_move[ind]
+                self.last_action.append(self.actions[ind])
+                self.board[tuple(self.state)] += 1
+                self.isEndFunc()
+        all_scores = np.array(all_scores)
+        index = int(np.argwhere(all_scores==all_scores.max())[0])
+
+        # print(index)
+        # print(all_moves[index])
+
+        return all_scores[index], all_moves[index]
+
+if __name__ == '__main__':
+
+    scores = []
+    moves = []
+
+    for i in range(len(input_data)):
+
+        score, move = board(i).play(1000)
+        scores.append(score)
+        moves.append(move)
+        print(i)
+
+    np.save('scores1.npy',np.dstack(scores))
+    np.save('moves1.npy',np.dstack(moves))
+
+
+
+
+#
 # class State:
 #     def __init__(self, state=START):
 #         self.board = np.zeros([BOARD_ROWS, BOARD_COLS])
@@ -70,11 +172,12 @@ DETERMINISTIC = True
 #     def giveReward(self):
 #         if self.state == WIN_STATE:
 #             return 100
-#         else:
-#             return 0
+#         elif self.steps > 15:
+#             return -1
 #
 #     def isEndFunc(self, steps):
-#         if (self.state == WIN_STATE):
+#         if (self.state == WIN_STATE) or steps > 15:
+#             self.steps = steps
 #             self.isEnd = True
 #
 #     def nxtPosition(self, action):
@@ -91,8 +194,7 @@ DETERMINISTIC = True
 #                 nxtState = (self.state[0] - 1, self.state[1])
 #             elif action == "down":
 #                 nxtState = (self.state[0] + 1, self.state[1])
-#             elif action == "left":
-#                 nxtState = (self.state[0], self.state[1] - 1)
+#
 #             else:
 #                 nxtState = (self.state[0], self.state[1] + 1)
 #             # if next state legal
@@ -124,7 +226,9 @@ DETERMINISTIC = True
 #
 #     def __init__(self):
 #         self.states = []
-#         self.actions = ["up", "down", "left", "right"]
+#         self.actions = ["up", "down", "right"]
+#         self.opp_actions = ["down", "up", "left"]
+#         self.last_action = ""
 #         self.State = State()
 #         self.lr = 0.2
 #         self.exp_rate = 0.3
@@ -146,12 +250,16 @@ DETERMINISTIC = True
 #             action = np.random.choice(self.actions)
 #         else:
 #             # greedy action
-#             for a in self.actions:
-#                 # if the action is deterministic
-#                 nxt_reward = self.state_values[self.State.nxtPosition(a)]
-#                 if nxt_reward >= mx_nxt_reward:
-#                     action = a
-#                     mx_nxt_reward = nxt_reward
+#             for j in range(len(self.actions)):
+#                 a = self.actions[j]
+#                 if self.opp_actions[j] != self.last_action:
+#
+#                     # if the action is deterministic
+#                     nxt_reward = self.state_values[self.State.nxtPosition(a)]
+#                     if nxt_reward >= mx_nxt_reward:
+#                         action = a
+#                         mx_nxt_reward = nxt_reward
+#                     self.last_action = a
 #         return action
 #
 #     def takeAction(self, action):
@@ -162,7 +270,7 @@ DETERMINISTIC = True
 #         self.states = []
 #         self.State = State()
 #
-#     def play(self, rounds=10):
+#     def play(self, rounds=None):
 #         i = 0
 #         while i < rounds:
 #             # to the end of game back propagate reward
@@ -202,7 +310,8 @@ DETERMINISTIC = True
 #
 # if __name__ == "__main__":
 #     ag = Agent()
-#     ag.play(10)
+#     ag.play(rounds=10000)
+#     print(WEIGHTS)
 #     print(ag.showValues())
 
 print('done')
