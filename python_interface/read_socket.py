@@ -64,7 +64,7 @@ class mysocket:
         team_l:0
         team_r:0
         ball_x:0.000000, ball_y:0.000000, ball_vx:0.000000, ball_vy:0.000000
-        side: 1, num:1, x:-49.000000, y:0.000000, vel_x:0.000000, vel_y:0.000000, kick_count:0
+        side: 1, num:1, x:-49.000000, y:0.000000, vel_x:0.000000, vel_y:0.000000, kick_count:0, stamina, staminaCapacity
         side: 1, num:2, x:-25.000000, y:-5.000000, vel_x:0.000000, vel_y:0.000000, kick_count:0
         side: 1, num:3, x:-25.000000, y:5.000000, vel_x:0.000000, vel_y:0.000000, kick_count:0
         side: 1, num:4, x:-25.000000, y:-10.000000, vel_x:0.000000, vel_y:0.000000, kick_count:0
@@ -109,15 +109,17 @@ class mysocket:
             self.move_message = self.format_move_message(self.players[:11,2:4])
             # print(self.move_message)
 
-        onball = np.argwhere(self.players[:,-1]-self.kickcount > 0)
+        onball = np.argwhere(self.players[:,-3]-self.kickcount > 0)
 
         if len(onball) > 0:
             self.actioned = False
+            # self.pub_chain_msg(self.format_chain_message([5, 0, 50, 0, 10]))
+
             for i in range(11):
                 self.agents[i].onball = int(onball[0])
             self.onball = int(onball[0])
 
-        self.kickcount = self.players[:,-1]
+        self.kickcount = self.players[:,-3]
         # print(self.onball)
 
     def pub_move_msg(self, msg):
@@ -168,8 +170,9 @@ class mysocket:
         sometimes the messages don't have the full 26 lines due to probably error in the socket
         '''
         lines = message.split('\n')
-
         if len(lines) == 26:
+            print(len(lines))
+
             self.decode_msg(lines)
             move_array = []
             for i in range(11):
@@ -188,11 +191,14 @@ class mysocket:
         message = " "
         msg1 = self.chain_message
         while len(message) > 0:
+
+
             message = self.receive_msg()
             # print(message)
             msg0, msg1 = self.commands(message)
 
             self.pub_chain_msg(msg1)
+
             # self.pub_move_msg(msg0)
 
             # 0 and 1 added at the front from socket movement or abm movement

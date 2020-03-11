@@ -2,6 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from bresenham import bresenham
 import os
+os.chdir('/home/godfrey/abm-fc/')
 file_dir = os.getcwd()+'/python_interface/saved_heatmaps/'
 
 file_num = 0
@@ -23,18 +24,22 @@ for i in range(100,110):
         pass_scores.append(np.sum(region[pixels[:,0], pixels[:,1]]))
 
 import cv2
-a = cv2.resize(region, dsize=(10, 7), interpolation=cv2.INTER_CUBIC)
-a = a.astype(int)
+row = 14
+col = 20
+half = int((row/2-1))
+a = cv2.resize(region, dsize=(col, row), interpolation=cv2.INTER_CUBIC).astype(int)
+# a = a.astype(int)
 a[a>=0] = -1
-a[2:5, -1] = 10
-a[3, -1] = 50
-a[3, -2] = 10
+a[half-1:half+2, -1] = 10
+a[half, -1] = 50
+a[half, -2] = 10
 x = (player_pos[:11,2]+50)/10
 x = x.astype(int)
 y = (player_pos[:11,3]+35)/10
 y = y.astype(int)
 
-for i in range(len(x)):
+# for i in range(len(x)):
+for i in range(0,4):
     plt.figure()
     b = a
     b[y[i], x[i]] = 0
