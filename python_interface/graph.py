@@ -52,6 +52,46 @@ class Graph:
     def get_vertices(self):
         return self.vert_dict.keys()
 
+    def find_path(self, start_vertex, end_vertex, path=None):
+        """ find a path from start_vertex to end_vertex
+            in graph """
+        if path == None:
+            path = []
+        graph = self.vert_dict
+        path = path + [start_vertex]
+        if start_vertex == end_vertex:
+            return path
+        if start_vertex not in graph:
+            return None
+        for vertex in graph[start_vertex].adjacent:
+            vertex = vertex.get_id()
+            if vertex not in path:
+                extended_path = self.find_path(vertex,
+                                               end_vertex,
+                                               path)
+                if extended_path:
+                    return extended_path
+        return None
+
+    def find_all_paths(self, start_vertex, end_vertex, path=[]):
+        """ find all paths from start_vertex to
+            end_vertex in graph """
+        graph = self.vert_dict
+        path = path + [start_vertex]
+        if start_vertex == end_vertex:
+            return [path]
+        if start_vertex not in graph:
+            return []
+        paths = []
+        for vertex in graph[start_vertex].adjacent:
+            vertex = vertex.get_id()
+            if vertex not in path:
+                extended_paths = self.find_all_paths(vertex,
+                                                     end_vertex,
+                                                     path)
+                for p in extended_paths:
+                    paths.append(p)
+        return paths
 # if __name__ == '__main__':
 #
 #     g = Graph()

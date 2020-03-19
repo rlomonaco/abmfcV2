@@ -48,8 +48,8 @@ def dom_reg_grid(team1p, team2p, team1v, team2v, ball_dist):
     opp_region = np.zeros([71,101])
     max_point = []
     for i in range(len(team1p)):
-        pos_region = points_to_circle(team1p[i], team1v[i], ball_dist[i], factor=10, sigma=1/8)
-        neg_region = points_to_circle(team2p[i], team2v[i], ball_dist[i+11], factor=10, sigma=1/8)
+        pos_region = points_to_circle(team1p[i], team1v[i], ball_dist[i], factor=5, sigma=1/4)
+        neg_region = points_to_circle(team2p[i], team2v[i], ball_dist[i+11], factor=5, sigma=1/4)
         team_region[pos_region>team_region] = pos_region[pos_region>team_region]
         opp_region[neg_region>opp_region] = neg_region[neg_region>opp_region]
 
@@ -81,8 +81,8 @@ def gaussian(x, mu, sig):
 def points_to_circle(coord, vel, ball_d, factor=None, sigma=None):
 
     x, y = np.meshgrid(np.linspace(-20,20,41), np.linspace(-20,20,41))
-    x = x-vel[0]*ball_d*0.5
-    y = y-vel[1]*ball_d*0.5
+    x = x-vel[0]*ball_d*0.2
+    y = y-vel[1]*ball_d*0.2
     d = np.sqrt(x * x + y * y)
     sigma, mu = ball_d*sigma, 0
     g = np.exp(-((d - mu) ** 2 / (2.0 * sigma ** 2)))

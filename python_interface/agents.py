@@ -28,6 +28,11 @@ def shade_length(player_p, goalie_p):
 
     return abs(unshaded)/13
 
+def pass_obstruct(ball_p, opp_p):
+    '''
+    find obstructed pass
+    '''
+
 
 def caldist(p1, p2):
     '''
@@ -40,6 +45,29 @@ def calangles(p1, p2):
     calculate angle between two points
     '''
     return np.arctan2(p1[0]-p2[0], p1[1]-p1[1])
+
+
+def paste_slices(tup):
+    pos, w, max_w = tup
+    wall_min = max(pos, 0)
+    wall_max = min(pos + w, max_w)
+    block_min = -min(pos, 0)
+    block_max = max_w - max(pos + w, max_w)
+    block_max = block_max if block_max != 0 else None
+
+    return slice(wall_min, wall_max), slice(block_min, block_max)
+
+def grid_moves(wall, block_size, loc):
+    loc -= int((block_size-1)/2)
+    block = np.zeros([block_size,block_size])
+    loc_zip = zip(loc, block.shape, wall.shape)
+    wall_slices, block_slices = zip(*map(paste_slices, loc_zip))
+    return wall[wall_slices]
+
+def find_nearest(a, a0):
+    "Element in nd array `a` closest to the scalar value `a0`"
+    idx = np.abs(a - a0).argmin()
+    return a.flat[idx]
 
 class Agents:
 
@@ -88,10 +116,12 @@ class Agents:
         for p in self.team_players[:,2:4]:
             scores.append(shade_length(p, self.opp_players[0,2:4]))
         return np.array(scores)
+
     def passing_scores(self, ball, max_points, region):
         '''
         calculate pixel cost of the pass
         '''
+        region[region>0] = 0
         pass_scores = []
         for j in range(1, 11):
             pixels = np.array(list(bresenham(int(ball[0]),
@@ -99,38 +129,32 @@ class Agents:
             pass_scores.append(np.sum(region[pixels[:, 0], pixels[:, 1]]))
         pass_scores = np.array(pass_scores)
 
-        # only used for saving npy regions
-        # try:
-        #     region[int(ball[1]+35), int(ball[0]+50)] = np.nan
-        # except IndexError:
-        #     print('goal')
         return pass_scores
 
     def actions(self, ball):
         self.ball = ball
-
         # calculate distances from self
         # should put in self.calc_distances
-        ball_dist = np.array([caldist(self.players[i, 2:4], self.ball) for i in range(22)])
+        self.ball_dist = np.array([caldist(self.players[i, 2:4], self.ball) for i in range(22)])
         opp_distance = np.array([caldist(self.opp_players[j, 2:4], self.players[self.num, 2:4]) for j in range(11)])
         goal_distance = np.array([caldist(self.opp_players[j, 2:4], np.array([52.5,0])) for j in range(11)])
 
         # get dominant regions
         region, team_region, opp_region, max_points = dom_reg_grid(
                         self.team_players[:,2:4], self.opp_players[:,2:4],self.team_players[:,4:6],
-                        self.opp_players[:,4:6], ball_dist)
+                        self.opp_players[:,4:6], self.ball_dist)
 
         # get scores
         shooting_scores = self.shooting_scores()
-        pass_scores = self.passing_scores(ball, max_points, region)
+        self.pass_scores = self.passing_scores(ball, max_points, region.copy())
 
-
+        dribble = self.nodes(ball, region)
 
         which_point = max_points.copy()
         which_point = np.delete(which_point,0, axis=0)
-        print(which_point)
-        print(pass_scores)
-        which_point[:,0][pass_scores < 0] = -100
+        # print(which_point)
+        # print(self.pass_scores)
+        which_point[:,0][self.pass_scores < 0] = -100
 
 
         target = np.argmax(which_point[:,0]) + 1 # pass score doesn't include keeper, prevent back pass
@@ -144,33 +168,66 @@ class Agents:
 
         shooting_scores[goal_distance>min_shot_dist] = 0
         shooting_man = int(np.argwhere(shooting_scores == shooting_scores.max())[0])
-
-        if caldist(np.array([52.5,0]), self.ball) < min_shot_dist and shooting_man != self.num:
-            print('square')
-            x = max_points[shooting_man][0] - 50
-            y = max_points[shooting_man][1] - 35
-            return [self.num, 2, x, y, target]
-        if caldist(np.array([52.5,0]), self.ball) < min_shot_dist:
-            print('shoot')
-            return [self.num, 3, 50, 0, target]
-        elif np.max(pass_scores) <= 0 and np.min(opp_distance) > 5:
-            print('dribble')
-            return [self.num, 1, 50, 0, target]
-        elif np.max(pass_scores) <= 0:
-            print('hold')
-            return [self.num, 0, 50, 0, target]
-        else:
-            print('pass')
-            return [self.num, 2, x, y, target]
+        return [self.num, 1, self.players[self.num, 2]+1, self.players[self.num, 3], target]
+        # return [self.num, 1, dribble[0], dribble[1], target]
+        #
+        # if caldist(np.array([52.5,0]), self.ball) < min_shot_dist and shooting_man != self.num:
+        #     print('square')
+        #     x = max_points[shooting_man][0] - 50
+        #     y = max_points[shooting_man][1] - 35
+        #     return [self.num, 2, x, y, target]
+        # if caldist(np.array([52.5,0]), self.ball) < min_shot_dist:
+        #     print('shoot')
+        #     return [self.num, 3, 50, 0, target]
+        # elif np.max(self.pass_scores) <= -5 and np.min(opp_distance) > 5:
+        #     print('dribble')
+        #     return [self.num, 1, dribble[0], dribble[1], target]
+        # elif np.max(self.pass_scores) <= -5:
+        #     print('hold')
+        #     return [self.num, 0, 50, 0, target]
+        # else:
+        #     print('pass')
+        #     return [self.num, 2, x, y, target]
 
     def nodes(self, ball, region):
 
-        self.ball = ball
         # self.moves = [str(i) for i in range(1,10)]#1 to 9 on the grid with 5 in the middle
+        players = np.load('/home/godfrey/abm-fc/python_interface/saved_heatmaps/player_pos_0.npy')
+        row_n = 20
+        col_n = 14
+        grid = cv2.resize(region, dsize=(row_n, col_n), interpolation=cv2.INTER_CUBIC).astype(int)
+        pos = self.team_players[self.num, 2:4].copy()
+        pos[0] = (pos[0]+50)/5
+        pos[1] = (pos[1]+35)/5
+        pos = pos.astype(int)
+        # print(pos)
 
-        grid = cv2.resize(region, dsize=(self.col, self.row), interpolation=cv2.INTER_CUBIC).astype(int)
-        pos = self.team_players[self.num, 2:4]
-        pos[0] = int((pos[0]+50)/5)
-        pos[1] = int((pos[1]+35)/5)
+        row = np.meshgrid(np.arange(col_n), np.arange(row_n))[0].T
+        col = np.meshgrid(np.arange(row_n),np.arange(col_n))[0]
 
-        moves = grid[tuple(pos)]
+        filter_kernel = np.array([[0,0,0],[0,0,1],[0,0,0]])
+
+        coord = np.array([pos.copy()[1],pos.copy()[0]])
+        dribble_col = grid_moves(col, 3, coord)
+        dribble_row = grid_moves(row, 3, coord)
+        # print(pos)
+        # print(grid)
+        # print(dribble_col)
+        # print(dribble_row)
+
+        grid[find_nearest(dribble_row,7), find_nearest(dribble_col, 20)] +=1
+
+        dribble_cost = grid_moves(grid, 3, coord)
+
+
+        max_dribble = tuple(np.argwhere(dribble_cost == dribble_cost.max())[0])
+        # print((dribble_col*5-50)[max_dribble])
+        x = (dribble_col*5-50)[max_dribble]-self.team_players[self.num, 2]
+        y = (dribble_row*5-35)[max_dribble]-self.team_players[self.num, 3]
+
+        return (self.team_players[self.num, 2]+x/5, self.team_players[self.num, 3]+y/5)
+
+        # print(self.pass_scores)
+
+
+

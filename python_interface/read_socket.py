@@ -38,6 +38,7 @@ class mysocket:
         self.move_message = "-25 0,-25 -5,-25 5,-25 -10,-25 10,-15 0,-15 -5,-15 5,-15 -10,-15 10,15 -0"
         self.chain_message = "10,1,-50,0"
 
+
     def receive_msg(self):
         '''
         receive messages
@@ -64,7 +65,8 @@ class mysocket:
         team_l:0
         team_r:0
         ball_x:0.000000, ball_y:0.000000, ball_vx:0.000000, ball_vy:0.000000
-        side: 1, num:1, x:-49.000000, y:0.000000, vel_x:0.000000, vel_y:0.000000, kick_count:0, stamina, staminaCapacity
+        side: 1, num:1, x:-49.000000, y:0.000000, vel_x:0.000000, vel_y:0.000000, kick_count:0,
+            stamina, staminaCapacity
         side: 1, num:2, x:-25.000000, y:-5.000000, vel_x:0.000000, vel_y:0.000000, kick_count:0
         side: 1, num:3, x:-25.000000, y:5.000000, vel_x:0.000000, vel_y:0.000000, kick_count:0
         side: 1, num:4, x:-25.000000, y:-10.000000, vel_x:0.000000, vel_y:0.000000, kick_count:0
@@ -113,11 +115,11 @@ class mysocket:
 
         if len(onball) > 0:
             self.actioned = False
-            # self.pub_chain_msg(self.format_chain_message([5, 0, 50, 0, 10]))
-
             for i in range(11):
                 self.agents[i].onball = int(onball[0])
             self.onball = int(onball[0])
+
+
 
         self.kickcount = self.players[:,-3]
         # print(self.onball)
@@ -171,7 +173,6 @@ class mysocket:
         '''
         lines = message.split('\n')
         if len(lines) == 26:
-            print(len(lines))
 
             self.decode_msg(lines)
             move_array = []
@@ -190,6 +191,7 @@ class mysocket:
     def main(self):
         message = " "
         msg1 = self.chain_message
+
         while len(message) > 0:
 
 
@@ -198,19 +200,23 @@ class mysocket:
             msg0, msg1 = self.commands(message)
 
             self.pub_chain_msg(msg1)
-
             # self.pub_move_msg(msg0)
 
             # 0 and 1 added at the front from socket movement or abm movement
-            print(self.show)
-            print(msg1)
+            # print(self.show)
+            # print(msg1)
 
-            # if self.show < 100:
-            #     self.pub_move_msg("1,0 25,0 25,0 25,0 25,0 25,0 25,0 25,0 25,0 25,0 25,0 25,0 25")
-            # else:
-            self.pub_move_msg("0,0 25,0 25,0 25,0 25,0 25,0 25,0 25,0 25,0 25,0 25,0 25,0 25")
+            self.pub_move_msg("0,-50 0,-30 -25,-35 -7,-35 7,-30 25,-10 -25,-15 -5,-15 5,-10 25,5 -5,5 5")
 
 if __name__ == "__main__":
-    mysocket().main()
-    print('done')
+    num = 0
+    while num < 100:
+        # try:
+        #     mysocket().main()
+        #     print('done')
+        # except:
+        #     print('\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n')
+        #     num += 1
+        #     pass
+        mysocket().main()
 
