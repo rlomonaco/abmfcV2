@@ -168,8 +168,7 @@ class Agents:
 
         shooting_scores[goal_distance>min_shot_dist] = 0
         shooting_man = int(np.argwhere(shooting_scores == shooting_scores.max())[0])
-        return [self.num, 1, self.players[self.num, 2]+1, self.players[self.num, 3], target]
-        # return [self.num, 1, dribble[0], dribble[1], target]
+        return [1, self.num+1, 1, dribble[0], dribble[1], target]
         #
         # if caldist(np.array([52.5,0]), self.ball) < min_shot_dist and shooting_man != self.num:
         #     print('square')
@@ -196,7 +195,9 @@ class Agents:
         row_n = 20
         col_n = 14
         grid = cv2.resize(region, dsize=(row_n, col_n), interpolation=cv2.INTER_CUBIC).astype(int)
-        pos = self.team_players[self.num, 2:4].copy()
+        grid = -grid
+        loc = self.team_players[self.num, 2:4].copy()
+        pos = loc.copy()
         pos[0] = (pos[0]+50)/5
         pos[1] = (pos[1]+35)/5
         pos = pos.astype(int)
@@ -208,24 +209,27 @@ class Agents:
         filter_kernel = np.array([[0,0,0],[0,0,1],[0,0,0]])
 
         coord = np.array([pos.copy()[1],pos.copy()[0]])
-        dribble_col = grid_moves(col, 3, coord)
-        dribble_row = grid_moves(row, 3, coord)
+        dribble_col = grid_moves(col, 3, coord.copy())
+        dribble_row = grid_moves(row, 3, coord.copy())
         # print(pos)
         # print(grid)
         # print(dribble_col)
         # print(dribble_row)
 
-        grid[find_nearest(dribble_row,7), find_nearest(dribble_col, 20)] +=1
+        grid[find_nearest(dribble_row,7), find_nearest(dribble_col, 20)] +=100
 
-        dribble_cost = grid_moves(grid, 3, coord)
-
-
-        max_dribble = tuple(np.argwhere(dribble_cost == dribble_cost.max())[0])
+        dribble_cost = grid_moves(grid, 3, coord.copy())
+        print(dribble_cost)
+        try:
+            max_dribble = tuple(np.argwhere(dribble_cost == dribble_cost.max())[0])
+        except ValueError:
+            max_dribble = (0,0)
+        print(max_dribble)
         # print((dribble_col*5-50)[max_dribble])
         x = (dribble_col*5-50)[max_dribble]-self.team_players[self.num, 2]
         y = (dribble_row*5-35)[max_dribble]-self.team_players[self.num, 3]
-
-        return (self.team_players[self.num, 2]+x/5, self.team_players[self.num, 3]+y/5)
+        print(x,y)
+        return (int(loc[0]+x), int(loc[1]+y))
 
         # print(self.pass_scores)
 

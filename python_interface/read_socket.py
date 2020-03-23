@@ -181,7 +181,7 @@ class mysocket:
 
             self.move_message = self.format_move_message(np.vstack(move_array))
 
-            if self.onball < 11 and self.show > 1 and self.actioned==False:
+            if self.onball < 11 and self.show > 1:
 
                 self.chain_message = self.format_chain_message(self.agents[self.onball].actions(self.ball))
                 self.actioned = True
@@ -204,19 +204,19 @@ class mysocket:
 
             # 0 and 1 added at the front from socket movement or abm movement
             # print(self.show)
-            # print(msg1)
+            print(msg1)
 
             self.pub_move_msg("0,-50 0,-30 -25,-35 -7,-35 7,-30 25,-10 -25,-15 -5,-15 5,-10 25,5 -5,5 5")
 
 if __name__ == "__main__":
     num = 0
     while num < 100:
-        # try:
-        #     mysocket().main()
-        #     print('done')
-        # except:
-        #     print('\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n')
-        #     num += 1
-        #     pass
-        mysocket().main()
+        try:
+            mysocket().main()
+            print('done')
+        except:
+            print('\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n')
+            num += 1
+            pass
+        # mysocket().main()
 
