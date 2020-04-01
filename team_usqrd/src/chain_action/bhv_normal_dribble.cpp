@@ -592,14 +592,24 @@ Bhv_NormalDribble::Bhv_NormalDribble( const Vector2D & dribble_pos,
       M_view_action( view ),
       M_dribble_pos( dribble_pos )
 {
-    if ( action.category() != CooperativeAction::Dribble )
-    {
-        M_target_point = Vector2D::INVALIDATED;
-        M_total_step = 0;
-    }
+    // if ( action.category() != CooperativeAction::Dribble )
+    // {
+    //     M_target_point = Vector2D::INVALIDATED;
+    //     M_total_step = 0;
+    // }
     if (M_dribble_pos != Vector2D(NULL, NULL))
     {
         M_target_point = M_dribble_pos;
+        // M_first_ball_speed
+        M_first_turn_moment = 0;
+        M_first_dash_power = 0;
+        M_kick_step = 1;
+        M_turn_step = 1;
+        M_dash_step = 1;
+        std::cout<<"nice"<<std::endl;
+
+        
+
     }
 
 
@@ -612,7 +622,17 @@ Bhv_NormalDribble::Bhv_NormalDribble( const Vector2D & dribble_pos,
 bool
 Bhv_NormalDribble::execute( PlayerAgent * agent )
 {
+    std::cout<<"M_target_point: "<<M_target_point<<std::endl;
+    std::cout<<"M_first_ball_speed: "<<M_first_ball_speed<<std::endl;
+    std::cout<<"M_first_turn_moment: "<<M_first_turn_moment<<std::endl;
+    std::cout<<"M_first_dash_power: "<<M_first_dash_power<<std::endl;
+    std::cout<<"M_total_step: "<<M_total_step<<std::endl;
+    std::cout<<"M_kick_step: "<<M_kick_step<<std::endl;
+    std::cout<<"M_turn_step: "<<M_turn_step<<std::endl;
+    std::cout<<"M_dash_step: "<<M_dash_step<<std::endl;
+    std::cout<<"M_neck_action: "<<M_neck_action<<std::endl;
     const WorldModel & wm = agent->world();
+    // std::cout<<"\n"<<M_target_point<<"\n"<<std::endl;
 
     if ( ! wm.self().isKickable() )
     {

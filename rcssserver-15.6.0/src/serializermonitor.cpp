@@ -348,13 +348,15 @@ void
 SerializerMonitorStdv3::ballPositionOutput( std::ostream &, const Ball & ball
                                                 ) const
 {
-  std::cout<<"ball_x: "<<ball.pos().x<<", ball_y: "<<ball.pos().y<<", ball_vx: "<<ball.vel().x<<", ball_vy: "<<ball.vel().y<<std::endl;
+  std::cout<<"ball_x: "<<ball.pos().x<<", ball_y: "<<ball.pos().y<<", ball_vx: "<<ball.vel().x<<", ball_vy: "
+  <<ball.vel().y<<std::endl;
 }
 
 void
 SerializerMonitorStdv3::playerPositionOutput( std::ostream &, const Player & player ) const
 {
-  std::cout<<"side: "<<player.side()<<", num:"<<player.unum()<<", x:"<<player.pos().x<<", y:"<<player.pos().y<<", vel_x:"<<player.vel().x<<", vel_y:"<<player.vel().y<<std::endl;
+  std::cout<<"side: "<<player.side()<<", num:"<<player.unum()<<", x:"<<player.pos().x<<", y:"<<player.pos().y
+  <<", vel_x:"<<player.vel().x<<", vel_y:"<<player.vel().y<<std::endl;
 }
 
 void
@@ -386,7 +388,8 @@ SerializerMonitorStdv3::SocketStadiumOutput( std::ostream &,
    std::string message = "show:" + std::to_string(time)
              +"\nteam_l:" + std::to_string(team_l.point())
              + "\nteam_r:" + std::to_string(team_r.point())
-             + "\nball_x:" + std::to_string(ball.pos().x)+ ", ball_y:" + std::to_string(ball.pos().y)+ ", ball_vx:" + std::to_string(ball.vel().y)+ ", ball_vy:" + std::to_string(ball.vel().y);
+             + "\nball_x:" + std::to_string(ball.pos().x)+ ", ball_y:" + std::to_string(ball.pos().y)
+             + ", ball_vx:" + std::to_string(ball.vel().y)+ ", ball_vy:" + std::to_string(ball.vel().y);
 
     send(sock, message.c_str(), message.size() + 1, 0);
    close(sock);
@@ -415,7 +418,11 @@ SerializerMonitorStdv3::SocketPlayerOutput( std::ostream &, const Player & playe
 
    //  While loop:
    // char buf[4096];
-   std::string message = "\nside: " + std::to_string(player.side()) + ", num:" + std::to_string(player.unum()) + ", x:" + std::to_string(player.pos().x) + ", y:" + std::to_string(player.pos().y) + ", vel_x:" + std::to_string(player.vel().x) + ", vel_y:" + std::to_string(player.vel().y) + ", kick_count:" + std::to_string(player.kickCount());
+   std::string message = "\nside: " + std::to_string(player.side()) + ", num:" + std::to_string(player.unum()) 
+                          + ", x:" + std::to_string(player.pos().x) + ", y:" + std::to_string(player.pos().y) 
+                          + ", vel_x:" + std::to_string(player.vel().x) + ", vel_y:" + std::to_string(player.vel().y) 
+                          + ", kick_count:" + std::to_string(player.kickCount()) + ", stamina:" + std::to_string(player.stamina()) 
+                          + ", staminaCapacity:" + std::to_string(player.staminaCapacity());
 
     send(sock, message.c_str(), message.size() + 1, 0);
    close(sock);

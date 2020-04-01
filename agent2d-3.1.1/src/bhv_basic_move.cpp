@@ -90,8 +90,8 @@ Bhv_BasicMove::execute( PlayerAgent * agent )
         return true;
     }
     // ================================== RUN TO CORNER ====================================
-    const Vector2D target_point = Strategy::i().getPosition( wm.self().unum() );
-    // Vector2D target_point = Vector2D(-50,-35);
+    // const Vector2D target_point = Strategy::i().getPosition( wm.self().unum() );
+    Vector2D target_point = Vector2D(-52,34);
     // ================================== RUN TO CORNER ====================================
 
     const double dash_power = Strategy::get_normal_dash_power( wm );

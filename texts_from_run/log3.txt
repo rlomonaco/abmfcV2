@@ -6,22 +6,11 @@
  All rights reserved.
 ******************************************************************
 PING localhost (127.0.0.1) 56(84) bytes of data.
-64 bytes from localhost (127.0.0.1): icmp_seq=1 ttl=64 time=0.042 ms
+64 bytes from localhost (127.0.0.1): icmp_seq=1 ttl=64 time=0.064 ms
 
 --- localhost ping statistics ---
 1 packets transmitted, 1 received, 0% packet loss, time 0ms
-rtt min/avg/max/mdev = 0.042/0.042/0.042/0.000 ms
-******************************************************************
- librcsc 4.1.0
- Copyright 2000 - 2007. Hidehisa Akiyama.
- Copyright 2007 - 2011. Hidehisa Akiyama and Hiroki Shimora
- All rights reserved.
-******************************************************************
-*****************************************************************
- This program is based on agent2d created by Hidehisa Akiyama.
- Copyright 2006 - 2011. Hidehisa Akiyama and Hiroki Shimora.
- All rights reserved.
-*****************************************************************
+rtt min/avg/max/mdev = 0.064/0.064/0.064/0.000 ms
 ******************************************************************
  librcsc 4.1.0
  Copyright 2000 - 2007. Hidehisa Akiyama.
@@ -50,55 +39,6 @@ rtt min/avg/max/mdev = 0.042/0.042/0.042/0.000 ms
  Copyright 2006 - 2011. Hidehisa Akiyama and Hiroki Shimora.
  All rights reserved.
 *****************************************************************
-******************************************************************
- librcsc 4.1.0
- Copyright 2000 - 2007. Hidehisa Akiyama.
- Copyright 2007 - 2011. Hidehisa Akiyama and Hiroki Shimora
- All rights reserved.
-******************************************************************
-*****************************************************************
- This program is based on agent2d created by Hidehisa Akiyama.
- Copyright 2006 - 2011. Hidehisa Akiyama and Hiroki Shimora.
- All rights reserved.
-*****************************************************************
-*****************************************************************
- This program is based on agent2d created by Hidehisa Akiyama.
- Copyright 2006 - 2011. Hidehisa Akiyama and Hiroki Shimora.
- All rights reserved.
-*****************************************************************
-******************************************************************
- librcsc 4.1.0
- Copyright 2000 - 2007. Hidehisa Akiyama.
- Copyright 2007 - 2011. Hidehisa Akiyama and Hiroki Shimora
- All rights reserved.
-******************************************************************
-******************************************************************
- librcsc 4.1.0
- Copyright 2000 - 2007. Hidehisa Akiyama.
- Copyright 2007 - 2011. Hidehisa Akiyama and Hiroki Shimora
- All rights reserved.
-******************************************************************
-HELIOS_base 4: [0, 2] missed last action?(1) last decision=[-1, 0]
-HELIOS_base 4: [0, 3] missed last action?(1) last decision=[-1, 0]
-******************************************************************
- librcsc 4.1.0
- Copyright 2000 - 2007. Hidehisa Akiyama.
- Copyright 2007 - 2011. Hidehisa Akiyama and Hiroki Shimora
- All rights reserved.
-******************************************************************
-*****************************************************************
- This program is based on agent2d created by Hidehisa Akiyama.
- Copyright 2006 - 2011. Hidehisa Akiyama and Hiroki Shimora.
- All rights reserved.
-*****************************************************************
-*****************************************************************
- This program is based on agent2d created by Hidehisa Akiyama.
- Copyright 2006 - 2011. Hidehisa Akiyama and Hiroki Shimora.
- All rights reserved.
-*****************************************************************
-HELIOS_base 2: [0, 2] missed last action?(1) last decision=[-1, 0]
-HELIOS_base 2: [0, 3] missed last action?(1) last decision=[-1, 0]
-HELIOS_base 2: [0, 4] missed last action?(1) last decision=[-1, 0]
 *****************************************************************
  This program is based on agent2d created by Hidehisa Akiyama.
  Copyright 2006 - 2011. Hidehisa Akiyama and Hiroki Shimora.
@@ -121,10 +61,40 @@ HELIOS_base 2: [0, 4] missed last action?(1) last decision=[-1, 0]
  Copyright 2006 - 2011. Hidehisa Akiyama and Hiroki Shimora.
  All rights reserved.
 *****************************************************************
-HELIOS_base 5: [0, 2] missed last action?(1) last decision=[-1, 0]
-HELIOS_base 5: [0, 3] missed last action?(1) last decision=[-1, 0]
-HELIOS_base 5: [0, 4] missed last action?(1) last decision=[-1, 0]
-HELIOS_base 5: [0, 5] missed last action?(1) last decision=[-1, 0]
+*****************************************************************
+ This program is based on agent2d created by Hidehisa Akiyama.
+ Copyright 2006 - 2011. Hidehisa Akiyama and Hiroki Shimora.
+ All rights reserved.
+*****************************************************************
+******************************************************************
+ librcsc 4.1.0
+ Copyright 2000 - 2007. Hidehisa Akiyama.
+ Copyright 2007 - 2011. Hidehisa Akiyama and Hiroki Shimora
+ All rights reserved.
+******************************************************************
+******************************************************************
+ librcsc 4.1.0
+ Copyright 2000 - 2007. Hidehisa Akiyama.
+ Copyright 2007 - 2011. Hidehisa Akiyama and Hiroki Shimora
+ All rights reserved.
+******************************************************************
+HELIOS_base 3: [0, 2] missed last action?(1) last decision=[-1, 0]
+*****************************************************************
+ This program is based on agent2d created by Hidehisa Akiyama.
+ Copyright 2006 - 2011. Hidehisa Akiyama and Hiroki Shimora.
+ All rights reserved.
+*****************************************************************
+*****************************************************************
+ This program is based on agent2d created by Hidehisa Akiyama.
+ Copyright 2006 - 2011. Hidehisa Akiyama and Hiroki Shimora.
+ All rights reserved.
+*****************************************************************
+******************************************************************
+ librcsc 4.1.0
+ Copyright 2000 - 2007. Hidehisa Akiyama.
+ Copyright 2007 - 2011. Hidehisa Akiyama and Hiroki Shimora
+ All rights reserved.
+******************************************************************
 ******************************************************************
  librcsc 4.1.0
  Copyright 2000 - 2007. Hidehisa Akiyama.
@@ -136,10 +106,41 @@ HELIOS_base 5: [0, 5] missed last action?(1) last decision=[-1, 0]
  Copyright 2006 - 2011. Hidehisa Akiyama and Hiroki Shimora.
  All rights reserved.
 *****************************************************************
-HELIOS_base 5: [0, 6] missed last action?(1) last decision=[-1, 0]
-HELIOS_base 6: [0, 2] missed last action?(1) last decision=[-1, 0]
-HELIOS_base 6: [0, 3] missed last action?(1) last decision=[-1, 0]
-HELIOS_base 6: [0, 4] missed last action?(1) last decision=[-1, 0]
+******************************************************************
+ librcsc 4.1.0
+ Copyright 2000 - 2007. Hidehisa Akiyama.
+ Copyright 2007 - 2011. Hidehisa Akiyama and Hiroki Shimora
+ All rights reserved.
+******************************************************************
+*****************************************************************
+ This program is based on agent2d created by Hidehisa Akiyama.
+ Copyright 2006 - 2011. Hidehisa Akiyama and Hiroki Shimora.
+ All rights reserved.
+*****************************************************************
+*****************************************************************
+ This program is based on agent2d created by Hidehisa Akiyama.
+ Copyright 2006 - 2011. Hidehisa Akiyama and Hiroki Shimora.
+ All rights reserved.
+*****************************************************************
+******************************************************************
+ librcsc 4.1.0
+ Copyright 2000 - 2007. Hidehisa Akiyama.
+ Copyright 2007 - 2011. Hidehisa Akiyama and Hiroki Shimora
+ All rights reserved.
+******************************************************************
+HELIOS_base 4: [0, 1] lost turn? at [0, 1] sense=0 internal=1
+HELIOS_base 4: [0, 1] lost turn_neck? at [0, 1] sense=0 internal=1
+HELIOS_base 4: [0, 1] lost change_view? at [0, 1] sense=0 internal=1
+HELIOS_base 5: [0, 1] lost turn? at [0, 1] sense=0 internal=1
+HELIOS_base 5: [0, 1] lost turn_neck? at [0, 1] sense=0 internal=1
+HELIOS_base 5: [0, 1] lost change_view? at [0, 1] sense=0 internal=1
+*****************************************************************
+ This program is based on agent2d created by Hidehisa Akiyama.
+ Copyright 2006 - 2011. Hidehisa Akiyama and Hiroki Shimora.
+ All rights reserved.
+*****************************************************************
+HELIOS_base 4: [0, 2] lost change_view? at [0, 2] sense=1 internal=0
+HELIOS_base 5: [0, 2] lost change_view? at [0, 2] sense=1 internal=0
 ******************************************************************
  librcsc 4.1.0
  Copyright 2000 - 2007. Hidehisa Akiyama.
@@ -152,61 +153,355 @@ HELIOS_base 6: [0, 4] missed last action?(1) last decision=[-1, 0]
  All rights reserved.
 *****************************************************************
 HELIOS_base coach: [-1, 0] recv (ok eye on)
-HELIOS_base 7: [0, 2] missed last action?(1) last decision=[-1, 0]
-*****************************************************************
- This program is based on agent2d created by Hidehisa Akiyama.
- Copyright 2006 - 2011. Hidehisa Akiyama and Hiroki Shimora.
- All rights reserved.
-*****************************************************************
-HELIOS_base 7: [0, 3] missed last action?(1) last decision=[-1, 0]
-HELIOS_base 7: [0, 4] missed last action?(1) last decision=[-1, 0]
-HELIOS_base 7: [0, 5] missed last action?(1) last decision=[-1, 0]
-HELIOS_base 8: [0, 2] missed last action?(1) last decision=[-1, 0]
-HELIOS_base 8: [0, 3] missed last action?(1) last decision=[-1, 0]
-HELIOS_base 8: [0, 4] missed last action?(1) last decision=[-1, 0]
-HELIOS_base 7: [0, 6] missed last action?(1) last decision=[-1, 0]
-HELIOS_base 8: [0, 5] missed last action?(1) last decision=[-1, 0]
-HELIOS_base 9: [0, 2] missed last action?(1) last decision=[-1, 0]
-HELIOS_base 9: [0, 3] missed last action?(1) last decision=[-1, 0]
-HELIOS_base 10: [0, 2] missed last action?(1) last decision=[-1, 0]
-HELIOS_base 10: [0, 3] missed last action?(1) last decision=[-1, 0]
-HELIOS_base 10: [0, 4] missed last action?(1) last decision=[-1, 0]
-HELIOS_base 11: [0, 2] missed last action?(1) last decision=[-1, 0]
-HELIOS_base 11: [0, 3] missed last action?(1) last decision=[-1, 0]
-HELIOS_base 11: [0, 3] over offset - 85   server response delayed??
-HELIOS_base 11: [0, 3] missed see synch. action without see
+HELIOS_base 10: [0, 1] lost turn? at [0, 1] sense=0 internal=1
+HELIOS_base 10: [0, 1] lost turn_neck? at [0, 1] sense=0 internal=1
+HELIOS_base 10: [0, 1] lost change_view? at [0, 1] sense=0 internal=1
+HELIOS_base 10: [0, 2] lost change_view? at [0, 2] sense=1 internal=0
 HELIOS_base coach: change player 1 to type 0
-HELIOS_base coach: change player 11 to type 4
-HELIOS_base coach: change player 2 to type 17
-HELIOS_base coach: change player 3 to type 2
-HELIOS_base coach: change player 10 to type 7
-HELIOS_base coach: change player 9 to type 11
-HELIOS_base coach: change player 6 to type 12
-HELIOS_base coach: change player 4 to type 15
-HELIOS_base coach: change player 5 to type 9
-HELIOS_base coach: change player 7 to type 14
-HELIOS_base coach: change player 8 to type 1
-HELIOS_base 8: waited 5 seconds. server down??
-HELIOS_base 8: finished.
-HELIOS_base 5: waited 5 seconds. server down??
-HELIOS_base 5: finished.
+HELIOS_base coach: change player 11 to type 11
+HELIOS_base coach: change player 2 to type 3
+HELIOS_base coach: change player 3 to type 10
+HELIOS_base coach: change player 10 to type 15
+HELIOS_base coach: change player 9 to type 14
+HELIOS_base coach: change player 6 to type 7
+HELIOS_base coach: change player 4 to type 16
+HELIOS_base coach: change player 5 to type 8
+HELIOS_base coach: change player 7 to type 17
+HELIOS_base coach: change player 8 to type 6
+[35, 0] HELIOS_base Coach: determined opponent 11 type = 11
+HELIOS_base coach: [46, 0] sent freeform (player_types (1 -1)(2 -1)(3 -1)(4 -1)(5 -1)(6 -1)(7 -1)(8 -1)(9 -1)(10 -1)(11 11))
+HELIOS_base 5: [46, 16] lost turn? at [46, 16] sense=23 internal=24
+HELIOS_base 5: [46, 16] lost turn_neck? at [46, 16] sense=77 internal=78
+[88, 0] HELIOS_base Coach: determined opponent 10 type = 15
+[89, 0] HELIOS_base Coach: determined opponent 2 type = 3
+[89, 0] HELIOS_base Coach: determined opponent 6 type = 7
+[90, 0] HELIOS_base Coach: determined opponent 5 type = 8
+HELIOS_base coach: [98, 0] sent freeform (player_types (1 -1)(2 3)(3 -1)(4 -1)(5 8)(6 7)(7 -1)(8 -1)(9 -1)(10 15)(11 11))
+HELIOS_base 1: [103, 0] lost turn? at [103, 0] sense=133 internal=134
+HELIOS_base 1: [103, 0] lost turn_neck? at [103, 0] sense=160 internal=161
+HELIOS_base 1: [103, 0] lost attentionto? at [103, 0] sense=91 internal=92
+HELIOS_base 5: [103, 0] lost dash? at [103, 0] sense=106 internal=107
+HELIOS_base 5: [103, 0] lost turn_neck? at [103, 0] sense=147 internal=148
+HELIOS_base 5: [103, 0] lost change_view? at [103, 0] sense=8 internal=9
+HELIOS_base 5: [103, 0] lost say? at [103, 0] sense=18 internal=19
+HELIOS_base 5: [103, 0] lost attentionto? at [103, 0] sense=71 internal=72
+HELIOS_base 5: [104, 0] over offset - 89   server response delayed??
+HELIOS_base 5: [104, 0] missed see synch. action without see
+HELIOS_base 1: [104, 0] lost attentionto? at [104, 0] sense=93 internal=92
+HELIOS_base 5: [104, 0] lost change_view? at [104, 0] sense=9 internal=8
+HELIOS_base 5: [105, 0] lost say? at [105, 0] sense=21 internal=20
+HELIOS_base 5: [105, 0] lost attentionto? at [105, 0] sense=73 internal=72
+HELIOS_base 11: [153, 0] lost turn? at [153, 0] sense=60 internal=61
+HELIOS_base 11: [153, 0] lost turn_neck? at [153, 0] sense=196 internal=197
+HELIOS_base 11: [153, 0] lost say? at [153, 0] sense=63 internal=64
+HELIOS_base 7: [153, 0] lost dash? at [153, 0] sense=139 internal=140
+HELIOS_base 7: [153, 0] lost turn_neck? at [153, 0] sense=198 internal=199
+HELIOS_base 7: [153, 0] lost say? at [153, 0] sense=63 internal=64
+HELIOS_base 11: [154, 0] lost say? at [154, 0] sense=65 internal=64
+HELIOS_base 7: [154, 0] lost say? at [154, 0] sense=65 internal=64
+HELIOS_base 1: [157, 0] lost turn? at [157, 0] sense=185 internal=186
+HELIOS_base 1: [157, 0] lost turn_neck? at [157, 0] sense=213 internal=214
+HELIOS_base 1: [157, 0] lost attentionto? at [157, 0] sense=138 internal=139
+HELIOS_base 1: [158, 0] lost attentionto? at [158, 0] sense=140 internal=139
+HELIOS_base 2: [166, 0] lost turn? at [166, 0] sense=73 internal=74
+HELIOS_base 2: [166, 0] lost turn_neck? at [166, 0] sense=213 internal=214
+HELIOS_base 2: [166, 0] lost say? at [166, 0] sense=68 internal=69
+HELIOS_base 1: [166, 0] lost turn? at [166, 0] sense=193 internal=194
+HELIOS_base 1: [166, 0] lost turn_neck? at [166, 0] sense=221 internal=222
+HELIOS_base 1: [166, 0] lost attentionto? at [166, 0] sense=147 internal=148
+HELIOS_base 8: [166, 0] lost turn? at [166, 0] sense=83 internal=84
+HELIOS_base 8: [166, 0] lost turn_neck? at [166, 0] sense=210 internal=211
+HELIOS_base 2: [167, 0] lost say? at [167, 0] sense=69 internal=68
+HELIOS_base 1: [167, 0] lost attentionto? at [167, 0] sense=149 internal=148
+HELIOS_base 11: [218, 0] lost turn? at [218, 0] sense=93 internal=94
+HELIOS_base 11: [218, 0] lost turn_neck? at [218, 0] sense=260 internal=261
+HELIOS_base 11: [218, 0] lost attentionto? at [218, 0] sense=76 internal=77
+HELIOS_base 8: [218, 0] lost dash? at [218, 0] sense=159 internal=160
+HELIOS_base 8: [218, 0] lost turn_neck? at [218, 0] sense=261 internal=262
+HELIOS_base 10: [218, 0] lost dash? at [218, 0] sense=159 internal=160
+HELIOS_base 10: [218, 0] lost turn_neck? at [218, 0] sense=261 internal=262
+HELIOS_base 10: [218, 0] lost say? at [218, 0] sense=57 internal=58
+HELIOS_base 4: [218, 0] lost dash? at [218, 0] sense=182 internal=183
+HELIOS_base 4: [218, 0] lost turn_neck? at [218, 0] sense=263 internal=264
+HELIOS_base 2: [218, 0] lost dash? at [218, 0] sense=172 internal=173
+HELIOS_base 2: [218, 0] lost turn_neck? at [218, 0] sense=264 internal=265
+HELIOS_base 10: [219, 0] lost say? at [219, 0] sense=58 internal=57
+HELIOS_base 11: [219, 0] lost attentionto? at [219, 0] sense=78 internal=77
+[228, 0] HELIOS_base Coach: determined opponent 8 type = 6
+[242, 0] HELIOS_base Coach: determined opponent 7 type = 17
+[243, 0] HELIOS_base Coach: determined opponent 3 type = 10
+[261, 0] HELIOS_base Coach: determined opponent 4 type = 16
+[261, 0] HELIOS_base Coach: determined opponent 9 type = 14
+HELIOS_base coach: [310, 0] sent freeform (player_types (1 -1)(2 3)(3 10)(4 16)(5 8)(6 7)(7 17)(8 6)(9 14)(10 15)(11 11))
+HELIOS_base 9: [310, 0] lost turn? at [310, 0] sense=83 internal=84
+HELIOS_base 9: [310, 0] lost turn_neck? at [310, 0] sense=354 internal=355
+HELIOS_base 4: [310, 28] lost dash? at [310, 28] sense=299 internal=300
+HELIOS_base 4: [310, 28] lost turn_neck? at [310, 28] sense=382 internal=383
+HELIOS_base 4: [310, 28] lost attentionto? at [310, 28] sense=173 internal=174
+HELIOS_base 2: [310, 28] lost dash? at [310, 28] sense=225 internal=226
+HELIOS_base 2: [310, 28] lost turn_neck? at [310, 28] sense=383 internal=384
+HELIOS_base 2: [310, 28] lost attentionto? at [310, 28] sense=178 internal=179
+HELIOS_base 3: [310, 28] lost dash? at [310, 28] sense=203 internal=204
+HELIOS_base 3: [310, 28] lost turn_neck? at [310, 28] sense=384 internal=385
+HELIOS_base 3: [310, 28] lost attentionto? at [310, 28] sense=191 internal=192
+HELIOS_base 9: [310, 28] lost dash? at [310, 28] sense=292 internal=293
+HELIOS_base 9: [310, 28] lost turn_neck? at [310, 28] sense=381 internal=382
+HELIOS_base 9: [310, 28] lost say? at [310, 28] sense=103 internal=104
+HELIOS_base 9: [310, 28] lost attentionto? at [310, 28] sense=164 internal=165
+HELIOS_base 1: [310, 28] lost turn? at [310, 28] sense=349 internal=350
+HELIOS_base 1: [310, 28] lost turn_neck? at [310, 28] sense=392 internal=393
+HELIOS_base 1: [310, 28] lost attentionto? at [310, 28] sense=271 internal=272
+HELIOS_base 3: [310, 29] lost attentionto? at [310, 29] sense=193 internal=192
+HELIOS_base 9: [310, 29] lost say? at [310, 29] sense=104 internal=103
+HELIOS_base 9: [310, 29] lost attentionto? at [310, 29] sense=166 internal=165
+HELIOS_base 1: [310, 29] lost attentionto? at [310, 29] sense=273 internal=272
+HELIOS_base 4: [310, 29] lost attentionto? at [310, 29] sense=175 internal=174
+HELIOS_base 2: [310, 29] lost attentionto? at [310, 29] sense=180 internal=179
+HELIOS_base 4: [310, 30] lost dash? at [310, 30] sense=300 internal=301
+HELIOS_base 4: [310, 30] lost turn_neck? at [310, 30] sense=383 internal=384
+HELIOS_base 4: [310, 30] lost attentionto? at [310, 30] sense=175 internal=176
+HELIOS_base 3: [310, 30] lost dash? at [310, 30] sense=204 internal=205
+HELIOS_base 3: [310, 30] lost turn_neck? at [310, 30] sense=385 internal=386
+HELIOS_base 3: [310, 30] lost attentionto? at [310, 30] sense=193 internal=194
+HELIOS_base 2: [310, 30] lost dash? at [310, 30] sense=226 internal=227
+HELIOS_base 2: [310, 30] lost turn_neck? at [310, 30] sense=384 internal=385
+HELIOS_base 2: [310, 30] lost attentionto? at [310, 30] sense=180 internal=181
+HELIOS_base 10: [310, 30] lost dash? at [310, 30] sense=200 internal=201
+HELIOS_base 10: [310, 30] lost turn_neck? at [310, 30] sense=382 internal=383
+HELIOS_base 10: [310, 30] lost attentionto? at [310, 30] sense=171 internal=172
+HELIOS_base 10: [311, 0] lost attentionto? at [311, 0] sense=173 internal=172
+HELIOS_base 2: [311, 0] lost attentionto? at [311, 0] sense=182 internal=181
+HELIOS_base 3: [311, 0] lost attentionto? at [311, 0] sense=195 internal=194
+HELIOS_base 4: [311, 0] lost attentionto? at [311, 0] sense=177 internal=176
+[316, 0] HELIOS_base Coach: determined opponent 1 type = 0
+HELIOS_base coach: [427, 1] sent freeform (player_types (1 0)(2 3)(3 10)(4 16)(5 8)(6 7)(7 17)(8 6)(9 14)(10 15)(11 11))
+HELIOS_base 2: [525, 0] lost dash? at [525, 0] sense=343 internal=344
+HELIOS_base 2: [525, 0] lost turn_neck? at [525, 0] sense=678 internal=679
+HELIOS_base 2: [525, 0] lost attentionto? at [525, 0] sense=308 internal=309
+HELIOS_base 2: [526, 0] lost attentionto? at [526, 0] sense=310 internal=309
+HELIOS_base 6: [612, 0] lost turn? at [612, 0] sense=389 internal=390
+HELIOS_base 6: [612, 0] lost turn_neck? at [612, 0] sense=767 internal=768
+HELIOS_base 6: [612, 0] lost attentionto? at [612, 0] sense=422 internal=423
+HELIOS_base 1: [612, 0] lost turn? at [612, 0] sense=700 internal=701
+HELIOS_base 1: [612, 0] lost turn_neck? at [612, 0] sense=775 internal=776
+HELIOS_base 1: [612, 0] lost attentionto? at [612, 0] sense=578 internal=579
+HELIOS_base 2: [612, 0] lost turn? at [612, 0] sense=396 internal=397
+HELIOS_base 2: [612, 0] lost turn_neck? at [612, 0] sense=764 internal=765
+HELIOS_base 2: [612, 0] lost attentionto? at [612, 0] sense=395 internal=396
+HELIOS_base 2: [613, 0] lost attentionto? at [613, 0] sense=397 internal=396
+HELIOS_base 6: [613, 0] lost attentionto? at [613, 0] sense=424 internal=423
+HELIOS_base 1: [613, 0] lost attentionto? at [613, 0] sense=580 internal=579
+HELIOS_base 9: [653, 0] lost turn? at [653, 0] sense=252 internal=253
+HELIOS_base 9: [653, 0] lost turn_neck? at [653, 0] sense=805 internal=806
+HELIOS_base 9: [653, 0] lost attentionto? at [653, 0] sense=342 internal=343
+HELIOS_base 3: [653, 0] lost turn? at [653, 0] sense=462 internal=463
+HELIOS_base 3: [653, 0] lost turn_neck? at [653, 0] sense=807 internal=808
+HELIOS_base 3: [653, 0] lost attentionto? at [653, 0] sense=446 internal=447
+HELIOS_base 8: [653, 0] lost turn? at [653, 0] sense=408 internal=409
+HELIOS_base 8: [653, 0] lost turn_neck? at [653, 0] sense=805 internal=806
+HELIOS_base 8: [653, 0] lost attentionto? at [653, 0] sense=404 internal=405
+HELIOS_base 9: [654, 0] lost attentionto? at [654, 0] sense=344 internal=343
+HELIOS_base 8: [654, 0] lost attentionto? at [654, 0] sense=406 internal=405
+HELIOS_base 3: [654, 0] lost attentionto? at [654, 0] sense=448 internal=447
+HELIOS_base 10: [669, 0] lost turn? at [669, 0] sense=417 internal=418
+HELIOS_base 10: [669, 0] lost turn_neck? at [669, 0] sense=820 internal=821
+HELIOS_base 10: [669, 0] lost attentionto? at [669, 0] sense=419 internal=420
+HELIOS_base 7: [669, 0] lost turn? at [669, 0] sense=391 internal=392
+HELIOS_base 7: [669, 0] lost turn_neck? at [669, 0] sense=823 internal=824
+HELIOS_base 7: [669, 0] lost attentionto? at [669, 0] sense=428 internal=429
+HELIOS_base 4: [669, 0] lost turn? at [669, 0] sense=368 internal=369
+HELIOS_base 4: [669, 0] lost turn_neck? at [669, 0] sense=821 internal=822
+HELIOS_base 4: [669, 0] lost attentionto? at [669, 0] sense=440 internal=441
+HELIOS_base 1: [669, 0] lost turn? at [669, 0] sense=756 internal=757
+HELIOS_base 1: [669, 0] lost turn_neck? at [669, 0] sense=831 internal=832
+HELIOS_base 1: [669, 0] lost attentionto? at [669, 0] sense=635 internal=636
+HELIOS_base 4: [670, 0] lost attentionto? at [670, 0] sense=442 internal=441
+HELIOS_base 1: [670, 0] lost attentionto? at [670, 0] sense=637 internal=636
+HELIOS_base 7: [670, 0] lost attentionto? at [670, 0] sense=430 internal=429
+HELIOS_base 10: [670, 0] lost attentionto? at [670, 0] sense=421 internal=420
+HELIOS_base 10: [848, 0] lost dash? at [848, 0] sense=455 internal=456
+HELIOS_base 10: [848, 0] lost turn_neck? at [848, 0] sense=998 internal=999
+HELIOS_base 10: [848, 0] lost attentionto? at [848, 0] sense=492 internal=493
+HELIOS_base 4: [848, 0] lost dash? at [848, 0] sense=533 internal=534
+HELIOS_base 4: [848, 0] lost turn_neck? at [848, 0] sense=999 internal=1000
+HELIOS_base 4: [848, 0] lost attentionto? at [848, 0] sense=512 internal=513
+HELIOS_base 4: [849, 0] lost attentionto? at [849, 0] sense=514 internal=513
+HELIOS_base 10: [849, 0] lost attentionto? at [849, 0] sense=493 internal=492
+HELIOS_base 5: [927, 0] lost turn? at [927, 0] sense=687 internal=688
+HELIOS_base 5: [927, 0] lost turn_neck? at [927, 0] sense=1080 internal=1081
+HELIOS_base 5: [927, 0] lost attentionto? at [927, 0] sense=578 internal=579
+HELIOS_base 2: [927, 0] lost turn? at [927, 0] sense=601 internal=602
+HELIOS_base 2: [927, 0] lost turn_neck? at [927, 0] sense=1078 internal=1079
+HELIOS_base 2: [927, 0] lost attentionto? at [927, 0] sense=581 internal=582
+HELIOS_base 9: [927, 0] lost dash? at [927, 0] sense=717 internal=718
+HELIOS_base 9: [927, 0] lost turn_neck? at [927, 0] sense=1078 internal=1079
+HELIOS_base 9: [927, 0] lost say? at [927, 0] sense=258 internal=259
+HELIOS_base 9: [927, 0] lost attentionto? at [927, 0] sense=452 internal=453
+HELIOS_base 6: [927, 0] lost turn? at [927, 0] sense=599 internal=600
+HELIOS_base 6: [927, 0] lost turn_neck? at [927, 0] sense=1081 internal=1082
+HELIOS_base 6: [927, 0] lost attentionto? at [927, 0] sense=623 internal=624
+HELIOS_base 11: [927, 0] lost dash? at [927, 0] sense=680 internal=681
+HELIOS_base 11: [927, 0] lost turn_neck? at [927, 0] sense=1078 internal=1079
+HELIOS_base 11: [927, 0] lost attentionto? at [927, 0] sense=658 internal=659
+HELIOS_base 8: [927, 0] lost turn? at [927, 0] sense=557 internal=558
+HELIOS_base 8: [927, 0] lost turn_neck? at [927, 0] sense=1078 internal=1079
+HELIOS_base 8: [927, 0] lost attentionto? at [927, 0] sense=549 internal=550
+HELIOS_base 3: [927, 0] lost turn? at [927, 0] sense=647 internal=648
+HELIOS_base 3: [927, 0] lost turn_neck? at [927, 0] sense=1080 internal=1081
+HELIOS_base 3: [927, 0] lost attentionto? at [927, 0] sense=591 internal=592
+HELIOS_base 8: [928, 0] lost attentionto? at [928, 0] sense=551 internal=550
+HELIOS_base 5: [928, 0] lost attentionto? at [928, 0] sense=580 internal=579
+HELIOS_base 9: [928, 0] lost say? at [928, 0] sense=259 internal=258
+HELIOS_base 9: [928, 0] lost attentionto? at [928, 0] sense=454 internal=453
+HELIOS_base 11: [928, 0] lost attentionto? at [928, 0] sense=660 internal=659
+HELIOS_base 6: [928, 0] lost attentionto? at [928, 0] sense=625 internal=624
+HELIOS_base 3: [928, 0] lost attentionto? at [928, 0] sense=593 internal=592
+HELIOS_base 2: [928, 0] lost attentionto? at [928, 0] sense=583 internal=582
+HELIOS_base 8: [930, 24] lost dash? at [930, 24] sense=533 internal=534
+HELIOS_base 8: [930, 24] lost turn_neck? at [930, 24] sense=1104 internal=1105
+HELIOS_base 8: [930, 24] lost say? at [930, 24] sense=230 internal=231
+HELIOS_base 8: [930, 24] lost attentionto? at [930, 24] sense=576 internal=577
+HELIOS_base 8: [930, 25] lost say? at [930, 25] sense=232 internal=231
+HELIOS_base 8: [930, 25] lost attentionto? at [930, 25] sense=578 internal=577
+HELIOS_base 10: [1011, 0] lost turn? at [1011, 0] sense=630 internal=631
+HELIOS_base 10: [1011, 0] lost turn_neck? at [1011, 0] sense=1190 internal=1191
+HELIOS_base 9: [1192, 0] lost dash? at [1192, 0] sense=947 internal=948
+HELIOS_base 9: [1192, 0] lost turn_neck? at [1192, 0] sense=1402 internal=1403
+HELIOS_base 9: [1192, 0] lost attentionto? at [1192, 0] sense=750 internal=751
+HELIOS_base 8: [1192, 0] lost dash? at [1192, 0] sense=771 internal=772
+HELIOS_base 8: [1192, 0] lost turn_neck? at [1192, 0] sense=1401 internal=1402
+HELIOS_base 8: [1192, 0] lost attentionto? at [1192, 0] sense=836 internal=837
+HELIOS_base 8: [1193, 0] lost attentionto? at [1193, 0] sense=838 internal=837
+HELIOS_base 9: [1193, 0] lost attentionto? at [1193, 0] sense=752 internal=751
+HELIOS_base 9: [1221, 0] lost dash? at [1221, 0] sense=975 internal=976
+HELIOS_base 9: [1221, 0] lost turn_neck? at [1221, 0] sense=1430 internal=1431
+HELIOS_base 9: [1221, 0] lost attentionto? at [1221, 0] sense=779 internal=780
+HELIOS_base 4: [1221, 0] lost turn? at [1221, 0] sense=564 internal=565
+HELIOS_base 4: [1221, 0] lost turn_neck? at [1221, 0] sense=1431 internal=1432
+HELIOS_base 11: [1221, 0] lost turn? at [1221, 0] sense=438 internal=439
+HELIOS_base 11: [1221, 0] lost turn_neck? at [1221, 0] sense=1431 internal=1432
+HELIOS_base 5: [1221, 0] lost turn? at [1221, 0] sense=849 internal=850
+HELIOS_base 5: [1221, 0] lost turn_neck? at [1221, 0] sense=1433 internal=1434
+HELIOS_base 5: [1221, 0] lost attentionto? at [1221, 0] sense=888 internal=889
+HELIOS_base 7: [1221, 0] lost dash? at [1221, 0] sense=858 internal=859
+HELIOS_base 7: [1221, 0] lost turn_neck? at [1221, 0] sense=1434 internal=1435
+HELIOS_base 6: [1221, 0] lost turn? at [1221, 0] sense=676 internal=677
+HELIOS_base 6: [1221, 0] lost turn_neck? at [1221, 0] sense=1434 internal=1435
+HELIOS_base 5: [1222, 0] lost attentionto? at [1222, 0] sense=890 internal=889
+HELIOS_base 9: [1222, 0] lost attentionto? at [1222, 0] sense=781 internal=780
+HELIOS_base 4: [1240, 0] lost turn? at [1240, 0] sense=577 internal=578
+HELIOS_base 4: [1240, 0] lost turn_neck? at [1240, 0] sense=1449 internal=1450
+HELIOS_base 4: [1240, 0] lost say? at [1240, 0] sense=393 internal=394
+HELIOS_base 4: [1240, 0] lost attentionto? at [1240, 0] sense=858 internal=859
+HELIOS_base 9: [1240, 0] lost turn? at [1240, 0] sense=420 internal=421
+HELIOS_base 9: [1240, 0] lost turn_neck? at [1240, 0] sense=1448 internal=1449
+HELIOS_base 9: [1240, 0] lost say? at [1240, 0] sense=420 internal=421
+HELIOS_base 9: [1240, 0] lost attentionto? at [1240, 0] sense=798 internal=799
+HELIOS_base 6: [1240, 0] lost turn? at [1240, 0] sense=687 internal=688
+HELIOS_base 6: [1240, 0] lost turn_neck? at [1240, 0] sense=1452 internal=1453
+HELIOS_base 6: [1240, 0] lost say? at [1240, 0] sense=316 internal=317
+HELIOS_base 6: [1240, 0] lost attentionto? at [1240, 0] sense=936 internal=937
+HELIOS_base 10: [1240, 0] lost turn? at [1240, 0] sense=714 internal=715
+HELIOS_base 10: [1240, 0] lost turn_neck? at [1240, 0] sense=1448 internal=1449
+HELIOS_base 10: [1240, 0] lost say? at [1240, 0] sense=309 internal=310
+HELIOS_base 10: [1240, 0] lost attentionto? at [1240, 0] sense=877 internal=878
+HELIOS_base 7: [1240, 0] lost turn? at [1240, 0] sense=568 internal=569
+HELIOS_base 7: [1240, 0] lost turn_neck? at [1240, 0] sense=1452 internal=1453
+HELIOS_base 7: [1240, 0] lost say? at [1240, 0] sense=269 internal=270
+HELIOS_base 7: [1240, 0] lost attentionto? at [1240, 0] sense=878 internal=879
+HELIOS_base 2: [1240, 0] lost turn? at [1240, 0] sense=744 internal=745
+HELIOS_base 2: [1240, 0] lost turn_neck? at [1240, 0] sense=1450 internal=1451
+HELIOS_base 2: [1240, 0] lost say? at [1240, 0] sense=337 internal=338
+HELIOS_base 2: [1240, 0] lost attentionto? at [1240, 0] sense=891 internal=892
+HELIOS_base 11: [1240, 0] lost turn? at [1240, 0] sense=452 internal=453
+HELIOS_base 11: [1240, 0] lost turn_neck? at [1240, 0] sense=1449 internal=1450
+HELIOS_base 11: [1240, 0] lost say? at [1240, 0] sense=367 internal=368
+HELIOS_base 11: [1240, 0] lost attentionto? at [1240, 0] sense=951 internal=952
+HELIOS_base 1: [1240, 0] lost turn? at [1240, 0] sense=1304 internal=1305
+HELIOS_base 1: [1240, 0] lost turn_neck? at [1240, 0] sense=1461 internal=1462
+HELIOS_base 1: [1240, 0] lost attentionto? at [1240, 0] sense=1220 internal=1221
+HELIOS_base 5: [1240, 0] lost turn? at [1240, 0] sense=864 internal=865
+HELIOS_base 5: [1240, 0] lost turn_neck? at [1240, 0] sense=1451 internal=1452
+HELIOS_base 5: [1240, 0] lost attentionto? at [1240, 0] sense=902 internal=903
+HELIOS_base 3: [1240, 0] lost turn? at [1240, 0] sense=825 internal=826
+HELIOS_base 3: [1240, 0] lost turn_neck? at [1240, 0] sense=1452 internal=1453
+HELIOS_base 3: [1240, 0] lost attentionto? at [1240, 0] sense=908 internal=909
+HELIOS_base 8: [1240, 0] lost turn? at [1240, 0] sense=622 internal=623
+HELIOS_base 8: [1240, 0] lost turn_neck? at [1240, 0] sense=1448 internal=1449
+HELIOS_base 8: [1240, 0] lost say? at [1240, 0] sense=352 internal=353
+HELIOS_base 8: [1240, 0] lost attentionto? at [1240, 0] sense=867 internal=868
+HELIOS_base 8: [1240, 0] lost turn? at [1240, 0] sense=623 internal=622
+HELIOS_base 8: [1240, 0] lost turn_neck? at [1240, 0] sense=1449 internal=1448
+HELIOS_base 8: [1240, 0] lost say? at [1240, 0] sense=353 internal=352
+HELIOS_base 8: [1240, 0] lost attentionto? at [1240, 0] sense=868 internal=867
+HELIOS_base 10: [1240, 0] lost turn? at [1240, 0] sense=715 internal=714
+HELIOS_base 10: [1240, 0] lost turn_neck? at [1240, 0] sense=1449 internal=1448
+HELIOS_base 10: [1240, 0] lost say? at [1240, 0] sense=310 internal=309
+HELIOS_base 10: [1240, 0] lost attentionto? at [1240, 0] sense=878 internal=877
+HELIOS_base 7: [1240, 0] lost turn? at [1240, 0] sense=569 internal=568
+HELIOS_base 3: [1240, 0] lost turn? at [1240, 0] sense=826 internal=825
+HELIOS_base 7: [1240, 0] lost turn_neck? at [1240, 0] sense=1453 internal=1452
+HELIOS_base 3: [1240, 0] lost turn_neck? at [1240, 0] sense=1453 internal=1452
+HELIOS_base 3: [1240, 0] lost attentionto? at [1240, 0] sense=909 internal=908
+HELIOS_base 7: [1240, 0] lost say? at [1240, 0] sense=270 internal=269
+HELIOS_base 7: [1240, 0] lost attentionto? at [1240, 0] sense=879 internal=878
+HELIOS_base 6: [1240, 0] lost turn? at [1240, 0] sense=688 internal=687
+HELIOS_base 1: [1240, 0] lost turn? at [1240, 0] sense=1305 internal=1304
+HELIOS_base 6: [1240, 0] lost turn_neck? at [1240, 0] sense=1453 internal=1452
+HELIOS_base 1: [1240, 0] lost turn_neck? at [1240, 0] sense=1462 internal=1461
+HELIOS_base 1: [1240, 0] lost attentionto? at [1240, 0] sense=1221 internal=1220
+HELIOS_base 6: [1240, 0] lost say? at [1240, 0] sense=317 internal=316
+HELIOS_base 6: [1240, 0] lost attentionto? at [1240, 0] sense=937 internal=936
+HELIOS_base 9: [1240, 0] lost turn? at [1240, 0] sense=421 internal=420
+HELIOS_base 9: [1240, 0] lost turn_neck? at [1240, 0] sense=1449 internal=1448
+HELIOS_base 9: [1240, 0] lost say? at [1240, 0] sense=421 internal=420
+HELIOS_base 9: [1240, 0] lost attentionto? at [1240, 0] sense=799 internal=798
+HELIOS_base 5: [1240, 0] lost turn? at [1240, 0] sense=865 internal=864
+HELIOS_base 5: [1240, 0] lost turn_neck? at [1240, 0] sense=1452 internal=1451
+HELIOS_base 5: [1240, 0] lost attentionto? at [1240, 0] sense=903 internal=902
+HELIOS_base 11: [1240, 0] lost turn? at [1240, 0] sense=453 internal=452
+HELIOS_base 11: [1240, 0] lost turn_neck? at [1240, 0] sense=1450 internal=1449
+HELIOS_base 11: [1240, 0] lost say? at [1240, 0] sense=368 internal=367
+HELIOS_base 11: [1240, 0] lost attentionto? at [1240, 0] sense=952 internal=951
+HELIOS_base 4: [1240, 0] lost turn? at [1240, 0] sense=578 internal=577
+HELIOS_base 4: [1240, 0] lost turn_neck? at [1240, 0] sense=1450 internal=1449
+HELIOS_base 4: [1240, 0] lost say? at [1240, 0] sense=394 internal=393
+HELIOS_base 4: [1240, 0] lost attentionto? at [1240, 0] sense=859 internal=858
+HELIOS_base 2: [1240, 0] lost turn? at [1240, 0] sense=745 internal=744
+HELIOS_base 2: [1240, 0] lost turn_neck? at [1240, 0] sense=1451 internal=1450
+HELIOS_base 2: [1240, 0] lost say? at [1240, 0] sense=338 internal=337
+HELIOS_base 2: [1240, 0] lost attentionto? at [1240, 0] sense=892 internal=891
+HELIOS_base 3: [1241, 0] over offset - 86   server response delayed??
+HELIOS_base 3: [1241, 0] missed see synch. action without see
+HELIOS_base 11: [1241, 0] over offset - 81   server response delayed??
+HELIOS_base 11: [1241, 0] missed see synch. action without see
+HELIOS_base 7: [1241, 0] over offset - 87   server response delayed??
+HELIOS_base 7: [1241, 0] missed see synch. action without see
+HELIOS_base 5: [1241, 0] over offset - 83   server response delayed??
+HELIOS_base 5: [1241, 0] missed see synch. action without see
+HELIOS_base 7: [1242, 0] over offset - 83   server response delayed??
+HELIOS_base 7: [1242, 0] missed see synch. action without see
 HELIOS_base coach: waited 5 seconds. server down??
 HELIOS_base coach: finished.
-HELIOS_base 2: waited 5 seconds. server down??
-HELIOS_base 2: finished.
+HELIOS_base 8: waited 5 seconds. server down??
+HELIOS_base 8: finished.
+HELIOS_base 3: waited 5 seconds. server down??
+HELIOS_base 3: finished.
 HELIOS_base 1: waited 5 seconds. server down??
 HELIOS_base 1: finished.
-HELIOS_base 10: waited 5 seconds. server down??
-HELIOS_base 10: finished.
-HELIOS_base 7: waited 5 seconds. server down??
-HELIOS_base 7: finished.
-HELIOS_base 9: waited 5 seconds. server down??
-HELIOS_base 9: finished.
 HELIOS_base 6: waited 5 seconds. server down??
 HELIOS_base 6: finished.
 HELIOS_base 11: waited 5 seconds. server down??
 HELIOS_base 11: finished.
-HELIOS_base 3: waited 5 seconds. server down??
-HELIOS_base 3: finished.
 HELIOS_base 4: waited 5 seconds. server down??
 HELIOS_base 4: finished.
+HELIOS_base 2: waited 5 seconds. server down??
+HELIOS_base 2: finished.
+HELIOS_base 10: waited 5 seconds. server down??
+HELIOS_base 10: finished.
+HELIOS_base 5: waited 5 seconds. server down??
+HELIOS_base 5: finished.
+HELIOS_base 9: waited 5 seconds. server down??
+HELIOS_base 9: finished.
+HELIOS_base 7: waited 5 seconds. server down??
+HELIOS_base 7: finished.

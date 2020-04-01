@@ -64,7 +64,7 @@ if __name__ == "__main__":
         agentthreads.append(at)
 
     print( "Spawned %d agents." % len(agentthreads))
-    print( "Playing sccer...")
+    print( "Playing soccer...")
 
     # wait until killed to terminate agent processes
     try:

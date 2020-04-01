@@ -219,16 +219,16 @@ class Agents:
         grid[find_nearest(dribble_row,7), find_nearest(dribble_col, 20)] +=100
 
         dribble_cost = grid_moves(grid, 3, coord.copy())
-        print(dribble_cost)
+        # print(dribble_cost)
         try:
             max_dribble = tuple(np.argwhere(dribble_cost == dribble_cost.max())[0])
         except ValueError:
             max_dribble = (0,0)
-        print(max_dribble)
+        # print(max_dribble)
         # print((dribble_col*5-50)[max_dribble])
         x = (dribble_col*5-50)[max_dribble]-self.team_players[self.num, 2]
         y = (dribble_row*5-35)[max_dribble]-self.team_players[self.num, 3]
-        print(x,y)
+        # print(x,y)
         return (int(loc[0]+x), int(loc[1]+y))
 
         # print(self.pass_scores)

@@ -220,6 +220,8 @@ Bhv_ChainAction::execute( PlayerAgent * agent )
 
     const Vector2D goal_pos = SP.theirTeamGoalPos();
     agent->setNeckAction( new Neck_TurnToReceiver( M_chain_graph ) );
+    
+    // std::cout<<"agent_num: "<<agent->world().self().unum()<<", "<<first_action.category()<<std::endl;
 
     switch ( first_action.category() ) {
     case CooperativeAction::Shoot:

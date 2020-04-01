@@ -251,6 +251,9 @@ Bhv_ChainAction::execute( PlayerAgent * agent)
     const Vector2D goal_pos = SP.theirTeamGoalPos();
     agent->setNeckAction( new Neck_TurnToReceiver( M_chain_graph ) );
 
+
+    // std::cout<< first_action << std::endl;
+
     /*
         Hold,
         Dribble,
@@ -281,7 +284,7 @@ Bhv_ChainAction::execute( PlayerAgent * agent)
       std::string update_string;
       update_string.assign(static_cast<char *>(update.data()), update.size());
       // update_string.erase(0,7);
-      // std::cout<<update_string<<std::endl;
+      std::cout<<"received: "<<update_string<<std::endl;
 
 // ============================================================================ 
       // Split Text
@@ -296,36 +299,51 @@ Bhv_ChainAction::execute( PlayerAgent * agent)
       {
           vect.push_back(i);
           // std::cout<<i<<std::endl;   
-          if (ss.peek() == ',' || ss.peek() == ' '){
+          if (ss.peek() == ','){
             // std::cout<<"ignored"<<std::endl;
             ss.ignore();
           }
               
       }
       int index = agent -> world().self().unum();
-      int player_num, option, pass_target;
-      double pos_x, pos_y;
-      player_num = vect[0];
+      int on_off, option, pass_target, player_num;
+      double pos_x;
+      double pos_y;
+      on_off = vect[0];
       // bool received_from_py = false;
 
+      player_num = vect[1];
+      std::cout<<"yo:"<<player_num<<index<<std::endl;
+      if (on_off ==  1 && player_num == index)
+      {
+      option = vect[2];
+      pos_x = vect[3];
+      pos_y = vect[4];
+      std::cout<<"python controlled"<<std::endl;
+      pass_target = vect[5];
+      }
+      else if (player_num != index)
+      {
+        std::cout<<"bhv controlled"<<std::endl;
 
-      // if (player_num ==  index)
-      // {
-      option = vect[1];
-      pos_x = vect[2];
-      pos_y = vect[3];
-      pass_target = vect[4];
-      // }
-      // else
-      // {
-      //   option = first_action.category();
-      //   pos_x = NULL;
-      //   pos_y = NULL;
-      // }
+        option = 1;
+        pos_x = NULL;
+        pos_y = NULL;
 
-    // int option = 2;
+      }
+      else
+      {
+        std::cout<<"no control"<<std::endl;
 
-      
+        option = first_action.category();
+        pos_x = NULL;
+        pos_y = NULL;
+      }
+
+    // int move = 0;
+    std::cout<<"ball pos: "<<wm.ball().pos()<<std::endl;
+    std::cout<<"current pos: "<<wm.self().pos()<<std::endl;
+
     // int option = std::stoi(std::string(buf, bytesReceived).at(0));
     switch ( option ) { 
     // switch (first_action.category()) {
@@ -336,7 +354,6 @@ Bhv_ChainAction::execute( PlayerAgent * agent)
             if ( Body_ForceShoot().execute( agent ) )
             {
                 agent->setNeckAction( new Neck_TurnToGoalieOrScan() );
-                // std::cout<<"shoot"<<std::endl;
 
                 return true;
             }
@@ -346,6 +363,7 @@ Bhv_ChainAction::execute( PlayerAgent * agent)
 
     case CooperativeAction::Dribble:
         {
+            std::cout<<"dribble"<<std::endl;
             if ( wm.gameMode().type() != GameMode::PlayOn
                  && ! wm.gameMode().isPenaltyKickMode() )
             {
@@ -377,7 +395,6 @@ Bhv_ChainAction::execute( PlayerAgent * agent)
 
             if ( Bhv_NormalDribble(dribble_pos, first_action, neck ).execute( agent ) )
             {
-                // std::cout<<"dribble"<<std::endl;
 
                 return true;
             }
@@ -403,7 +420,6 @@ Bhv_ChainAction::execute( PlayerAgent * agent)
                 Body_ClearBall().execute( agent );
                 agent->setNeckAction( new Neck_ScanField() );
                 
-                // std::cout<<"hold"<<std::endl;
 
                 return true;
             }
@@ -415,7 +431,6 @@ Bhv_ChainAction::execute( PlayerAgent * agent)
             Body_HoldBall().execute( agent );
             agent->setNeckAction( new Neck_ScanField() );
 
-            // std::cout<<"hold"<<std::endl;
 
             return true;
             break;
@@ -423,6 +438,7 @@ Bhv_ChainAction::execute( PlayerAgent * agent)
 
     case CooperativeAction::Pass:
         {   
+            std::cout<<"pass"<<std::endl;
 
             Vector2D pass_pos = Vector2D(pos_x,pos_y);
 
@@ -439,7 +455,6 @@ Bhv_ChainAction::execute( PlayerAgent * agent)
                           __FILE__" (Bhv_ChainAction) pass" );
             Bhv_PassKickFindReceiver( M_chain_graph, pass_pos, pass_target).execute( agent );
             
-            // std::cout<<"pass"<<std::endl;
             
             return true;
             break;
@@ -456,7 +471,6 @@ Bhv_ChainAction::execute( PlayerAgent * agent)
             {
                 agent->setNeckAction( new Neck_ScanField() );
                 
-                // std::cout<<"move"<<std::endl;
 
                 return true;
             }
@@ -466,10 +480,11 @@ Bhv_ChainAction::execute( PlayerAgent * agent)
 
     case CooperativeAction::NoAction:
         {
+            std::cout<<"No Action"<<std::endl;
+
             dlog.addText( Logger::TEAM,
                           __FILE__" (Bhv_ChainAction) no action" );
 
-            // std::cout<<"noaction"<<std::endl;
 
             return true;
             break;
@@ -479,7 +494,6 @@ Bhv_ChainAction::execute( PlayerAgent * agent)
         dlog.addText( Logger::TEAM,
                       __FILE__" (Bhv_ChainAction) invalid category" );
 
-        // std::cout<<"invalid"<<std::endl;
         break;
 
     }

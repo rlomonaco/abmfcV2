@@ -104,7 +104,8 @@ class mysocket:
 
             self.players = np.vstack(players)
         except ValueError:
-            print('line error')
+            pass
+            # print('line error')
 
         if len(self.agents) < 1:
             self.agents = [Agents(self.players, self.ball, i) for i in range(11)]
@@ -204,7 +205,7 @@ class mysocket:
 
             # 0 and 1 added at the front from socket movement or abm movement
             # print(self.show)
-            print(msg1)
+            # print(msg1)
 
             self.pub_move_msg("0,-50 0,-30 -25,-35 -7,-35 7,-30 25,-10 -25,-15 -5,-15 5,-10 25,5 -5,5 5")
 
