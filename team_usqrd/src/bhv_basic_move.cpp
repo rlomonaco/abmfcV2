@@ -87,6 +87,8 @@ Bhv_BasicMove::execute( PlayerAgent * agent )
     }
 
     const WorldModel & wm = agent->world();
+
+
     /*--------------------------------------------------------*/
     // chase ball
     const int self_min = wm.interceptTable()->selfReachCycle();

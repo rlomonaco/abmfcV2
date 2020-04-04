@@ -313,27 +313,27 @@ Bhv_ChainAction::execute( PlayerAgent * agent)
       // bool received_from_py = false;
 
       player_num = vect[1];
-      std::cout<<"yo:"<<player_num<<index<<std::endl;
-      if (on_off ==  1 && player_num == index)
+      // std::cout<<"yo:"<<player_num<<index<<std::endl;
+      if (on_off ==  1 )
       {
       option = vect[2];
       pos_x = vect[3];
       pos_y = vect[4];
-      std::cout<<"python controlled"<<std::endl;
+      // std::cout<<"python controlled"<<std::endl;
       pass_target = vect[5];
       }
-      else if (player_num != index)
-      {
-        std::cout<<"bhv controlled"<<std::endl;
+      // else if (player_num != index)
+      // {
+      //   // std::cout<<"bhv controlled"<<std::endl;
 
-        option = 1;
-        pos_x = NULL;
-        pos_y = NULL;
+      //   option = 1;
+      //   pos_x = NULL;
+      //   pos_y = NULL;
 
-      }
+      // }
       else
       {
-        std::cout<<"no control"<<std::endl;
+        // std::cout<<"no control"<<std::endl;
 
         option = first_action.category();
         pos_x = NULL;
@@ -341,8 +341,8 @@ Bhv_ChainAction::execute( PlayerAgent * agent)
       }
 
     // int move = 0;
-    std::cout<<"ball pos: "<<wm.ball().pos()<<std::endl;
-    std::cout<<"current pos: "<<wm.self().pos()<<std::endl;
+    // std::cout<<"ball pos: "<<wm.ball().pos()<<std::endl;
+    // std::cout<<"current pos: "<<wm.self().pos()<<std::endl;
 
     // int option = std::stoi(std::string(buf, bytesReceived).at(0));
     switch ( option ) { 

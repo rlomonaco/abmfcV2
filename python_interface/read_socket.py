@@ -165,7 +165,7 @@ class mysocket:
             for a in array:
                 message += str(a)+","
 
-            return message[:-1]
+            return "1,"+message[:-1]
         return self.chain_message
 
     def commands(self, message):
@@ -201,10 +201,11 @@ class mysocket:
             msg0, msg1 = self.commands(message)
 
             self.pub_chain_msg(msg1)
+
             # self.pub_move_msg(msg0)
 
             # 0 and 1 added at the front from socket movement or abm movement
-            # print(self.show)
+            # print(self.players[9,2:4])
             # print(msg1)
 
             self.pub_move_msg("0,-50 0,-30 -25,-35 -7,-35 7,-30 25,-10 -25,-15 -5,-15 5,-10 25,5 -5,5 5")

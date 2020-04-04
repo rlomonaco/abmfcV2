@@ -385,6 +385,8 @@ SerializerMonitorStdv3::SocketStadiumOutput( std::ostream &,
 
    //  While loop:
    // char buf[4096];
+       // std::cout<<"show: "<<time<<std::endl;
+
    std::string message = "show:" + std::to_string(time)
              +"\nteam_l:" + std::to_string(team_l.point())
              + "\nteam_r:" + std::to_string(team_r.point())
@@ -393,7 +395,7 @@ SerializerMonitorStdv3::SocketStadiumOutput( std::ostream &,
 
     send(sock, message.c_str(), message.size() + 1, 0);
    close(sock);
- 
+  
 }
 
 

@@ -168,25 +168,26 @@ class Agents:
 
         shooting_scores[goal_distance>min_shot_dist] = 0
         shooting_man = int(np.argwhere(shooting_scores == shooting_scores.max())[0])
-        return [1, self.num+1, 1, dribble[0], dribble[1], target]
-        #
-        # if caldist(np.array([52.5,0]), self.ball) < min_shot_dist and shooting_man != self.num:
-        #     print('square')
-        #     x = max_points[shooting_man][0] - 50
-        #     y = max_points[shooting_man][1] - 35
-        #     return [self.num, 2, x, y, target]
-        # if caldist(np.array([52.5,0]), self.ball) < min_shot_dist:
-        #     print('shoot')
-        #     return [self.num, 3, 50, 0, target]
-        # elif np.max(self.pass_scores) <= -5 and np.min(opp_distance) > 5:
-        #     print('dribble')
-        #     return [self.num, 1, dribble[0], dribble[1], target]
-        # elif np.max(self.pass_scores) <= -5:
-        #     print('hold')
-        #     return [self.num, 0, 50, 0, target]
-        # else:
-        #     print('pass')
-        #     return [self.num, 2, x, y, target]
+
+        # return [1, self.num+1, 1, dribble[0], dribble[1], target]
+
+        if caldist(np.array([52.5,0]), self.ball) < min_shot_dist and shooting_man != self.num:
+            print('square')
+            x = max_points[shooting_man][0] - 50
+            y = max_points[shooting_man][1] - 35
+            return [self.num, 2, x, y, target]
+        if caldist(np.array([52.5,0]), self.ball) < min_shot_dist:
+            print('shoot')
+            return [self.num, 3, 50, 0, target]
+        elif np.max(self.pass_scores) <= -5 and np.min(opp_distance) > 5:
+            print('dribble')
+            return [self.num, 1, dribble[0], dribble[1], target]
+        elif np.max(self.pass_scores) <= -5:
+            print('hold')
+            return [self.num, 0, 50, 0, target]
+        else:
+            print('pass')
+            return [self.num, 2, x, y, target]
 
     def nodes(self, ball, region):
 

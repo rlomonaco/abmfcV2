@@ -1,4 +1,5 @@
 clear
+fuser -k 6000/tcp
 #fuser -k 5555/tcp
 #fuser -k 6666/tcp
 #fuser -k 7777/tcp
