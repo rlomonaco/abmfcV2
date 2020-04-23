@@ -37,7 +37,6 @@
 
 namespace rcsc {
 class WorldModel;
-class Vector2D;
 }
 
 class ActionChainGraph;
@@ -52,14 +51,11 @@ class Bhv_PassKickFindReceiver
 
 private:
     const ActionChainGraph & M_chain_graph;
-    const rcsc::Vector2D & M_pass_pos;
-    const int M_pass_unum;
 
 public:
 
-    double pass_x, pass_y;
+    Bhv_PassKickFindReceiver( const ActionChainGraph & chain_graph );
 
-    Bhv_PassKickFindReceiver( const ActionChainGraph & chain_graph, const rcsc::Vector2D & M_pass_pos, const int pass_target);
     bool execute( rcsc::PlayerAgent * agent );
 
 private:
@@ -68,8 +64,7 @@ private:
                   const CooperativeAction & pass );
 
     bool doPassKick( rcsc::PlayerAgent * agent,
-                     const CooperativeAction & pass);
-                      // const rcsc::Vector2D & pass_pos);
+                     const CooperativeAction & pass );
 
     bool doCheckReceiver( rcsc::PlayerAgent * agent,
                           const CooperativeAction & pass );

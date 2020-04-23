@@ -200,10 +200,8 @@ IntentionPassKickFindReceiver::finished( const PlayerAgent * agent )
 /*!
 
  */
-Bhv_PassKickFindReceiver::Bhv_PassKickFindReceiver( const ActionChainGraph & chain_graph,
-                                                    const Vector2D & pass_pos,
-                                                    const int pass_target )
-    : M_chain_graph( chain_graph ), M_pass_pos(pass_pos), M_pass_unum(pass_target)
+Bhv_PassKickFindReceiver::Bhv_PassKickFindReceiver( const ActionChainGraph & chain_graph )
+    : M_chain_graph( chain_graph )
 {
 }
 
@@ -222,8 +220,7 @@ IntentionPassKickFindReceiver::execute( PlayerAgent * agent )
     {
         return false;
     }
-    // std::cout<<"M_receiver_unum: "+M_receiver_unum<<std::endl;
-    // std::cout<<"receiver: "<<std::endl;
+
     const Vector2D next_self_pos = agent->effector().queuedNextMyPos();
     //const AngleDeg next_self_body = agent->effector().queuedNextMyBody();
     const double next_view_width = agent->effector().queuedNextViewWidth().width() * 0.5;
@@ -273,12 +270,11 @@ IntentionPassKickFindReceiver::execute( PlayerAgent * agent )
 
  */
 bool
-Bhv_PassKickFindReceiver::execute( PlayerAgent * agent)
+Bhv_PassKickFindReceiver::execute( PlayerAgent * agent )
 {
     dlog.addText( Logger::TEAM,
                   __FILE__": Bhv_PassKickFindReceiver" );
 
-    
     const WorldModel & wm = agent->world();
 
     if ( ! wm.self().isKickable() )
@@ -288,20 +284,20 @@ Bhv_PassKickFindReceiver::execute( PlayerAgent * agent)
         return false;
     }
 
-    //
-    // validate the pass
-    //
+    // //
+    // // validate the pass
+    // //
     const CooperativeAction & pass = M_chain_graph.getFirstAction();
 
-    if ( pass.category() != CooperativeAction::Pass )
-    {
-        dlog.addText( Logger::TEAM,
-                      __FILE__": action(%d) is not a pass type.",
-                      pass.category() );
-        return false;
-    }
+    // if ( pass.category() != CooperativeAction::Pass )
+    // {
+    //     dlog.addText( Logger::TEAM,
+    //                   __FILE__": action(%d) is not a pass type.",
+    //                   pass.category() );
+    //     return false;
+    // }
 
-    // const AbstractPlayerObject * receiver = wm.ourPlayer( pass.targetPlayerUnum() );
+    const AbstractPlayerObject * receiver = wm.ourPlayer( pass.targetPlayerUnum() );
 
     // if ( ! receiver )
     // {
@@ -323,47 +319,46 @@ Bhv_PassKickFindReceiver::execute( PlayerAgent * agent)
     //     return false;
     // }
 
-/*
-    // if ( receiver->isGhost() )
-    // {
-    //     dlog.addText( Logger::TEAM,
-    //                   __FILE__": receiver is a ghost." );
-    //     return false;
-    // }
-*/
+    // // if ( receiver->isGhost() )
+    // // {
+    // //     dlog.addText( Logger::TEAM,
+    // //                   __FILE__": receiver is a ghost." );
+    // //     return false;
+    // // }
 
     if ( wm.gameMode().type() != GameMode::PlayOn )
     {
-        doPassKick( agent, pass);
+        doPassKick( agent, pass );
         return true;
     }
 
-    // //
-    // // estimate kick step
-    // //
-    // int kick_step = pass.kickCount(); //kickStep( wm, pass );
+    //
+    // estimate kick step
+    //
+    int kick_step = pass.kickCount(); //kickStep( wm, pass );
 
-    // if ( kick_step == 1
-    //      //&& pass.targetPoint().x > -20.0
-    //      && receiver->seenPosCount() <= 3 )
-    // {
-    //     dlog.addText( Logger::TEAM,
-    //                   __FILE__": 1 step kick." );
-    //     doPassKick( agent, pass);
-    //     return true;
-    // }
+    if ( kick_step == 1
+         //&& pass.targetPoint().x > -20.0
+         && receiver->seenPosCount() <= 3 )
+    {
+        dlog.addText( Logger::TEAM,
+                      __FILE__": 1 step kick." );
+        doPassKick( agent, pass );
+        return true;
+    }
 
-    // //
-    // // trying to turn body and/or neck to the pass receiver
-    // //
+    //
+    // trying to turn body and/or neck to the pass receiver
+    //
 
-    // if ( doCheckReceiver( agent, pass ) )
-    // {
-    //     agent->debugClient().addCircle( wm.self().pos(), 3.0 );
-    //     agent->debugClient().addCircle( wm.self().pos(), 5.0 );
-    //     agent->debugClient().addCircle( wm.self().pos(), 10.0 );
-    //     return true;
-    // }
+    if ( doCheckReceiver( agent, pass ) )
+    {
+        agent->debugClient().addCircle( wm.self().pos(), 3.0 );
+        agent->debugClient().addCircle( wm.self().pos(), 5.0 );
+        agent->debugClient().addCircle( wm.self().pos(), 10.0 );
+
+        return true;
+    }
 
     // if ( ( kick_step == 1
     //        && receiver->seenPosCount() > 3 )
@@ -384,8 +379,8 @@ Bhv_PassKickFindReceiver::execute( PlayerAgent * agent)
     //
     // pass kick
     //
-    
-    doPassKick( agent, pass);
+
+    doPassKick( agent, pass );
 
     return true;
 }
@@ -396,59 +391,34 @@ Bhv_PassKickFindReceiver::execute( PlayerAgent * agent)
  */
 bool
 Bhv_PassKickFindReceiver::doPassKick( PlayerAgent * agent,
-                                      const CooperativeAction & pass)
+                                      const CooperativeAction & pass )
 {
-    Vector2D pass_pos = M_pass_pos;
-    const ServerParam & SP = ServerParam::i();
-    const WorldModel & wm = agent->world();
-
-    if (pass_pos == Vector2D(NULL, NULL))
-    {
-        pass_pos = pass.targetPoint();
-        agent->debugClient().setTarget( pass.targetPlayerUnum() );
-        agent->debugClient().setTarget( pass.targetPoint() );
-        dlog.addText( Logger::TEAM,
+    agent->debugClient().setTarget( pass.targetPlayerUnum() );
+    agent->debugClient().setTarget( pass.targetPoint() );
+    dlog.addText( Logger::TEAM,
                   __FILE__" (Bhv_PassKickFindReceiver) pass to "
                   "%d receive_pos=(%.1f %.1f) speed=%.3f",
                   pass.targetPlayerUnum(),
                   pass.targetPoint().x, pass.targetPoint().y,
                   pass.firstBallSpeed() );
-    }
-    // pass_pos =  pass.targetPoint();
-    else
-    {
-        double first_speed = SP.firstBallSpeed( wm.ball().pos().dist( pass_pos ), 3);
-        dlog.addText( Logger::TEAM,
-          __FILE__" (Bhv_PassKickFindReceiver) pass to "
-          "%d receive_pos=(%.1f %.1f) speed=%.3f",
-            M_pass_unum,
-            pass_pos.x, pass_pos.y,
-            first_speed );
-    }
-
 
     if ( pass.kickCount() == 1
          || agent->world().gameMode().type() != GameMode::PlayOn )
     {
-        Body_KickOneStep(// pass.targetPoint(),
-                          pass_pos,
+        Body_KickOneStep( pass.targetPoint(),
                           pass.firstBallSpeed() ).execute( agent );
-        // std::cout<<"kickonestep"<<std::endl;
+
     }
     else
     {
-        Body_SmartKick(// pass.targetPoint(),
-                        pass_pos,
+        Body_SmartKick( pass.targetPoint(),
                         pass.firstBallSpeed(),
                         pass.firstBallSpeed() * 0.96,
                         3 ).execute( agent );
-        // std::cout<<"smartkick"<<std::endl;
     }
     agent->setNeckAction( new Neck_TurnToReceiver( M_chain_graph ) );
     doSayPass( agent, pass );
 
-    // std::cout<<pass.targetPoint()<<std::endl;
-    // std::cout<<Vector2D (pass.targetPoint().x,  pass.targetPoint().y-10)<<std::endl;
     return true;
 }
 
@@ -993,11 +963,8 @@ void
 Bhv_PassKickFindReceiver::doSayPass( PlayerAgent * agent,
                                      const CooperativeAction & pass )
 {
-    // const int receiver_unum = pass.targetPlayerUnum();
-    // const Vector2D & receive_pos = pass.targetPoint();
-
-    int receiver_unum = M_pass_unum;
-    Vector2D receive_pos = M_pass_pos;
+    const int receiver_unum = pass.targetPlayerUnum();
+    const Vector2D & receive_pos = pass.targetPoint();
 
     if ( agent->config().useCommunication()
          && receiver_unum != Unum_Unknown

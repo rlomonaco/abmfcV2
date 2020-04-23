@@ -368,7 +368,9 @@ sample_player-action_chain_graph.o: chain_action/action_chain_graph.cpp \
  /usr/local/include/rcsc/geom/region_2d.h \
  /usr/local/include/rcsc/geom/size_2d.h \
  /usr/local/include/rcsc/geom/line_2d.h chain_action/action_state_pair.h \
- chain_action/hold_ball.h /usr/local/include/rcsc/player/player_agent.h \
+ chain_action/actgen_simple_dribble.h chain_action/actgen_direct_pass.h \
+ chain_action/hold_ball.h chain_action/dribble.h chain_action/pass.h \
+ /usr/local/include/rcsc/player/player_agent.h \
  /usr/local/include/rcsc/player/action_effector.h \
  /usr/local/include/rcsc/player/player_command.h \
  /usr/local/include/rcsc/player/debug_client.h \
@@ -564,7 +566,18 @@ sample_player-action_chain_graph.o: chain_action/action_chain_graph.cpp \
  /usr/local/include/rcsc/common/logger.h \
  /usr/local/include/rcsc/geom/sector_2d.h /usr/include/c++/7/sstream \
  /usr/include/c++/7/bits/sstream.tcc /usr/include/c++/7/queue \
- /usr/include/c++/7/bits/stl_queue.h
+ /usr/include/c++/7/bits/stl_queue.h /usr/local/include/zmq.hpp \
+ /usr/local/include/zmq.h /usr/include/c++/7/iomanip \
+ /usr/include/c++/7/locale /usr/include/c++/7/bits/locale_facets_nonio.h \
+ /usr/include/c++/7/ctime \
+ /usr/include/x86_64-linux-gnu/c++/7/bits/time_members.h \
+ /usr/include/x86_64-linux-gnu/c++/7/bits/messages_members.h \
+ /usr/include/libintl.h /usr/include/c++/7/bits/locale_facets_nonio.tcc \
+ /usr/include/c++/7/bits/locale_conv.h \
+ /usr/include/c++/7/bits/stringfwd.h /usr/include/c++/7/bits/allocator.h \
+ /usr/include/c++/7/bits/codecvt.h /usr/include/c++/7/bits/unique_ptr.h \
+ /usr/include/c++/7/bits/quoted_string.h /usr/include/c++/7/chrono \
+ /usr/include/c++/7/ratio /usr/include/c++/7/bits/parse_numbers.h
 
 /usr/include/stdc-predef.h:
 
@@ -1454,7 +1467,15 @@ chain_action/predict_ball_object.h:
 
 chain_action/action_state_pair.h:
 
+chain_action/actgen_simple_dribble.h:
+
+chain_action/actgen_direct_pass.h:
+
 chain_action/hold_ball.h:
+
+chain_action/dribble.h:
+
+chain_action/pass.h:
 
 /usr/local/include/rcsc/player/player_agent.h:
 
@@ -1881,3 +1902,41 @@ chain_action/hold_ball.h:
 /usr/include/c++/7/queue:
 
 /usr/include/c++/7/bits/stl_queue.h:
+
+/usr/local/include/zmq.hpp:
+
+/usr/local/include/zmq.h:
+
+/usr/include/c++/7/iomanip:
+
+/usr/include/c++/7/locale:
+
+/usr/include/c++/7/bits/locale_facets_nonio.h:
+
+/usr/include/c++/7/ctime:
+
+/usr/include/x86_64-linux-gnu/c++/7/bits/time_members.h:
+
+/usr/include/x86_64-linux-gnu/c++/7/bits/messages_members.h:
+
+/usr/include/libintl.h:
+
+/usr/include/c++/7/bits/locale_facets_nonio.tcc:
+
+/usr/include/c++/7/bits/locale_conv.h:
+
+/usr/include/c++/7/bits/stringfwd.h:
+
+/usr/include/c++/7/bits/allocator.h:
+
+/usr/include/c++/7/bits/codecvt.h:
+
+/usr/include/c++/7/bits/unique_ptr.h:
+
+/usr/include/c++/7/bits/quoted_string.h:
+
+/usr/include/c++/7/chrono:
+
+/usr/include/c++/7/ratio:
+
+/usr/include/c++/7/bits/parse_numbers.h:

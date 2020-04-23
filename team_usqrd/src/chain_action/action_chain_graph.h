@@ -81,6 +81,18 @@ private:
 
     void calculateResultChain( const rcsc::WorldModel & wm,
                                unsigned long * n_evaluated );
+// ===============================================================
+// new dribble
+// ===============================================================
+    void simpledribble ( const PredictState & current_state,
+                            rcsc::Vector2D & target_point);
+// ===============================================================
+// new pass
+// ===============================================================
+    void simplepass ( const PredictState & current_state,
+                        rcsc::Vector2D & target_point,
+                        int pass_unum);
+    
     bool doSearch( const rcsc::WorldModel & wm,
                    const PredictState & state,
                    const std::vector< ActionStatePair > & path,
@@ -121,6 +133,14 @@ public:
     const CooperativeAction & getFirstAction() const
       {
           return (*(M_result.begin())).action();
+      };
+
+// ===============================================================
+// get second action for the keeper
+// ===============================================================
+    const CooperativeAction & getSecondAction() const
+      {
+        return (*(std::next(M_result.begin()))).action();
       };
 
     const PredictState & getFirstState() const

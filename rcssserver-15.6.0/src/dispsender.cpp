@@ -467,7 +467,12 @@ DispSenderMonitorV3::sendShow()
     //
 
     std::ostringstream ostr;
+
+    // not needed
     // serializer().printShow( ostr, stadium().time() );
+    //     serializer().ballPositionOutput(ostr,
+    //                             stadium().ball() );
+
     serializer().serializeShowBegin( ostr,
                                      stadium().time() );
     
@@ -479,8 +484,7 @@ DispSenderMonitorV3::sendShow()
 
     serializer().serializeBall( ostr,
                                 stadium().ball() );
-    // serializer().ballPositionOutput(ostr,
-    //                             stadium().ball() );
+
 
     serializer().SocketStadiumOutput( ostr, stadium().time(),
                              stadium().teamLeft(),

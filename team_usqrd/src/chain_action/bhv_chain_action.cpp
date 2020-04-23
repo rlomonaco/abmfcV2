@@ -72,15 +72,9 @@ NoAction
 //===================================================================
 */
 #include <zmq.hpp>
-
 #include <iostream>
-// #include <sys/types.h>
 #include <unistd.h>
-// #include <sys/socket.h>
-// #include <netdb.h>
-// #include <arpa/inet.h>
-// #include <string.h>
-// // #include <string>
+
 
 using namespace rcsc;
 
@@ -238,21 +232,30 @@ Bhv_ChainAction::execute( PlayerAgent * agent)
     {
         return true;
     }
-
+    int option;
+    
     const ServerParam & SP = ServerParam::i();
     const WorldModel & wm = agent->world();
-    
-    // std::cout<< wm.self().unum() << std::endl;
 
     const CooperativeAction & first_action = M_chain_graph.getFirstAction();
 
+    // second_action was made just to deal with the keeper missing, 
+    // not sure if necessary
+    const CooperativeAction & second_action = M_chain_graph.getSecondAction();
+
+    // std::cout<< wm.self().unum() << std::endl;
+    if (agent->world().self().unum() == 1)
+    {
+      option = second_action.category();
+    }
+    else
+    {
+      option = first_action.category();
+    }
     ActionChainGraph::debug_send_chain( agent, M_chain_graph.getAllChain() );
 
     const Vector2D goal_pos = SP.theirTeamGoalPos();
     agent->setNeckAction( new Neck_TurnToReceiver( M_chain_graph ) );
-
-
-    // std::cout<< first_action << std::endl;
 
     /*
         Hold,
@@ -265,88 +268,7 @@ Bhv_ChainAction::execute( PlayerAgent * agent)
         NoAction,
     */
 
-// ============================================================================
-// ZMQ Subscriber
-// ============================================================================
-      std::string server_address = "tcp://localhost:9999";
-      // Create a subscriber socket
-      zmq::context_t context(1);
-
-      zmq::socket_t subscriber (context, ZMQ_SUB);
-      subscriber.setsockopt(ZMQ_SUBSCRIBE, "", 0);
-      subscriber.connect(server_address);
-
-      //  Read envelope with address
-      zmq::message_t update;
-      subscriber.recv(&update);
-
-      // Read as a string
-      std::string update_string;
-      update_string.assign(static_cast<char *>(update.data()), update.size());
-      // update_string.erase(0,7);
-      std::cout<<"received: "<<update_string<<std::endl;
-
-// ============================================================================ 
-      // Split Text
-// ============================================================================
-
-      // define empty vec & string stream
-      std::vector<double> vect;
-      std::stringstream ss(update_string);
-
-      // loop through string stream
-      for (int i; ss >> i;) 
-      {
-          vect.push_back(i);
-          // std::cout<<i<<std::endl;   
-          if (ss.peek() == ','){
-            // std::cout<<"ignored"<<std::endl;
-            ss.ignore();
-          }
-              
-      }
-      int index = agent -> world().self().unum();
-      int on_off, option, pass_target, player_num;
-      double pos_x;
-      double pos_y;
-      on_off = vect[0];
-      // bool received_from_py = false;
-
-      player_num = vect[1];
-      // std::cout<<"yo:"<<player_num<<index<<std::endl;
-      if (on_off ==  1 )
-      {
-      option = vect[2];
-      pos_x = vect[3];
-      pos_y = vect[4];
-      // std::cout<<"python controlled"<<std::endl;
-      pass_target = vect[5];
-      }
-      // else if (player_num != index)
-      // {
-      //   // std::cout<<"bhv controlled"<<std::endl;
-
-      //   option = 1;
-      //   pos_x = NULL;
-      //   pos_y = NULL;
-
-      // }
-      else
-      {
-        // std::cout<<"no control"<<std::endl;
-
-        option = first_action.category();
-        pos_x = NULL;
-        pos_y = NULL;
-      }
-
-    // int move = 0;
-    // std::cout<<"ball pos: "<<wm.ball().pos()<<std::endl;
-    // std::cout<<"current pos: "<<wm.self().pos()<<std::endl;
-
-    // int option = std::stoi(std::string(buf, bytesReceived).at(0));
     switch ( option ) { 
-    // switch (first_action.category()) {
     case CooperativeAction::Shoot:
         {
             dlog.addText( Logger::TEAM,
@@ -363,7 +285,7 @@ Bhv_ChainAction::execute( PlayerAgent * agent)
 
     case CooperativeAction::Dribble:
         {
-            std::cout<<"dribble"<<std::endl;
+            // std::cout<<"dribble"<<std::endl;
             if ( wm.gameMode().type() != GameMode::PlayOn
                  && ! wm.gameMode().isPenaltyKickMode() )
             {
@@ -373,15 +295,14 @@ Bhv_ChainAction::execute( PlayerAgent * agent)
                 return false;
             }
 
-            // const Vector2D & dribble_target = first_action.targetPoint();
-            Vector2D dribble_pos = Vector2D(pos_x, pos_y);
+            const Vector2D & dribble_target = first_action.targetPoint();
 
             dlog.addText( Logger::TEAM,
                           __FILE__" (Bhv_ChainAction) dribble target=(%.1f %.1f)",
-                          dribble_pos.x, dribble_pos.y );
+                          dribble_target.x, dribble_target.y );
 
             NeckAction::Ptr neck;
-            double goal_dist = goal_pos.dist( dribble_pos );
+            double goal_dist = goal_pos.dist( dribble_target );
             if ( goal_dist < 18.0 )
             {
                 int count_thr = 0;
@@ -393,7 +314,7 @@ Bhv_ChainAction::execute( PlayerAgent * agent)
                 neck = NeckAction::Ptr( new Neck_TurnToGoalieOrScan( count_thr ) );
             }
 
-            if ( Bhv_NormalDribble(dribble_pos, first_action, neck ).execute( agent ) )
+            if ( Bhv_NormalDribble(first_action, neck).execute( agent ) )
             {
 
                 return true;
@@ -437,27 +358,13 @@ Bhv_ChainAction::execute( PlayerAgent * agent)
         }
 
     case CooperativeAction::Pass:
-        {   
-            std::cout<<"pass"<<std::endl;
-
-            Vector2D pass_pos = Vector2D(pos_x,pos_y);
-
-            // dlog.addText( Logger::ACTION_CHAIN,
-            //     "__ %d: pass (%s[%d]) t=%d from[%d](%.2f %.2f)-to[%d](%.2f %.2f)",
-            //     0, "strictLead", first_action.index(), 10,
-            //     wm.self().unum(),
-            //     wm.ball().pos().x, wm.ball().pos().y,
-            //     pass_target,
-            //     pass_pos.x, pass_pos.y );
-            agent->setNeckAction( new Neck_ScanField() );
-
+        {
             dlog.addText( Logger::TEAM,
                           __FILE__" (Bhv_ChainAction) pass" );
-            Bhv_PassKickFindReceiver( M_chain_graph, pass_pos, pass_target).execute( agent );
-            
-            
+            Bhv_PassKickFindReceiver( M_chain_graph ).execute( agent );
             return true;
             break;
+        
         }
 
     case CooperativeAction::Move:
@@ -480,7 +387,7 @@ Bhv_ChainAction::execute( PlayerAgent * agent)
 
     case CooperativeAction::NoAction:
         {
-            std::cout<<"No Action"<<std::endl;
+            // std::cout<<"No Action"<<std::endl;
 
             dlog.addText( Logger::TEAM,
                           __FILE__" (Bhv_ChainAction) no action" );

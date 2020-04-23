@@ -61,7 +61,7 @@ private:
 
 public:
 
-    Bhv_NormalDribble( const rcsc::Vector2D & M_dribble_pos,
+    Bhv_NormalDribble( 
                        const CooperativeAction & action,
                        rcsc::NeckAction::Ptr neck = rcsc::NeckAction::Ptr(),
                        rcsc::ViewAction::Ptr view = rcsc::ViewAction::Ptr());

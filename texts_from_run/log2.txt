@@ -6,17 +6,50 @@
  All rights reserved.
 ******************************************************************
 PING localhost (127.0.0.1) 56(84) bytes of data.
-64 bytes from localhost (127.0.0.1): icmp_seq=1 ttl=64 time=0.041 ms
+64 bytes from localhost (127.0.0.1): icmp_seq=1 ttl=64 time=0.043 ms
 
 --- localhost ping statistics ---
 1 packets transmitted, 1 received, 0% packet loss, time 0ms
-rtt min/avg/max/mdev = 0.041/0.041/0.041/0.000 ms
+rtt min/avg/max/mdev = 0.043/0.043/0.043/0.000 ms
 ******************************************************************
  librcsc 4.1.0
  Copyright 2000 - 2007. Hidehisa Akiyama.
  Copyright 2007 - 2011. Hidehisa Akiyama and Hiroki Shimora
  All rights reserved.
 ******************************************************************
+*****************************************************************
+ This program is based on agent2d created by Hidehisa Akiyama.
+ Copyright 2006 - 2011. Hidehisa Akiyama and Hiroki Shimora.
+ All rights reserved.
+*****************************************************************
+******************************************************************
+ librcsc 4.1.0
+ Copyright 2000 - 2007. Hidehisa Akiyama.
+ Copyright 2007 - 2011. Hidehisa Akiyama and Hiroki Shimora
+ All rights reserved.
+******************************************************************
+******************************************************************
+ librcsc 4.1.0
+ Copyright 2000 - 2007. Hidehisa Akiyama.
+ Copyright 2007 - 2011. Hidehisa Akiyama and Hiroki Shimora
+ All rights reserved.
+******************************************************************
+******************************************************************
+ librcsc 4.1.0
+ Copyright 2000 - 2007. Hidehisa Akiyama.
+ Copyright 2007 - 2011. Hidehisa Akiyama and Hiroki Shimora
+ All rights reserved.
+******************************************************************
+*****************************************************************
+ This program is based on agent2d created by Hidehisa Akiyama.
+ Copyright 2006 - 2011. Hidehisa Akiyama and Hiroki Shimora.
+ All rights reserved.
+*****************************************************************
+*****************************************************************
+ This program is based on agent2d created by Hidehisa Akiyama.
+ Copyright 2006 - 2011. Hidehisa Akiyama and Hiroki Shimora.
+ All rights reserved.
+*****************************************************************
 *****************************************************************
  This program is based on agent2d created by Hidehisa Akiyama.
  Copyright 2006 - 2011. Hidehisa Akiyama and Hiroki Shimora.
@@ -72,39 +105,6 @@ rtt min/avg/max/mdev = 0.041/0.041/0.041/0.000 ms
  Copyright 2006 - 2011. Hidehisa Akiyama and Hiroki Shimora.
  All rights reserved.
 *****************************************************************
-******************************************************************
- librcsc 4.1.0
- Copyright 2000 - 2007. Hidehisa Akiyama.
- Copyright 2007 - 2011. Hidehisa Akiyama and Hiroki Shimora
- All rights reserved.
-******************************************************************
-*****************************************************************
- This program is based on agent2d created by Hidehisa Akiyama.
- Copyright 2006 - 2011. Hidehisa Akiyama and Hiroki Shimora.
- All rights reserved.
-*****************************************************************
-*****************************************************************
- This program is based on agent2d created by Hidehisa Akiyama.
- Copyright 2006 - 2011. Hidehisa Akiyama and Hiroki Shimora.
- All rights reserved.
-*****************************************************************
-******************************************************************
- librcsc 4.1.0
- Copyright 2000 - 2007. Hidehisa Akiyama.
- Copyright 2007 - 2011. Hidehisa Akiyama and Hiroki Shimora
- All rights reserved.
-******************************************************************
-*****************************************************************
- This program is based on agent2d created by Hidehisa Akiyama.
- Copyright 2006 - 2011. Hidehisa Akiyama and Hiroki Shimora.
- All rights reserved.
-*****************************************************************
-******************************************************************
- librcsc 4.1.0
- Copyright 2000 - 2007. Hidehisa Akiyama.
- Copyright 2007 - 2011. Hidehisa Akiyama and Hiroki Shimora
- All rights reserved.
-******************************************************************
 *****************************************************************
  This program is based on agent2d created by Hidehisa Akiyama.
  Copyright 2006 - 2011. Hidehisa Akiyama and Hiroki Shimora.
@@ -127,17 +127,17 @@ rtt min/avg/max/mdev = 0.041/0.041/0.041/0.000 ms
  Copyright 2006 - 2011. Hidehisa Akiyama and Hiroki Shimora.
  All rights reserved.
 *****************************************************************
+*****************************************************************
+ This program is based on agent2d created by Hidehisa Akiyama.
+ Copyright 2006 - 2011. Hidehisa Akiyama and Hiroki Shimora.
+ All rights reserved.
+*****************************************************************
 ******************************************************************
  librcsc 4.1.0
  Copyright 2000 - 2007. Hidehisa Akiyama.
  Copyright 2007 - 2011. Hidehisa Akiyama and Hiroki Shimora
  All rights reserved.
 ******************************************************************
-*****************************************************************
- This program is based on agent2d created by Hidehisa Akiyama.
- Copyright 2006 - 2011. Hidehisa Akiyama and Hiroki Shimora.
- All rights reserved.
-*****************************************************************
 *****************************************************************
  This program is based on agent2d created by Hidehisa Akiyama.
  Copyright 2006 - 2011. Hidehisa Akiyama and Hiroki Shimora.
@@ -145,84 +145,92 @@ rtt min/avg/max/mdev = 0.041/0.041/0.041/0.000 ms
 *****************************************************************
 USqrd coach: [-1, 0] recv (ok eye on)
 USqrd coach: change player 1 to type 0
-USqrd coach: change player 11 to type 2
+USqrd coach: change player 11 to type 9
 USqrd coach: change player 2 to type 8
-USqrd coach: change player 3 to type 9
-USqrd coach: change player 10 to type 5
-USqrd coach: change player 9 to type 13
-USqrd coach: change player 6 to type 16
+USqrd coach: change player 3 to type 3
+USqrd coach: change player 10 to type 14
+USqrd coach: change player 9 to type 15
+USqrd coach: change player 6 to type 2
 USqrd coach: change player 4 to type 6
-USqrd coach: change player 5 to type 1
-USqrd coach: change player 7 to type 11
-USqrd coach: change player 8 to type 7
-received: 1,10,2,7,14,9
-pass
-received: 1,10,2,7,14,9
-pass
-received: 1,5,2,7,14,9
-pass
-received: 1,5,2,8,18,9
-pass
-received: 1,5,2,8,19,9
-pass
-received: 1,5,2,8,19,9
-pass
-received: 1,5,2,5,5,4
-pass
-received: 1,5,2,5,5,4
-pass
-received: 1,5,2,13,24,9
-pass
-received: 1,5,2,13,24,9
-pass
-received: 1,9,2,12,33,9
-pass
-received: 1,9,2,12,33,9
-pass
-received: 1,10,2,11,33,9
-pass
-[91, 0] USqrd Coach: determined opponent 4 type = 6
-[91, 0] USqrd Coach: determined opponent 5 type = 1
-USqrd coach: [91, 0] sent freeform (player_types (1 -1)(2 -1)(3 -1)(4 6)(5 1)(6 -1)(7 -1)(8 -1)(9 -1)(10 -1)(11 -1))
-[92, 0] USqrd Coach: determined opponent 3 type = 9
-USqrd coach: [92, 0] sent freeform (player_types (1 -1)(2 -1)(3 9)(4 6)(5 1)(6 -1)(7 -1)(8 -1)(9 -1)(10 -1)(11 -1))
-[93, 0] USqrd Coach: determined opponent 8 type = 7
-USqrd coach: [93, 0] sent freeform (player_types (1 -1)(2 -1)(3 9)(4 6)(5 1)(6 -1)(7 -1)(8 7)(9 -1)(10 -1)(11 -1))
-[96, 0] USqrd Coach: determined opponent 10 type = 5
-USqrd coach: [96, 0] sent freeform (player_types (1 -1)(2 -1)(3 9)(4 6)(5 1)(6 -1)(7 -1)(8 7)(9 -1)(10 5)(11 -1))
-[98, 0] USqrd Coach: determined opponent 9 type = 13
-USqrd coach: [98, 0] sent freeform (player_types (1 -1)(2 -1)(3 9)(4 6)(5 1)(6 -1)(7 -1)(8 7)(9 13)(10 5)(11 -1))
-[148, 0] USqrd Coach: determined opponent 6 type = 16
-USqrd coach: [148, 0] sent freeform (player_types (1 -1)(2 -1)(3 9)(4 6)(5 1)(6 16)(7 -1)(8 7)(9 13)(10 5)(11 -1))
-received: 1,9,2,15,8,4
-pass
-[199, 0] USqrd Coach: determined opponent 7 type = 11
-received: 1,7,2,12,22,9
-pass
-received: 1,9,2,-2,5,2
-pass
-USqrd coach: [265, 0] sent freeform (player_types (1 -1)(2 -1)(3 9)(4 6)(5 1)(6 16)(7 11)(8 7)(9 13)(10 5)(11 -1))
-USqrd 9: waited 5 seconds. server down??
-USqrd 9: finished.
-USqrd 5: waited 5 seconds. server down??
-USqrd 5: finished.
-USqrd 1: waited 5 seconds. server down??
-USqrd 1: finished.
-USqrd 10: waited 5 seconds. server down??
-USqrd 10: finished.
-USqrd 11: waited 5 seconds. server down??
-USqrd 11: finished.
-USqrd 8: waited 5 seconds. server down??
-USqrd 8: finished.
-USqrd 4: waited 5 seconds. server down??
-USqrd 4: finished.
-USqrd 6: waited 5 seconds. server down??
-USqrd 6: finished.
-USqrd 3: waited 5 seconds. server down??
-USqrd 3: finished.
+USqrd coach: change player 5 to type 12
+USqrd coach: change player 7 to type 10
+USqrd coach: change player 8 to type 1
+received: 0,0,2,7,12,9
+dribble
+received: 0,0,2,8,13,9
+dribble
+received: 0,0,2,8,13,9
+dribble
+received: 0,0,2,8,15,9
+dribble
+received: 0,0,2,9,17,9
+dribble
+received: 0,0,2,9,18,9
+dribble
+received: 0,0,2,9,20,9
+dribble
+received: 0,0,2,10,22,9
+dribble
+received: 0,0,2,10,23,9
+dribble
+received: 0,0,2,10,25,9
+dribble
+received: 0,0,2,11,26,9
+dribble
+received: 0,0,2,10,27,9
+dribble
+received: 0,0,2,10,28,9
+dribble
+[57, 0] USqrd Coach: determined opponent 5 type = 4
+received: 0,0,2,10,29,9
+dribble
+received: 0,0,2,9,29,9
+dribble
+received: 0,0,2,9,29,9
+dribble
+received: 0,0,2,9,30,9
+dribble
+received: 0,0,2,9,31,9
+dribble
+received: 0,0,2,11,33,9
+dribble
+received: 0,0,2,11,33,9
+dribble
+received: 0,0,2,10,34,9
+dribble
+received: 0,0,2,10,34,9
+dribble
+received: 0,0,2,10,38,9
+dribble
+received: 0,0,2,10,39,9
+dribble
+received: 0,0,2,2,16,4
+dribble
+received: 0,0,2,2,16,4
+dribble
+received: 0,0,2,2,17,4
+dribble
+received: 0,0,2,2,19,4
+dribble
 USqrd 2: waited 5 seconds. server down??
 USqrd 2: finished.
+USqrd 6: waited 5 seconds. server down??
+USqrd 6: finished.
 USqrd 7: waited 5 seconds. server down??
 USqrd 7: finished.
+USqrd 3: waited 5 seconds. server down??
+USqrd 3: finished.
+USqrd 5: waited 5 seconds. server down??
+USqrd 5: finished.
+USqrd 8: waited 5 seconds. server down??
+USqrd 8: finished.
 USqrd coach: waited 5 seconds. server down??
 USqrd coach: finished.
+USqrd 9: waited 5 seconds. server down??
+USqrd 9: finished.
+USqrd 4: waited 5 seconds. server down??
+USqrd 4: finished.
+USqrd 11: waited 5 seconds. server down??
+USqrd 11: finished.
+USqrd 10: waited 5 seconds. server down??
+USqrd 10: finished.

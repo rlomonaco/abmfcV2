@@ -3,6 +3,11 @@ import zmq
 import numpy as np
 from agents import Agents
 
+def caldist(p1, p2):
+    '''
+    calculate distance between two points
+    '''
+    return np.sqrt((p1[0]-p2[0])**2 + (p1[1]-p2[1])**2)
 # ==============================================================================
 # class
 # ==============================================================================
@@ -33,7 +38,7 @@ class mysocket:
         self.show = -1
         self.kickcount = np.zeros(22)
         self.last_kick = -1
-        self.actioned = False
+        # self.actioned = False
         self.agents = []
         self.move_message = "-25 0,-25 -5,-25 5,-25 -10,-25 10,-15 0,-15 -5,-15 5,-15 -10,-15 10,15 -0"
         self.chain_message = "10,1,-50,0"
@@ -88,7 +93,6 @@ class mysocket:
         side: -1, num:10, x:15.000000, y:-10.000000, vel_x:0.000000, vel_y:0.000000, kick_count:0
         side: -1, num:11, x:15.000000, y:-0.000000, vel_x:0.000000, vel_y:0.000000, kick_count:0
         '''
-
         try:
             self.show = int(lines[0].split(':')[-1])
             self.scores = np.array([int(lines[1].split(':')[-1]), int(lines[2].split(':')[-1])])
@@ -113,9 +117,9 @@ class mysocket:
             # print(self.move_message)
 
         onball = np.argwhere(self.players[:,-3]-self.kickcount > 0)
-
+        # onball = np.argwhere(np.array([caldist(self.ball, self.players[i,2:4]) for i in range(22)]))
         if len(onball) > 0:
-            self.actioned = False
+            # self.actioned = False
             for i in range(11):
                 self.agents[i].onball = int(onball[0])
             self.onball = int(onball[0])
@@ -153,7 +157,7 @@ class mysocket:
         for x, m in enumerate(oned_array):
             message += str(m)+deliminater[x%2]
 
-        return "1,"+message[:-1]
+        return "0,"+message[:-1]
 
     def format_chain_message(self, array):
         '''
@@ -173,6 +177,7 @@ class mysocket:
         sometimes the messages don't have the full 26 lines due to probably error in the socket
         '''
         lines = message.split('\n')
+
         if len(lines) == 26:
 
             self.decode_msg(lines)
@@ -185,7 +190,7 @@ class mysocket:
             if self.onball < 11 and self.show > 1:
 
                 self.chain_message = self.format_chain_message(self.agents[self.onball].actions(self.ball))
-                self.actioned = True
+                # self.actioned = True
                 self.last_kick = self.onball
         return self.move_message, self.chain_message
 
@@ -206,7 +211,7 @@ class mysocket:
 
             # 0 and 1 added at the front from socket movement or abm movement
             # print(self.players[9,2:4])
-            # print(msg1)
+            print(msg1)
 
             self.pub_move_msg("0,-50 0,-30 -25,-35 -7,-35 7,-30 25,-10 -25,-15 -5,-15 5,-10 25,5 -5,5 5")
 

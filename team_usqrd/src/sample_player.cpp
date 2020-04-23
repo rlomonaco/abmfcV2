@@ -330,55 +330,7 @@ SamplePlayer::handleActionEnd()
     if ( world().self().posValid() )
     {
 #if 0
-        const ServerParam & SP = ServerParam::i();
-        //
-        // inside of pitch
-        //
-
-        // top,lower
-        debugClient().addLine( Vector2D( world().ourOffenseLineX(),
-                                         -SP.pitchHalfWidth() ),
-                               Vector2D( world().ourOffenseLineX(),
-                                         -SP.pitchHalfWidth() + 3.0 ) );
-        // top,lower
-        debugClient().addLine( Vector2D( world().ourDefenseLineX(),
-                                         -SP.pitchHalfWidth() ),
-                               Vector2D( world().ourDefenseLineX(),
-                                         -SP.pitchHalfWidth() + 3.0 ) );
-
-        // bottom,upper
-        debugClient().addLine( Vector2D( world().theirOffenseLineX(),
-                                         +SP.pitchHalfWidth() - 3.0 ),
-                               Vector2D( world().theirOffenseLineX(),
-                                         +SP.pitchHalfWidth() ) );
-        //
-        debugClient().addLine( Vector2D( world().offsideLineX(),
-                                         world().self().pos().y - 15.0 ),
-                               Vector2D( world().offsideLineX(),
-                                         world().self().pos().y + 15.0 ) );
-
-        // outside of pitch
-
-        // top,upper
-        debugClient().addLine( Vector2D( world().ourOffensePlayerLineX(),
-                                         -SP.pitchHalfWidth() - 3.0 ),
-                               Vector2D( world().ourOffensePlayerLineX(),
-                                         -SP.pitchHalfWidth() ) );
-        // top,upper
-        debugClient().addLine( Vector2D( world().ourDefensePlayerLineX(),
-                                         -SP.pitchHalfWidth() - 3.0 ),
-                               Vector2D( world().ourDefensePlayerLineX(),
-                                         -SP.pitchHalfWidth() ) );
-        // bottom,lower
-        debugClient().addLine( Vector2D( world().theirOffensePlayerLineX(),
-                                         +SP.pitchHalfWidth() ),
-                               Vector2D( world().theirOffensePlayerLineX(),
-                                         +SP.pitchHalfWidth() + 3.0 ) );
-        // bottom,lower
-        debugClient().addLine( Vector2D( world().theirDefensePlayerLineX(),
-                                         +SP.pitchHalfWidth() ),
-                               Vector2D( world().theirDefensePlayerLineX(),
-                                         +SP.pitchHalfWidth() + 3.0 ) );
+        
 #else
         // top,lower
         debugClient().addLine( Vector2D( world().ourDefenseLineX(),
@@ -779,31 +731,24 @@ SamplePlayer::createActionGenerator() const
 {
     CompositeActionGenerator * g = new CompositeActionGenerator();
 
-    //
-    // shoot
-    //
+    // //
+    // // shoot
+    // //
     g->addGenerator( new ActGen_RangeActionChainLengthFilter
                      ( new ActGen_Shoot(),
                        2, ActGen_RangeActionChainLengthFilter::MAX ) );
 
-    //
-    // strict check pass
-    //
+    // //
+    // // strict check pass
+    // //
     g->addGenerator( new ActGen_MaxActionChainLengthFilter
                      ( new ActGen_StrictCheckPass(), 1 ) );
 
-    //
-    // cross
-    //
+    // //
+    // // cross
+    // //
     g->addGenerator( new ActGen_MaxActionChainLengthFilter
                      ( new ActGen_Cross(), 1 ) );
-
-    //
-    // direct pass
-    //
-    // g->addGenerator( new ActGen_RangeActionChainLengthFilter
-    //                  ( new ActGen_DirectPass(),
-    //                    2, ActGen_RangeActionChainLengthFilter::MAX ) );
 
     //
     // short dribble
@@ -811,18 +756,12 @@ SamplePlayer::createActionGenerator() const
     g->addGenerator( new ActGen_MaxActionChainLengthFilter
                      ( new ActGen_ShortDribble(), 1 ) );
 
-    //
-    // self pass (long dribble)
+    // //
+    // // self pass (long dribble)
     //
     g->addGenerator( new ActGen_MaxActionChainLengthFilter
                      ( new ActGen_SelfPass(), 1 ) );
 
-    //
-    // simple dribble
-    //
-    // g->addGenerator( new ActGen_RangeActionChainLengthFilter
-    //                  ( new ActGen_SimpleDribble(),
-    //                    2, ActGen_RangeActionChainLengthFilter::MAX ) );
 
     return ActionGenerator::ConstPtr( g );
 }

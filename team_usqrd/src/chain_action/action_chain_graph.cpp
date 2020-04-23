@@ -27,9 +27,12 @@
 #endif
 
 #include "action_chain_graph.h"
+#include "actgen_simple_dribble.h"
+#include "actgen_direct_pass.h"
 
 #include "hold_ball.h"
-
+#include "dribble.h"
+#include "pass.h"
 #include <rcsc/player/player_agent.h>
 #include <rcsc/common/server_param.h>
 #include <rcsc/common/logger.h>
@@ -42,6 +45,16 @@
 #include <limits>
 #include <cstdio>
 #include <cmath>
+
+/*
+//===================================================================
+//  Socket
+//===================================================================
+*/
+#include <zmq.hpp>
+#include <iostream>
+#include <unistd.h>
+
 
 #define DEBUG_PROFILE
 // #define ACTION_CHAIN_DEBUG
@@ -134,8 +147,205 @@ ActionChainGraph::ActionChainGraph( const FieldEvaluator::ConstPtr & evaluator,
 
 /*-------------------------------------------------------------------*/
 /*!
-
+  new fuctions added from actgen direct pass and actgen simple dribble
  */
+
+// ===============================================================
+// new shits
+// ===============================================================
+double
+s_get_ball_speed_for_pass( const double & distance )
+{
+    if ( distance >= 20.0 )
+    {
+        //return 3.0;
+        return 2.5;
+    }
+    else if ( distance >= 8.0 )
+    {
+        //return 2.5;
+        return 2.0;
+    }
+    else if ( distance >= 5.0 )
+    {
+        return 1.8;
+    }
+    else
+    {
+        return 1.5;
+    }
+}
+
+// ===============================================================
+// new pass function takes in state, zmq received coordinates and target, 
+// queue the pass to the front
+// ===============================================================
+
+  void ActionChainGraph::simplepass( const PredictState & current_state,
+                                        Vector2D & pass_pos,
+                                        int pass_unum)
+{
+
+    const AbstractPlayerObject * holder = current_state.ballHolder();
+
+    const double dist = ( pass_pos - holder->pos() ).r();
+
+    const double ball_speed = s_get_ball_speed_for_pass( ( pass_pos - holder->pos() ).r() );
+
+    const unsigned long kick_step = 2;
+
+    const unsigned long spend_time
+        = calc_length_geom_series( ball_speed,
+                                   dist,
+                                   ServerParam::i().ballDecay() )
+        + kick_step;
+
+    PredictState::ConstPtr result_state( new PredictState( current_state,
+                                                           spend_time,
+                                                           pass_unum,
+                                                           pass_pos ) );
+
+    CooperativeAction::Ptr action( new Pass( holder->unum(),
+                                             pass_unum,
+                                             pass_pos,
+                                             ball_speed,
+                                             spend_time,
+                                             kick_step,
+                                             false,
+                                             "actgenDirect" ) );
+
+    M_result.insert(M_result.begin(), ActionStatePair( action, result_state ) );
+
+}
+
+// ===============================================================
+// new dribble takes in state, zmq received coordinates and queue dribble to the front
+// ===============================================================
+  void ActionChainGraph::simpledribble( const PredictState & current_state,
+                                          Vector2D & target_point)
+{
+    const AbstractPlayerObject * holder = current_state.ballHolder();
+
+    const int ANGLE_DIVS = 8;
+    const double ANGLE_STEP = 360.0 / ANGLE_DIVS;
+    const int DIST_DIVS = 3;
+    const double DIST_STEP = 1.75;
+
+    const ServerParam & SP = ServerParam::i();
+
+    const double max_x= SP.pitchHalfLength() - 1.0;
+    const double max_y= SP.pitchHalfWidth() - 1.0;
+
+    const int bonus_step = 2;
+
+    const PlayerType * ptype = holder->playerTypePtr();
+
+    // int generated_count = 0;
+
+    for ( int a = 0; a < ANGLE_DIVS; ++a )
+    {
+        const AngleDeg target_angle = ANGLE_STEP * a;
+
+        if ( holder->pos().x < 16.0
+             && target_angle.abs() > 100.0 )
+        {
+#ifdef DEBUG_PRINT
+            dlog.addText( Logger::ACTION_CHAIN,
+                          __FILE__": %d: (%.2f %.2f) danger angle(1) %.1f",
+                          generated_count,
+                          target_angle.degree() );
+#endif
+            continue;
+        }
+
+        if ( holder->pos().x < -36.0
+             && holder->pos().absY() < 20.0
+             && target_angle.abs() > 45.0 )
+        {
+#ifdef DEBUG_PRINT
+            dlog.addText( Logger::ACTION_CHAIN,
+                          __FILE__": %d: (%.2f %.2f) danger angle(2) %.1f",
+                          generated_count,
+                          target_angle.degree() );
+#endif
+            continue;
+        }
+
+        // const Vector2D unit_vec = Vector2D::from_polar( 1.0, target_angle );
+        for ( int d = 1; d <= DIST_DIVS; ++d )
+        {
+            const double holder_move_dist = DIST_STEP * d;
+
+            if ( target_point.absX() > max_x
+                 || target_point.absY() > max_y )
+            {
+#ifdef DEBUG_PRINT
+                dlog.addText( Logger::ACTION_CHAIN,
+                              __FILE__": %d: (%.2f %.2f) out of pitch.",
+                              generated_count,
+                              target_point.x, target_point.y );
+#endif
+                continue;
+            }
+
+            const int holder_reach_step
+                = 1 + 1  // kick + turn
+                + ptype->cyclesToReachDistance( holder_move_dist - ptype->kickableArea() * 0.5 );
+
+            //
+            // check opponent
+            //
+            bool exist_opponent = false;
+            for ( PlayerCont::const_iterator o = current_state.opponents().begin();
+                  o != current_state.opponents().end();
+                  ++o )
+            {
+                double opp_move_dist = o->pos().dist( target_point );
+                int o_step
+                    = 1 // turn step
+                    + o->playerTypePtr()->cyclesToReachDistance( opp_move_dist - ptype->kickableArea() );
+
+                if ( o_step - bonus_step <= holder_reach_step )
+                {
+                    exist_opponent = true;
+                    break;
+                }
+            }
+
+            if ( exist_opponent )
+            {
+#ifdef DEBUG_PRINT
+                dlog.addText( Logger::ACTION_CHAIN,
+                              __FILE__": %d: (%.2f %.2f) exist opponent.",
+                              generated_count, target_point.x, target_point.y );
+#endif
+                continue;
+            }
+
+            const double ball_speed = SP.firstBallSpeed( current_state.ball().pos().dist( target_point ),
+                                                         holder_reach_step );
+
+            PredictState::ConstPtr result_state( new PredictState( current_state,
+                                                                   holder_reach_step,
+                                                                   holder->unum(),
+                                                                   target_point ) );
+            CooperativeAction::Ptr action( new Dribble( holder->unum(),
+                                                        target_point,
+                                                        ball_speed,
+                                                        1,
+                                                        1,
+                                                        holder_reach_step - 2,
+                                                        "actgenDribble" ) );
+  
+            M_result.insert(M_result.begin(), ActionStatePair( action, result_state ) );
+        }
+    }
+  }
+
+
+// =============================================================================
+
+
 void
 ActionChainGraph::calculateResult( const WorldModel & wm )
 {
@@ -149,30 +359,113 @@ ActionChainGraph::calculateResult( const WorldModel & wm )
     M_chain_count = 0;
     M_best_chain_count = 0;
 
-    //
-    // best first
-    //
+    // xcalculate and queue the best result to the front
     calculateResultBestFirstSearch( wm, &n_evaluated );
 
-    if ( M_result.empty() )
+    const PredictState current_state( wm );
+
+// ============================================================================
+// ZMQ Subscriber
+// ============================================================================
+    std::string server_address = "tcp://localhost:9999";
+    // Create a subscriber socket
+    zmq::context_t context(1);
+
+    zmq::socket_t subscriber (context, ZMQ_SUB);
+    subscriber.setsockopt(ZMQ_SUBSCRIBE, "", 0);
+    subscriber.connect(server_address);
+
+    //  Read envelope with address
+    zmq::message_t update;
+    subscriber.recv(&update);
+
+    // Read as a string
+    std::string update_string;
+    update_string.assign(static_cast<char *>(update.data()), update.size());
+
+// ============================================================================ 
+// Split Text
+// ============================================================================
+
+      // define empty vec & string stream
+    std::vector<double> vect;
+    std::stringstream ss(update_string);
+
+    // loop through string stream
+    for (int i; ss >> i;) 
     {
-        const PredictState current_state( wm );
-
-        PredictState::ConstPtr result_state( new PredictState( current_state, 1 ) );
-        CooperativeAction::Ptr action( new HoldBall( wm.self().unum(),
-                                                     wm.ball().pos(),
-                                                     1,
-                                                     "defaultHold" ) );
-        action->setFinalAction( true );
-
-        M_result.push_back( ActionStatePair( action, result_state ) );
+        vect.push_back(i);
+        // std::cout<<i<<std::endl;   
+        if (ss.peek() == ','){
+          // std::cout<<"ignored"<<std::endl;
+          ss.ignore();
+        }
+            
     }
+
+    int on_off, option, pass_unum, player_num;
+    double pos_x, pos_y;
+
+    // save vector of zmq messages into variables
+    on_off = vect[0];
+    player_num = vect[1]+1;
+    pos_x = vect[3];
+    pos_y = vect[4];
+    pass_unum = vect[5];
+    Vector2D pass_pos = Vector2D(pos_x, pos_y);
+
+
+    if (on_off ==  1 )
+    {
+      option = vect[2];
+    }
+    else
+    {
+      option = 0;
+    }
+
+    // only change action chain for the player mentioned in the zmq messages
+    if( current_state.ballHolderUnum() == player_num)
+    {
+    switch(option)
+    {
+      case 0:
+      {
+        break;
+      }
+      case 1:
+      { 
+        // call simple dribble
+        simpledribble(current_state, pass_pos);
+        break;
+      }
+      case 2:
+      {
+        // call simple pass
+        simplepass(current_state, pass_pos,  pass_unum);
+        break;
+      }
+    }
+    }
+
+    // add hold incase M_result is empty
+    PredictState::ConstPtr result_state( new PredictState( current_state, 1 ) );
+    CooperativeAction::Ptr action( new HoldBall( wm.self().unum(),
+                                                 wm.ball().pos(),
+                                                 1,
+                                                 "defaultHold" ) );
+    action->setFinalAction( true );
+
+    M_result.push_back( ActionStatePair( action, result_state ) );
+  
 
     write_chain_log( ">>>>> best chain: ",
                      wm,
                      M_best_chain_count,
                      M_result,
                      M_best_evaluation );
+
+    //=========================== changes end ===========================================
 
 #if (defined DEBUG_PROFILE) || (defined ACTION_CHAIN_LOAD_DEBUG)
     const double msec = timer.elapsedReal();
@@ -655,7 +948,7 @@ ActionChainGraph::debug_send_chain( PlayerAgent * agent,
                 {
                     agent->debugClient().setTarget( action.targetPlayerUnum() );
 
-                    if ( s0->ourPlayer( action.targetPlayerUnum() )->pos().dist( s1->ball().pos() )
+                    if ( s0->ourPlayer( action.targetPlayerUnum() )->pos().dist( Vector2D() )
                          > DIRECT_PASS_DIST )
                     {
                         agent->debugClient().addLine( s0->ball().pos(), s1->ball().pos() );
@@ -786,14 +1079,15 @@ ActionChainGraph::write_chain_log( const std::string & pre_log_message,
             }
 
         case CooperativeAction::Pass:
-            {
+            { 
+                Vector2D point = Vector2D(-50,0);
                 dlog.addText( Logger::ACTION_CHAIN,
                               "__ %d: pass (%s[%d]) t=%d from[%d](%.2f %.2f)-to[%d](%.2f %.2f)",
                               i, a.description(), a.index(), s1->spendTime(),
                               s0->ballHolderUnum(),
                               s0->ball().pos().x, s0->ball().pos().y,
                               s1->ballHolderUnum(),
-                              a.targetPoint().x, a.targetPoint().y );
+                              point.x, point.y );
                 break;
             }
 
