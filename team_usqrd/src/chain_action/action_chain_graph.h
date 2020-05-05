@@ -92,6 +92,11 @@ private:
     void simplepass ( const PredictState & current_state,
                         rcsc::Vector2D & target_point,
                         int pass_unum);
+// ===============================================================
+// new shoot
+// ===============================================================
+    void shoot ( const PredictState & current_state);
+
     
     bool doSearch( const rcsc::WorldModel & wm,
                    const PredictState & state,

@@ -6,11 +6,11 @@
  All rights reserved.
 ******************************************************************
 PING localhost (127.0.0.1) 56(84) bytes of data.
-64 bytes from localhost (127.0.0.1): icmp_seq=1 ttl=64 time=0.044 ms
+64 bytes from localhost (127.0.0.1): icmp_seq=1 ttl=64 time=0.041 ms
 
 --- localhost ping statistics ---
 1 packets transmitted, 1 received, 0% packet loss, time 0ms
-rtt min/avg/max/mdev = 0.044/0.044/0.044/0.000 ms
+rtt min/avg/max/mdev = 0.041/0.041/0.041/0.000 ms
 ******************************************************************
  librcsc 4.1.0
  Copyright 2000 - 2007. Hidehisa Akiyama.
@@ -22,38 +22,7 @@ rtt min/avg/max/mdev = 0.044/0.044/0.044/0.000 ms
  Copyright 2006 - 2011. Hidehisa Akiyama and Hiroki Shimora.
  All rights reserved.
 *****************************************************************
-HELIOS_base 1: [0, 1] lost turn? at [0, 1] sense=0 internal=1
-HELIOS_base 1: [0, 1] lost turn_neck? at [0, 1] sense=0 internal=1
-HELIOS_base 1: [0, 1] lost change_view? at [0, 1] sense=0 internal=1
-HELIOS_base 1: [0, 2] lost change_view? at [0, 2] sense=1 internal=0
-******************************************************************
- librcsc 4.1.0
- Copyright 2000 - 2007. Hidehisa Akiyama.
- Copyright 2007 - 2011. Hidehisa Akiyama and Hiroki Shimora
- All rights reserved.
-******************************************************************
-******************************************************************
- librcsc 4.1.0
- Copyright 2000 - 2007. Hidehisa Akiyama.
- Copyright 2007 - 2011. Hidehisa Akiyama and Hiroki Shimora
- All rights reserved.
-******************************************************************
-*****************************************************************
- This program is based on agent2d created by Hidehisa Akiyama.
- Copyright 2006 - 2011. Hidehisa Akiyama and Hiroki Shimora.
- All rights reserved.
-*****************************************************************
-*****************************************************************
- This program is based on agent2d created by Hidehisa Akiyama.
- Copyright 2006 - 2011. Hidehisa Akiyama and Hiroki Shimora.
- All rights reserved.
-*****************************************************************
-******************************************************************
- librcsc 4.1.0
- Copyright 2000 - 2007. Hidehisa Akiyama.
- Copyright 2007 - 2011. Hidehisa Akiyama and Hiroki Shimora
- All rights reserved.
-******************************************************************
+HELIOS_base 1: [0, 2] missed last action?(1) last decision=[-1, 0]
 ******************************************************************
  librcsc 4.1.0
  Copyright 2000 - 2007. Hidehisa Akiyama.
@@ -76,17 +45,28 @@ HELIOS_base 1: [0, 2] lost change_view? at [0, 2] sense=1 internal=0
  Copyright 2006 - 2011. Hidehisa Akiyama and Hiroki Shimora.
  All rights reserved.
 *****************************************************************
-*****************************************************************
- This program is based on agent2d created by Hidehisa Akiyama.
- Copyright 2006 - 2011. Hidehisa Akiyama and Hiroki Shimora.
- All rights reserved.
-*****************************************************************
 ******************************************************************
  librcsc 4.1.0
  Copyright 2000 - 2007. Hidehisa Akiyama.
  Copyright 2007 - 2011. Hidehisa Akiyama and Hiroki Shimora
  All rights reserved.
 ******************************************************************
+******************************************************************
+ librcsc 4.1.0
+ Copyright 2000 - 2007. Hidehisa Akiyama.
+ Copyright 2007 - 2011. Hidehisa Akiyama and Hiroki Shimora
+ All rights reserved.
+******************************************************************
+*****************************************************************
+ This program is based on agent2d created by Hidehisa Akiyama.
+ Copyright 2006 - 2011. Hidehisa Akiyama and Hiroki Shimora.
+ All rights reserved.
+*****************************************************************
+*****************************************************************
+ This program is based on agent2d created by Hidehisa Akiyama.
+ Copyright 2006 - 2011. Hidehisa Akiyama and Hiroki Shimora.
+ All rights reserved.
+*****************************************************************
 ******************************************************************
  librcsc 4.1.0
  Copyright 2000 - 2007. Hidehisa Akiyama.
@@ -120,6 +100,12 @@ HELIOS_base 1: [0, 2] lost change_view? at [0, 2] sense=1 internal=0
  Copyright 2006 - 2011. Hidehisa Akiyama and Hiroki Shimora.
  All rights reserved.
 *****************************************************************
+******************************************************************
+ librcsc 4.1.0
+ Copyright 2000 - 2007. Hidehisa Akiyama.
+ Copyright 2007 - 2011. Hidehisa Akiyama and Hiroki Shimora
+ All rights reserved.
+******************************************************************
 *****************************************************************
  This program is based on agent2d created by Hidehisa Akiyama.
  Copyright 2006 - 2011. Hidehisa Akiyama and Hiroki Shimora.
@@ -131,6 +117,22 @@ HELIOS_base 1: [0, 2] lost change_view? at [0, 2] sense=1 internal=0
  Copyright 2007 - 2011. Hidehisa Akiyama and Hiroki Shimora
  All rights reserved.
 ******************************************************************
+******************************************************************
+ librcsc 4.1.0
+ Copyright 2000 - 2007. Hidehisa Akiyama.
+ Copyright 2007 - 2011. Hidehisa Akiyama and Hiroki Shimora
+ All rights reserved.
+******************************************************************
+*****************************************************************
+ This program is based on agent2d created by Hidehisa Akiyama.
+ Copyright 2006 - 2011. Hidehisa Akiyama and Hiroki Shimora.
+ All rights reserved.
+*****************************************************************
+*****************************************************************
+ This program is based on agent2d created by Hidehisa Akiyama.
+ Copyright 2006 - 2011. Hidehisa Akiyama and Hiroki Shimora.
+ All rights reserved.
+*****************************************************************
 ******************************************************************
  librcsc 4.1.0
  Copyright 2000 - 2007. Hidehisa Akiyama.
@@ -143,60 +145,27 @@ HELIOS_base 1: [0, 2] lost change_view? at [0, 2] sense=1 internal=0
  All rights reserved.
 *****************************************************************
 HELIOS_base coach: [-1, 0] recv (ok eye on)
-*****************************************************************
- This program is based on agent2d created by Hidehisa Akiyama.
- Copyright 2006 - 2011. Hidehisa Akiyama and Hiroki Shimora.
- All rights reserved.
-*****************************************************************
-[50, 0] HELIOS_base Coach: determined opponent 3 type = 14
-[58, 0] HELIOS_base Coach: determined opponent 6 type = 8
-[92, 0] HELIOS_base Coach: determined opponent 2 type = 15
-[104, 0] HELIOS_base Coach: determined opponent 4 type = 11
-HELIOS_base 6: [112, 0] lost turn? at [112, 0] sense=27 internal=28
-HELIOS_base 6: [112, 0] lost turn_neck? at [112, 0] sense=118 internal=119
-HELIOS_base 6: [112, 0] lost attentionto? at [112, 0] sense=70 internal=71
-HELIOS_base 9: [112, 0] lost dash? at [112, 0] sense=59 internal=60
-HELIOS_base 9: [112, 0] lost turn_neck? at [112, 0] sense=117 internal=118
-HELIOS_base 9: [112, 0] lost attentionto? at [112, 0] sense=99 internal=100
-HELIOS_base 6: [113, 0] lost attentionto? at [113, 0] sense=72 internal=71
-HELIOS_base 9: [113, 0] lost attentionto? at [113, 0] sense=101 internal=100
-[118, 0] HELIOS_base Coach: determined opponent 9 type = 5
-[118, 0] HELIOS_base Coach: determined opponent 11 type = 6
-HELIOS_base coach: [145, 0] sent freeform (player_types (1 -1)(2 15)(3 14)(4 11)(5 -1)(6 8)(7 -1)(8 -1)(9 5)(10 -1)(11 6))
-[253, 0] HELIOS_base Coach: determined opponent 5 type = 9
-[253, 0] HELIOS_base Coach: determined opponent 7 type = 4
-[257, 0] HELIOS_base Coach: determined opponent 10 type = 7
-HELIOS_base coach: [314, 0] sent freeform (player_types (1 -1)(2 15)(3 14)(4 11)(5 9)(6 8)(7 4)(8 -1)(9 5)(10 7)(11 6))
-[424, 0] HELIOS_base Coach: determined opponent 1 type = 0
-HELIOS_base 4: [473, 0] lost kick? at [473, 0] sense=7 internal=8
-HELIOS_base coach: [543, 0] sent freeform (player_types (1 0)(2 15)(3 14)(4 11)(5 9)(6 8)(7 4)(8 -1)(9 5)(10 7)(11 6))
-[547, 0] HELIOS_base Coach: determined opponent 8 type = 17
-HELIOS_base coach: [547, 0] sent freeform (player_types (1 0)(2 15)(3 14)(4 11)(5 9)(6 8)(7 4)(8 17)(9 5)(10 7)(11 6))
-HELIOS_base 5: [929, 0] missed last action?(2) last decision=[927, 0]
-HELIOS_base 9: [929, 0] missed last action?(2) last decision=[927, 0]
-HELIOS_base 2: [928, 0] lost dash? at [928, 0] sense=703 internal=704
-HELIOS_base 2: [928, 0] lost turn_neck? at [928, 0] sense=965 internal=966
-HELIOS_base 3: waited 5 seconds. server down??
-HELIOS_base 3: finished.
-HELIOS_base 4: waited 5 seconds. server down??
-HELIOS_base 4: finished.
-HELIOS_base 7: waited 5 seconds. server down??
-HELIOS_base 11: waited 5 seconds. server down??
-HELIOS_base 7: finished.
-HELIOS_base 11: finished.
-HELIOS_base 2: waited 5 seconds. server down??
-HELIOS_base 2: finished.
-HELIOS_base 1: waited 5 seconds. server down??
-HELIOS_base 1: finished.
-HELIOS_base 8: waited 5 seconds. server down??
-HELIOS_base 8: finished.
-HELIOS_base 5: waited 5 seconds. server down??
-HELIOS_base 5: finished.
-HELIOS_base 10: waited 5 seconds. server down??
-HELIOS_base 10: finished.
 HELIOS_base 9: waited 5 seconds. server down??
 HELIOS_base 9: finished.
+HELIOS_base 10: waited 5 seconds. server down??
+HELIOS_base 10: finished.
+HELIOS_base 3: waited 5 seconds. server down??
+HELIOS_base 3: finished.
+HELIOS_base 11: waited 5 seconds. server down??
+HELIOS_base 11: finished.
+HELIOS_base 7: waited 5 seconds. server down??
+HELIOS_base 7: finished.
+HELIOS_base 2: waited 5 seconds. server down??
+HELIOS_base 2: finished.
+HELIOS_base 8: waited 5 seconds. server down??
+HELIOS_base 8: finished.
 HELIOS_base 6: waited 5 seconds. server down??
 HELIOS_base 6: finished.
+HELIOS_base 4: waited 5 seconds. server down??
+HELIOS_base 4: finished.
+HELIOS_base 5: waited 5 seconds. server down??
+HELIOS_base 5: finished.
+HELIOS_base 1: waited 5 seconds. server down??
+HELIOS_base 1: finished.
 HELIOS_base coach: waited 5 seconds. server down??
 HELIOS_base coach: finished.

@@ -29,6 +29,7 @@
 #include "action_chain_graph.h"
 #include "actgen_simple_dribble.h"
 #include "actgen_direct_pass.h"
+#include "shoot.h"
 
 #include "hold_ball.h"
 #include "dribble.h"
@@ -342,7 +343,26 @@ s_get_ball_speed_for_pass( const double & distance )
     }
   }
 
+void ActionChainGraph::shoot( const PredictState & state)
+{
+  const AbstractPlayerObject * holder = state.ballHolder();
 
+    const long shoot_spend_time
+        = ( holder->pos().dist( ServerParam::i().theirTeamGoalPos() ) / 1.5 );
+
+    PredictState::ConstPtr result_state( new PredictState( state,
+                                                           shoot_spend_time,
+                                                           ServerParam::i().theirTeamGoalPos() ) );
+
+    CooperativeAction::Ptr action( new Shoot( holder->unum(),
+                                              ServerParam::i().theirTeamGoalPos(),
+                                              ServerParam::i().ballSpeedMax(),
+                                              shoot_spend_time,
+                                              1,
+                                              "shoot" ) );
+
+    M_result.insert(M_result.begin(), ActionStatePair( action, result_state ));
+}
 // =============================================================================
 
 
@@ -445,10 +465,17 @@ ActionChainGraph::calculateResult( const WorldModel & wm )
         simplepass(current_state, pass_pos,  pass_unum);
         break;
       }
+      case 3:
+      {
+        // call simple pass
+        shoot(current_state);
+        break;
+      }
     }
     }
-
-    // add hold incase M_result is empty
+    else
+    {
+          // add hold incase M_result is empty
     PredictState::ConstPtr result_state( new PredictState( current_state, 1 ) );
     CooperativeAction::Ptr action( new HoldBall( wm.self().unum(),
                                                  wm.ball().pos(),
@@ -456,7 +483,7 @@ ActionChainGraph::calculateResult( const WorldModel & wm )
                                                  "defaultHold" ) );
     action->setFinalAction( true );
 
-    M_result.push_back( ActionStatePair( action, result_state ) );
+    M_result.insert(M_result.begin(), ActionStatePair( action, result_state ) );
   
 
     write_chain_log( ">>>>> best chain: ",
@@ -464,6 +491,8 @@ ActionChainGraph::calculateResult( const WorldModel & wm )
                      M_best_chain_count,
                      M_result,
                      M_best_evaluation );
+    }
+
 
     //=========================== changes end ===========================================
 

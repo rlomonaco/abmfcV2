@@ -369,8 +369,8 @@ sample_player-action_chain_graph.o: chain_action/action_chain_graph.cpp \
  /usr/local/include/rcsc/geom/size_2d.h \
  /usr/local/include/rcsc/geom/line_2d.h chain_action/action_state_pair.h \
  chain_action/actgen_simple_dribble.h chain_action/actgen_direct_pass.h \
- chain_action/hold_ball.h chain_action/dribble.h chain_action/pass.h \
- /usr/local/include/rcsc/player/player_agent.h \
+ chain_action/shoot.h chain_action/hold_ball.h chain_action/dribble.h \
+ chain_action/pass.h /usr/local/include/rcsc/player/player_agent.h \
  /usr/local/include/rcsc/player/action_effector.h \
  /usr/local/include/rcsc/player/player_command.h \
  /usr/local/include/rcsc/player/debug_client.h \
@@ -1470,6 +1470,8 @@ chain_action/action_state_pair.h:
 chain_action/actgen_simple_dribble.h:
 
 chain_action/actgen_direct_pass.h:
+
+chain_action/shoot.h:
 
 chain_action/hold_ball.h:
 

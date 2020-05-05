@@ -734,33 +734,33 @@ SamplePlayer::createActionGenerator() const
     // //
     // // shoot
     // //
-    g->addGenerator( new ActGen_RangeActionChainLengthFilter
-                     ( new ActGen_Shoot(),
-                       2, ActGen_RangeActionChainLengthFilter::MAX ) );
+    // g->addGenerator( new ActGen_RangeActionChainLengthFilter
+    //                  ( new ActGen_Shoot(),
+    //                    2, ActGen_RangeActionChainLengthFilter::MAX ) );
+
+    // // //
+    // // // strict check pass
+    // // //
+    // g->addGenerator( new ActGen_MaxActionChainLengthFilter
+    //                  ( new ActGen_StrictCheckPass(), 1 ) );
+
+    // // //
+    // // // cross
+    // // //
+    // g->addGenerator( new ActGen_MaxActionChainLengthFilter
+    //                  ( new ActGen_Cross(), 1 ) );
 
     // //
-    // // strict check pass
+    // // short dribble
     // //
-    g->addGenerator( new ActGen_MaxActionChainLengthFilter
-                     ( new ActGen_StrictCheckPass(), 1 ) );
+    // g->addGenerator( new ActGen_MaxActionChainLengthFilter
+    //                  ( new ActGen_ShortDribble(), 1 ) );
 
+    // // //
+    // // // self pass (long dribble)
     // //
-    // // cross
-    // //
-    g->addGenerator( new ActGen_MaxActionChainLengthFilter
-                     ( new ActGen_Cross(), 1 ) );
-
-    //
-    // short dribble
-    //
-    g->addGenerator( new ActGen_MaxActionChainLengthFilter
-                     ( new ActGen_ShortDribble(), 1 ) );
-
-    // //
-    // // self pass (long dribble)
-    //
-    g->addGenerator( new ActGen_MaxActionChainLengthFilter
-                     ( new ActGen_SelfPass(), 1 ) );
+    // g->addGenerator( new ActGen_MaxActionChainLengthFilter
+    //                  ( new ActGen_SelfPass(), 1 ) );
 
 
     return ActionGenerator::ConstPtr( g );

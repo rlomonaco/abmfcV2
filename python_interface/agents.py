@@ -28,10 +28,10 @@ def shade_length(player_p, goalie_p):
 
     return abs(unshaded)/13
 
-def pass_obstruct(ball_p, opp_p):
-    '''
-    find obstructed pass
-    '''
+# def pass_obstruct(ball_p, opp_p):
+#     '''
+#     find obstructed pass
+#     '''
 
 
 def caldist(p1, p2):
@@ -92,6 +92,7 @@ class Agents:
         self.opp_speeds = [caldist(self.opp_players[i, 4:6], np.array([0, 0])) for i in range(11)]
 
     def movement(self, players):
+        
         self.players = players
         self.team_players = players[:11]
         self.opp_players = players[11:]
@@ -168,8 +169,8 @@ class Agents:
 
         shooting_scores[goal_distance>min_shot_dist] = 0
         shooting_man = int(np.argwhere(shooting_scores == shooting_scores.max())[0])
-
-        # return [1, self.num, 1, dribble[0], dribble[1], self.num]
+        # if caldist(np.array([52.5,0]), self.ball) < 12:
+        #     return [self.num, 3, 53, 0, self.num]
         # return [self.num, 1, self.players[self.num, 2]+4, self.players[self.num, 3], target]
 
         if caldist(np.array([52.5,0]), self.ball) < min_shot_dist and shooting_man != self.num:
