@@ -65,10 +65,10 @@ def passing_scores(ball, max_points, region):
     '''
     calculate pixel cost of the pass
     '''
-    ball = ball + np.array([50,35])
+    # ball = ball + np.array([50,35])
     region[region>0] = 0
     pass_scores = []
-    for j in range(1, 11):
+    for j in range(0, 11):
         pixels = np.array(list(bresenham(int(ball[0]),
                                          int(max_points[j][0]), int(ball[1]), int(max_points[j][1]))))
         pass_scores.append(np.sum(region[pixels[:, 0], pixels[:, 1]]))
@@ -80,6 +80,6 @@ def shooting_scores(player_pos):
 
     scores = []
     for p in player_pos[:11,:]:
-        scores.append(shade_length(p, player_pos[11:,:]))
+        scores.append(shade_length(p, player_pos[11,:]))
     return np.array(scores)
 

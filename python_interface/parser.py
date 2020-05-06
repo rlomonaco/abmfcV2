@@ -69,7 +69,7 @@ class Parser:
         '''
         message = self.portion_msg()
         lines = message.split('\n')
-        print(len(lines))
+        # print(len(lines))
         if len(lines) == 26:
             try:
                 self.show = int(lines[0].split(':')[-1])
@@ -119,12 +119,13 @@ class Parser:
         format chain commands to string message from array
         [player_num, action(pass), x, y, target]
         '''
+
         message = ""
         for a in array:
             message += str(a)+","
-
-        # return str(on_off) + "," + message[:-1]
-        return "0,1,1,2,3,4"
+        # print(str(int(on_off)) + "," + message[:-1])
+        return str(int(on_off)) + "," + message[:-1]
+        # return "0,1,1,2,3,4"
 
     def send_moves(self, array):
 

@@ -22,8 +22,8 @@ class run:
 		while True:
 
 			self.wm.update()
-			self.wm.move([[0,1],[0,2],[0,3]])
-			self.wm.chain([0,1,2,3,4,5])
+			# self.wm.move([[0,1],[0,2],[0,3]])
+			# self.wm.chain([0,1,2,3,4,5])
 
 
 

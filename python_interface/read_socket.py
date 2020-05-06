@@ -211,7 +211,7 @@ class mysocket:
 
             # 0 and 1 added at the front from socket movement or abm movement
             # print(self.players[9,2:4])
-            print(msg1)
+            # print(msg1)
 
             self.pub_move_msg("-50 0,-30 -25,-35 -7,-35 7,-30 25,-10 -25,-15 -5,-15 5,-10 25,5 -5,5 5")
 

@@ -138,7 +138,7 @@ class Agents:
         # should put in self.calc_distances
         self.ball_dist = np.array([caldist(self.players[i, 2:4], self.ball) for i in range(22)])
         opp_distance = np.array([caldist(self.opp_players[j, 2:4], self.players[self.num, 2:4]) for j in range(11)])
-        goal_distance = np.array([caldist(self.opp_players[j, 2:4], np.array([52.5,0])) for j in range(11)])
+        goal_distance = np.array([caldist(self.team_players[j, 2:4], np.array([52.5,0])) for j in range(11)])
 
         # get dominant regions
         region, team_region, opp_region, max_points = dom_reg_grid(

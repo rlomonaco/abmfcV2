@@ -34,7 +34,7 @@ class Ball:
 
 class Player:
 
-    def __init__(self, unum, players, holder, ball_dist):
+    def __init__(self, unum, players, ball_holder, ball_dist, goal_dist):
 
         self.unum = unum
         self.pos = players[2:4]
@@ -44,8 +44,8 @@ class Player:
         self.stam_cap = players[8]
 
         self.ball_dist = ball_dist
-
-        if holder == unum:
+        self.goal_dist = goal_dist
+        if ball_holder == unum:
             self.holder = True
         else:
             self.holder = False
