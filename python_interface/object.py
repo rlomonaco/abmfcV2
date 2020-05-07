@@ -1,3 +1,13 @@
+import numpy as np
+# ==============================================================================
+# define variables
+# ==============================================================================
+row = np.arange(-5, 5 + 1, 5)
+X = np.meshgrid(row, row)[0]
+Y = np.meshgrid(row, row)[0].T
+x = np.reshape(X, np.prod(X.shape))
+y = np.reshape(Y, np.prod(Y.shape))
+
 # ==============================================================================
 # define object classes
 # ==============================================================================
@@ -5,29 +15,34 @@ class Shoot:
 
     def __init__(self, unum, shot_scores):
         self.unum = unum
-        self.scores = shot_scores
+        self.score = shot_scores
 
 
 class Dribble:
 
-    def __init__(self, unum, coord, target_point):
+    def __init__(self, unum, coord, grid_cost, grid_unum, force=1):
+
+        self.unum = unum
+        self.coord = coord
+        self.target_point = coord + np.array([x[grid_unum], y[grid_unum]])*force
+        self.score = grid_cost
+
+class Pass:
+
+    def __init__(self, unum, coord, target_unum, target_point, through_point, pass_scores):
+
         self.unum = unum
         self.coord = coord
         self.target_point = target_point
-
-
-class Pass(Dribble):
-
-    def __init__(self, unum, coord, target_unum, target_point, through_point, pass_scores):
         self.target_unum = target_unum
         self.through_point = through_point
-        self.scores = pass_scores
-        Dribble.__init__(self, unum, coord, target_point)
+        self.score = pass_scores
 
 
 class Ball:
 
     def __init__(self, ball):
+
         self.pos = ball[:2]
         self.vel = ball[2:]
 

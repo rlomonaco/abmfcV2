@@ -83,3 +83,4 @@ def shooting_scores(player_pos):
         scores.append(shade_length(p, player_pos[11,:]))
     return np.array(scores)
 
+

@@ -1,4 +1,5 @@
 from parser import Parser
+# from action_chain import Action_Chain
 import numpy as np
 from dominant_region import dom_reg_grid
 from object import Shoot, Dribble, Pass, Ball, Player
@@ -10,12 +11,13 @@ import cv2
 # define class world_model
 # ==============================================================================
 
-class World_Model():
+class World_Model:
 
 
     def __init__ (self, host, port, move_port, chain_port):
 
         self.p = Parser(host, port, move_port, chain_port)
+        # self.ac = Action_Chain()
         self.op_goal = np.array([52.5, 0])
         self.players = []
 
@@ -23,13 +25,13 @@ class World_Model():
 
     def update(self):
 
-        show, scores, ball, holder, players_table = self.p.parse_msg()
+        show, scores, ball, last_kick, players_table = self.p.parse_msg()
         if len(players_table) == 22:
             # print(players[:,2:4])
             self.show = show
             self.scores = scores
             self.ball = Ball(ball)
-            self.holder = holder
+            self.last_kick = last_kick
 
             ball_dist = np.array([caldist(players_table[i,2:4], self.ball.pos) for i in range(22)])
 
@@ -45,15 +47,56 @@ class World_Model():
                                 players_table[11:,4:6], ball_dist)
             self.pass_scores = passing_scores(self.ball.pos, max_points, region)
             self.max_points = max_points
-            # max_points += np.array([50,35])
+            grid_cost = self.dribble_gen(region)
+
             self.shot_scores = shooting_scores(players_table[:,2:4].copy())
             self.shoots = [Shoot(i, self.shot_scores[i]) for i in range(11)]
             self.passes = [Pass(self.ball_holder, self.ball.pos, i, players_table[i,2:4], max_points[i], self.pass_scores[i]) for i in range(1,11)]
-            dribble = self.nodes(region)
-            self.dribble = Dribble(self.ball_holder, self.ball.pos, dribble)
+            self.dribbles = [Dribble(self.ball_holder, self.ball.pos, grid_cost[i],i) for i in range(9)]
 
             chain_array = self.actions()
             self.chain(chain_array)
+
+
+
+    def dribble_gen(self, region):
+
+        loc = self.players[self.ball_holder].pos
+        pos = loc.copy()
+        pos[0] = (pos[0] + 50)
+        pos[1] = (pos[1] + 35)
+        pos = pos.astype(int)
+
+        coord = np.array([pos.copy()[1], pos.copy()[0]])
+        dribble_cost = grid_moves(region, 15, coord.copy())
+
+        row_n = 3
+        col_n = 3
+        grid = cv2.resize(dribble_cost, dsize=(row_n, col_n), interpolation=cv2.INTER_CUBIC).astype(int)
+
+        return np.reshape(grid, np.prod(grid.shape))
+
+
+
+    def move(self, array):
+
+        self.p.send_moves(array)
+
+    def chain(self, array):
+        # print(array)
+        self.p.send_chains(array)
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -69,29 +112,46 @@ class World_Model():
         x = int(self.players[target].pos[0])
         y = int(self.players[target].pos[1])
 
-        min_shot_dist = 12
+        min_shot_dist = 15
 
         self.shot_scores[self.goal_dist[:11] > min_shot_dist] = 0
         shooting_man = int(np.argwhere(self.shot_scores == self.shot_scores.max())[0])
+        num = 5
+        if self.goal_dist[self.ball_holder] < min_shot_dist:
+            return [self.ball_holder, 3, self.dribbles[num].target_point[0], self.dribbles[num].target_point[1],
+                    self.ball_holder]
+        return [self.ball_holder, 1, self.dribbles[num].target_point[0], self.dribbles[num].target_point[1], self.ball_holder]
 
-        if np.max(self.pass_scores) <= -5 and np.min(self.opp_dist) > 5:
-        # print('dribble')
-            return [self.ball_holder, 1, self.dribble.target_point[0], self.dribble.target_point[1], self.ball_holder]
-        elif caldist(np.array([52.5, 0]), self.ball.pos) < min_shot_dist and shooting_man != self.ball_holder:
-            # print('square')
-            x = self.max_points[shooting_man][0] - 50
-            y = self.max_points[shooting_man][1] - 35
-            return [self.ball_holder, 2, x, y, target]
-        elif caldist(np.array([52.5, 0]), self.ball.pos) < min_shot_dist:
-            # print('shoot')
-            return [self.ball_holder, 3, 50, 0, target]
+        # if np.max(self.pass_scores) <= -5 and np.min(self.opp_dist) > 5:
+        # # print('dribble')
+        #     return [self.ball_holder, 1, self.dribble.target_point[0], self.dribble.target_point[1], self.ball_holder]
+        # elif caldist(np.array([52.5, 0]), self.ball.pos) < min_shot_dist and shooting_man != self.ball_holder:
+        #     # print('square')
+        #     x = self.max_points[shooting_man][0] - 50
+        #     y = self.max_points[shooting_man][1] - 35
+        #     return [self.ball_holder, 2, x, y, target]
+        # elif caldist(np.array([52.5, 0]), self.ball.pos) < min_shot_dist:
+        #     # print('shoot')
+        #     return [self.ball_holder, 3, 50, 0, target]
+        #
+        # elif np.max(self.pass_scores) <= -5:
+        #     # print('hold')
+        #     return [self.ball_holder, 0, 50, 0, target]
+        # else:
+        #     # print('pass')
+        #     return [self.ball_holder, 2, x, y, target]
 
-        elif np.max(self.pass_scores) <= -5:
-            # print('hold')
-            return [self.ball_holder, 0, 50, 0, target]
-        else:
-            # print('pass')
-            return [self.ball_holder, 2, x, y, target]
+
+
+
+
+
+
+
+
+
+
+
 
     def nodes(self, region):
 
@@ -129,16 +189,7 @@ class World_Model():
         x = (dribble_col * 5 - 50)[max_dribble] - self.players[self.ball_holder].pos[0]
         y = (dribble_row * 5 - 35)[max_dribble] - self.players[self.ball_holder].pos[1]
 
-        return [int(loc[0] + x), int(loc[1] + y)]
-
-    def move(self, array):
-
-        self.p.send_moves(array)
-
-    def chain(self, array):
-
-        self.p.send_chains(array)
-
+        return np.array([loc[0] + 3, loc[1]])
 
 
 

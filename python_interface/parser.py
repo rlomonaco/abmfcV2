@@ -34,10 +34,10 @@ class Parser:
         self.publish_chain = Publisher(chain_port)
 
         # initialise variables
-        self.holder = 11
+        self.last_kick = 11
         self.scores = np.zeros(2)
         self.show = 0
-        self.kickcount = np.zeros(22)
+        self.kick_count = np.zeros(22)
         self.ball = np.zeros(4)
         self.players = np.zeros([22,9])
         self.players[:, 2:4] += np.array(a)
@@ -89,13 +89,10 @@ class Parser:
             except ValueError:
                 pass
      
-            self.holder = np.argwhere(self.players[:,-3]-self.kickcount > 0)
-            # self.player_pos = self.players[:,2:4].copy()
-            # self.player_vel = self.players[:,4:6].copy()
-            # self.player_stam = self.players[:,7:].copy()
-            self.kickcount = self.players[:,6].copy()
+            self.last_kick = np.argwhere(self.players[:,-3]-self.kick_count > 0)
+            self.kick_count = self.players[:,6].copy()
 
-        return self.show, self.scores, self.ball.copy(), self.holder, self.players.copy()
+        return self.show, self.scores, self.ball.copy(), self.last_kick, self.players.copy()
 
     def format_move_message(self, array, on_off=False):
         '''
@@ -119,12 +116,12 @@ class Parser:
         format chain commands to string message from array
         [player_num, action(pass), x, y, target]
         '''
-
+        deliminator = ","
         message = ""
         for a in array:
-            message += str(a)+","
+            message += str(round(a,4))+deliminator
         # print(str(int(on_off)) + "," + message[:-1])
-        return str(int(on_off)) + "," + message[:-1]
+        return str(int(on_off)) + deliminator + message[:-len(deliminator)]
         # return "0,1,1,2,3,4"
 
     def send_moves(self, array):
