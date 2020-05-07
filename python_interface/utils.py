@@ -48,12 +48,16 @@ def paste_slices(tup):
 
     return slice(wall_min, wall_max), slice(block_min, block_max)
 
-def grid_moves(wall, block_size, loc):
+def dribble_grid(wall, block_size, loc, cost=-100):
     loc -= int((block_size-1)/2)
     block = np.zeros([block_size,block_size])
     loc_zip = zip(loc, block.shape, wall.shape)
     wall_slices, block_slices = zip(*map(paste_slices, loc_zip))
-    return wall[wall_slices]
+    boundary = np.ones([block_size, block_size])*cost
+    boundary[block_slices] = wall[wall_slices]
+
+    return boundary
+    # return wall_slices, block_slices
 
 def find_nearest(a, a0):
     "Element in nd array `a` closest to the scalar value `a0`"

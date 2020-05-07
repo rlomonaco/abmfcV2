@@ -1,28 +1,28 @@
 from mysock import Subscriber, Publisher
 import numpy as np
 
-a = [[-49., 0.],
-     [-25., -5.],
-     [-25., 5.],
-     [-25., -10.],
-     [-25., 10.],
-     [-25., 0.],
-     [-15., -5.],
-     [-15., 5.],
-     [-15., -10.],
-     [-15., 10.],
-     [-15., 0.],
-     [49., -0.],
-     [25., 5.],
-     [25., -5.],
-     [25., 10.],
-     [25., -10.],
-     [25., 0],
-     [15., 5.],
-     [15., -5.],
-     [15., 10.],
-     [15., -10.],
-     [15., -0.]]
+starting_pos = [[-49., 0.],
+                 [-25., -5.],
+                 [-25., 5.],
+                 [-25., -10.],
+                 [-25., 10.],
+                 [-25., 0.],
+                 [-15., -5.],
+                 [-15., 5.],
+                 [-15., -10.],
+                 [-15., 10.],
+                 [-15., 0.],
+                 [49., -0.],
+                 [25., 5.],
+                 [25., -5.],
+                 [25., 10.],
+                 [25., -10.],
+                 [25., 0],
+                 [15., 5.],
+                 [15., -5.],
+                 [15., 10.],
+                 [15., -10.],
+                 [15., -0.]]
 
 class Parser:
 
@@ -40,9 +40,9 @@ class Parser:
         self.kick_count = np.zeros(22)
         self.ball = np.zeros(4)
         self.players = np.zeros([22,9])
-        self.players[:, 2:4] += np.array(a)
 
-
+        # starting positions
+        self.players[:, 2:4] += np.array(starting_pos)
 
     def portion_msg(self):
 
@@ -87,6 +87,7 @@ class Parser:
                 self.players = np.vstack(players)
 
             except ValueError:
+                # print('player error')
                 pass
      
             self.last_kick = np.argwhere(self.players[:,-3]-self.kick_count > 0)
@@ -120,9 +121,9 @@ class Parser:
         message = ""
         for a in array:
             message += str(round(a,4))+deliminator
-        # print(str(int(on_off)) + "," + message[:-1])
+
+        print(str(int(on_off)) + "," + message[:-1])
         return str(int(on_off)) + deliminator + message[:-len(deliminator)]
-        # return "0,1,1,2,3,4"
 
     def send_moves(self, array):
 

@@ -38,6 +38,7 @@
 #include <rcsc/common/server_param.h>
 #include <rcsc/common/logger.h>
 #include <rcsc/time/timer.h>
+#include <vector>
 
 #include <string>
 #include <sstream>
@@ -227,67 +228,67 @@ s_get_ball_speed_for_pass( const double & distance )
 {
     const AbstractPlayerObject * holder = current_state.ballHolder();
 
-    const int ANGLE_DIVS = 8;
-    const double ANGLE_STEP = 360.0 / ANGLE_DIVS;
+    // const int ANGLE_DIVS = 8;
+    // const double ANGLE_STEP = 360.0 / ANGLE_DIVS;
     const int DIST_DIVS = 3;
     const double DIST_STEP = 1.75;
 
     const ServerParam & SP = ServerParam::i();
 
-    const double max_x= SP.pitchHalfLength() - 1.0;
-    const double max_y= SP.pitchHalfWidth() - 1.0;
+    // const double max_x= SP.pitchHalfLength() - 1.0;
+    // const double max_y= SP.pitchHalfWidth() - 1.0;
 
-    const int bonus_step = 2;
+    // const int bonus_step = 2;
 
     const PlayerType * ptype = holder->playerTypePtr();
 
-    // int generated_count = 0;
+//     int generated_count = 0;
 
-    for ( int a = 0; a < ANGLE_DIVS; ++a )
-    {
-        const AngleDeg target_angle = ANGLE_STEP * a;
+//     for ( int a = 0; a < ANGLE_DIVS; ++a )
+//     {
+//         const AngleDeg target_angle = ANGLE_STEP * a;
 
-        if ( holder->pos().x < 16.0
-             && target_angle.abs() > 100.0 )
-        {
-#ifdef DEBUG_PRINT
-            dlog.addText( Logger::ACTION_CHAIN,
-                          __FILE__": %d: (%.2f %.2f) danger angle(1) %.1f",
-                          generated_count,
-                          target_angle.degree() );
-#endif
-            continue;
-        }
+//         if ( holder->pos().x < 16.0
+//              && target_angle.abs() > 100.0 )
+//         {
+// #ifdef DEBUG_PRINT
+//             dlog.addText( Logger::ACTION_CHAIN,
+//                           __FILE__": %d: (%.2f %.2f) danger angle(1) %.1f",
+//                           generated_count,
+//                           target_angle.degree() );
+// #endif
+//             continue;
+//         }
 
-        if ( holder->pos().x < -36.0
-             && holder->pos().absY() < 20.0
-             && target_angle.abs() > 45.0 )
-        {
-#ifdef DEBUG_PRINT
-            dlog.addText( Logger::ACTION_CHAIN,
-                          __FILE__": %d: (%.2f %.2f) danger angle(2) %.1f",
-                          generated_count,
-                          target_angle.degree() );
-#endif
-            continue;
-        }
+//         if ( holder->pos().x < -36.0
+//              && holder->pos().absY() < 20.0
+//              && target_angle.abs() > 45.0 )
+//         {
+// #ifdef DEBUG_PRINT
+//             dlog.addText( Logger::ACTION_CHAIN,
+//                           __FILE__": %d: (%.2f %.2f) danger angle(2) %.1f",
+//                           generated_count,
+//                           target_angle.degree() );
+// #endif
+//             continue;
+//         }
 
         // const Vector2D unit_vec = Vector2D::from_polar( 1.0, target_angle );
         for ( int d = 1; d <= DIST_DIVS; ++d )
         {
             const double holder_move_dist = DIST_STEP * d;
 
-            if ( target_point.absX() > max_x
-                 || target_point.absY() > max_y )
-            {
-#ifdef DEBUG_PRINT
-                dlog.addText( Logger::ACTION_CHAIN,
-                              __FILE__": %d: (%.2f %.2f) out of pitch.",
-                              generated_count,
-                              target_point.x, target_point.y );
-#endif
-                continue;
-            }
+//             if ( target_point.absX() > max_x
+//                  || target_point.absY() > max_y )
+//             {
+// #ifdef DEBUG_PRINT
+//                 dlog.addText( Logger::ACTION_CHAIN,
+//                               __FILE__": %d: (%.2f %.2f) out of pitch.",
+//                               generated_count,
+//                               target_point.x, target_point.y );
+// #endif
+//                 continue;
+//             }
 
             const int holder_reach_step
                 = 1 + 1  // kick + turn
@@ -296,32 +297,32 @@ s_get_ball_speed_for_pass( const double & distance )
             //
             // check opponent
             //
-            bool exist_opponent = false;
-            for ( PlayerCont::const_iterator o = current_state.opponents().begin();
-                  o != current_state.opponents().end();
-                  ++o )
-            {
-                double opp_move_dist = o->pos().dist( target_point );
-                int o_step
-                    = 1 // turn step
-                    + o->playerTypePtr()->cyclesToReachDistance( opp_move_dist - ptype->kickableArea() );
+//             bool exist_opponent = false;
+//             for ( PlayerCont::const_iterator o = current_state.opponents().begin();
+//                   o != current_state.opponents().end();
+//                   ++o )
+//             {
+//                 double opp_move_dist = o->pos().dist( target_point );
+//                 int o_step
+//                     = 1 // turn step
+//                     + o->playerTypePtr()->cyclesToReachDistance( opp_move_dist - ptype->kickableArea() );
 
-                if ( o_step - bonus_step <= holder_reach_step )
-                {
-                    exist_opponent = true;
-                    break;
-                }
-            }
+//                 if ( o_step - bonus_step <= holder_reach_step )
+//                 {
+//                     exist_opponent = true;
+//                     break;
+//                 }
+//             }
 
-            if ( exist_opponent )
-            {
-#ifdef DEBUG_PRINT
-                dlog.addText( Logger::ACTION_CHAIN,
-                              __FILE__": %d: (%.2f %.2f) exist opponent.",
-                              generated_count, target_point.x, target_point.y );
-#endif
-                continue;
-            }
+//             if ( exist_opponent )
+//             {
+// #ifdef DEBUG_PRINT
+//                 dlog.addText( Logger::ACTION_CHAIN,
+//                               __FILE__": %d: (%.2f %.2f) exist opponent.",
+//                               generated_count, target_point.x, target_point.y );
+// #endif
+//                 continue;
+//             }
 
             const double ball_speed = SP.firstBallSpeed( current_state.ball().pos().dist( target_point ),
                                                          holder_reach_step );
@@ -340,7 +341,7 @@ s_get_ball_speed_for_pass( const double & distance )
   
             M_result.insert(M_result.begin(), ActionStatePair( action, result_state ) );
         }
-    }
+    
   }
 
 void ActionChainGraph::shoot( const PredictState & state)
@@ -406,13 +407,15 @@ ActionChainGraph::calculateResult( const WorldModel & wm )
 // ============================================================================ 
 // Split Text
 // ============================================================================
-
+  
+    int on_off, option, pass_unum, player_num;
+    double pos_x, pos_y;
       // define empty vec & string stream
     std::vector<double> vect;
     std::stringstream ss(update_string);
 
     // loop through string stream
-    for (int i; ss >> i;) 
+    for (double i; ss >> i;) 
     {
         vect.push_back(i);
         // std::cout<<i<<std::endl;   
@@ -422,10 +425,6 @@ ActionChainGraph::calculateResult( const WorldModel & wm )
         }
             
     }
-
-    int on_off, option, pass_unum, player_num;
-    double pos_x, pos_y;
-
     // save vector of zmq messages into variables
     on_off = vect[0];
     player_num = vect[1]+1;
@@ -433,7 +432,6 @@ ActionChainGraph::calculateResult( const WorldModel & wm )
     pos_y = vect[4];
     pass_unum = vect[5];
     Vector2D pass_pos = Vector2D(pos_x, pos_y);
-
 
     if (on_off ==  1 )
     {

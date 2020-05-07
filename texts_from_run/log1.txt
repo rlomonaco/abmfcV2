@@ -3,10 +3,10 @@ rcssserver-15.6.0
 Copyright (C) 1995, 1996, 1997, 1998, 1999 Electrotechnical Laboratory.
 2000 - RoboCup Soccer Simulator Maintenance Group.
 
-Simulator Random Seed: 1588689119
+Simulator Random Seed: 1588871336
 CSVSaver: Ready
 STDOutSaver: Ready
-Using simulator's random seed as Hetero Player Seed: 1588689119
+Using simulator's random seed as Hetero Player Seed: 1588871336
 wind factor: rand: 0.000000, vector: (0.000000, 0.000000)
 
 Hit CTRL-C to exit
@@ -16,11 +16,11 @@ rcssmonitor-15.2.1
 Copyright (C) 2009 - 2014 RoboCup Soccer Simulator Maintenance Group.
 
 A new (v4) monitor connected.
+A new (v14) player (HELIOS_base 1) connected.
 A new (v14) player (USqrd 2) connected.
 A new (v14) player (USqrd 3) connected.
 A new (v14) player (USqrd 4) connected.
 A new (v14) player (USqrd 5) connected.
-A new (v14) player (HELIOS_base 1) connected.
 A new (v14) player (USqrd 6) connected.
 A new (v14) player (USqrd 7) connected.
 A new (v14) player (USqrd 8) connected.
@@ -35,10 +35,16 @@ A new (v14) player (HELIOS_base 5) connected.
 A new (v14) player (HELIOS_base 6) connected.
 A new (v14) player (HELIOS_base 7) connected.
 A new (v14) player (HELIOS_base 8) connected.
-A new (v14) player (HELIOS_base 9) connected.
-A new (v14) player (HELIOS_base 10) connected.
-A new (v14) player (HELIOS_base 11) connected.
-A new (v14) online coach (HELIOS_base) connected.
+rcssserver changes (player USqrd 2) to type 1
+rcssserver changes (player USqrd 3) to type 2
+rcssserver changes (player USqrd 4) to type 3
+rcssserver changes (player USqrd 5) to type 4
+rcssserver changes (player USqrd 6) to type 5
+rcssserver changes (player USqrd 7) to type 6
+rcssserver changes (player USqrd 8) to type 7
+rcssserver changes (player USqrd 9) to type 8
+rcssserver changes (player USqrd 10) to type 9
+rcssserver changes (player USqrd 11) to type 10
 rcssserver changes (player HELIOS_base 2) to type 1
 rcssserver changes (player HELIOS_base 3) to type 2
 rcssserver changes (player HELIOS_base 4) to type 3
@@ -46,10 +52,11 @@ rcssserver changes (player HELIOS_base 5) to type 4
 rcssserver changes (player HELIOS_base 6) to type 5
 rcssserver changes (player HELIOS_base 7) to type 6
 rcssserver changes (player HELIOS_base 8) to type 7
-rcssserver changes (player HELIOS_base 9) to type 8
-rcssserver changes (player HELIOS_base 10) to type 9
-rcssserver changes (player HELIOS_base 11) to type 10
 Kick_off_left
+A new (v14) player (HELIOS_base 9) connected.
+A new (v14) player (HELIOS_base 10) connected.
+A new (v14) online coach (HELIOS_base) connected.
+A new (v14) player (HELIOS_base 11) connected.
 
 A monitor disconnected
 
@@ -61,7 +68,7 @@ Saving Results:
 	STDOutSaver: saving...
 
 Game Results:
-	2020-05-05 15:31:59
+	2020-05-07 18:08:56
 	'USqrd' vs 'HELIOS_base'
 	Score: 0 - 0
  
