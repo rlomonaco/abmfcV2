@@ -6,11 +6,77 @@
  All rights reserved.
 ******************************************************************
 PING localhost (127.0.0.1) 56(84) bytes of data.
-64 bytes from localhost (127.0.0.1): icmp_seq=1 ttl=64 time=0.016 ms
+64 bytes from localhost (127.0.0.1): icmp_seq=1 ttl=64 time=0.013 ms
 
 --- localhost ping statistics ---
 1 packets transmitted, 1 received, 0% packet loss, time 0ms
-rtt min/avg/max/mdev = 0.016/0.016/0.016/0.000 ms
+rtt min/avg/max/mdev = 0.013/0.013/0.013/0.000 ms
+******************************************************************
+ librcsc 4.1.0
+ Copyright 2000 - 2007. Hidehisa Akiyama.
+ Copyright 2007 - 2011. Hidehisa Akiyama and Hiroki Shimora
+ All rights reserved.
+******************************************************************
+*****************************************************************
+ This program is based on agent2d created by Hidehisa Akiyama.
+ Copyright 2006 - 2011. Hidehisa Akiyama and Hiroki Shimora.
+ All rights reserved.
+*****************************************************************
+******************************************************************
+ librcsc 4.1.0
+ Copyright 2000 - 2007. Hidehisa Akiyama.
+ Copyright 2007 - 2011. Hidehisa Akiyama and Hiroki Shimora
+ All rights reserved.
+******************************************************************
+******************************************************************
+ librcsc 4.1.0
+ Copyright 2000 - 2007. Hidehisa Akiyama.
+ Copyright 2007 - 2011. Hidehisa Akiyama and Hiroki Shimora
+ All rights reserved.
+******************************************************************
+******************************************************************
+ librcsc 4.1.0
+ Copyright 2000 - 2007. Hidehisa Akiyama.
+ Copyright 2007 - 2011. Hidehisa Akiyama and Hiroki Shimora
+ All rights reserved.
+******************************************************************
+*****************************************************************
+ This program is based on agent2d created by Hidehisa Akiyama.
+ Copyright 2006 - 2011. Hidehisa Akiyama and Hiroki Shimora.
+ All rights reserved.
+*****************************************************************
+*****************************************************************
+ This program is based on agent2d created by Hidehisa Akiyama.
+ Copyright 2006 - 2011. Hidehisa Akiyama and Hiroki Shimora.
+ All rights reserved.
+*****************************************************************
+******************************************************************
+ librcsc 4.1.0
+ Copyright 2000 - 2007. Hidehisa Akiyama.
+ Copyright 2007 - 2011. Hidehisa Akiyama and Hiroki Shimora
+ All rights reserved.
+******************************************************************
+*****************************************************************
+ This program is based on agent2d created by Hidehisa Akiyama.
+ Copyright 2006 - 2011. Hidehisa Akiyama and Hiroki Shimora.
+ All rights reserved.
+*****************************************************************
+******************************************************************
+ librcsc 4.1.0
+ Copyright 2000 - 2007. Hidehisa Akiyama.
+ Copyright 2007 - 2011. Hidehisa Akiyama and Hiroki Shimora
+ All rights reserved.
+******************************************************************
+*****************************************************************
+ This program is based on agent2d created by Hidehisa Akiyama.
+ Copyright 2006 - 2011. Hidehisa Akiyama and Hiroki Shimora.
+ All rights reserved.
+*****************************************************************
+*****************************************************************
+ This program is based on agent2d created by Hidehisa Akiyama.
+ Copyright 2006 - 2011. Hidehisa Akiyama and Hiroki Shimora.
+ All rights reserved.
+*****************************************************************
 ******************************************************************
  librcsc 4.1.0
  Copyright 2000 - 2007. Hidehisa Akiyama.
@@ -50,11 +116,17 @@ rtt min/avg/max/mdev = 0.016/0.016/0.016/0.000 ms
  Copyright 2007 - 2011. Hidehisa Akiyama and Hiroki Shimora
  All rights reserved.
 ******************************************************************
-*****************************************************************
- This program is based on agent2d created by Hidehisa Akiyama.
- Copyright 2006 - 2011. Hidehisa Akiyama and Hiroki Shimora.
- All rights reserved.
-*****************************************************************
+USqrd 4: [0, 1] lost turn? at [0, 1] sense=0 internal=1
+USqrd 4: [0, 1] lost turn_neck? at [0, 1] sense=0 internal=1
+USqrd 5: [0, 1] lost turn? at [0, 1] sense=0 internal=1
+USqrd 5: [0, 1] lost turn_neck? at [0, 1] sense=0 internal=1
+USqrd 2: [0, 1] lost turn? at [0, 1] sense=0 internal=1
+USqrd 2: [0, 1] lost turn_neck? at [0, 1] sense=0 internal=1
+USqrd 7: [0, 1] lost turn? at [0, 1] sense=0 internal=1
+USqrd 7: [0, 1] lost turn_neck? at [0, 1] sense=0 internal=1
+USqrd 6: [0, 1] lost turn? at [0, 1] sense=0 internal=1
+USqrd 6: [0, 1] lost turn_neck? at [0, 1] sense=0 internal=1
+USqrd 6: [0, 1] lost change_view? at [0, 1] sense=0 internal=1
 ******************************************************************
  librcsc 4.1.0
  Copyright 2000 - 2007. Hidehisa Akiyama.
@@ -72,110 +144,60 @@ rtt min/avg/max/mdev = 0.016/0.016/0.016/0.000 ms
  Copyright 2007 - 2011. Hidehisa Akiyama and Hiroki Shimora
  All rights reserved.
 ******************************************************************
-*****************************************************************
- This program is based on agent2d created by Hidehisa Akiyama.
- Copyright 2006 - 2011. Hidehisa Akiyama and Hiroki Shimora.
- All rights reserved.
-*****************************************************************
-******************************************************************
- librcsc 4.1.0
- Copyright 2000 - 2007. Hidehisa Akiyama.
- Copyright 2007 - 2011. Hidehisa Akiyama and Hiroki Shimora
- All rights reserved.
-******************************************************************
-******************************************************************
- librcsc 4.1.0
- Copyright 2000 - 2007. Hidehisa Akiyama.
- Copyright 2007 - 2011. Hidehisa Akiyama and Hiroki Shimora
- All rights reserved.
-******************************************************************
-*****************************************************************
- This program is based on agent2d created by Hidehisa Akiyama.
- Copyright 2006 - 2011. Hidehisa Akiyama and Hiroki Shimora.
- All rights reserved.
-*****************************************************************
-*****************************************************************
- This program is based on agent2d created by Hidehisa Akiyama.
- Copyright 2006 - 2011. Hidehisa Akiyama and Hiroki Shimora.
- All rights reserved.
-*****************************************************************
-******************************************************************
- librcsc 4.1.0
- Copyright 2000 - 2007. Hidehisa Akiyama.
- Copyright 2007 - 2011. Hidehisa Akiyama and Hiroki Shimora
- All rights reserved.
-******************************************************************
-******************************************************************
- librcsc 4.1.0
- Copyright 2000 - 2007. Hidehisa Akiyama.
- Copyright 2007 - 2011. Hidehisa Akiyama and Hiroki Shimora
- All rights reserved.
-******************************************************************
-*****************************************************************
- This program is based on agent2d created by Hidehisa Akiyama.
- Copyright 2006 - 2011. Hidehisa Akiyama and Hiroki Shimora.
- All rights reserved.
-*****************************************************************
-******************************************************************
- librcsc 4.1.0
- Copyright 2000 - 2007. Hidehisa Akiyama.
- Copyright 2007 - 2011. Hidehisa Akiyama and Hiroki Shimora
- All rights reserved.
-******************************************************************
-******************************************************************
- librcsc 4.1.0
- Copyright 2000 - 2007. Hidehisa Akiyama.
- Copyright 2007 - 2011. Hidehisa Akiyama and Hiroki Shimora
- All rights reserved.
-******************************************************************
-*****************************************************************
- This program is based on agent2d created by Hidehisa Akiyama.
- Copyright 2006 - 2011. Hidehisa Akiyama and Hiroki Shimora.
- All rights reserved.
-*****************************************************************
-*****************************************************************
- This program is based on agent2d created by Hidehisa Akiyama.
- Copyright 2006 - 2011. Hidehisa Akiyama and Hiroki Shimora.
- All rights reserved.
-*****************************************************************
 *****************************************************************
  This program is based on agent2d created by Hidehisa Akiyama.
  Copyright 2006 - 2011. Hidehisa Akiyama and Hiroki Shimora.
  All rights reserved.
 *****************************************************************
 USqrd coach: [-1, 0] recv (ok eye on)
+*****************************************************************
+ This program is based on agent2d created by Hidehisa Akiyama.
+ Copyright 2006 - 2011. Hidehisa Akiyama and Hiroki Shimora.
+ All rights reserved.
+*****************************************************************
+USqrd 6: [0, 2] lost change_view? at [0, 2] sense=1 internal=0
 USqrd coach: change player 1 to type 0
-USqrd coach: change player 11 to type 15
-USqrd coach: change player 2 to type 17
-USqrd coach: change player 3 to type 3
-USqrd coach: change player 10 to type 16
-USqrd coach: change player 9 to type 4
-USqrd coach: change player 6 to type 9
-USqrd coach: change player 4 to type 14
-USqrd coach: change player 5 to type 11
-USqrd coach: change player 7 to type 5
-USqrd coach: change player 8 to type 13
-USqrd 5: waited 5 seconds. server down??
-USqrd 2: waited 5 seconds. server down??
-USqrd 1: waited 5 seconds. server down??
-USqrd 5: finished.
-USqrd 2: finished.
-USqrd 1: finished.
-USqrd 4: waited 5 seconds. server down??
-USqrd 4: finished.
-USqrd 10: waited 5 seconds. server down??
-USqrd 10: finished.
+USqrd coach: change player 11 to type 6
+USqrd coach: change player 2 to type 5
+USqrd coach: change player 3 to type 1
+USqrd coach: change player 10 to type 12
+USqrd coach: change player 9 to type 9
+USqrd coach: change player 6 to type 13
+USqrd coach: change player 4 to type 16
+USqrd coach: change player 5 to type 3
+USqrd coach: change player 7 to type 8
+USqrd coach: change player 8 to type 7
+[26, 0] USqrd Coach: determined opponent 3 type = 1
+[40, 0] USqrd Coach: determined opponent 2 type = 5
+[40, 0] USqrd Coach: determined opponent 7 type = 8
+USqrd coach: [49, 0] sent freeform (player_types (1 -1)(2 5)(3 1)(4 -1)(5 -1)(6 -1)(7 8)(8 -1)(9 -1)(10 -1)(11 -1))
+[60, 0] USqrd Coach: determined opponent 11 type = 6
+[68, 0] USqrd Coach: determined opponent 5 type = 3
+[81, 0] USqrd Coach: determined opponent 10 type = 12
+[82, 0] USqrd Coach: determined opponent 4 type = 16
+[133, 0] USqrd Coach: determined opponent 6 type = 13
+USqrd coach: [164, 1] sent freeform (player_types (1 -1)(2 5)(3 1)(4 16)(5 3)(6 13)(7 8)(8 -1)(9 -1)(10 12)(11 6))
 USqrd 6: waited 5 seconds. server down??
 USqrd 6: finished.
+USqrd 3: waited 5 seconds. server down??
+USqrd 7: waited 5 seconds. server down??
+USqrd 3: finished.
+USqrd 7: finished.
 USqrd 11: waited 5 seconds. server down??
 USqrd 11: finished.
-USqrd 9: waited 5 seconds. server down??
-USqrd 9: finished.
-USqrd 3: waited 5 seconds. server down??
-USqrd 3: finished.
-USqrd 7: waited 5 seconds. server down??
-USqrd 7: finished.
+USqrd 1: waited 5 seconds. server down??
+USqrd 1: finished.
 USqrd 8: waited 5 seconds. server down??
 USqrd 8: finished.
+USqrd 9: waited 5 seconds. server down??
+USqrd 9: finished.
+USqrd 10: waited 5 seconds. server down??
+USqrd 10: finished.
 USqrd coach: waited 5 seconds. server down??
 USqrd coach: finished.
+USqrd 5: waited 5 seconds. server down??
+USqrd 5: finished.
+USqrd 4: waited 5 seconds. server down??
+USqrd 4: finished.
+USqrd 2: waited 5 seconds. server down??
+USqrd 2: finished.
