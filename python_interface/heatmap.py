@@ -2,9 +2,11 @@ import numpy as np
 import matplotlib.pyplot as plt
 from bresenham import bresenham
 import os
-os.chdir('/home/godfrey/abm-fc/')
-file_dir = os.getcwd()+'/python_interface/saved_heatmaps/'
 
+plt.interactive(False)
+
+os.chdir('/home/ricky/Documents/UCL/MSc/football/venv/abm-fc')
+file_dir = os.getcwd()+'/python_interface/saved_heatmaps/'
 file_num = 0
 regions = np.load(file_dir + f'regions_{file_num}.npy')
 player_poss = np.load(file_dir + f'player_pos_{file_num}.npy')

@@ -1,4 +1,4 @@
-// -*-c++-*-
+// --c++--
 
 /*
  *Copyright:
@@ -54,21 +54,23 @@
 //  Socket
 //===================================================================
 */
-// #include "zhelpers.hpp"
+#include <string>
+#include <sstream>
 #include <zmq.hpp>
 #include <iostream>
-#include <sys/types.h>
 #include <unistd.h>
-#include <sys/socket.h>
-#include <netdb.h>
-#include <arpa/inet.h>
-#include <string.h>
+
+//#include <sys/types.h>
+//#include <sys/socket.h>
+//#include <netdb.h>
+//#include <arpa/inet.h>
+//#include <string.h>
 
 
 using namespace rcsc;
 
 
-/*-------------------------------------------------------------------*/
+//-------------------------------------------------------------------//
 /*!
 
  */
@@ -89,7 +91,7 @@ Bhv_BasicMove::execute( PlayerAgent * agent )
     const WorldModel & wm = agent->world();
 
 
-    /*--------------------------------------------------------*/
+   //--------------------------------------------------------//
     // chase ball
     const int self_min = wm.interceptTable()->selfReachCycle();
     const int mate_min = wm.interceptTable()->teammateReachCycle();
@@ -153,7 +155,7 @@ Bhv_BasicMove::execute( PlayerAgent * agent )
 // Split Text
 // =================================================================
     // split into vector of strings
-    std::istringstream ss(update_string);
+    std::stringstream ss(update_string);
     std::string token, PlayerCoord;
 
     std::vector<std::string> AllCoords;
@@ -173,7 +175,7 @@ Bhv_BasicMove::execute( PlayerAgent * agent )
     std::stringstream cc(PlayerCoord);
 
     // loop through string stream
-    for (int i; cc >> i;) 
+    for (double i; cc >> i;)
     {
         coord.push_back(i);
         // std::cout<<i<<std::endl;   

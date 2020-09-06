@@ -15,5 +15,7 @@ sleep 0.2
 rcsoccersim > texts_from_run/log1.txt &
 sleep 0.5
 ./team_usqrd/src/start.sh  &
+#./agent2d-3.1.1/src/start.sh &
 sleep 1
 ./agent2d-3.1.1/src/start.sh > texts_from_run/log3.txt
+

@@ -2,27 +2,28 @@ from mysock import Subscriber, Publisher
 import numpy as np
 
 starting_pos = [[-49., 0.],
-                 [-25., -5.],
-                 [-25., 5.],
-                 [-25., -10.],
-                 [-25., 10.],
-                 [-25., 0.],
-                 [-15., -5.],
-                 [-15., 5.],
-                 [-15., -10.],
-                 [-15., 10.],
-                 [-15., 0.],
-                 [49., -0.],
-                 [25., 5.],
-                 [25., -5.],
-                 [25., 10.],
-                 [25., -10.],
-                 [25., 0],
-                 [15., 5.],
-                 [15., -5.],
-                 [15., 10.],
-                 [15., -10.],
-                 [15., -0.]]
+                [-25., -5.],
+                [-25., 5.],
+                [-25., -10.],
+                [-25., 10.],
+                [-25., 0.],
+                [-15., -5.],
+                [-15., 5.],
+                [-15., -10.],
+                [-15., 10.],
+                [-15., 0.],
+                [49., -0.],
+                [25., 5.],
+                [25., -5.],
+                [25., 10.],
+                [25., -10.],
+                [25., 0],
+                [15., 5.],
+                [15., -5.],
+                [15., 10.],
+                [15., -10.],
+                [15., -0.]]
+
 
 class Parser:
 
@@ -34,12 +35,12 @@ class Parser:
         self.publish_chain = Publisher(chain_port)
 
         # initialise variables
-        self.last_kick = 11
+        self.last_kick = np.array([])
         self.scores = np.zeros(2)
         self.show = 0
         self.kick_count = np.zeros(22)
         self.ball = np.zeros(4)
-        self.players = np.zeros([22,9])
+        self.players = np.zeros([22, 9])
 
         # starting positions
         self.players[:, 2:4] += np.array(starting_pos)
@@ -48,7 +49,7 @@ class Parser:
 
         message = ""
         msg = " "
-        while len(msg)>0:
+        while len(msg) > 0:
 
             msg = self.sock.recv()
             message += msg
@@ -80,7 +81,7 @@ class Parser:
             self.ball = np.array([np.float(val.split(':')[-1]) for val in lines[3].split(',')])
             try:
                 players = []
-                for i in range(4,len(lines)):
+                for i in range(4, len(lines)):
                     player = [np.float(val.split(':')[-1]) for val in lines[i].split(',')]
                     players.append(player)
 
@@ -89,9 +90,10 @@ class Parser:
             except ValueError:
                 # print('player error')
                 pass
-     
-            self.last_kick = np.argwhere(self.players[:,-3]-self.kick_count > 0)
-            self.kick_count = self.players[:,6].copy()
+
+            self.last_kick = np.squeeze(np.array(np.argwhere(self.players[:, -3] - self.kick_count > 0)))
+
+            self.kick_count = self.players[:, 6].copy()
 
         return self.show, self.scores, self.ball.copy(), self.last_kick, self.players.copy()
 
@@ -107,7 +109,7 @@ class Parser:
         message = ""
 
         for x, m in enumerate(oned_array):
-            message += str(m)+deliminater[x%2]
+            message += str(m) + deliminater[x % 2]
 
         # return str(on_off) + "," + message[:-1]
         return "0,0,-50 0,-30 -25,-35 -7,-35 7,-30 25,-10 -25,-15 -5,-15 5,-10 25,5 -5,5 5"
@@ -120,9 +122,9 @@ class Parser:
         deliminator = ","
         message = ""
         for a in array:
-            message += str(round(a,4))+deliminator
+            message += str(round(a, 4)) + deliminator
 
-        print(str(int(on_off)) + "," + message[:-1])
+        # print(str(int(on_off)) + "," + message[:-1])
         return str(int(on_off)) + deliminator + message[:-len(deliminator)]
 
     def send_moves(self, array):

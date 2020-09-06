@@ -437,7 +437,7 @@ Copyright (C) 2012 Free Software Foundation, Inc.
 This config.status script is free software; the Free Software Foundation
 gives unlimited permission to copy, distribute and modify it."
 
-ac_pwd='/home/godfrey/abm-fc/librcsc-4.1.0'
+ac_pwd='/home/ricky/Documents/UCL/MSc/football/venv/abm-fc/librcsc-4.1.0'
 srcdir='.'
 INSTALL='/usr/bin/install -c'
 MKDIR_P='/bin/mkdir -p'
@@ -663,7 +663,7 @@ finish_cmds='PATH="\$PATH:/sbin" ldconfig -n $libdir'
 finish_eval=''
 hardcode_into_libs='yes'
 sys_lib_search_path_spec='/usr/lib/gcc/x86_64-linux-gnu/7 /usr/lib/x86_64-linux-gnu /usr/lib /lib/x86_64-linux-gnu /lib'
-sys_lib_dlsearch_path_spec='/lib /usr/lib /usr/lib/x86_64-linux-gnu/libfakeroot /usr/local/lib /usr/local/lib/x86_64-linux-gnu /lib/x86_64-linux-gnu /usr/lib/x86_64-linux-gnu /usr/lib/x86_64-linux-gnu/libhybris-egl '
+sys_lib_dlsearch_path_spec='/lib /usr/lib /usr/lib/x86_64-linux-gnu/libfakeroot /usr/local/lib/i386-linux-gnu /lib/i386-linux-gnu /usr/lib/i386-linux-gnu /usr/local/lib/i686-linux-gnu /lib/i686-linux-gnu /usr/lib/i686-linux-gnu /usr/local/lib /usr/local/lib/x86_64-linux-gnu /lib/x86_64-linux-gnu /usr/lib/x86_64-linux-gnu /lib32 /usr/lib32 '
 hardcode_action='immediate'
 enable_dlopen='unknown'
 enable_dlopen_self='unknown'
@@ -881,7 +881,7 @@ cat >>"$ac_tmp/subs1.awk" <<\_ACAWK &&
 S["am__EXEEXT_FALSE"]=""
 S["am__EXEEXT_TRUE"]="#"
 S["LTLIBOBJS"]=""
-S["HAVE_DOT"]="YES"
+S["HAVE_DOT"]="NO"
 S["DOXYGEN"]=""
 S["BUILD_EXAMPLE_FALSE"]=""
 S["BUILD_EXAMPLE_TRUE"]="#"
@@ -948,7 +948,7 @@ S["build"]="x86_64-unknown-linux-gnu"
 S["LIBTOOL"]="$(SHELL) $(top_builddir)/libtool"
 S["am__untar"]="${AMTAR} xf -"
 S["am__tar"]="${AMTAR} chof - \"$$tardir\""
-S["AMTAR"]="${SHELL} /home/godfrey/abm-fc/librcsc-4.1.0/config/missing --run tar"
+S["AMTAR"]="${SHELL} /home/ricky/Documents/UCL/MSc/football/venv/abm-fc/librcsc-4.1.0/config/missing --run tar"
 S["am__leading_dot"]="."
 S["SET_MAKE"]=""
 S["AWK"]="mawk"
@@ -956,12 +956,12 @@ S["mkdir_p"]="/bin/mkdir -p"
 S["MKDIR_P"]="/bin/mkdir -p"
 S["INSTALL_STRIP_PROGRAM"]="$(install_sh) -c -s"
 S["STRIP"]="strip"
-S["install_sh"]="${SHELL} /home/godfrey/abm-fc/librcsc-4.1.0/config/install-sh"
-S["MAKEINFO"]="${SHELL} /home/godfrey/abm-fc/librcsc-4.1.0/config/missing --run makeinfo"
-S["AUTOHEADER"]="${SHELL} /home/godfrey/abm-fc/librcsc-4.1.0/config/missing --run autoheader"
-S["AUTOMAKE"]="${SHELL} /home/godfrey/abm-fc/librcsc-4.1.0/config/missing --run automake-1.11"
-S["AUTOCONF"]="${SHELL} /home/godfrey/abm-fc/librcsc-4.1.0/config/missing --run autoconf"
-S["ACLOCAL"]="${SHELL} /home/godfrey/abm-fc/librcsc-4.1.0/config/missing --run aclocal-1.11"
+S["install_sh"]="${SHELL} /home/ricky/Documents/UCL/MSc/football/venv/abm-fc/librcsc-4.1.0/config/install-sh"
+S["MAKEINFO"]="${SHELL} /home/ricky/Documents/UCL/MSc/football/venv/abm-fc/librcsc-4.1.0/config/missing --run makeinfo"
+S["AUTOHEADER"]="${SHELL} /home/ricky/Documents/UCL/MSc/football/venv/abm-fc/librcsc-4.1.0/config/missing --run autoheader"
+S["AUTOMAKE"]="${SHELL} /home/ricky/Documents/UCL/MSc/football/venv/abm-fc/librcsc-4.1.0/config/missing --run automake-1.11"
+S["AUTOCONF"]="${SHELL} /home/ricky/Documents/UCL/MSc/football/venv/abm-fc/librcsc-4.1.0/config/missing --run autoconf"
+S["ACLOCAL"]="${SHELL} /home/ricky/Documents/UCL/MSc/football/venv/abm-fc/librcsc-4.1.0/config/missing --run aclocal-1.11"
 S["VERSION"]="4.1.0"
 S["PACKAGE"]="librcsc"
 S["CYGPATH_W"]="echo"

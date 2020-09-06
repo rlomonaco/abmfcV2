@@ -437,7 +437,7 @@ Copyright (C) 2012 Free Software Foundation, Inc.
 This config.status script is free software; the Free Software Foundation
 gives unlimited permission to copy, distribute and modify it."
 
-ac_pwd='/home/godfrey/abm-fc/rcssserver-15.6.0'
+ac_pwd='/home/ricky/Documents/UCL/MSc/football/venv/abm-fc/rcssserver-15.6.0'
 srcdir='.'
 INSTALL='/usr/bin/install -c'
 MKDIR_P='/bin/mkdir -p'
@@ -679,7 +679,7 @@ finish_cmds='PATH="\$PATH:/sbin" ldconfig -n $libdir'
 finish_eval=''
 hardcode_into_libs='yes'
 sys_lib_search_path_spec='/usr/lib/gcc/x86_64-linux-gnu/7 /usr/lib/x86_64-linux-gnu /usr/lib /lib/x86_64-linux-gnu /lib '
-configure_time_dlsearch_path='/lib /usr/lib /usr/lib/x86_64-linux-gnu/libfakeroot /usr/local/lib /usr/local/lib/x86_64-linux-gnu /lib/x86_64-linux-gnu /usr/lib/x86_64-linux-gnu /usr/lib/x86_64-linux-gnu/libhybris-egl /lib32 /usr/lib32 /libx32 /usr/libx32 '
+configure_time_dlsearch_path='/lib /usr/lib /usr/lib/x86_64-linux-gnu/libfakeroot /usr/local/lib/i386-linux-gnu /lib/i386-linux-gnu /usr/lib/i386-linux-gnu /usr/local/lib/i686-linux-gnu /lib/i686-linux-gnu /usr/lib/i686-linux-gnu /usr/local/lib /usr/local/lib/x86_64-linux-gnu /lib/x86_64-linux-gnu /usr/lib/x86_64-linux-gnu /lib32 /usr/lib32 '
 configure_time_lt_sys_library_path=''
 hardcode_action='immediate'
 enable_dlopen='unknown'
@@ -968,12 +968,12 @@ S["mkdir_p"]="$(MKDIR_P)"
 S["MKDIR_P"]="/bin/mkdir -p"
 S["INSTALL_STRIP_PROGRAM"]="$(install_sh) -c -s"
 S["STRIP"]="strip"
-S["install_sh"]="${SHELL} /home/godfrey/abm-fc/rcssserver-15.6.0/install-sh"
-S["MAKEINFO"]="${SHELL} /home/godfrey/abm-fc/rcssserver-15.6.0/missing makeinfo"
-S["AUTOHEADER"]="${SHELL} /home/godfrey/abm-fc/rcssserver-15.6.0/missing autoheader"
-S["AUTOMAKE"]="${SHELL} /home/godfrey/abm-fc/rcssserver-15.6.0/missing automake-1.15"
-S["AUTOCONF"]="${SHELL} /home/godfrey/abm-fc/rcssserver-15.6.0/missing autoconf"
-S["ACLOCAL"]="${SHELL} /home/godfrey/abm-fc/rcssserver-15.6.0/missing aclocal-1.15"
+S["install_sh"]="${SHELL} /home/ricky/Documents/UCL/MSc/football/venv/abm-fc/rcssserver-15.6.0/install-sh"
+S["MAKEINFO"]="${SHELL} /home/ricky/Documents/UCL/MSc/football/venv/abm-fc/rcssserver-15.6.0/missing makeinfo"
+S["AUTOHEADER"]="${SHELL} /home/ricky/Documents/UCL/MSc/football/venv/abm-fc/rcssserver-15.6.0/missing autoheader"
+S["AUTOMAKE"]="${SHELL} /home/ricky/Documents/UCL/MSc/football/venv/abm-fc/rcssserver-15.6.0/missing automake-1.15"
+S["AUTOCONF"]="${SHELL} /home/ricky/Documents/UCL/MSc/football/venv/abm-fc/rcssserver-15.6.0/missing autoconf"
+S["ACLOCAL"]="${SHELL} /home/ricky/Documents/UCL/MSc/football/venv/abm-fc/rcssserver-15.6.0/missing aclocal-1.15"
 S["VERSION"]="15.6.0"
 S["PACKAGE"]="rcssserver"
 S["CYGPATH_W"]="echo"
@@ -984,7 +984,7 @@ S["INSTALL_PROGRAM"]="${INSTALL}"
 S["target_alias"]=""
 S["host_alias"]=""
 S["build_alias"]=""
-S["LIBS"]="-lzmq  -lm "
+S["LIBS"]="-lm "
 S["ECHO_T"]=""
 S["ECHO_N"]="-n"
 S["ECHO_C"]=""
